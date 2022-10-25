@@ -6,4 +6,5 @@ export class Limit{
   bidOrd: number;
   bidQty: number;
   limit: number;
+  time: string;
 }

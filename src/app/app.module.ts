@@ -14,6 +14,9 @@ import { LoginComponent } from './components/pages/login/login.component';
 import { MarcheactionsComponent } from './components/pages/marcheactions/marcheactions.component';
 import {SharedModule} from './components/shared/shared.module';
 import { DetailsActionComponent } from './components/pages/marcheactions/details-action/details-action.component';
+import {MatTableModule, MatTabsModule} from '@angular/material';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +33,9 @@ import { DetailsActionComponent } from './components/pages/marcheactions/details
         BreadcrumbModule,
         HttpClientModule,
         NgbModule,
-        SharedModule
+        SharedModule,
+        MatTableModule,
+        MatTabsModule
     ],
   providers: [ ],
   bootstrap: [AppComponent],
