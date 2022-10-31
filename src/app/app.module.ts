@@ -11,11 +11,17 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RegisterComponent } from './components/pages/register/register.component';
 import { LoginComponent } from './components/pages/login/login.component';
+import { OffreassuranceComponent } from './components/pages/assurance/offreassurance/offreassurance.component';
+import { OffreassurancedetailComponent } from './components/pages/assurance/offreassurancedetail/offreassurancedetail.component';
+import { OffreassurancelistComponent } from './components/pages/assurance/offreassurancelist/offreassurancelist.component';
 @NgModule({
   declarations: [
     AppComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    OffreassuranceComponent,
+    OffreassurancedetailComponent,
+    OffreassurancelistComponent
   ],
   imports: [
     BrowserModule,
