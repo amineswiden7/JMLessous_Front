@@ -15,6 +15,7 @@ import { MarcheactionsComponent } from './components/pages/marcheactions/marchea
 import {SharedModule} from './components/shared/shared.module';
 import { DetailsActionComponent } from './components/pages/marcheactions/details-action/details-action.component';
 import {MatTableModule, MatTabsModule} from '@angular/material';
+import { CreditLibreComponent } from './components/pages/credit-libre/credit-libre.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import {MatTableModule, MatTabsModule} from '@angular/material';
     RegisterComponent,
     LoginComponent,
     MarcheactionsComponent,
-    DetailsActionComponent
+    DetailsActionComponent,
+    CreditLibreComponent
   ],
     imports: [
         BrowserModule,
