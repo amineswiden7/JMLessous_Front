@@ -1,0 +1,63 @@
+<app-header></app-header>
+<app-breadcrumb></app-breadcrumb>
+
+<!-- Start Blog -->
+<section class="section-padding bg-gray">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="blog-detail padding-20">
+                    <!-- article -->
+                    <article class="post">
+                        <div class="post-wrapper">
+                            <div class="blog-img animate-img mb-xl-20" [ngSwitch]="offre.categorie"> 
+                                <img *ngSwitchCase="'AUTOMOBILE'" src="assets/images/assurance/auto.jpeg" class="image-fit" alt="{{offre.categorie}}">
+                                <img *ngSwitchCase="'HABITATION'" src="assets/images/assurance/habitation.jpg" class="image-fit" alt="{{offre.categorie}}">
+                                <img *ngSwitchCase="'SCOLAIRE'" src="assets/images/assurance/scolaire.jpg" class="image-fit" alt="{{offre.categorie}}">
+                                <img *ngSwitchCase="'RESPONSABILITE_CIVILE'" src="assets/images/assurance/responsabilite.png" class="image-fit" alt="{{offre.categorie}}">
+                                <img *ngSwitchCase="'EMPRUNTEUR'" src="assets/images/assurance/emprunteur.jpg" class="image-fit" alt="{{offre.categorie}}">
+                            </div>
+                            <div class="blog-meta">
+                                <h2 [ngSwitch]="offre.categorie">
+                                    <a href="#" *ngSwitchCase="'AUTOMOBILE'"  class="text-custom-black fw-600">Assurance Automobile</a>
+                                    <a href="#" *ngSwitchCase="'HABITATION'" class="text-custom-black fw-600">Assurance Habitation</a>
+                                    <a href="#" *ngSwitchCase="'SCOLAIRE'" class="text-custom-black fw-600">Assurance Scolaire</a>
+                                    <a href="#" *ngSwitchCase="'RESPONSABILITE_CIVILE'" class="text-custom-black fw-600">Assurance Responsabilité Civile</a>
+                                    <a href="#" *ngSwitchCase="'EMPRUNTEUR'" class="text-custom-black fw-600">Assurance Emprunteur</a>
+                                </h2>
+                                <div class="post-meta-box">
+                                    <div class="post-meta mb-xl-20">
+                                        <div class="author-img">
+                                            <img src="assets/images/clients/client1.jpg" class="rounded-circle"
+                                                alt="employe assurance">
+                                        </div>
+                                        <div class="author-meta">
+                                            <h6 class="no-margin"><a href="#"
+                                                    class="text-custom-black">Mehdi Hantous</a></h6>
+                                            <p class="no-margin text-light-grey"><a href="#"
+                                                    class="text-light-grey">{{offre.assurance}}</a> | date</p>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <h5><div [innerHtml]="offre.description" style="color: black;white-space: pre-line;"></div></h5>
+                            </div>
+                            <div class="row align-items-center">
+                                <div class="col-8">
+                                  
+                                </div>
+                                <div class="col-4 text-right">
+                                  <a class="btn btn-sm btn-primary" (click)="show()">Signer un contrat</a>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                    <!-- article -->
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Blog -->
+<app-footer></app-footer>

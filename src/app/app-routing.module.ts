@@ -1,8 +1,14 @@
+import { OffreassuranceComponent } from './components/pages/assurance/offreassurance/offreassurance.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { RegisterComponent } from './components/pages/register/register.component';
 import { LoginComponent } from './components/pages/login/login.component';
+
+import { OffreassurancedetailComponent } from './components/pages/assurance/offreassurancedetail/offreassurancedetail.component';
+import { OffreassurancelistComponent } from './components/pages/assurance/offreassurancelist/offreassurancelist.component';
+
 import {MarcheactionsComponent} from './components/pages/marcheactions/marcheactions.component';
+
 
 const routes: Routes = [
   { path: 'coursActions', component: MarcheactionsComponent},
@@ -32,6 +38,8 @@ const routes: Routes = [
   { path: 'team', loadChildren: () => import('./components/pages/team/team.module').then(m => m.TeamModule), data: { breadcrumb: 'Team' } },
   // tslint:disable-next-line:max-line-length
   { path: 'loan-dashboard', loadChildren: () => import('./components/pages/userdashboard/userdashboard.module').then(m => m.UserdashboardModule), data: { breadcrumb: 'User Dashboard' } },
+  { path: 'offre-assurance', component : OffreassurancelistComponent},
+  { path: 'offre-assurance/:id', component : OffreassurancedetailComponent },
   { path: '**', loadChildren: () => import('./components/pages/error/error.module').then(m => m.ErrorModule), data: { breadcrumb: 'Error 404' } }
 ];
 
