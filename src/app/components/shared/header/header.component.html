@@ -109,18 +109,20 @@
                                             </li>
                                             <li class="menu-item"> <a routerLink="/service-detail/1" class="text-light-grey">Service Detail</a>
                                             </li>
+                                            <li class="menu-item"  > <a routerLink="/coursActions" class="text-custom-grey">Marché des actions</a></li>
                                         </ul>
                                     </li>
                                     <li class="menu-item menu-item-has-children "> <a routerLink="#" class="text-custom-white">User Dashboard</a>
                                         <ul class="custom sub-menu">
                                           <li class="menu-item" > <a routerLink="/LoginPage" class="text-custom-grey"  >SIGN-IN</a></li>
                                           <li class="menu-item"  > <a routerLink="/RegisterPage" class="text-custom-grey">SIGN-UP</a></li>
+
                                         </ul>
                                       </li>
                                 </ul>
                             </nav>
                             <div class="right-side">
-                                <div class="cta-btn"> 
+                                <div class="cta-btn">
                                     <a routerLink="/contact" class="btn-first btn-submit">
                                         Apply Today
                                     </a>
@@ -128,7 +130,7 @@
                             </div>
                         </div>
                         <div class="hamburger-menu">
-                            <div class="menu-btn" [ngClass]="navmethod ? '' : 'active'" (click)="toggleNav()"> 
+                            <div class="menu-btn" [ngClass]="navmethod ? '' : 'active'" (click)="toggleNav()">
                                 <span></span>
                                 <span></span>
                                 <span></span>
