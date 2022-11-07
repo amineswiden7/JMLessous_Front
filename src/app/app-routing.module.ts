@@ -10,6 +10,7 @@ import { OffreassurancelistComponent } from './components/pages/assurance/offrea
 
 import {MarcheactionsComponent} from './components/pages/marcheactions/marcheactions.component';
 
+
 import { ComptecourantComponent } from './components/pages/comptecourant/comptecourant.component';
 
 import { CreditLibreComponent } from './components/pages/credit-libre/credit-libre.component';
