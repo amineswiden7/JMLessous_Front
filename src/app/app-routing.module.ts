@@ -11,6 +11,10 @@ import { OffreassurancelistComponent } from './components/pages/assurance/offrea
 import {MarcheactionsComponent} from './components/pages/marcheactions/marcheactions.component';
 import { ComptecourantComponent } from './components/pages/comptecourant/comptecourant.component';
 
+import { CreditLibreComponent } from './components/pages/credit-libre/credit-libre.component';
+import { SimulateurCreditLibreComponent } from './components/pages/simulateur-credit-libre/simulateur-credit-libre.component';
+
+
 
 const routes: Routes = [
 
@@ -20,6 +24,8 @@ const routes: Routes = [
   { path: 'coursActions', component: MarcheactionsComponent},
   { path: 'LoginPage', component: LoginComponent},
   { path: 'RegisterPage', component: RegisterComponent},
+  { path: 'CreditLibrePage', component: CreditLibreComponent},
+  { path: 'SimulateurPage', component: SimulateurCreditLibreComponent},
   { path: '', loadChildren: () => import('./components/pages/home/home.module').then(m => m.HomeModule), data: { breadcrumb: 'Homepage' } },
   { path: 'home-v2', loadChildren: () => import('./components/pages/hometwo/hometwo.module').then(m => m.HometwoModule), data: { breadcrumb: 'Homepage' } },
   { path: 'about', loadChildren: () => import('./components/pages/about/about.module').then(m => m.AboutModule), data: { breadcrumb: 'About Us' } },

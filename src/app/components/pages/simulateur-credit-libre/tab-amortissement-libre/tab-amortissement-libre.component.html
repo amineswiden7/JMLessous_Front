@@ -1,0 +1,130 @@
+
+
+<!-- Start User Details -->
+<section class="section-padding pb-0 exp-cal2">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-heading">
+                <h3 class="text-white fw-700">tableau d'amortissement</h3>
+                <div class="section-description">
+                    <p class="text-light-white">Lorem Ipsum</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="offset-lg-3 col-lg-6">
+                <div class="user-info-tabs">
+                    <ng-wizard [config]="defaultconfig" (stepChanged)="stepChanged($event)" class="step-app">
+                        <ng-wizard-step [description]="'Basic Info'">
+                            <div class="step-tab-inner">
+                                <div class="heading text-center">
+                                    <h4 class="text-custom-black fw-600">Indiquer vos montant et durée souhaités ci-dessous</h4>
+                                   
+                                </div>
+                                <form  *ngIf="!isSuccessful"
+                                name="form"
+                                (ngSubmit)="f.form.valid &&  tabAmortissement()"
+                                #f="ngForm"
+                                novalidate>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label class="text-custom-black fs-14 fw-600">montant credit</label>
+                                                <input 
+                                                    class="form-control form-control-custom"
+                                                    placeholder="montant"
+                                                    type="number"
+                                                    name="montantCredit"
+                                                    [(ngModel)]="creditLibre.montantCredit"
+                                                    required
+                                                    minlength="7"
+                                                    #montantCredit="ngModel">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="text-custom-black fs-14 fw-600">duree</label>
+                                                <input 
+                                                class="form-control form-control-custom"
+                                                placeholder="duree"
+                                                type="number"
+                                                name="duree"
+                                                [(ngModel)]="creditLibre.duree"
+                                                required
+                                                minlength="1"
+                                                #duree="ngModel">
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="quantity mb-xl-12">
+                                            <label class="text-custom-black fs-14 fw-600">taux d'interet</label>
+                                            <input type="number" class="form-control form-control-custom" name="name" value="{{counter}}" readonly>
+                                            <button class="minus-btn btn-first btn-submit-fill btn-height" type="button" (click)="decrement()"> <i class="fas fa-minus"></i></button>
+                                            <button class="plus-btn btn-first btn-submit-fill btn-height" type="button" (click)="increment()"> <i class="fas fa-plus"></i></button>
+                                        </div>
+                                       
+                                        <div class="form-group col-lg-12">
+                                            <button class="btn btn-primary btn-block fs-14 fw-600">generer tableau d'amortissement</button>
+                                        </div>
+                                    
+                                          <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+                                            vos donnés sont incompatible<br />{{ errorMessage }}
+                                          </div>
+                                    </div>
+                                </form>
+                                <div class="alert alert-success" *ngIf="isSuccessful">
+                                    vous trouverer la table d'amortissement en dessous
+                                  </div>
+                            </div>
+                        </ng-wizard-step>
+                        
+                        
+                    </ng-wizard>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Start User Details -->
+
+<div class="section-padding lw-tab-section p-relative" *ngIf="isSuccessful">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="lw-mega-tab">
+                    <ul ngbNav #navplans="ngbNav" class="nav lw-nav-tabs">
+                        <li [ngbNavItem]="1">
+                            <a ngbNavLink>
+                               tableau d'amortissement
+                            </a>
+                            <ng-template ngbNavContent>
+                                <div class="table-responsive" >
+                                    <table class="lw-tab-table" >
+                                        <tr class="lw-table-row-1">
+                                            <th>montant restant</th>
+                                            <th>interet</th>
+                                            <th>amortissement</th>
+                                            <th>mensualité</th>
+                                           
+                                        </tr>
+                                      
+                                        <tr *ngFor = "let credit of listCredit">
+                                            <td class="lw-table-data-1">{{credit.montantR}}</td>
+                                            <td class="lw-table-data-2"> {{credit.interest}}</td>
+                                            <td class="lw-table-data-3">{{credit.amortissement}}</td>
+                                            <td class="lw-table-data-4"> {{credit.mensualite}}</td>
+                                         </tr>
+                                     
+                                    </table>
+                                </div>
+                            </ng-template>
+                        </li>
+                      
+                        
+                    </ul>
+                    <div [ngbNavOutlet]="navplans" class="lw-tab-content-wrapper"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
