@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { CreditLibre } from 'src/app/models/credit-libre';
+import { CreditLibreService } from 'src/app/services/creditLibre/credit-libre.service';
 
 @Component({
   selector: 'app-credit-libre',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CreditLibreComponent implements OnInit {
 
-  constructor() { }
+  listC:CreditLibre[];
+  constructor(private credit:CreditLibreService) 
+  {
+    this.listC=[]
+
+  }
 
   ngOnInit(): void {
+    this.credit.getAllCreditL().subscribe(res=>{console.log(res);this.listC=res});
   }
 
 }
