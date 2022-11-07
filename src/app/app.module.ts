@@ -24,6 +24,10 @@ import {SharedModule} from './components/shared/shared.module';
 import { DetailsActionComponent } from './components/pages/marcheactions/details-action/details-action.component';
 import {MatTableModule, MatTabsModule} from '@angular/material';
 import { CreditLibreComponent } from './components/pages/credit-libre/credit-libre.component';
+import { GarantieComponent } from './components/pages/garantie/garantie.component';
+import { AjoutCreditLibreComponent } from './components/pages/credit-libre/ajout-credit-libre/ajout-credit-libre.component';
+import { SimulateurCreditLibreComponent } from './components/pages/simulateur-credit-libre/simulateur-credit-libre.component';
+import { TabAmortissementLibreComponent } from './components/pages/simulateur-credit-libre/tab-amortissement-libre/tab-amortissement-libre.component';
 
 
 
@@ -40,7 +44,11 @@ import { CreditLibreComponent } from './components/pages/credit-libre/credit-lib
     OffreassurancelistComponent,
     MarcheactionsComponent,
     DetailsActionComponent,
-    CreditLibreComponent
+    CreditLibreComponent,
+    GarantieComponent,
+    AjoutCreditLibreComponent,
+    SimulateurCreditLibreComponent,
+    TabAmortissementLibreComponent
 
   ],
   imports: [
