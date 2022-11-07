@@ -9,11 +9,13 @@ import { OffreassurancedetailComponent } from './components/pages/assurance/offr
 import { OffreassurancelistComponent } from './components/pages/assurance/offreassurancelist/offreassurancelist.component';
 
 import {MarcheactionsComponent} from './components/pages/marcheactions/marcheactions.component';
+import { ComptecourantComponent } from './components/pages/comptecourant/comptecourant.component';
 
 
 const routes: Routes = [
 
   {path: 'compte',component :CompteComponent},
+  {path: 'courant',component :ComptecourantComponent},
 
   { path: 'coursActions', component: MarcheactionsComponent},
   { path: 'LoginPage', component: LoginComponent},
