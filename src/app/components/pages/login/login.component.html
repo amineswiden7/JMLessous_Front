@@ -21,86 +21,115 @@
                   </ul>
                 </div>
   </div></div></div></div></div></breadcrumb>
-<body>
 
-  <div class="section-padding lw-tab-section p-relative">
-    <div class="container">
+<!-- Start Apply Today/faqs -->
+<section class="book-appointment parallax section-padding" id="book-appointment">
+  <div class="overlay overlay-bg-black"></div>
+  <div class="pattern"></div>
+  <div class="container">
       <div class="row">
-<div class="col-lg-12">
-    <div class="right-side full-height bg-border">
-        <div class="section-heading">
-            <h3 class="text-white fw-600">Make An Apply Today</h3>
-        </div>
-        <form
-        *ngIf="!isLoggedIn"
-        name="form"
-        (ngSubmit)="f.form.valid && onSubmit()"
-        #f="ngForm"
-        novalidate
-      >
-        <div class="form-group">
-          <label for="username">Username</label>
-          <input
-            type="text"
-            class="form-control"
-            name="username"
-            [(ngModel)]="form.username"
-            required
-            #username="ngModel"
-          />
-          <div
-            class="alert alert-danger"
-            role="alert"
-            *ngIf="f.submitted && username.invalid"
-          >
-            Username is required!
+          <div class="col-12">
+              <div class="appointment-sec">
+                  <div class="row no-gutters">
+                      <div class="col-lg-6 ">
+                          <div class="padding-40 full-height bg-white">
+                              <div class="align-self-center">
+                                  <div class="section-heading">
+                                      <h3 class="text-custom-blue fw-600 ">Get Loan Adviser</h3>
+                                  </div>
+                                  <p class="text-dark">Call us today, leave a message, email or find your nearest office below and We are here for you 24 hours , 7 days a week.</p>
+                                  <h6 class="fs-20 mt-4 text-dark">We are here for you 24 hours a day, 7 days a week</h6>
+                                  <div class="LOANLY-address">
+                                      <p class="text-dark "><span class="fw-600">Address</span> : Newyork Mcf-d233</p>
+                                      <p class="text-dark "><span class="fw-600">Email</span> : info@gmail.com</p>
+                                  </div>
+                                  <button type="submit" class="btn-first btn-submit-fill"><i class="fas fa-phone mr-2 fs-16"></i><span class="fs-16">1800-000-2390</span>
+                                  </button>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-lg-6">
+                          <div class="right-side full-height bg-border">
+                           
+                                  <div class="section-heading">
+                                      <h3 class="text-white fw-600">Make An Apply Today</h3>
+                                  </div>
+                                  <form
+                                  *ngIf="!isLoggedIn"
+                                  name="form"
+                                  (ngSubmit)="f.form.valid && onSubmit()"
+                                  #f="ngForm"
+                                  novalidate
+                                >
+                                  <div class="form-group">
+                                    <label for="username">Username</label>
+                                    <input
+                                      type="text"
+                                      class="form-control"
+                                      name="username"
+                                      [(ngModel)]="form.username"
+                                      required
+                                      #username="ngModel"
+                                    />
+                                    <div
+                                      class="alert alert-danger"
+                                      role="alert"
+                                      *ngIf="f.submitted && username.invalid"
+                                    >
+                                      Username is required!
+                                    </div>
+                                  </div>
+                                  <div class="form-group">
+                                    <label for="password">Password</label>
+                                    <input
+                                      type="password"
+                                      class="form-control"
+                                      name="password"
+                                      [(ngModel)]="form.password"
+                                      required
+                                      minlength="6"
+                                      #password="ngModel"
+                                    />
+                                    <div
+                                      class="alert alert-danger"
+                                      role="alert"
+                                      *ngIf="f.submitted && password.invalid"
+                                    >
+                                      <div *ngIf="password.errors.required">Password is required</div>
+                                      <div *ngIf="password.errors.minlength">
+                                        Password must be at least 6 characters
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="form-group">
+                                    <button class="btn btn-primary btn-block">
+                                      Login
+                                    </button>
+                                  </div>
+                                  <div class="form-group">
+                                    <div
+                                      class="alert alert-danger"
+                                      role="alert"
+                                      *ngIf="f.submitted && isLoginFailed"
+                                    >
+                                      Login failed: {{ errorMessage }}
+                                    </div>
+                                  </div>
+                                </form>
+                            
+                                <div class="alert alert-success" *ngIf="isLoggedIn">
+                                  Logged in as {{ token }}.
+                                </div>
+                              </div>
+                          </div>
+                          
+                    
+                  </div>
+              </div>
           </div>
-        </div>
-        <div class="form-group">
-          <label for="password">Password</label>
-          <input
-            type="password"
-            class="form-control"
-            name="password"
-            [(ngModel)]="form.password"
-            required
-            minlength="6"
-            #password="ngModel"
-          />
-          <div
-            class="alert alert-danger"
-            role="alert"
-            *ngIf="f.submitted && password.invalid"
-          >
-            <div *ngIf="password.errors.required">Password is required</div>
-            <div *ngIf="password.errors.minlength">
-              Password must be at least 6 characters
-            </div>
-          </div>
-        </div>
-        <div class="form-group">
-          <button class="btn btn-primary btn-block">
-            Login
-          </button>
-        </div>
-        <div class="form-group">
-          <div
-            class="alert alert-danger"
-            role="alert"
-            *ngIf="f.submitted && isLoginFailed"
-          >
-            Login failed: {{ errorMessage }}
-          </div>
-        </div>
-      </form>
-  
-      <div class="alert alert-success" *ngIf="isLoggedIn">
-        Logged in as {{ token }}.
       </div>
-    </div>
-</div>
-</div>
-</div>
-</div>
-</body>
+  </div>
+</section>
+<!-- End Apply Today/faqs -->
+
 <app-footer></app-footer>
