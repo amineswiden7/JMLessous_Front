@@ -32,7 +32,7 @@ import { GarantieComponent } from './components/pages/garantie/garantie.componen
 import { AjoutCreditLibreComponent } from './components/pages/credit-libre/ajout-credit-libre/ajout-credit-libre.component';
 import { SimulateurCreditLibreComponent } from './components/pages/simulateur-credit-libre/simulateur-credit-libre.component';
 import { TabAmortissementLibreComponent } from './components/pages/simulateur-credit-libre/tab-amortissement-libre/tab-amortissement-libre.component';
-
+import { CreateCreditComponent } from './components/pages/CreditImmob/create-credit/create-credit.component';
 
 
 
@@ -62,10 +62,11 @@ import { TabAmortissementLibreComponent } from './components/pages/simulateur-cr
     AjoutCreditLibreComponent,
     SimulateurCreditLibreComponent,
     TabAmortissementLibreComponent,
-
+    CreateCreditComponent
 
   ],
-  imports: [
+
+  imports:[
         BrowserModule,
         FormsModule,
         AppRoutingModule,
@@ -81,4 +82,6 @@ import { TabAmortissementLibreComponent } from './components/pages/simulateur-cr
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
+
+
 export class AppModule { }

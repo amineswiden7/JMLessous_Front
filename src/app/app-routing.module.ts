@@ -1,5 +1,5 @@
 import { OffreassuranceComponent } from './components/pages/assurance/offreassurance/offreassurance.component';
-import { NgModule } from '@angular/core';
+import { NgModule } from '@angular/core'; 
 import { Routes, RouterModule } from '@angular/router';
 import { RegisterComponent } from './components/pages/register/register.component';
 import { LoginComponent } from './components/pages/login/login.component';
@@ -15,6 +15,8 @@ import { ComptecourantComponent } from './components/pages/comptecourant/comptec
 
 import { CreditLibreComponent } from './components/pages/credit-libre/credit-libre.component';
 import { SimulateurCreditLibreComponent } from './components/pages/simulateur-credit-libre/simulateur-credit-libre.component';
+import { CreateCreditComponent } from './components/pages/CreditImmob/create-credit/create-credit.component'; 
+import { AjoutCreditLibreComponent } from './components/pages/credit-libre/ajout-credit-libre/ajout-credit-libre.component';
 
 
 
@@ -54,12 +56,13 @@ const routes: Routes = [
 
   { path: 'loan-dashboard', loadChildren: () => import('./components/pages/userdashboard/userdashboard.module').then(m => m.UserdashboardModule), data: { breadcrumb: 'User Dashboard' } },
   { path: 'offre-assurance', component : OffreassurancelistComponent},
+  { path: 'createcredit', component : CreateCreditComponent},
   { path: 'offre-assurance/:id', component : OffreassurancedetailComponent },
   { path: '**', loadChildren: () => import('./components/pages/error/error.module').then(m => m.ErrorModule), data: { breadcrumb: 'Error 404' } }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
