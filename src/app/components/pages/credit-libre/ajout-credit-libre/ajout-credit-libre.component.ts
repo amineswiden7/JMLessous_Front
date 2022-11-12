@@ -55,7 +55,7 @@ export class AjoutCreditLibreComponent implements OnInit {
   addCredit(){
     this.creditLibreService.createCredit(this.creditLibre,this.idUser,this.idGarantie).subscribe(res=>{
       console.log(this.creditLibre);
-      console.log(this.idUser);
+      console.log(this.idGarantie);
       this.isSuccessful = true;
         this.isSignUpFailed = false;
     },
