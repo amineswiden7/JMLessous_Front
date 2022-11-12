@@ -39,9 +39,9 @@
                   <form name="form" (ngSubmit)="simulater()" #f="ngForm" novalidate>
                    
                     <div class="row">
-                         <div class="col-md-5">
+                         <div class="col-md-12">
                             <p class="fw-600 text-center">montant credit</p>
-                            <div class="ex-calculate-value">
+                            <div class="exp-cal2-loan">
                                 <input placeholder="00" type="number" 
                                 class="form-control form-control-custom"
                                 type="number"
@@ -53,9 +53,9 @@
                             </div>
                             <p class="fw-600 mt-2 fs-13">entrer le montant du credit</p>
                         </div>
-                        <div class="col-md-7">
+                        <div class="col-md-12">
                             <p class="fw-600 text-center exp-cal2-content">duree</p>
-                            <div class="ex-calculate-value">
+                            <div class="exp-cal2-loan">
                                 <input type="number" class="form-control form-control-custom" placeholder="00"
                                 type="number"
                                 name="duree"
@@ -67,7 +67,7 @@
                         </div>
                         <div class="col-md-12">
                             <p class="fw-600 text-center exp-cal2-content">tauxInteret</p>
-                            <div class="ex-calculate-value">
+                            <div class="exp-cal2-loan">
                                 <input type="number" class="form-control form-control-custom"  placeholder="00" type="number"
                                 name="taux"
                                 [(ngModel)]="taux"
@@ -90,34 +90,33 @@
             </div>
             <div class="col-xl-5 col-lg-4 mb-md-80">
                 <div class="contact-form full-height align-self-center bx-wrapper bg-custom-white">
-                    <h4 class="text-custom-black fw-600">Get In Touch</h4>
-                    <p class="text-light-white no-margin">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                        do eiusmod tempor incididunt.</p>
+                    <h4 class="text-custom-black fw-600">votre simulation</h4>
+                    <p class="text-light-white no-margin">dddd</p>
                     <form class="form-layout-1">
                         <div class="row">
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label class="text-left">montant restant</label>
-                                    <input type="number" name="#" class="form-control" placeholder="First Name" value="{{listCredit.montantR}}" disabled>
+                                    <input type="number" name="#" class="form-control"  value="{{listCredit.montantR}}" disabled>
                                 </div>
                             </div>
                             <div class="col-sm-6">
                                 <div class="form-group">
                                     <label class="text-left">interet</label>
-                                    <input type="number" name="#" class="form-control" placeholder="Last Name" value="{{listCredit.interest}}"  disabled>
+                                    <input type="number" name="#" class="form-control"  value="{{listCredit.interest}}"  disabled>
                                 </div>
                             </div>
                             <div class="col-12 mb-xl-20">
                                 <div class="form-group">
                                     <label class="text-left">amortissement</label>
-                                    <input type="number" name="#" class="form-control" placeholder="Email Address" value="{{listCredit.amortissement}}" disabled>
+                                    <input type="number" name="#" class="form-control"  value="{{listCredit.amortissement}}" disabled>
                                 </div>
                               
                             </div>
                             <div class="col-12 mb-xl-20">
                                 <div class="form-group">
                                     <label class="text-left">mensualité</label>
-                                    <input type="number" name="#" class="form-control" placeholder="Email Address" value="{{listCredit.mensualite}}" disabled>
+                                    <input type="number" name="#" class="form-control" value="{{listCredit.mensualite}}" disabled>
                                 </div>
                               
                             </div>
