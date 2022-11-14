@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { RegisterComponent } from './components/pages/register/register.component';
 import { LoginComponent } from './components/pages/login/login.component';
+import { CompteComponent } from './components/pages/compte/compte.component';
 
 import { OffreassurancedetailComponent } from './components/pages/assurance/offreassurancedetail/offreassurancedetail.component';
 import { OffreassurancelistComponent } from './components/pages/assurance/offreassurancelist/offreassurancelist.component';
@@ -11,10 +12,23 @@ import { OffreassurancelistComponent } from './components/pages/assurance/offrea
 import {MarcheactionsComponent} from './components/pages/marcheactions/marcheactions.component';
 
 
+import { ComptecourantComponent } from './components/pages/comptecourant/comptecourant.component';
+
+import { CreditLibreComponent } from './components/pages/credit-libre/credit-libre.component';
+import { SimulateurCreditLibreComponent } from './components/pages/simulateur-credit-libre/simulateur-credit-libre.component';
+
+
+
 const routes: Routes = [
+
+  {path: 'compte',component :CompteComponent},
+  {path: 'courant',component :ComptecourantComponent},
+
   { path: 'coursActions', component: MarcheactionsComponent},
   { path: 'LoginPage', component: LoginComponent},
   { path: 'RegisterPage', component: RegisterComponent},
+  { path: 'CreditLibrePage', component: CreditLibreComponent},
+  { path: 'SimulateurPage', component: SimulateurCreditLibreComponent},
   { path: '', loadChildren: () => import('./components/pages/home/home.module').then(m => m.HomeModule), data: { breadcrumb: 'Homepage' } },
   { path: 'home-v2', loadChildren: () => import('./components/pages/hometwo/hometwo.module').then(m => m.HometwoModule), data: { breadcrumb: 'Homepage' } },
   { path: 'about', loadChildren: () => import('./components/pages/about/about.module').then(m => m.AboutModule), data: { breadcrumb: 'About Us' } },
@@ -38,6 +52,7 @@ const routes: Routes = [
   { path: 'service-detail/:id', loadChildren: () => import('./components/pages/servicedetail/servicedetail.module').then(m => m.ServicedetailModule), data: { breadcrumb: 'Service Details' } },
   { path: 'team', loadChildren: () => import('./components/pages/team/team.module').then(m => m.TeamModule), data: { breadcrumb: 'Team' } },
   // tslint:disable-next-line:max-line-length
+
   { path: 'loan-dashboard', loadChildren: () => import('./components/pages/userdashboard/userdashboard.module').then(m => m.UserdashboardModule), data: { breadcrumb: 'User Dashboard' } },
   { path: 'offre-assurance', component : OffreassurancelistComponent},
   { path: 'offre-assurance/:id', component : OffreassurancedetailComponent },

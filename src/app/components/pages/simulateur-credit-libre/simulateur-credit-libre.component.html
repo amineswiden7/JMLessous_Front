@@ -1,0 +1,135 @@
+<app-header></app-header>
+<div class="overlapsec"></div>
+<breadcrumb #parent>
+    <div class="sub-header p-relative">
+      <div class="overlay overlay-bg-black"></div>
+      <div class="pattern"></div>
+      <div class="section-padding">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+  
+                <div class="sub-header-content p-relative">
+                  <h1 class="text-custom-white lh-default fw-600"> credit Libre simulateur</h1>
+                  <ul class="custom">
+                    <li><a class="text-custom-white">Home</a></li>
+                    <li >
+  
+                        <a>credit Libre simulateur</a>
+                    </li>
+  
+                  </ul>
+                </div>
+  </div></div></div></div></div></breadcrumb>
+<!-- Start affich simulate -->
+
+<section class="section-padding pb-0 exp-cal2">
+    <div class="container">
+        <div class="section-header">
+            <div class="section-heading">
+                <h3 class="text-white fw-700">simuler votre credit</h3>
+                <div class="section-description">
+                    <p class="text-light-white">dddd</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="offset-lg-2 col-xl-5 col-lg-4 mb-md-80 ">
+                <div class="exp-cal2-loan">
+                  <form name="form" (ngSubmit)="simulater()" #f="ngForm" novalidate>
+                   
+                    <div class="row">
+                         <div class="col-md-12">
+                            <p class="fw-600 text-center">montant credit</p>
+                            <div class="exp-cal2-loan">
+                                <input placeholder="00" type="number" 
+                                class="form-control form-control-custom"
+                                type="number"
+                                name="montant"
+                                [(ngModel)]="montant"
+                                required
+                                >
+                          
+                            </div>
+                            <p class="fw-600 mt-2 fs-13">entrer le montant du credit</p>
+                        </div>
+                        <div class="col-md-12">
+                            <p class="fw-600 text-center exp-cal2-content">duree</p>
+                            <div class="exp-cal2-loan">
+                                <input type="number" class="form-control form-control-custom" placeholder="00"
+                                type="number"
+                                name="duree"
+                                [(ngModel)]="duree"
+                                required
+                                > 
+                                <p class="fw-600 mt-2 fs-13">entrer la duree du credit</p>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <p class="fw-600 text-center exp-cal2-content">tauxInteret</p>
+                            <div class="exp-cal2-loan">
+                                <input type="number" class="form-control form-control-custom"  placeholder="00" type="number"
+                                name="taux"
+                                [(ngModel)]="taux"
+                                required > 
+                                <p class="fw-600 mt-2 fs-13">entrer le taux souhaité</p>
+                            </div>
+                        </div>
+                        <div class="col-md-12 align-self-center">
+                            <div class="form-group exp-cal-icon">
+                                <p class="fw-600 mt-2 fs-13">simuler votre credit</p>
+                                <button type="btn " ><i class="fa fa-angle-right"></i>
+                                </button>
+                            </div>
+                        </div>
+                       
+                      
+                    </div>
+                  </form>
+                </div>
+            </div>
+            <div class="col-xl-5 col-lg-4 mb-md-80">
+                <div class="contact-form full-height align-self-center bx-wrapper bg-custom-white">
+                    <h4 class="text-custom-black fw-600">votre simulation</h4>
+                    <p class="text-light-white no-margin">dddd</p>
+                    <form class="form-layout-1">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="text-left">montant restant</label>
+                                    <input type="number" name="#" class="form-control"  value="{{listCredit.montantR}}" disabled>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="text-left">interet</label>
+                                    <input type="number" name="#" class="form-control"  value="{{listCredit.interest}}"  disabled>
+                                </div>
+                            </div>
+                            <div class="col-12 mb-xl-20">
+                                <div class="form-group">
+                                    <label class="text-left">amortissement</label>
+                                    <input type="number" name="#" class="form-control"  value="{{listCredit.amortissement}}" disabled>
+                                </div>
+                              
+                            </div>
+                            <div class="col-12 mb-xl-20">
+                                <div class="form-group">
+                                    <label class="text-left">mensualité</label>
+                                    <input type="number" name="#" class="form-control" value="{{listCredit.mensualite}}" disabled>
+                                </div>
+                              
+                            </div>
+                          
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Loan Calculator -->
+<app-tab-amortissement-libre></app-tab-amortissement-libre>
+
+<!-- End lw-tab -->
+<app-footer></app-footer>

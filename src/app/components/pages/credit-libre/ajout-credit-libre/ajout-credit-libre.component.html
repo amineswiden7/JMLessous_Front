@@ -1,0 +1,167 @@
+<!-- Start User Details -->
+<section class="section-padding-bottom user-info-details">
+    <div class="container">
+        <div class="row">
+            <div class="offset-lg-3 col-lg-6">
+                <div class="user-info-tabs">
+                    <ng-wizard [config]="defaultconfig" (stepChanged)="stepChanged($event)" class="step-app">
+                        <ng-wizard-step [description]="'Basic Info'">
+                            <div class="step-tab-inner">
+                                <div class="heading text-center">
+                                    <h4 class="text-custom-black fw-600">Entrer le credit avec pour l'untilisateur et le garantie approprié</h4>
+                                   
+                                </div>
+                                <form  *ngIf="!isSuccessful"
+                                name="form"
+                                (ngSubmit)="f.form.valid && addCredit()"
+                                #f="ngForm"
+                                novalidate>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label class="text-custom-black fs-14 fw-600">montant credit</label>
+                                                <input 
+                                                    class="form-control form-control-custom"
+                                                    placeholder="montant"
+                                                    type="number"
+                                                    name="montantCredit"
+                                                    [(ngModel)]="creditLibre.montantCredit"
+                                                    required
+                                                    minlength="7"
+                                                    #montantCredit="ngModel">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="text-custom-black fs-14 fw-600">duree</label>
+                                                <input 
+                                                class="form-control form-control-custom"
+                                                placeholder="duree"
+                                                type="number"
+                                                name="duree"
+                                                [(ngModel)]="creditLibre.duree"
+                                                required
+                                                minlength="1"
+                                                #duree="ngModel">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="text-custom-black fs-14 fw-600">date fin</label>
+                                                <input type="date" 
+                                                class="form-control datepickrnew form-control-custom"
+                                                placeholder="dateFin"
+                                                name="dateFin"
+                                                [(ngModel)]="creditLibre.dateFin"
+                                                required
+                                                #dateFin="ngModel"
+                                                placeholder="01/01/1990">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="text-custom-black fs-14 fw-600"> choisir le garantie</label>
+                                                <select class="custom-select form-control form-control-custom"
+                                                placeholder="garantie"
+                                                name="idGarantie"
+                                                [(ngModel)]="idGarantie"
+                                                required
+                                                 >
+                                                
+                                                    <option *ngFor = "let g of listG" >{{g.idGarantie}}</option>
+                                                   
+                                                </select>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="text-custom-black fs-14 fw-600"> ajouter l'utilisateur</label>
+                                                <select class="custom-select form-control form-control-custom"
+                                                placeholder="utilisateur"
+                                                name="idUser"
+                                                [(ngModel)]="idUser"
+                                                required
+                                                #garantie="ngModel" >
+                                                
+                                                    <option *ngFor = "let u of listU" >{{u.idUser}}</option>
+                                                   
+                                                </select>
+                                            </div>
+
+                                        </div>
+                                       <!--
+                                        <div class="col-12">
+                                            <div class="radio-box form-group">
+                                                <div class="custom-radio">
+                                                    <input id="phone1" name="phonetype" type="radio" checked>
+                                                    <label for="phone1">Business</label>
+                                                </div>
+                                                <div class="custom-radio">
+                                                    <input id="phone2" name="phonetype" type="radio">
+                                                    <label for="phone2">Mobile</label>
+                                                </div>
+                                                <div class="custom-radio">
+                                                    <input id="phone3" name="phonetype" type="radio">
+                                                    <label for="phone3">Home</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label class="text-custom-black fs-14 fw-600">Primary Loan
+                                                    Purpose</label>
+                                                <select class="custom-select form-control form-control-custom">
+                                                    <option>Purchase business location</option>
+                                                    <option>Option 2</option>
+                                                    <option>Option 3</option>
+                                                    <option>Option 4</option>
+                                                    <option>Option 5</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label class="text-custom-black fs-14 fw-600">Reference</label>
+                                                <select class="custom-select form-control form-control-custom">
+                                                    <option>Banner/Digital Ad</option>
+                                                    <option>Option 2</option>
+                                                    <option>Option 3</option>
+                                                    <option>Option 4</option>
+                                                    <option>Option 5</option>
+                                                </select>
+                                            </div>
+                                        </div> -->
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label class="custom-checkbox text-custom-black">
+                                                    <input type="checkbox" name="#">
+                                                    <span class="checkmark"></span>
+                                                    I Agree to the <a href="#">terms & conditions</a> and <a
+                                                        href="#">privacy policy.</a>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-lg-12">
+                                            <button class="btn btn-primary btn-block fs-14 fw-600">valider votre credit</button>
+                                        </div>
+                                    
+                                          <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+                                            Signup failed!<br />{{ errorMessage }}
+                                          </div>
+                                    </div>
+                                </form>
+                                <div class="alert alert-success" *ngIf="isSuccessful">
+                                    Your registration is successful!
+                                  </div>
+                            </div>
+                        </ng-wizard-step>
+                        
+                        
+                    </ng-wizard>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Start User Details -->
