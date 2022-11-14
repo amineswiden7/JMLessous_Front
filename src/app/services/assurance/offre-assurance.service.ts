@@ -17,12 +17,22 @@ export class OffreAssuranceService {
   };
 
   getOffresAssurance():Observable<OffreAssurance>{
-    //this.url = this.url + "getAllCredits";
+    //this.url = this.url + "getAllOffres";
     return this.http.get<OffreAssurance>(this.url+ "getAllOffres");
   }
 
   getOffreById(id:any):Observable<OffreAssurance>{
-    //this.url = this.url + "getCredit/"+id;
+    //this.url = this.url + "getOffre/"+id;
     return this.http.get<OffreAssurance>(this.url+ "getOffre/"+id);
   }
+
+  addOffreAssurance(c:any):Observable<OffreAssurance>{
+    //this.url = this.url + "addOffre";
+    return this.http.post<OffreAssurance>(
+          this.url + "addOffre",
+          JSON.stringify(c),
+          this.httpOptions
+        );
+  }
+
 }

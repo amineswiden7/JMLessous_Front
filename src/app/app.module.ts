@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BreadcrumbModule } from 'angular-crumbs';
@@ -20,6 +20,8 @@ import { MarcheactionsComponent } from './components/pages/marcheactions/marchea
 import {SharedModule} from './components/shared/shared.module';
 import { DetailsActionComponent } from './components/pages/marcheactions/details-action/details-action.component';
 import {MatTableModule, MatTabsModule} from '@angular/material';
+import { AddOffreAssuranceComponent } from './components/pages/assurance/add-offre-assurance/add-offre-assurance.component';
+import { AngularEditorModule } from '@kolkov/angular-editor';
 
 
 @NgModule({
@@ -31,7 +33,8 @@ import {MatTableModule, MatTabsModule} from '@angular/material';
     OffreassurancedetailComponent,
     OffreassurancelistComponent,
     MarcheactionsComponent,
-    DetailsActionComponent
+    DetailsActionComponent,
+    AddOffreAssuranceComponent
   ],
   imports: [
         BrowserModule,
@@ -43,7 +46,9 @@ import {MatTableModule, MatTabsModule} from '@angular/material';
         NgbModule,
         SharedModule,
         MatTableModule,
-        MatTabsModule
+        MatTabsModule,
+        ReactiveFormsModule,
+        AngularEditorModule 
     ],
   providers: [ ],
   bootstrap: [AppComponent],
