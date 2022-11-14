@@ -3,6 +3,7 @@ import { Title } from '@angular/platform-browser';
 import { BreadcrumbService, Breadcrumb } from 'angular-crumbs';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -14,6 +15,7 @@ import { Location, LocationStrategy, PathLocationStrategy } from '@angular/commo
     }
   ]
 })
+
 export class AppComponent implements OnInit {
   constructor(private titleService: Title, private breadcrumbService: BreadcrumbService) {
   }
@@ -21,6 +23,7 @@ export class AppComponent implements OnInit {
     this.breadcrumbService.breadcrumbChanged.subscribe(crumbs => {
       this.titleService.setTitle(this.createTitle(crumbs));
     });
+
   }
   onActivate(event){
     window.scroll(0,0);
