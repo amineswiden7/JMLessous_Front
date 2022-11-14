@@ -14,7 +14,7 @@ export class SimulateurCreditLibreComponent implements OnInit {
   montant:any;
   taux:any;
   duree:any;
-  listCredit:Amortissement;
+  listCredit=new Amortissement();
   isSuccessful = false;
   isSignUpFailed = false;
   errorMessage = '';
@@ -40,9 +40,14 @@ export class SimulateurCreditLibreComponent implements OnInit {
     selected: 0,
     theme: THEME.arrows,
   };
-  constructor(private creditLibreS:CreditLibreService,private ngWizardService: NgWizardService) { }
+  constructor(private creditLibreS:CreditLibreService,private ngWizardService: NgWizardService) 
+  {
+   
+   }
 
   ngOnInit(): void {
+
+   
   }
   showPreviousStep(_event?: Event) {
     this.ngWizardService.previous();

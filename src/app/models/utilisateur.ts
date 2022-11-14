@@ -4,10 +4,10 @@ export class Utilisateur {
       cin:any;
 
      nom:any;
-     prénom:any;
+     prenom:any;
     
      dateNaissance:any;
-    téléphone:any;
+    telephone:any;
      salaire:any;
     
     profession:any;

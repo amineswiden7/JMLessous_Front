@@ -1,14 +1,16 @@
 
 export class OffreAssurance {
    idOffreAssurance : number ;
-   interet: number;
-   periode : number
-   typeAssurance :string;
-   categorieAssurance :string;
+   minInteret: number;
+   maxInteret: number;
+   minPeriode : number
+   maxPeriode : number
+   type :string;
+   categorie :string;
    image :string;
    description:string;
+   shortDescription:string;
    assurance : string;
-   categorie : string;
    typePeriode : string;
   // idUser : number;
 }

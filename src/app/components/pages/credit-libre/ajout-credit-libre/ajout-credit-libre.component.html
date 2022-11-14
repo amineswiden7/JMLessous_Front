@@ -63,11 +63,10 @@
                                                 <label class="text-custom-black fs-14 fw-600"> choisir le garantie</label>
                                                 <select class="custom-select form-control form-control-custom"
                                                 placeholder="garantie"
-                                                name="garantie"
-                                                [(ngModel)]="creditLibre.garantie"
+                                                name="idGarantie"
+                                                [(ngModel)]="idGarantie"
                                                 required
-                                                
-                                                #garantie="ngModel" >
+                                                 >
                                                 
                                                     <option *ngFor = "let g of listG" >{{g.idGarantie}}</option>
                                                    
@@ -80,13 +79,12 @@
                                                 <label class="text-custom-black fs-14 fw-600"> ajouter l'utilisateur</label>
                                                 <select class="custom-select form-control form-control-custom"
                                                 placeholder="utilisateur"
-                                                name="utilisateur"
+                                                name="idUser"
                                                 [(ngModel)]="idUser"
                                                 required
-                                                
                                                 #garantie="ngModel" >
                                                 
-                                                    <option *ngFor = "let u of listU" >{{u.email}}</option>
+                                                    <option *ngFor = "let u of listU" >{{u.idUser}}</option>
                                                    
                                                 </select>
                                             </div>

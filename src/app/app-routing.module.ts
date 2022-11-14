@@ -1,3 +1,4 @@
+import { AddOffreAssuranceComponent } from './components/pages/assurance/add-offre-assurance/add-offre-assurance.component';
 import { OffreassuranceComponent } from './components/pages/assurance/offreassurance/offreassurance.component';
 import { NgModule } from '@angular/core'; 
 import { Routes, RouterModule } from '@angular/router';
@@ -60,6 +61,7 @@ const routes: Routes = [
   { path: 'createcredit', component : CreateCreditComponent},
   { path: 'listeCreditByClient', component : ListesCreditsComponent},
   { path: 'offre-assurance/:id', component : OffreassurancedetailComponent },
+  { path: 'add-offre', component : AddOffreAssuranceComponent },
   { path: '**', loadChildren: () => import('./components/pages/error/error.module').then(m => m.ErrorModule), data: { breadcrumb: 'Error 404' } }
 ];
 
