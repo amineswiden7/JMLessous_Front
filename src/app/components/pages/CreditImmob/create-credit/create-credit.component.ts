@@ -5,6 +5,7 @@ import Swal from 'sweetalert2';
 import { UserService } from 'src/app/services/user.service';
 import { Utilisateur } from 'src/app/models/utilisateur';
 import { CreditImmobilierService } from 'src/app/services/CreditImmobilier/creditImmob.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-create-credit',
   templateUrl: './create-credit.component.html',
@@ -33,7 +34,7 @@ export class CreateCreditComponent implements OnInit {
     theme: THEME.arrows,
   };
 
-  constructor(private ngWizardService: NgWizardService, private userS:UserService,private creditImmobS:CreditImmobilierService) { }
+  constructor(private ngWizardService: NgWizardService, private userS:UserService,private creditImmobS:CreditImmobilierService,private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -62,8 +63,8 @@ export class CreateCreditComponent implements OnInit {
       this.isSignUpFailed = true;
     },
     complete: () => {
-      Swal.fire('Thank you...', 'your complaint has been sent successfully !', 'success')  
-      //this.goToEmployeeList()
+      Swal.fire('Merci pour votre confiance ', 'your complaint has been sent successfully !', 'success')  
+      this.goToEmployeeList()
     }
     
     
@@ -73,6 +74,8 @@ export class CreateCreditComponent implements OnInit {
     
   });
  }
-
+ goToEmployeeList(){
+  this.router.navigate(['/listeCreditByClient']);
+}
 
 }

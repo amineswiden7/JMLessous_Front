@@ -4,7 +4,6 @@ export class CreditImmobilier extends Credit{
     tauxNominal: any;
     type: any;
     Objet: any;
-   
     destination: any;
     LeMontantDeLaTransaction: any;
     apportPersonnel: any;
