@@ -73,7 +73,6 @@ import { ListesCreditsComponent } from './components/pages/CreditImmob/listes-cr
     TabAmortissementLibreComponent
 
 
-
   ],
 
   imports:[
