@@ -15,6 +15,10 @@ import { ComptecourantComponent } from './components/pages/comptecourant/comptec
 
 import { CreditLibreComponent } from './components/pages/credit-libre/credit-libre.component';
 import { SimulateurCreditLibreComponent } from './components/pages/simulateur-credit-libre/simulateur-credit-libre.component';
+import { CompteepargneComponent } from './components/compteepargne/compteepargne.component';
+import { UsercompteComponent } from './components/pages/usercompte/usercompte.component';
+import { TransactionValidComponent } from './components/pages/transaction-valid/transaction-validation.component';
+import { CurrencyconvComponent } from './components/pages/currencyconv/currencyconv.component';
 
 
 
@@ -22,7 +26,11 @@ const routes: Routes = [
 
   {path: 'compte',component :CompteComponent},
   {path: 'courant',component :ComptecourantComponent},
-
+  {path: 'epargne',component :CompteepargneComponent},
+  {path: 'usercompte',component :UsercompteComponent},
+  {path: 'trans',component :TransactionValidComponent},
+  {path: 'currency',component :CurrencyconvComponent},
+  
   { path: 'coursActions', component: MarcheactionsComponent},
   { path: 'LoginPage', component: LoginComponent},
   { path: 'RegisterPage', component: RegisterComponent},

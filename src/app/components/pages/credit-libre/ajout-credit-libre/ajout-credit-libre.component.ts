@@ -57,7 +57,7 @@ export class AjoutCreditLibreComponent implements OnInit {
       console.log(this.creditLibre);
       console.log(this.idUser);
       this.isSuccessful = true;
-        this.isSignUpFailed = false;
+      this.isSignUpFailed = false;
     },
     err => {
       this.errorMessage = err.error.message;

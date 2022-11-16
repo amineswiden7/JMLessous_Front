@@ -5,8 +5,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BreadcrumbModule } from 'angular-crumbs';
 import { HttpClientModule } from '@angular/common/http';
-
-
+import { MatDialogModule } from '@angular/material';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RegisterComponent } from './components/pages/register/register.component';
@@ -32,6 +31,10 @@ import { GarantieComponent } from './components/pages/garantie/garantie.componen
 import { AjoutCreditLibreComponent } from './components/pages/credit-libre/ajout-credit-libre/ajout-credit-libre.component';
 import { SimulateurCreditLibreComponent } from './components/pages/simulateur-credit-libre/simulateur-credit-libre.component';
 import { TabAmortissementLibreComponent } from './components/pages/simulateur-credit-libre/tab-amortissement-libre/tab-amortissement-libre.component';
+import { CompteepargneComponent } from './components/compteepargne/compteepargne.component';
+import { UsercompteComponent } from './components/pages/usercompte/usercompte.component';
+import { TransactionValidComponent } from './components/pages/transaction-valid/transaction-validation.component';
+import { CurrencyconvComponent } from './components/pages/currencyconv/currencyconv.component';
 
 
 
@@ -62,6 +65,10 @@ import { TabAmortissementLibreComponent } from './components/pages/simulateur-cr
     AjoutCreditLibreComponent,
     SimulateurCreditLibreComponent,
     TabAmortissementLibreComponent,
+    CompteepargneComponent,
+    UsercompteComponent,
+    TransactionValidComponent,
+    CurrencyconvComponent,
 
 
   ],
@@ -75,7 +82,8 @@ import { TabAmortissementLibreComponent } from './components/pages/simulateur-cr
         NgbModule,
         SharedModule,
         MatTableModule,
-        MatTabsModule
+        MatTabsModule,
+        MatDialogModule
     ],
   providers: [ ],
   bootstrap: [AppComponent],
