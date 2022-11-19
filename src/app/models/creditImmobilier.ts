@@ -7,7 +7,7 @@ export class CreditImmobilier extends Credit{
     destination: any;
     LeMontantDeLaTransaction: any;
     apportPersonnel: any;
-    MontantMensuelPretPayer: any;
+    montantmensuelpretpayer: any;
     MontantReventResidencePrincipal: any;
     chargeMensuel: any;
     localisation : any;

@@ -12,6 +12,7 @@ import { CreditLibre } from 'src/app/models/credit-libre';
 export class CreditImmobilierService {
     private baseURL = 'http://localhost:8083/JMLessous/CreditImob';
     readonly API_URL = '/api/JMLessous/CreditImob';
+    amortiseement=new Amortissement()
     constructor(private httpClient: HttpClient) { }
   
     httpOptions = {
@@ -23,8 +24,8 @@ export class CreditImmobilierService {
       return this.httpClient.get<CreditImmobilier[]>(`${this.API_URL}/retrieve-all-credit`);
     }
   
-    Simulate(Credit: CreditImmobilier):Observable<Amortissement>{
-      return this.httpClient.get<Amortissement>(`${this.API_URL}/simulateur`);
+    Simulate(Credit: CreditImmobilier): Observable<Amortissement>{
+      return this.httpClient.post<Amortissement>(`${this.API_URL}/simulateur`,Credit);
     }
     tabAmortissement(credit:CreditImmobilier): Observable<Amortissement[]>{
       return this.httpClient.post<Amortissement[]>(`${this.API_URL}/tabAmor`, credit);
@@ -35,6 +36,9 @@ export class CreditImmobilierService {
 
     getAllCreditbyuser(idUser:number):Observable<CreditImmobilier[]>{
       return this.httpClient.get<CreditImmobilier[]>(`${this.API_URL}/retrieve-all-creditbyuser/${idUser}`);
+    }
+    getCredit(idUser:number):Observable<CreditImmobilier[]>{
+      return this.httpClient.get<CreditImmobilier[]>(`${this.API_URL}/retrieve-all-credit/${idUser}`);
     }
   
    

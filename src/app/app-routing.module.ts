@@ -19,6 +19,8 @@ import { SimulateurCreditLibreComponent } from './components/pages/simulateur-cr
 import { CreateCreditComponent } from './components/pages/CreditImmob/create-credit/create-credit.component'; 
 import { AjoutCreditLibreComponent } from './components/pages/credit-libre/ajout-credit-libre/ajout-credit-libre.component';
 import { ListesCreditsComponent } from './components/pages/CreditImmob/listes-credits/listes-credits.component';
+import { CreditDetailComponent } from './components/pages/CreditImmob/credit-detail/credit-detail.component';
+import { SimulateurCreditImmobComponent } from './components/pages/simulateur-credit-immob/simulateur-credit-immob.component';
 
 
 
@@ -62,6 +64,8 @@ const routes: Routes = [
   { path: 'listeCreditByClient', component : ListesCreditsComponent},
   { path: 'offre-assurance/:id', component : OffreassurancedetailComponent },
   { path: 'add-offre', component : AddOffreAssuranceComponent },
+  { path: 'credit-detail/:id', component : CreditDetailComponent },
+  { path: 'simulateurImm', component : SimulateurCreditImmobComponent},
   { path: '**', loadChildren: () => import('./components/pages/error/error.module').then(m => m.ErrorModule), data: { breadcrumb: 'Error 404' } }
 ];
 

@@ -38,6 +38,11 @@ import { SimulateurCreditLibreComponent } from './components/pages/simulateur-cr
 import { TabAmortissementLibreComponent } from './components/pages/simulateur-credit-libre/tab-amortissement-libre/tab-amortissement-libre.component';
 import { CreateCreditComponent } from './components/pages/CreditImmob/create-credit/create-credit.component';
 import { ListesCreditsComponent } from './components/pages/CreditImmob/listes-credits/listes-credits.component';
+import { CreditDetailComponent } from './components/pages/CreditImmob/credit-detail/credit-detail.component';
+
+import { SimulateurCreditImmobComponent } from './components/pages/simulateur-credit-immob/simulateur-credit-immob.component';
+
+import { TabAmorComponent } from './components/pages/simulateur-credit-immob/tab-amor/tab-amor.component';
 
 
 
@@ -69,8 +74,12 @@ import { ListesCreditsComponent } from './components/pages/CreditImmob/listes-cr
     SimulateurCreditLibreComponent,
     TabAmortissementLibreComponent,
     CreateCreditComponent,
-    ListesCreditsComponent
-    TabAmortissementLibreComponent
+    ListesCreditsComponent,
+    TabAmortissementLibreComponent,
+    CreditDetailComponent,
+    
+    SimulateurCreditImmobComponent,
+    TabAmorComponent
 
 
   ],
