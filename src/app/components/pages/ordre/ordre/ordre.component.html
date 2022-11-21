@@ -1,0 +1,47 @@
+<app-header></app-header>
+<app-breadcrumb></app-breadcrumb>
+
+<div class="container-fluid py-4">
+
+    <div class="row">
+        <div class="col-12">
+          <div class="card mb-4">
+            <div class="card-header pb-0">
+              <h6>Mouvements du compte</h6>
+            </div>
+            <div class="card-body px-0 pt-0 pb-2">
+              <div class="table-responsive p-0">
+                <table class="table align-items-center mb-0">
+                  <thead>
+                    <tr>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-10" >Date Mouvement</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-10">Type </th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-10">Valeur</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-10">Cours</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-10">Quantité</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-10">Frais</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                      <tr *ngFor="let ordre of ordres;let i = index">
+                          <td class="align-middle text-center text-sm" ><span class="text-primary text-xs font-weight-bold">{{ordre.date | date: 'dd/MM/yy HH:mm'}}</span></td>
+                          <td class="align-middle text-center text-sm"><span class="text-primary text-xs font-weight-bold">{{ordre.typeOrdre}}</span></td>
+                          <td class="align-middle text-center text-sm"><span class="text-primary text-xs font-weight-bold">{{ordre.produitFinancier.titre}}</span></td>
+                          <td class="align-middle text-center text-sm"><span class="text-primary text-xs font-weight-bold">{{ordre.prix}}</span></td>
+                          <td class="align-middle text-center text-sm"> <span class="text-primary text-xs font-weight-bold"> {{ordre.quantite}}</span></td>
+                          <td class="align-middle text-center text-sm"><span class="text-primary text-xs font-weight-bold">{{(ordre.quantite*ordre.prix)*0.005 | number : '1.2' }}</span></td>
+                        </tr>
+
+                    
+                  </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+   
+</div>
+
+<app-footer></app-footer>
