@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule,LOCALE_ID } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -29,13 +29,19 @@ import { AngularEditorModule } from '@kolkov/angular-editor';
 
 import { CreditLibreComponent } from './components/pages/credit-libre/credit-libre.component';
 import { ComptecourantComponent } from './components/pages/comptecourant/comptecourant.component';
-
+import { registerLocaleData } from '@angular/common';
+import * as fr from '@angular/common/locales/fr';
 
 
 import { GarantieComponent } from './components/pages/garantie/garantie.component';
 import { AjoutCreditLibreComponent } from './components/pages/credit-libre/ajout-credit-libre/ajout-credit-libre.component';
 import { SimulateurCreditLibreComponent } from './components/pages/simulateur-credit-libre/simulateur-credit-libre.component';
 import { TabAmortissementLibreComponent } from './components/pages/simulateur-credit-libre/tab-amortissement-libre/tab-amortissement-libre.component';
+import { QuantiteAchatComponent } from './components/pages/marcheactions/quantiteAchat/quantite-achat/quantite-achat.component';
+import { PortfeuilleComponent } from './components/pages/portfeuille/portfeuille/portfeuille.component';
+import { AddPortfeuilleComponent } from './components/pages/portfeuille/add-portfeuille/add-portfeuille.component';
+import { OrdreComponent } from './components/pages/ordre/ordre/ordre.component';
+
 import { CreateCreditComponent } from './components/pages/CreditImmob/create-credit/create-credit.component';
 import { ListesCreditsComponent } from './components/pages/CreditImmob/listes-credits/listes-credits.component';
 
@@ -68,9 +74,15 @@ import { ListesCreditsComponent } from './components/pages/CreditImmob/listes-cr
     AjoutCreditLibreComponent,
     SimulateurCreditLibreComponent,
     TabAmortissementLibreComponent,
+    QuantiteAchatComponent,
+    PortfeuilleComponent,
+    AddPortfeuilleComponent,
+    OrdreComponent,
+
     CreateCreditComponent,
-    ListesCreditsComponent
+    ListesCreditsComponent,
     TabAmortissementLibreComponent
+
 
   ],
 
@@ -86,12 +98,17 @@ import { ListesCreditsComponent } from './components/pages/CreditImmob/listes-cr
         MatTableModule,
         MatTabsModule,
         ReactiveFormsModule,
-        AngularEditorModule 
+        AngularEditorModule
     ],
-  providers: [ ],
+  providers: [ 
+    { provide: LOCALE_ID, useValue: 'fr-FR'}
+  ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 
-
-export class AppModule { }
+export class AppModule { 
+  constructor() {
+    registerLocaleData(fr.default);
+  }
+}

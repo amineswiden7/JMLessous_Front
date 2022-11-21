@@ -53,7 +53,7 @@
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label class="text-custom-black fs-14 fw-600">Période Maximale</label>
-                                                    <input type="number" class="form-control form-control-custom" [(ngModel)]="offreAssurance.maxPeriode"
+                                                    <input type="number" class="form-control form-control-custom" [(ngModel)]="offreAssurance.maxPeriode" [ngModelOptions]="{standalone: true}"
                                                         placeholder="Période minimale du contrat" required>
                                                 </div>
                                             </div>
@@ -106,7 +106,7 @@
                                         <div class="col-md-6">
                                             <div class="form-group">
                                                 <label class="text-custom-black fs-14 fw-600">Taux d'Intéret Maximum</label>
-                                                <input type="number" class="form-control form-control-custom" [(ngModel)]="offreAssurance.maxInteret"
+                                                <input type="number" class="form-control form-control-custom" [(ngModel)]="offreAssurance.maxInteret" [ngModelOptions]="{standalone: true}"
                                                     placeholder="Intéret maximum du contrat" required>
                                             </div>
                                         </div>

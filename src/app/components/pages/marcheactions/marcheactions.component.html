@@ -102,53 +102,115 @@
   </div>
 </ng-template>
 <!-- End Détails action -->
-<table class="table table-striped table-dark table-responsive-md">
+<div class="container-fluid py-4">
+  <div class="row">
+    <div class="col-12">
+      <div class="card mb-4">
+        <span class="text-secondary text-lg-start font-weight-bold">
+          {{ date | date:'full':'fr' }}, le marché est {{ouvert}}
+        </span>
+        <div class="card-header pb-0">
+          <h6>Les cotations de A à Z</h6>
+        </div>
+        <div class="card-body px-0 pt-0 pb-2">
+          <div class="table-responsive p-0">
+            <table class="table align-items-center mb-0">
   <thead>
   <tr class="lw-table-row-1">
-    <th scope="col">Valeur</th>
-    <th scope="col">Statut</th>
-    <th scope="col">Ord Achat</th>
-    <th scope="col">Qté Achat</th>
-    <th scope="col">Achat</th>
-    <th scope="col">Vente</th>
-    <th scope="col">Qté Vente</th>
-    <th scope="col">Ord Vente</th>
-    <th scope="col">Réf</th>
-    <th scope="col">Dernier</th>
-    <th scope="col">Var %</th>
-    <th scope="col">Qté</th>
-    <th scope="col">Capit</th>
-    <th scope="col">P.Haut</th>
-    <th scope="col">P.Bas</th>
-    <th scope="col">S.Haut</th>
-    <th scope="col">S.Bas</th>
-    <th scope="col">Heure</th>
+    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-10" >Valeur</th>
+    <!--<th scope="col">Statut</th>
+    <th scope="col">Ord Achat</th>-->
+    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-10" >Qté Achat</th>
+    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-10" >Achat</th>
+    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-10" >Vente</th>
+    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-10" >Qté Vente</th>
+   <!--<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-10" >Ord Vente</th>-->
+    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-10" >Réf</th>
+    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-10" >Dernier</th>
+    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-10" >Var %</th>
+    <!--<th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-10" >Qté</th>
+    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-10" >Capit</th>
+    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-10" >P.Haut</th>
+    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-10" >P.Bas</th>
+    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-10" >S.Haut</th>
+    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-10" >S.Bas</th>
+    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-10" >Heure</th>-->
+    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-10" >Action</th>
   </tr>
   </thead>
   <tbody>
   <tr *ngFor="let market of markets">
-    <th scope="row"> <button (click)="open(content,market.isin)" style="color: white">{{market.referentiel.stockName}}</button></th>
-    <td>{{market.status}}</td>
-    <td>{{market.limit.askOrd}}</td>
-    <td>{{market.limit.askQty}}</td>
-    <td>{{market.limit.ask}}</td>
-    <td>{{market.limit.bid}}</td>
-    <td>{{market.limit.bidQty}}</td>
-    <td>{{market.limit.bidOrd}}</td>
-    <td>{{market.close}}</td>
-    <td>{{market.last}}</td>
-    <td *ngIf="market.change<0" style="color: #e60000">{{market.change}} %</td>
-    <td *ngIf="market.change>0" style="color: #009900">{{market.change}} %</td>
-    <td *ngIf="market.change==0" style="color: #1c82ca">{{market.change}} %</td>
-    <td>{{market.volume}}</td>
-    <td>{{market.caps}}</td>
-    <td>{{market.high}}</td>
-    <td>{{market.low}}</td>
-    <td>{{market.max}}</td>
-    <td>{{market.min}}</td>
-    <td>{{market.time}}</td>
+    <th class="align-middle text-center text-sm"> <button (click)="open(content,market.isin)" ><span class="text-primary text-xs font-weight-bold">{{market.referentiel.stockName}}</span>
+    </button></th>
+   <!--<td>{{market.status}}</td>
+    <td>{{market.limit.askOrd}}</td>-->
+    <td class="align-middle text-center text-sm" ><span class="text-primary text-xs font-weight-bold">{{market.limit.askQty}}</span></td>
+    <td class="align-middle text-center text-sm" ><span class="text-primary text-xs font-weight-bold">{{market.limit.ask | number : '1.2'}}</span></td>
+    <td class="align-middle text-center text-sm" ><span class="text-primary text-xs font-weight-bold">{{market.limit.bid | number : '1.2'}}</span></td>
+    <td class="align-middle text-center text-sm" ><span class="text-primary text-xs font-weight-bold">{{market.limit.bidQty}}</span></td>
+   <!--<td class="align-middle text-center text-sm" ><span class="text-primary text-xs font-weight-bold">{{market.limit.bidOrd}}</span></td>-->
+    <td class="align-middle text-center text-sm" ><span class="text-primary text-xs font-weight-bold">{{market.close | number : '1.2'}}</span></td>
+    <td class="align-middle text-center text-sm" ><span class="text-primary text-xs font-weight-bold">{{market.last | number : '1.2'}}</span></td>
+    <td *ngIf="market.change<0"  class="align-middle text-center text-sm" ><span class="text-danger text-xs font-weight-bold">{{market.change}} %</span></td>
+    <td *ngIf="market.change>0" class="align-middle text-center text-sm" ><span class="text-success text-xs font-weight-bold">{{market.change}} %</span></td>
+    <td *ngIf="market.change==0" class="align-middle text-center text-sm" ><span class="text-secondary text-xs font-weight-bold">{{market.change}} %</span></td>
+   <!-- <td class="align-middle text-center text-sm" ><span class="text-primary text-xs font-weight-bold">{{market.volume }}</span></td>
+    <td class="align-middle text-center text-sm" ><span class="text-primary text-xs font-weight-bold">{{market.caps| number : '1.2'}}</span></td>
+    <td class="align-middle text-center text-sm" ><span class="text-primary text-xs font-weight-bold">{{market.high}}</span></td>
+    <td class="align-middle text-center text-sm" ><span class="text-primary text-xs font-weight-bold">{{market.low}}</span></td>
+    <td class="align-middle text-center text-sm" ><span class="text-primary text-xs font-weight-bold">{{market.max}}</span></td>
+    <td class="align-middle text-center text-sm" ><span class="text-primary text-xs font-weight-bold">{{market.min}}</span></td>
+    <td class="align-middle text-center text-sm" ><span class="text-primary text-xs font-weight-bold">{{market.time}}</td>-->
+    <td class="align-middle text-center text-sm" ><button class="badge badge-sm bg-gradient-success" (click)="openDialog(quantite,market.isin,market.referentiel.stockName,market.limit.bid,market.limit.bidQty)" >Acheter</button></td>
   </tr>
   </tbody>
 </table>
+</div>
+</div>
+
+</div>
+<ng-template #quantite let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title" style="color: #27346a">{{titre}}</h4>
+    <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+  </div>
+  <div  class="modal-body">
+    <div class="container">
+      <div *ngIf="!idPortfeuille"> Vous n'avez pas encore un portfeuille</div>
+      <form  *ngIf="idPortfeuille" [formGroup]="quantiteForm" (ngSubmit)=" acheter()" novalidate>
+        <div class="row">
+            <div class="col-12">
+                <div class="form-group">
+                    <label class="text-custom-black fs-14 fw-600" >Nombre d'actions</label>
+                    <input formControlName="qte" type="number" class="form-control form-control-custom" [(ngModel)]="nombre" [ngClass]="{ 'is-invalid': submitted && qte.errors }"
+                        placeholder="Nombre d'action" >
+                    <div *ngIf="submitted && qte.errors" class="invalid-feedback">
+                      <div *ngIf="qte.errors.required">Le nombre d'actions est obligatoire</div>
+                      <div *ngIf="qte.errors.min">Nombre d'action minimal est 1</div>
+                      <div *ngIf="qte.errors.max">Nombre d'action trés grand</div>
+                    </div>
+                    <div>
+                      Le nombre d'actions maximales que vous pouvez acheter est {{maxvalue}} 
+                    </div>
+                </div>
+            </div>
+          </div>
+            <div class="modal-footer">
+              <button type="submit" class="btn btn-primary">Ajouter</button>
+
+              <button type="button" class="btn btn-outline-dark" (click)="d('Save click')">Fermer</button>
+            </div>
+      </form>
+      <div *ngIf="!idPortfeuille" class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="d('Save click')">Fermer</button>
+      </div>
+      
+    </div>
+  </div>
+  
+</ng-template>
+
 <app-footer></app-footer>
+
+
 
