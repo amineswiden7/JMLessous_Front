@@ -42,6 +42,8 @@ import { PortfeuilleComponent } from './components/pages/portfeuille/portfeuille
 import { AddPortfeuilleComponent } from './components/pages/portfeuille/add-portfeuille/add-portfeuille.component';
 import { OrdreComponent } from './components/pages/ordre/ordre/ordre.component';
 
+import { CreateCreditComponent } from './components/pages/CreditImmob/create-credit/create-credit.component';
+import { ListesCreditsComponent } from './components/pages/CreditImmob/listes-credits/listes-credits.component';
 
 
 
@@ -75,11 +77,16 @@ import { OrdreComponent } from './components/pages/ordre/ordre/ordre.component';
     QuantiteAchatComponent,
     PortfeuilleComponent,
     AddPortfeuilleComponent,
-    OrdreComponent
+    OrdreComponent,
+
+    CreateCreditComponent,
+    ListesCreditsComponent,
+    TabAmortissementLibreComponent
 
 
   ],
-  imports: [
+
+  imports:[
         BrowserModule,
         FormsModule,
         AppRoutingModule,
@@ -99,6 +106,7 @@ import { OrdreComponent } from './components/pages/ordre/ordre/ordre.component';
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
+
 export class AppModule { 
   constructor() {
     registerLocaleData(fr.default);
