@@ -4,6 +4,7 @@ import { BreadcrumbService, Breadcrumb } from 'angular-crumbs';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { UserService } from './services/user.service';
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -15,6 +16,7 @@ import { UserService } from './services/user.service';
     }
   ]
 })
+
 export class AppComponent implements OnInit {
   constructor(private titleService: Title, private breadcrumbService: BreadcrumbService, private userConnecte: UserService) {
   }
@@ -23,6 +25,7 @@ export class AppComponent implements OnInit {
     this.breadcrumbService.breadcrumbChanged.subscribe(crumbs => {
       this.titleService.setTitle(this.createTitle(crumbs));
     });
+
   }
   onActivate(event){
     window.scroll(0,0);
