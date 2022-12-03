@@ -43,16 +43,22 @@ import { DialogueComponent } from './components/pages/admin-credit-libre/dialogu
 import {MatDialogModule} from '@angular/material/dialog';
 import { UtilisateurProfileComponent } from './components/pages/utilisateur-profile/utilisateur-profile.component';
 import { BarSideProfileComponent } from './components/pages/utilisateur-profile/bar-side-profile/bar-side-profile.component';
-
-
+import { QuantiteAchatComponent } from './components/pages/marcheactions/quantiteAchat/quantite-achat/quantite-achat.component';
+import { OrdreComponent } from './components/pages/ordre/ordre/ordre.component';
+import { PortfeuilleComponent } from './components/pages/portfeuille/portfeuille/portfeuille.component';
+import { CreateCreditComponent } from './components/pages/CreditImmob/create-credit/create-credit.component';
+import { ListesCreditsComponent } from './components/pages/CreditImmob/listes-credits/listes-credits.component';
 @NgModule({
   declarations: [
     AppComponent,
     RegisterComponent,
     LoginComponent,
-
+    QuantiteAchatComponent,
+    OrdreComponent,
+    CreateCreditComponent,
     CompteComponent,
-
+    ListesCreditsComponent,
+    PortfeuilleComponent,
     OffreassuranceComponent,
     OffreassurancedetailComponent,
     OffreassurancelistComponent,
@@ -88,7 +94,7 @@ import { BarSideProfileComponent } from './components/pages/utilisateur-profile/
   imports: [
         BrowserModule,
         FormsModule,
-       
+        ReactiveFormsModule,
         AppRoutingModule,
         BrowserAnimationsModule,
         BreadcrumbModule,
