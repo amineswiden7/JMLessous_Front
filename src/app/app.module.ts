@@ -32,8 +32,12 @@ import { GarantieComponent } from './components/pages/garantie/garantie.componen
 import { AjoutCreditLibreComponent } from './components/pages/credit-libre/ajout-credit-libre/ajout-credit-libre.component';
 import { SimulateurCreditLibreComponent } from './components/pages/simulateur-credit-libre/simulateur-credit-libre.component';
 import { TabAmortissementLibreComponent } from './components/pages/simulateur-credit-libre/tab-amortissement-libre/tab-amortissement-libre.component';
+import { AdminCreditLibreComponent } from './components/pages/admin-credit-libre/admin-credit-libre.component';
+import { DialogueComponent } from './components/pages/admin-credit-libre/dialogue/dialogue.component';
 
-
+import {MatDialogModule} from '@angular/material/dialog';
+import { UtilisateurProfileComponent } from './components/pages/utilisateur-profile/utilisateur-profile.component';
+import { BarSideProfileComponent } from './components/pages/utilisateur-profile/bar-side-profile/bar-side-profile.component';
 
 
 @NgModule({
@@ -62,12 +66,23 @@ import { TabAmortissementLibreComponent } from './components/pages/simulateur-cr
     AjoutCreditLibreComponent,
     SimulateurCreditLibreComponent,
     TabAmortissementLibreComponent,
+    AdminCreditLibreComponent,
+    DialogueComponent,
+    UtilisateurProfileComponent,
+    BarSideProfileComponent,
+    
 
 
   ],
+
+  entryComponents:[
+    DialogueComponent,
+ ],
+
   imports: [
         BrowserModule,
         FormsModule,
+       
         AppRoutingModule,
         BrowserAnimationsModule,
         BreadcrumbModule,
@@ -75,7 +90,9 @@ import { TabAmortissementLibreComponent } from './components/pages/simulateur-cr
         NgbModule,
         SharedModule,
         MatTableModule,
-        MatTabsModule
+        MatTabsModule,
+        MatDialogModule,
+        
     ],
   providers: [ ],
   bootstrap: [AppComponent],

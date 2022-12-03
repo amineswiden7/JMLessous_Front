@@ -1,0 +1,107 @@
+<div class="sidebar_wrap">
+    <div class="sidebar">
+        <div class="sidebar_widgets mb-xl-30">
+            <div class="widget_title bg-light-blue">
+                <h5 class="no-margin text-custom-white fw-600">Search</h5>
+            </div>
+            <form>
+                <div class="form-group mb-0">
+                    <div class="search p-relative">
+                        <input type="text" name="#" class="form-control form-control-custom" placeholder="Title or keywords">
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="sidebar_widgets mb-xl-30">
+            <div class="widget_title bg-light-blue">
+                <h5 class="no-margin text-custom-white fw-600">Categories</h5>
+            </div>
+            <ul class="categories custom">
+                <li> <a href="#" class="text-custom-black fs-14">historique <span class="text-light-white">({{listC.length}})</span></a>
+                </li>
+                <li *ngFor="let item of listC"> 
+                    <a href="#" class="text-custom-black fs-14">
+                        {{item.motif}} <span class="text-light-white">({{item.montantCredit}})</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="sidebar_widgets mb-xl-30">
+            <div class="widget_title bg-light-blue">
+                <h5 class="no-margin text-custom-white fw-600">Simuler Votre Credit</h5>
+            </div>
+            <ul class="custom popular_post">
+                <li>
+                    <div class="post">
+                        <div class="post-wrapper">
+                            <div class="popular_post_img animate-img">
+                                <a routerLink="/SimulateurPage">
+                                    <img src="../../../../../assets/images/creditLibre.jpg"  class="img-fluid image-fit" alt="credit" >
+                                </a>
+                            </div>
+                            <div class="popular_post_title">
+                                <div class="post-date">
+                                    <p class="text-light-blue no-margin">Credit Libre/Immobilier/Etudiant</p>
+                                </div>
+                                <h6><a routerLink="/SimulateurPage" class="text-custom-black fs-16 fw-600">Credit Libre</a></h6>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="sidebar_widgets mb-xl-30">
+            <div class="widget_title bg-light-blue">
+                <h5 class="no-margin text-custom-white fw-600">heures de travail</h5>
+            </div>
+            <table class="table text-custom-black">
+                <tbody>
+                    <tr>
+                        <td>Lun – Mer</td>
+                        <td>-</td>
+                        <td class="text-right">9:00 AM - 7:00 PM</td>
+                    </tr>
+                    <tr>
+                        <td>Jeudi</td>
+                        <td>-</td>
+                        <td class="text-right">9:00 AM - 6:30 PM</td>
+                    </tr>
+                    <tr>
+                        <td>Vendredi</td>
+                        <td>-</td>
+                        <td class="text-right">9:00 AM - 6:00 PM</td>
+                    </tr>
+                    <tr class="last-tr">
+                        <td>Sam - Dim</td>
+                        <td>-</td>
+                        <td class="text-right">fermé</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="sidebar_widgets mb-xl-30">
+            <div class="widget_title bg-light-blue">
+                <h5 class="no-margin text-custom-white fw-600">Recent Post</h5>
+            </div>
+            <ul class="custom popular_post">
+                <li *ngFor="let item of blogbox | slice:0:2">
+                    <div class="post">
+                        <div class="post-wrapper">
+                            <div class="popular_post_img animate-img">
+                                <a routerLink="/blog-single/{{item.id}}">
+                                    <img [src]="item.photo" class="img-fluid image-fit" alt="{{item.title}}">
+                                </a>
+                            </div>
+                            <div class="popular_post_title">
+                                <div class="post-date">
+                                    <p class="text-light-blue no-margin">{{item.postdate}}</p>
+                                </div>
+                                <h6><a routerLink="/blog-single/{{item.id}}" class="text-custom-black fs-16 fw-600">{{item.title}}</a></h6>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

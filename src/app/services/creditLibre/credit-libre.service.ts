@@ -21,6 +21,18 @@ export class CreditLibreService {
   getAllCreditL():Observable<CreditLibre[]>{
     return this.httpClient.get<CreditLibre[]>(`${this.baseURL}ListCreditLibre`);
   }
+  getAllCreditLUser(idUser:number):Observable<CreditLibre[]>{
+    return this.httpClient.get<CreditLibre[]>(`${this.baseURL}ListCreditLibreUser/${idUser}`);
+  }
+  getAllCreditLStatus(status:any):Observable<CreditLibre[]>{
+    return this.httpClient.get<CreditLibre[]>(`${this.baseURL}ListCreditLibreStatus/${status}`);
+  }
+  getCredit(id:any):Observable<CreditLibre>{
+    return this.httpClient.get<CreditLibre>(`${this.baseURL}CreditLibreID/${id}`);
+  }
+  acceptCredit( id:any,status: any, credit:CreditLibre): Observable<Object>{
+    return this.httpClient.put(`${this.baseURL}AccepteCreditLibre/${id}/${status}`, credit);
+  }
 
   Simulate(montant:number,duree:number,interet:number): Observable<Amortissement>{
     return this.httpClient.get<Amortissement>(`${this.baseURL}simulateur/${montant}/${duree}/${interet}`);

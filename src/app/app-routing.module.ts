@@ -15,6 +15,9 @@ import { ComptecourantComponent } from './components/pages/comptecourant/comptec
 
 import { CreditLibreComponent } from './components/pages/credit-libre/credit-libre.component';
 import { SimulateurCreditLibreComponent } from './components/pages/simulateur-credit-libre/simulateur-credit-libre.component';
+import { AdminCreditLibreComponent } from './components/pages/admin-credit-libre/admin-credit-libre.component';
+import { UtilisateurProfileComponent } from './components/pages/utilisateur-profile/utilisateur-profile.component';
+//import { UserDashboardComponent } from './components/pages/user-dashboard/user-dashboard.component';
 
 
 
@@ -22,7 +25,8 @@ const routes: Routes = [
 
   {path: 'compte',component :CompteComponent},
   {path: 'courant',component :ComptecourantComponent},
-
+  {path: 'adminCreditLibre', component:AdminCreditLibreComponent},
+  {path: 'utilisateurProfile', component:UtilisateurProfileComponent},
   { path: 'coursActions', component: MarcheactionsComponent},
   { path: 'LoginPage', component: LoginComponent},
   { path: 'RegisterPage', component: RegisterComponent},
