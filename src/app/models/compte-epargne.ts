@@ -1,10 +1,10 @@
 import { Compte } from "./compte";
 
 export class CompteEpargne extends Compte{
-     tauxRemuneration: any;
-     vercementInitial : any ;
-     vercementRegulier: any;
+     taux_remuneration: any;
+     vercement : any ;
+     vercement_reg: any;
      duree: any;
-    totalVercement:any;
-     interetAcquis: any;
+    total_vercement:any;
+     interet_acquis: any;
 }
