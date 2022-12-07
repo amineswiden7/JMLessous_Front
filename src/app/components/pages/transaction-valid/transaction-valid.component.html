@@ -1,6 +1,7 @@
+<app-header></app-header>
+<div class="overlapsec"></div>
+<app-breadcrumb></app-breadcrumb>
 
-<!DOCTYPE html>
-<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,7 +12,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
     <script >
-    document.querySelector('#form').onsubmit = () =>{
+   document.querySelector('#form').onsubmit = () =>{
+  
+    
     const base = document.querySelector('#currency-from').value;
     fetch(`https://api.exchangerate.host/latest?/source=ecb&base=${base}`)
         .then((response) => response.json())
@@ -21,6 +24,7 @@
             const rate = data.rates[currencyTo];
             function convert(){
                 return amount * rate;
+                console.log("valid: ", amount * rate);
             }
             document.querySelector(".display-result").innerHTML = `${amount} ${base.toUpperCase()} equal to ${currencyTo} ${convert().toFixed(2)}`;
         })
@@ -425,7 +429,7 @@
           </div>
     </div>
 </body>
-</html>
+
 
 <section class="section-padding pb-0 exp-cal2">
     <div class="container">
