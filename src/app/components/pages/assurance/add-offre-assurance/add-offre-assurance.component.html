@@ -1,0 +1,192 @@
+<section class="section-padding-bottom user-info-details">
+    <div class="container">
+        <div class="row">
+            <div class="offset-lg-3 col-lg-6">
+                <div class="user-info-tabs">
+                    <ng-wizard  class="step-app">
+                        <ng-wizard-step [description]="'Basic Info'">
+                            <div class="step-tab-inner">
+                                <div class="heading text-center">
+                                    <h4 class="text-custom-black fw-600">Enter Basic Information</h4>
+                                    <p class="text-custom-black">Check your business's eligibility without impacting
+                                        your credit.<sup>*</sup></p>
+                                </div>
+                                <form #offre="ngForm" (ngSubmit)="offre.form.valid && addOffre()" novalidate>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label class="text-custom-black fs-14 fw-600" >Nom d'assurance</label>
+                                                <input type="text" name="#" class="form-control form-control-custom" [(ngModel)]="offreAssurance.assurance"
+                                                    placeholder="Nom Assurance" required>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="text-custom-black fs-14 fw-600"  >Catégorie Assurance</label>
+                                                <select  class="form-control form-control-custom" [(ngModel)]="offreAssurance.categorie" [ngModelOptions]="{standalone: true}"
+                                                    placeholder="Choisir une catégorie" required>
+                                                    <option value="AUTOMOBILE">Assurance Automobile</option>
+                                                    <option value="HABITATION">Assurance Habitation</option>
+                                                    <option value="SCOLAIRE">Assurance Scolaire</option>
+                                                    <option value="RESPONSABILITE_CIVILE">Assurance Responsabilité civile</option>
+                                                    <option value="EMPRUNTEUR">Assurance Emprunteur</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="text-custom-black fs-14 fw-600" >Type Assurance</label>
+                                                <select  class="form-control form-control-custom" [(ngModel)]="offreAssurance.type" [ngModelOptions]="{standalone: true}"
+                                                    placeholder="" required>
+                                                    <option value="VIE">Assurance Vie</option>
+                                                    <option value="NONVIE">Assurace Non Vie</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="text-custom-black fs-14 fw-600">Période Minimale</label>
+                                                    <input type="number" class="form-control form-control-custom " [(ngModel)]="offreAssurance.minPeriode" [ngModelOptions]="{standalone: true}"
+                                                        placeholder="Période minimale du contrat" required>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="text-custom-black fs-14 fw-600">Période Maximale</label>
+                                                    <input type="number" class="form-control form-control-custom" [(ngModel)]="offreAssurance.maxPeriode" [ngModelOptions]="{standalone: true}"
+                                                        placeholder="Période minimale du contrat" required>
+                                                </div>
+                                            </div>
+
+
+
+                                            <!-- range slider
+                                            <div class="price-input ">
+                                                <div class="field col-md-5">
+                                                    <span>Min</span>
+                                                    <input type="number" class="text-custom-black fs-14 fw-600" value="1">
+                                                </div>
+                                                <div class="separator col-md-2">-</div>
+                                                <div class="field col-md-5">
+                                                    <span>Max</span>
+                                                    <input type="number" class="text-custom-black fs-14 fw-600" value="10">
+                                                </div>
+                                            </div>
+                                            
+                                        <div class="col-12">
+                                            <div class="slider">
+                                              <div class="progress"></div>
+                                            </div>
+                                            <div class="range-input">
+                                              <input type="range" class="range-min" min="1" max="10" value="1" step="1">
+                                              <input type="range" class="range-max" min="1" max="10" value="10" step="1">
+                                            </div>
+
+                                        </div>-->
+                                        <br>
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label class="text-custom-black fs-14 fw-600">Type Période</label>
+                                                <select  name="#" class="form-control form-control-custom" [(ngModel)]="offreAssurance.typePeriode" [ngModelOptions]="{standalone: true}"
+                                                    placeholder="" required>
+                                                    <option value="ANNEE">Année</option>
+                                                    <option value="MOIS">Mois</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="text-custom-black fs-14 fw-600">Taux d'Intéret Minimum</label>
+                                                <input type="number" class="form-control form-control-custom " [(ngModel)]="offreAssurance.minInteret" [ngModelOptions]="{standalone: true}"
+                                                    placeholder="Intéret minimum du contrat" required >
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="text-custom-black fs-14 fw-600">Taux d'Intéret Maximum</label>
+                                                <input type="number" class="form-control form-control-custom" [(ngModel)]="offreAssurance.maxInteret" [ngModelOptions]="{standalone: true}"
+                                                    placeholder="Intéret maximum du contrat" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label class="text-custom-black fs-14 fw-600">Courte Desciption</label>
+                                                <input type="text" class="form-control form-control-custom" [(ngModel)]="offreAssurance.shortDescription" [ngModelOptions]="{standalone: true}"
+                                                    placeholder="Décrivez votre offre..." required>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label class="text-custom-black fs-14 fw-600">Déscription de l'offre</label>
+                                               <!-- <textarea id="description" class="form-control form-control-custom " [(ngModel)]="offreAssurance.description"
+                                                placeholder="Ecrivez une description de votre offre ..." required ></textarea> -->
+                                                <angular-editor [(ngModel)]="offreAssurance.description" [config]="config" [ngModelOptions]="{standalone: true}"></angular-editor>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-lg-12">
+                                            <button class="btn btn-primary btn-block fs-14 fw-600">Ajouter</button>
+                                        </div>
+                                    <!--
+                                        <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+                                            Signup failed!<br />{{ errorMessage }}
+                                        </div>-->
+                                    </div>
+                                </form>
+                            </div>
+                        </ng-wizard-step>
+                        
+                    </ng-wizard>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script >
+
+const rangeInput = document.querySelectorAll(".range-input input"),
+priceInput = document.querySelectorAll(".price-input input"),
+range = document.querySelector(".slider .progress");
+let priceGap = 10;
+
+priceInput.forEach(input =>{
+    input.addEventListener("input", e =>{
+        let minPrice = parseInt(priceInput[0].value),
+        maxPrice = parseInt(priceInput[1].value);
+        console.log(minPrice,maxPrice);
+        if((maxPrice - minPrice >= priceGap) && maxPrice <= rangeInput[1].max){
+            if(e.target.className === "input-min"){
+                rangeInput[0].value = minPrice;
+                range.style.left = ((minPrice / rangeInput[0].max) * 100) + "%";
+            }else{
+                rangeInput[1].value = maxPrice;
+                range.style.right = 100 - (maxPrice / rangeInput[1].max) * 100 + "%";
+            }
+        }
+    });
+});
+
+rangeInput.forEach(input =>{
+    input.addEventListener("input", e =>{
+        let minVal = parseInt(rangeInput[0].value),
+        maxVal = parseInt(rangeInput[1].value);
+
+        if((maxVal - minVal) < priceGap){
+            if(e.target.className === "range-min"){
+                rangeInput[0].value = maxVal - priceGap
+            }else{
+                rangeInput[1].value = minVal + priceGap;
+            }
+        }else{
+            priceInput[0].value = minVal;
+            priceInput[1].value = maxVal;
+            range.style.left = ((minVal / rangeInput[0].max) * 100) + "%";
+            range.style.right = 100 - (maxVal / rangeInput[1].max) * 100 + "%";
+        }
+    });
+});
+</script>

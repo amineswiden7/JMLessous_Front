@@ -23,7 +23,7 @@
         <h5 class="no-margin"><a routerLink="/offre-assurance/{{offre.idOffreAssurance}}"
             class="text-custom-white">{{offre.assurance}}</a></h5>
         <p class="no-margin text-custom-white"><a routerLink="/offre-assurance{{offre.idOffreAssurance}}"
-            class="text-custom-white">Mehdi Hantous</a> | {{offre.periode}} {{offre.typePeriode}}</p>
+            class="text-custom-white">Mehdi Hantous</a> | {{offre.minPeriode}} {{offre.typePeriode}}</p>
       </div>
     </div>
     <div class="post-content">
@@ -39,7 +39,7 @@
         <a routerLink="/offre-assurance/{{offre.idOffreAssurance}}" *ngSwitchCase="'EMPRUNTEUR'"
           class="text-custom-black fw-600">Assurance Emprunteur</a>
       </h5>
-      <p class="text-light-white" style="height:60px;line-height:20px;overflow:hidden;">{{offre.description}}</p>
+      <p class="text-light-white" style="height:60px;line-height:20px;overflow:hidden;">{{offre.shortDescription}}</p>
     </div>
     <div class="blog-links">
       <a routerLink="/offre-assurance/{{offre.idOffreAssurance}}" class="text-light-blue fs-14">Voir Détails</a>

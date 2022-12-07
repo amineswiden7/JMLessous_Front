@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule,LOCALE_ID } from '@angular/core';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BreadcrumbModule } from 'angular-crumbs';
@@ -22,9 +22,14 @@ import { MarcheactionsComponent } from './components/pages/marcheactions/marchea
 import {SharedModule} from './components/shared/shared.module';
 import { DetailsActionComponent } from './components/pages/marcheactions/details-action/details-action.component';
 import {MatTableModule, MatTabsModule} from '@angular/material';
+
+import { AddOffreAssuranceComponent } from './components/pages/assurance/add-offre-assurance/add-offre-assurance.component';
+import { AngularEditorModule } from '@kolkov/angular-editor';
+
 import { CreditLibreComponent } from './components/pages/credit-libre/credit-libre.component';
 import { ComptecourantComponent } from './components/pages/comptecourant/comptecourant.component';
-
+import { registerLocaleData } from '@angular/common';
+import * as fr from '@angular/common/locales/fr';
 
 
 import { GarantieComponent } from './components/pages/garantie/garantie.component';
@@ -36,7 +41,13 @@ import { UsercompteComponent } from './components/pages/usercompte/usercompte.co
 import { TransactionValidComponent } from './components/pages/transaction-valid/transaction-validation.component';
 import { CurrencyconvComponent } from './components/pages/currencyconv/currencyconv.component';
 
+import { QuantiteAchatComponent } from './components/pages/marcheactions/quantiteAchat/quantite-achat/quantite-achat.component';
+import { PortfeuilleComponent } from './components/pages/portfeuille/portfeuille/portfeuille.component';
+import { AddPortfeuilleComponent } from './components/pages/portfeuille/add-portfeuille/add-portfeuille.component';
+import { OrdreComponent } from './components/pages/ordre/ordre/ordre.component';
 
+import { CreateCreditComponent } from './components/pages/CreditImmob/create-credit/create-credit.component';
+import { ListesCreditsComponent } from './components/pages/CreditImmob/listes-credits/listes-credits.component';
 
 
 
@@ -53,8 +64,9 @@ import { CurrencyconvComponent } from './components/pages/currencyconv/currencyc
     OffreassurancelistComponent,
     MarcheactionsComponent,
     DetailsActionComponent,
+
+    AddOffreAssuranceComponent,
     CreditLibreComponent,
- 
  
     ComptecourantComponent,
 
@@ -70,10 +82,19 @@ import { CurrencyconvComponent } from './components/pages/currencyconv/currencyc
     UsercompteComponent,
     TransactionValidComponent,
     CurrencyconvComponent,
+    QuantiteAchatComponent,
+    PortfeuilleComponent,
+    AddPortfeuilleComponent,
+    OrdreComponent,
+
+    CreateCreditComponent,
+    ListesCreditsComponent,
+    TabAmortissementLibreComponent
 
 
   ],
-  imports: [
+
+  imports:[
         BrowserModule,
         FormsModule,
         AppRoutingModule,
@@ -84,10 +105,19 @@ import { CurrencyconvComponent } from './components/pages/currencyconv/currencyc
         SharedModule,
         MatTableModule,
         MatTabsModule,
-        MatDialogModule
+        MatDialogModule,
+        ReactiveFormsModule,
+        AngularEditorModule
     ],
-  providers: [ ],
+  providers: [ 
+    { provide: LOCALE_ID, useValue: 'fr-FR'}
+  ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class AppModule { }
+
+export class AppModule { 
+  constructor() {
+    registerLocaleData(fr.default);
+  }
+}
