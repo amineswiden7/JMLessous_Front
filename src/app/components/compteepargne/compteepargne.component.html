@@ -1,6 +1,7 @@
 <app-header></app-header>
 <div class="overlapsec"></div>
 <app-breadcrumb></app-breadcrumb>
+
 <!-- Start User Details -->
 <section class="section-padding-bottom user-info-details">
     <div class="container">
@@ -124,21 +125,45 @@
                         </ng-wizard-step>
                         <ng-wizard-step [description]="'Business Location'">
                             <div class="step-tab-inner">
+                               
                                 <div class="heading text-center">
                                     <h4 class="text-custom-black fw-600">Enter Les Informations Du Compte</h4>
                                 </div>
-                                <form  (ngSubmit)="addCompte()" >
+                                <div class="form-group col-lg-12">
+                                    <button class="btn btn-primary btn-block fs-14 fw-600" 
+                                    (click) = "open()"
+                                    style="color: white"
+                                    >Simmuler Votre Epargne</button>
+                                </div>
+                                <form  (ngSubmit)="addCompteE()" >
                                     <div class="row">
-                                    
                                         <div class="col-12">
                                             <div class="form-group">
                                                 <label class="text-custom-black fs-14 fw-600">Vercement Initial</label>
                                                 <input type="number" name="#" class="form-control form-control-custom"
                                                     placeholder="Vercement Initial."
-                                                    [(ngModel)]="comptecourant.solde"
+                                                    [(ngModel)]="compteepargne.vercement"
                                                     required
                                                     minlength="7"
                                                     #solde="ngModel">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="text-custom-black fs-14 fw-600">Vercement Régulier</label>
+                                                <input type="number" name="#" class="form-control form-control-custom"
+                                                    placeholder="Vercement Régulier."
+                                                    [(ngModel)]="compteepargne.vercement_reg"
+                                                    required
+                                                    minlength="7"
+                                                    #reg="ngModel">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="text-custom-black fs-14 fw-600">Durée De l'Epargne</label>
+                                                <input type="number" name="#" class="form-control form-control-custom"
+                                                    placeholder="Durée."
+                                                    [(ngModel)]="compteepargne.duree"
+                                                    required
+                                                    minlength="7"
+                                                    #duree="ngModel">
                                             </div>
                                         </div>
                                     </div>
@@ -182,8 +207,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group col-lg-12">
-                                            <button class="btn btn-primary btn-block fs-14 fw-600" 
-                                            (click)="goToUserCompte()">valider votre compte</button>
+                                            <button class="btn btn-primary btn-block fs-14 fw-600" >valider votre compte</button>
                                         </div>
                                         
                                     </div>
@@ -200,5 +224,8 @@
                        </div>
                        </section>              
 <!-- Start User Details -->
+
+<!--test-->
+
 
 <app-footer></app-footer>
