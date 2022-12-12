@@ -30,12 +30,14 @@ export class MarcheactionsComponent implements OnInit {
     montantAchat : 0,
     titre : "",
     quantite: 0,
-    isin:""
+    isin:"",
+    symbol:""
   }
   ordre = new Ordre
   titre:any;
   prix:any;
   isin:any;
+  symbol:any;
   portfeuille = new Portfeuille();
   idPortfeuille:any;
   quantiteForm :FormGroup;
@@ -44,13 +46,16 @@ export class MarcheactionsComponent implements OnInit {
   qtevente:any;
   date : Date;
   ouvert:string = 'ouvert';
+  actualites = [];
   
   constructor(config: NgbModalConfig, private modalService: NgbModal, private coursService: CoursactionsService, private router: Router,private modalQuantite: NgbModal,private service: ProduitFinancierService,private servicePortfeuille:PortfeuilleService,private formBuilder: FormBuilder) {}
 
-  async open(content, isin: string): Promise<void> {
-    this.getDetails(isin).finally(() => {
+  async open(content, isin: string,ticker: string): Promise<void> {
+    this.getDetails(isin,ticker).finally(() => {
+
       this.modalService.open(content, {centered: true, animation: true, scrollable: true, size: 'lg'});
     });
+    
   }
 
   ngOnInit(): void {
@@ -58,7 +63,7 @@ export class MarcheactionsComponent implements OnInit {
     if (this.date.getDay() == 0 || this.date.getDate()==6 || this.date.getHours()>14 || this.date.getHours() < 9)
       this.ouvert='fermé';
     this.loadPortfeuille();
-    this.getDetails('TN0007250012');
+    //this.getDetails('TN0007250012');
     const obs$ = interval(5000);
     obs$.subscribe((n) => {
       this.coursService.getMarkets()
@@ -82,7 +87,7 @@ export class MarcheactionsComponent implements OnInit {
   //get f() { return this.quantiteForm.controls; }
 
   // Récupération des données de l'action
-  async getDetails(isin: string): Promise<void> {
+  async getDetails(isin: string,ticker:string): Promise<void> {
     this.coursService.getLimits(isin)
       .subscribe((response) => {
           this.limits = response.limits;
@@ -106,15 +111,23 @@ export class MarcheactionsComponent implements OnInit {
           console.log(error);
         }
       );
+
+      this.coursService.getProdActu(ticker).subscribe(
+        data => {
+          console.log(data);
+          this.actualites=data;
+        }
+      );
   }
 
-  openDialog(quantite,isin:any,titre:any,prix:any,qte:any): void {
+  openDialog(quantite,isin:any,titre:any,prix:any,qte:any,symbol:any): void {
     const modalRef = this.modalQuantite.open(quantite, {
       centered: true, animation: true, scrollable: true, size: 'lg'
     });
     this.isin=isin;
     this.titre=titre;
     this.prix=prix;
+    this.symbol=symbol;
     this.qtevente=qte;
     this.maxvalue = Math.floor(this.portfeuille.solde/this.prix);
     if (this.qtevente<this.maxvalue) {
@@ -171,6 +184,7 @@ export class MarcheactionsComponent implements OnInit {
     this.produit.titre=this.titre;
     this.produit.montantAchat=this.prix;
     this.produit.isin=this.isin;
+    this.produit.symbol=this.symbol;
     console.log(this.produit);
     this.service.addProduit(this.produit,this.idPortfeuille,this.prix,this.nombre).subscribe((data: {}) => {
       console.log(this.produit);
@@ -179,6 +193,7 @@ export class MarcheactionsComponent implements OnInit {
     });}
     this.quantiteForm.reset();
   }
+
 
  
 }

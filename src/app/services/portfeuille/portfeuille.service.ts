@@ -9,6 +9,7 @@ import { Injectable } from '@angular/core';
 })
 export class PortfeuilleService {
   url="http://localhost:8083/JMLessous/"
+  urlp = "http://127.0.0.1:8000/PortfeuilleVar";
   constructor(private http : HttpClient) { }
 
   httpOptions = {
@@ -40,4 +41,10 @@ export class PortfeuilleService {
     //this.url = this.url + "getOffre/"+id;
     return this.http.get<Portfeuille>(this.url+ "getPortfeuilleByUser/"+id);
   }
+
+  getPortfeuilleVar(id:any,CI=99,days=1):Observable<number>{
+    //this.url = this.url + "getOffre/"+id;
+    return this.http.get<number>(this.urlp+"/"+id+"/"+CI+"/"+days);
+  }
+ 
 }
