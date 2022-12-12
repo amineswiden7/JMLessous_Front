@@ -9,6 +9,7 @@ export class ProduitFinancier {
     typeProduit : string;
     statusProduit : string;
     isin:string;
+    symbol:string;
     last:number;
     gain:number;
     capital : number;

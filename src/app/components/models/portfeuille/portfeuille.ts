@@ -6,4 +6,5 @@ export class Portfeuille {
     idUutilisateur : number;
     montant : number;
     gain : number;
+    capital : number;
 }

@@ -1,3 +1,4 @@
+import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { ProduitFinancierService } from './../../../../services/produitFinancier/produit-financier.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CoursactionsService } from './../../../../services/marcheactions/coursactions.service';
@@ -21,6 +22,7 @@ export class PortfeuilleComponent implements OnInit {
   performance : number = 0 ;
   gain : number =0;
   total : number = 0;
+  capital : number=0;
   isin :any;
   prix:any;
   nombre : any;
@@ -29,16 +31,33 @@ export class PortfeuilleComponent implements OnInit {
   produit : any = {
     isin:""
   }
-  idPortfeuille:any
+  idPortfeuille:any;
+  Pvar : number=0;
+  confiance :any;
+  horizon : any;
+  var : FormGroup;
+  submitted = false;
  
 
-  constructor(private service:PortfeuilleService,public router: Router, private coursService: CoursactionsService,private modalQuantite: NgbModal,private modalPortfeuille: NgbModal,private serviceProduit:ProduitFinancierService) { }
+  constructor(private service:PortfeuilleService,public router: Router, private coursService: CoursactionsService,private modalQuantite: NgbModal,private modalPortfeuille: NgbModal,private serviceProduit:ProduitFinancierService,private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
     this.loadPortfeuille();
     //this.alet()
 //    this.loadProduits(this.portfeuille);
+    this.var =this.formBuilder.group({
+    con : [, [Validators.required,Validators.min(1),(control: AbstractControl) => Validators.max(99)(control)]],
+    hor : [, [Validators.required,Validators.min(1)]]
+    });
   }
+
+  get hor() {
+    return this.var.get("hor");
+  }
+  get con() {
+    return this.var.get("con");
+  }
+
 
   loadPortfeuille():void {
     
@@ -49,6 +68,7 @@ export class PortfeuilleComponent implements OnInit {
         this.portfeuille=data;
         this.idPortfeuille=this.portfeuille.idPortfeuille;
         this.loadProduits(this.portfeuille.idPortfeuille);
+        //this.getVar(this.portfeuille.idPortfeuille);
         /*this.produits.forEach(produit => {
           
         });*/
@@ -72,8 +92,10 @@ export class PortfeuilleComponent implements OnInit {
                 produit.gain = produit.capital - produit.montant;
                 this.total+= produit.montant;
                 this.gain += produit.gain;
+                this.capital+=produit.capital;
                 this.portfeuille.montant = this.total;
                 this.portfeuille.gain = this.gain;
+                this.portfeuille.capital=this.capital;
                 console.log(this.portfeuille.montant);
                 console.log(this.portfeuille.gain);
                 console.log(this.portfeuille.gain/this.portfeuille.montant);
@@ -133,13 +155,32 @@ export class PortfeuilleComponent implements OnInit {
 
 
   addPortfeuille():void{
-
+    
     console.log(this.solde);
     this.service.addPortfeuille(this.solde,1).subscribe((data: {}) => {
       this.modalPortfeuille.dismissAll();
       this.loadPortfeuille()
       this.router.navigate(['/Mon-Portfeuille']);
     });
+  }
+
+
+  getVar() {
+    this.submitted = true;
+    console.log(this.con)
+    // stop here if form is invalid
+    console.log(this.var.invalid)
+    if (this.var.invalid) {
+        return;
+    }
+    else{
+    // console.log(p);
+     this.service.getPortfeuilleVar(this.idPortfeuille,this.confiance,this.horizon).subscribe(
+       data => {
+        console.log(data);
+        this.Pvar=data;
+       });}
+       this.var.reset();
   }
 
 }

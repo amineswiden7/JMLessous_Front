@@ -28,7 +28,7 @@
                         </span>
                     </div>
                     <br>
-                    <div class="container">
+                    <div >
                             <div class="col-5" style="display:inline-block">
                                 <div class="card bg-gradient-secondary">
                                     <div class="card-body">
@@ -37,7 +37,7 @@
                                             <h5 class="card-title text-center text-uppercase text-secondary text-xxs font-weight-bolder text-white">
                                             Votre Liquidité</h5>
                                             
-                                            <span class="text-center text-uppercase text-secondary text-xxs font-weight-bolder text-white"><h2>{{portfeuille.solde}}</h2></span>
+                                            <span class="text-center text-uppercase text-secondary text-xxs font-weight-bolder text-white"><h2>{{portfeuille.solde | number : '1.2' }}</h2></span>
                                         </div>
 
                                         </div>
@@ -45,7 +45,9 @@
                                 </div>
                             </div>  
 
-                            <div class="col-2" style="display:inline-block"></div>
+                            <div class="col-2" style="display:inline-block">
+                             
+                            </div>
 
                             <div class="col-5 " style="display:inline-block">
                                 <div class="card bg-gradient-secondary">
@@ -122,7 +124,7 @@
                         <td></td>
                         <td></td>
                         <td class="align-middle text-center text-sm"><span class="text-secondary text-xs font-weight-bold">Totaux</span></td>
-                        <td class="align-middle text-center text-sm"><span class="text-primary text-xs font-weight-bold">{{portfeuille.montant | number : '1.2' }}</span></td>
+                        <td class="align-middle text-center text-sm"><span class="text-primary text-xs font-weight-bold">{{portfeuille.capital | number : '1.2' }}</span></td>
                         <td class="align-middle text-center text-sm"><span class="text-primary text-xs font-weight-bold">{{portfeuille.gain | number : '1.2' }}</span></td>
                         <td></td>
                     </tr>
@@ -143,6 +145,72 @@
       </div>
     </div>
   </div>
+
+  <div class="col-12">
+    <div class="card mb-4">
+      <div class="card-header pb-0">
+        <h6>Value At Risk</h6>
+      </div>
+<br>
+      <div >
+        <div class="col-5" style="display:inline-block">
+          <form #var="ngForm" (ngSubmit)="getVar()"novalidate>
+                <div class="row">
+                    <div class="form-group">
+                        <label class="text-custom-black fs-14 fw-600" >Confiance</label>
+                        <input type="number" formControlName="con" class="form-control form-control-custom"  [(ngModel)]="confiance" [ngClass]="{ 'is-invalid': submitted && con.errors }"
+                            placeholder="Intervalle de Confiance"  >
+                            <div *ngIf="submitted && con.errors" class="invalid-feedback">
+                              <div *ngIf="con.errors.min">taux minimal est 1%</div>
+                              <div *ngIf="con.errors.max">taux maximal est 99%</div>
+                              <div *ngIf="con.errors.required">Le taux de confiance est obligatoire</div>
+
+                            </div>
+                    </div>
+                </div>  
+                
+                <div class="row">
+                  <div class="form-group">
+                    <label class="text-custom-black fs-14 fw-600" >Horizon</label>
+                    <input type="number" formControlName="hor" class="form-control form-control-custom" [(ngModel)]="horizon" [ngClass]="{ 'is-invalid': submitted && hor.errors }"
+                        placeholder="Horizon en jours"  >
+                        <div *ngIf="submitted && hor.errors" class="invalid-feedback">
+                          <div *ngIf="hor.errors.required">L'horizon est obligatoire</div>
+                          <div *ngIf="hor.errors.min">Nombre de jour minimal est 1</div>
+                        </div>
+                  </div>
+                </div>
+
+                  <div class="form-group ">
+                    <button type="submit"  class="btn btn-primary btn-block fs-14 fw-600">Vérifier</button>
+                  </div>
+          </form>
+        </div>
+        <div class="col-2" style="display:inline-block"> </div>
+        <div class="col-5" style="display:inline-block;"> 
+              <div class="card bg-gradient-secondary">
+
+                <div class="card-body">
+                    <div class="row">
+                    <div class="col">
+                        <h5 class="card-title text-center text-uppercase text-secondary text-xxs font-weight-bolder text-white">
+                        Value at Risk</h5>
+                        
+                        <span class="text-center text-uppercase text-secondary text-xxs font-weight-bold text-white "><h2>{{(portfeuille.montant * Pvar)  | number : '1.1'}}</h2></span>
+                        
+                    </div>
+                    </div>
+                </div>
+                
+              </div>
+              
+              <div> {{horizon}} jour(s) Portfeuille VaR à {{confiance}}% intervalle de confiance est {{Pvar*portfeuille.montant | number : '1.1' }}
+              </div>
+        </div>
+          
+      </div>
+
+    </div>
   </div>
 
 
@@ -159,7 +227,7 @@
               <div class="col-12">
                   <div class="form-group">
                       <label class="text-custom-black fs-14 fw-600" >Montant que vous voulez investir</label>
-                      <input type="number" name="#" class="form-control form-control-custom" ngModel="solde"
+                      <input type="number" name="#" class="form-control form-control-custom" [(ngModel)]="solde"
                           placeholder="Montant" required>
                   </div>
               </div>
