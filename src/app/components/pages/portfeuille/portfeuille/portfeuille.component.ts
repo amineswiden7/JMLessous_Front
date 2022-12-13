@@ -27,7 +27,7 @@ export class PortfeuilleComponent implements OnInit {
   prix:any;
   nombre : any;
   titre:any;
-  solde : any = 20000;
+  solde : any ;
   produit : any = {
     isin:""
   }
@@ -170,17 +170,19 @@ export class PortfeuilleComponent implements OnInit {
     console.log(this.con)
     // stop here if form is invalid
     console.log(this.var.invalid)
-    if (this.var.invalid) {
+    /*if (this.var.invalid) {
         return;
     }
-    else{
+    
+    else{*/
     // console.log(p);
+    console.log(this.confiance+" : "+this.horizon);
      this.service.getPortfeuilleVar(this.idPortfeuille,this.confiance,this.horizon).subscribe(
        data => {
         console.log(data);
         this.Pvar=data;
        });}
-       this.var.reset();
-  }
+      // this.var.reset();
+  //}
 
 }
