@@ -92,6 +92,24 @@
       </mat-tab-group>
 
     </div>
+
+    <div class="container">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col" style="color: #454d55; font-family: 'Arial Black'">Date Publication</th>
+            <th scope="col" style="color: #454d55; font-family: 'Arial Black'">Actualité</th>
+
+          </tr>
+          </thead>
+          <tbody>
+        <tr *ngFor="let actu of actualites">
+          <td style="color: #27346a; font-weight: bold">{{actu[0]}}</td>
+          <td style="color: #27346a; font-weight: bold"><a href="https://www.ilboursa.com/marches{{actu[1]}}" target="_blank"> {{actu[2]}}</a></td>
+        </tr>
+
+      </table>
+    </div>
     <hr>
     <div class="container">
 
@@ -106,6 +124,7 @@
   <div class="row">
     <div class="col-12">
       <div class="card mb-4">
+        <br>
         <span class="text-secondary text-lg-start font-weight-bold">
           {{ date | date:'full':'fr' }}, le marché est {{ouvert}}
         </span>
@@ -140,7 +159,7 @@
   </thead>
   <tbody>
   <tr *ngFor="let market of markets">
-    <th class="align-middle text-center text-sm"> <button (click)="open(content,market.isin)" ><span class="text-primary text-xs font-weight-bold">{{market.referentiel.stockName}}</span>
+    <th class="align-middle text-center text-sm"> <button (click)="open(content,market.isin,market.referentiel.ticker)" ><span class="text-primary text-xs font-weight-bold">{{market.referentiel.stockName}}</span>
     </button></th>
    <!--<td>{{market.status}}</td>
     <td>{{market.limit.askOrd}}</td>-->
@@ -161,7 +180,7 @@
     <td class="align-middle text-center text-sm" ><span class="text-primary text-xs font-weight-bold">{{market.max}}</span></td>
     <td class="align-middle text-center text-sm" ><span class="text-primary text-xs font-weight-bold">{{market.min}}</span></td>
     <td class="align-middle text-center text-sm" ><span class="text-primary text-xs font-weight-bold">{{market.time}}</td>-->
-    <td class="align-middle text-center text-sm" ><button class="badge badge-sm bg-gradient-success" (click)="openDialog(quantite,market.isin,market.referentiel.stockName,market.limit.bid,market.limit.bidQty)" >Acheter</button></td>
+    <td class="align-middle text-center text-sm" ><button class="badge badge-sm bg-gradient-success" (click)="openDialog(quantite,market.isin,market.referentiel.stockName,market.limit.bid,market.limit.bidQty,market.referentiel.ticker)" >Acheter</button></td>
   </tr>
   </tbody>
 </table>
@@ -190,7 +209,7 @@
                       <div *ngIf="qte.errors.max">Nombre d'action trés grand</div>
                     </div>
                     <div>
-                      Le nombre d'actions maximales que vous pouvez acheter est {{maxvalue}} 
+                      Le nombre max d'actions que vous pouvez acheter est {{maxvalue}} 
                     </div>
                 </div>
             </div>

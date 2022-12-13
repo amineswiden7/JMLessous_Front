@@ -23,6 +23,10 @@ import { AdminCreditLibreComponent } from './components/pages/admin-credit-libre
 import { UtilisateurProfileComponent } from './components/pages/utilisateur-profile/utilisateur-profile.component';
 //import { UserDashboardComponent } from './components/pages/user-dashboard/user-dashboard.component';
 
+import { CompteepargneComponent } from './components/compteepargne/compteepargne.component';
+import { UsercompteComponent } from './components/pages/usercompte/usercompte.component';
+import { TransactionValidComponent } from './components/pages/transaction-valid/transaction-validation.component';
+import { CurrencyconvComponent } from './components/pages/currencyconv/currencyconv.component';
 import { CreateCreditComponent } from './components/pages/CreditImmob/create-credit/create-credit.component'; 
 import { AjoutCreditLibreComponent } from './components/pages/credit-libre/ajout-credit-libre/ajout-credit-libre.component';
 import { ListesCreditsComponent } from './components/pages/CreditImmob/listes-credits/listes-credits.component';
@@ -36,6 +40,11 @@ const routes: Routes = [
   {path: 'courant',component :ComptecourantComponent},
   {path: 'adminCreditLibre', component:AdminCreditLibreComponent},
   {path: 'utilisateurProfile', component:UtilisateurProfileComponent},
+  {path: 'epargne',component :CompteepargneComponent},
+  {path: 'usercompte',component :UsercompteComponent},
+  {path: 'trans',component :TransactionValidComponent},
+  {path: 'currency',component :CurrencyconvComponent},
+  
   { path: 'coursActions', component: MarcheactionsComponent},
   { path: 'LoginPage', component: LoginComponent},
   { path: 'RegisterPage', component: RegisterComponent},

@@ -7,6 +7,7 @@ import { BreadcrumbModule } from 'angular-crumbs';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RegisterComponent } from './components/pages/register/register.component';
@@ -39,13 +40,20 @@ import { SimulateurCreditLibreComponent } from './components/pages/simulateur-cr
 import { TabAmortissementLibreComponent } from './components/pages/simulateur-credit-libre/tab-amortissement-libre/tab-amortissement-libre.component';
 import { AdminCreditLibreComponent } from './components/pages/admin-credit-libre/admin-credit-libre.component';
 import { DialogueComponent } from './components/pages/admin-credit-libre/dialogue/dialogue.component';
+import { CompteepargneComponent } from './components/compteepargne/compteepargne.component';
+import { UsercompteComponent } from './components/pages/usercompte/usercompte.component';
+import { TransactionValidComponent } from './components/pages/transaction-valid/transaction-validation.component';
+import { CurrencyconvComponent } from './components/pages/currencyconv/currencyconv.component';
+
+import { QuantiteAchatComponent } from './components/pages/marcheactions/quantiteAchat/quantite-achat/quantite-achat.component';
+import { PortfeuilleComponent } from './components/pages/portfeuille/portfeuille/portfeuille.component';
+import { AddPortfeuilleComponent } from './components/pages/portfeuille/add-portfeuille/add-portfeuille.component';
+import { OrdreComponent } from './components/pages/ordre/ordre/ordre.component';
 
 import {MatDialogModule} from '@angular/material/dialog';
 import { UtilisateurProfileComponent } from './components/pages/utilisateur-profile/utilisateur-profile.component';
 import { BarSideProfileComponent } from './components/pages/utilisateur-profile/bar-side-profile/bar-side-profile.component';
-import { QuantiteAchatComponent } from './components/pages/marcheactions/quantiteAchat/quantite-achat/quantite-achat.component';
-import { OrdreComponent } from './components/pages/ordre/ordre/ordre.component';
-import { PortfeuilleComponent } from './components/pages/portfeuille/portfeuille/portfeuille.component';
+
 import { CreateCreditComponent } from './components/pages/CreditImmob/create-credit/create-credit.component';
 import { ListesCreditsComponent } from './components/pages/CreditImmob/listes-credits/listes-credits.component';
 import { AuthInterceptor } from './helpers/authInterceptor';
@@ -84,6 +92,18 @@ import { AuthInterceptor } from './helpers/authInterceptor';
     UtilisateurProfileComponent,
     BarSideProfileComponent,
     
+    CompteepargneComponent,
+    UsercompteComponent,
+    TransactionValidComponent,
+    CurrencyconvComponent,
+    QuantiteAchatComponent,
+    PortfeuilleComponent,
+    AddPortfeuilleComponent,
+    OrdreComponent,
+
+    CreateCreditComponent,
+    ListesCreditsComponent,
+    TabAmortissementLibreComponent
 
 
   ],
@@ -106,6 +126,8 @@ import { AuthInterceptor } from './helpers/authInterceptor';
         MatTabsModule,
         MatDialogModule,
         
+        ReactiveFormsModule,
+        AngularEditorModule
     ],
   providers: [ 
     { provide: LOCALE_ID, useValue: 'fr-FR'},

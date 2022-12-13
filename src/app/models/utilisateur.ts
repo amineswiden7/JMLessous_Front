@@ -17,6 +17,7 @@ export class Utilisateur {
     adresse:any;
     role:string;
     rib:any ;
+    iban:any;
      creditAuthorization:any;
     messages:any;
     informations:any;
