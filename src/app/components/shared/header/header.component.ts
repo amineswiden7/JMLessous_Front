@@ -9,8 +9,21 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-connecte:Boolean=false;
-  constructor(@Inject(DOCUMENT) private document: Document, private userConnecte: UserService ) { }
+connecte:Boolean;
+  constructor(@Inject(DOCUMENT) private document: Document, private userConnecte: UserService ) { 
+    this.connecte=false;
+    if(this.userConnecte.activeUser.idUser!=null)
+    { console.log(this.connecte)
+     console.log(this.userConnecte.activeUser)
+     this.connecte=true 
+     this.role=this.userConnecte.activeUser.role;
+     if(this.role=="ADMIN")
+     {
+       this.permission=true;
+     }
+    console.log(this.permission)
+    }
+  }
   // Sticky Nav
   @HostListener('window:scroll', ['$event'])
   onWindowScroll(event: Event) {
@@ -36,17 +49,7 @@ connecte:Boolean=false;
   role:any;
   permission:Boolean;
   ngOnInit(): void {
-   if(this.userConnecte.activeUser.idUser!=null)
-   { console.log(this.connecte)
-    console.log(this.userConnecte.activeUser)
-    this.connecte=true 
-    this.role=this.userConnecte.activeUser.role;
-    if(this.role=="ADMIN")
-    {
-      this.permission=true;
-    }
-   console.log(this.permission)
-   }
+ 
     function mobilemenu() {
       ($(".menu-item-has-children > a") as any).on('click', function (e) {
         var submenu = $(this).next(".sub-menu");

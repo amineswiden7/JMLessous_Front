@@ -19,9 +19,10 @@ import { UserService } from './services/user.service';
 
 export class AppComponent implements OnInit {
   constructor(private titleService: Title, private breadcrumbService: BreadcrumbService, private userConnecte: UserService) {
+    this.userConnecte.findUserWithToken();
   }
   ngOnInit(): void {
-    this.userConnecte.findUserWithToken();
+    
     this.breadcrumbService.breadcrumbChanged.subscribe(crumbs => {
       this.titleService.setTitle(this.createTitle(crumbs));
     });

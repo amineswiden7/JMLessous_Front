@@ -4,7 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BreadcrumbModule } from 'angular-crumbs';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -48,6 +48,7 @@ import { OrdreComponent } from './components/pages/ordre/ordre/ordre.component';
 import { PortfeuilleComponent } from './components/pages/portfeuille/portfeuille/portfeuille.component';
 import { CreateCreditComponent } from './components/pages/CreditImmob/create-credit/create-credit.component';
 import { ListesCreditsComponent } from './components/pages/CreditImmob/listes-credits/listes-credits.component';
+import { AuthInterceptor } from './helpers/authInterceptor';
 @NgModule({
   declarations: [
     AppComponent,
@@ -107,7 +108,8 @@ import { ListesCreditsComponent } from './components/pages/CreditImmob/listes-cr
         
     ],
   providers: [ 
-    { provide: LOCALE_ID, useValue: 'fr-FR'}
+    { provide: LOCALE_ID, useValue: 'fr-FR'},
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

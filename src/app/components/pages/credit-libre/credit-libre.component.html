@@ -64,8 +64,8 @@
                                 <td class="lw-table-data-2"> {{ credit.montantRestant }} </td>
                                 <td class="lw-table-data-2"> {{ credit.duree }} </td>
                                 <td class="lw-table-data-2"> {{ credit.montantPaye }} </td>
-                                <td class="lw-table-data-2"> {{ credit.dateDemande }} </td>
-                                <td class="lw-table-data-2"> {{ credit.dateFin }} </td>
+                                <td class="lw-table-data-2"> {{ credit.dateDemande| date: 'shortDate'  }} </td>
+                                <td class="lw-table-data-2"> {{ credit.dateFin | date: 'shortDate' }} </td>
                                 <td class="lw-table-data-2"> {{ credit.mensualite }} </td>
                                 <td class="lw-table-data-2"> {{ credit.status }} </td>
                                 <td class="lw-table-data-2"> {{ credit.risque }} </td>

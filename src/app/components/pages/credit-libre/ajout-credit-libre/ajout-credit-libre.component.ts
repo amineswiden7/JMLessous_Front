@@ -58,6 +58,7 @@ export class AjoutCreditLibreComponent implements OnInit {
   stepChanged(_args: StepChangedArgs) { }
 
   addCredit(){
+    console.log(this.creditLibre);
     this.creditLibreService.createCredit(this.creditLibre,this.userConnecte.activeUser.idUser,this.idGarantie).subscribe(res=>{
       console.log(this.creditLibre);
       console.log(res);
