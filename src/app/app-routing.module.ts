@@ -18,6 +18,11 @@ import { ComptecourantComponent } from './components/pages/comptecourant/comptec
 
 import { CreditLibreComponent } from './components/pages/credit-libre/credit-libre.component';
 import { SimulateurCreditLibreComponent } from './components/pages/simulateur-credit-libre/simulateur-credit-libre.component';
+
+import { AdminCreditLibreComponent } from './components/pages/admin-credit-libre/admin-credit-libre.component';
+import { UtilisateurProfileComponent } from './components/pages/utilisateur-profile/utilisateur-profile.component';
+//import { UserDashboardComponent } from './components/pages/user-dashboard/user-dashboard.component';
+
 import { CompteepargneComponent } from './components/compteepargne/compteepargne.component';
 import { UsercompteComponent } from './components/pages/usercompte/usercompte.component';
 import { TransactionValidComponent } from './components/pages/transaction-valid/transaction-validation.component';
@@ -28,10 +33,13 @@ import { ListesCreditsComponent } from './components/pages/CreditImmob/listes-cr
 
 
 
+
 const routes: Routes = [
 
   {path: 'compte',component :CompteComponent},
   {path: 'courant',component :ComptecourantComponent},
+  {path: 'adminCreditLibre', component:AdminCreditLibreComponent},
+  {path: 'utilisateurProfile', component:UtilisateurProfileComponent},
   {path: 'epargne',component :CompteepargneComponent},
   {path: 'usercompte',component :UsercompteComponent},
   {path: 'trans',component :TransactionValidComponent},

@@ -4,8 +4,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BreadcrumbModule } from 'angular-crumbs';
-import { HttpClientModule } from '@angular/common/http';
-import { MatDialogModule } from '@angular/material';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+
+
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RegisterComponent } from './components/pages/register/register.component';
@@ -36,6 +38,8 @@ import { GarantieComponent } from './components/pages/garantie/garantie.componen
 import { AjoutCreditLibreComponent } from './components/pages/credit-libre/ajout-credit-libre/ajout-credit-libre.component';
 import { SimulateurCreditLibreComponent } from './components/pages/simulateur-credit-libre/simulateur-credit-libre.component';
 import { TabAmortissementLibreComponent } from './components/pages/simulateur-credit-libre/tab-amortissement-libre/tab-amortissement-libre.component';
+import { AdminCreditLibreComponent } from './components/pages/admin-credit-libre/admin-credit-libre.component';
+import { DialogueComponent } from './components/pages/admin-credit-libre/dialogue/dialogue.component';
 import { CompteepargneComponent } from './components/compteepargne/compteepargne.component';
 import { UsercompteComponent } from './components/pages/usercompte/usercompte.component';
 import { TransactionValidComponent } from './components/pages/transaction-valid/transaction-validation.component';
@@ -46,19 +50,24 @@ import { PortfeuilleComponent } from './components/pages/portfeuille/portfeuille
 import { AddPortfeuilleComponent } from './components/pages/portfeuille/add-portfeuille/add-portfeuille.component';
 import { OrdreComponent } from './components/pages/ordre/ordre/ordre.component';
 
+import {MatDialogModule} from '@angular/material/dialog';
+import { UtilisateurProfileComponent } from './components/pages/utilisateur-profile/utilisateur-profile.component';
+import { BarSideProfileComponent } from './components/pages/utilisateur-profile/bar-side-profile/bar-side-profile.component';
+
 import { CreateCreditComponent } from './components/pages/CreditImmob/create-credit/create-credit.component';
 import { ListesCreditsComponent } from './components/pages/CreditImmob/listes-credits/listes-credits.component';
-
-
-
+import { AuthInterceptor } from './helpers/authInterceptor';
 @NgModule({
   declarations: [
     AppComponent,
     RegisterComponent,
     LoginComponent,
-
+    QuantiteAchatComponent,
+    OrdreComponent,
+    CreateCreditComponent,
     CompteComponent,
-
+    ListesCreditsComponent,
+    PortfeuilleComponent,
     OffreassuranceComponent,
     OffreassurancedetailComponent,
     OffreassurancelistComponent,
@@ -78,6 +87,11 @@ import { ListesCreditsComponent } from './components/pages/CreditImmob/listes-cr
     AjoutCreditLibreComponent,
     SimulateurCreditLibreComponent,
     TabAmortissementLibreComponent,
+    AdminCreditLibreComponent,
+    DialogueComponent,
+    UtilisateurProfileComponent,
+    BarSideProfileComponent,
+    
     CompteepargneComponent,
     UsercompteComponent,
     TransactionValidComponent,
@@ -94,9 +108,14 @@ import { ListesCreditsComponent } from './components/pages/CreditImmob/listes-cr
 
   ],
 
-  imports:[
+  entryComponents:[
+    DialogueComponent,
+ ],
+
+  imports: [
         BrowserModule,
         FormsModule,
+        ReactiveFormsModule,
         AppRoutingModule,
         BrowserAnimationsModule,
         BreadcrumbModule,
@@ -106,11 +125,13 @@ import { ListesCreditsComponent } from './components/pages/CreditImmob/listes-cr
         MatTableModule,
         MatTabsModule,
         MatDialogModule,
+        
         ReactiveFormsModule,
         AngularEditorModule
     ],
   providers: [ 
-    { provide: LOCALE_ID, useValue: 'fr-FR'}
+    { provide: LOCALE_ID, useValue: 'fr-FR'},
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

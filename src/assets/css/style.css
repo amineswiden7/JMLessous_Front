@@ -241,8 +241,11 @@ label {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-attachment: fixed;
     transition: border 0.3s ease-in, box-shadow 0.3s ease-in, background 0.3s, opacity 0.3s ease-in;
+}
+.parallax1{
+    background-image: url("https://www.codeur.com/tuto/wp-content/uploads/2022/02/p1.jpg");
+    z-index: 1;
 }
 /*section-header*/
 
@@ -2231,7 +2234,9 @@ label.custom-checkbox .checkmark:after {
 ========================*/
 
 .book-appointment {
-    background-image: url(../images/banner/banner4.jpg);
+   /* background-image: url(../images/banner/banner4.jpg);*/
+   background-image: url("https://www.codeur.com/tuto/wp-content/uploads/2022/02/p1.jpg");
+
     z-index: 1;
 }
 .pattern {
@@ -5505,7 +5510,7 @@ label.custom-checkbox .checkmark:after {
 }
 .exp-cal2:before {
     content: '';
-    background-image: url(../images/homepage/bg2.jpg);
+    background-image: url(../images/backTab.jpg);
     width: 100%;
     height: 400px;
     display: block;
