@@ -1,0 +1,19 @@
+#Global
+{  position:relative;
+    width:100%;
+}
+#Global#gauche
+{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width:60%;
+}
+#Global#droite
+{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    
+    width:40%;
+}
