@@ -5,6 +5,7 @@ export class CreditEtudiant extends Credit {
      salaireParental:any;
      niveauEtude:any;
      Score:any;
+     tauxInteret:any;
 
 
 

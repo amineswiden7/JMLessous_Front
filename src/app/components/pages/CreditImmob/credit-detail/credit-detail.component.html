@@ -10,17 +10,17 @@
                     <!-- article -->
                     <article class="post">
                         <div class="post-wrapper">
-                            <div class="blog-img animate-img mb-xl-20" [ngSwitch]="credit.Produit"> 
-                                <img *ngSwitchCase="'terrain'" src="assets/images/credit/creditterrain.jpg" class="image-fit" alt="{{credit.Produit}}">
-                                <img *ngSwitchCase="'Maison'" src="assets/images/credit/CreditMaison.jpg" class="image-fit" alt="{{credit.Produit}}">
-                                <img *ngSwitchCase="'appartement'" src="assets/images/credit/CreditAppar.jpg" class="image-fit" alt="{{credit.Produit}}">
+                            <div class="blog-img animate-img mb-xl-20" [ngSwitch]="credit.produit"> 
+                                <img *ngSwitchCase="'terrain'" src="assets/images/credit/creditterrain.jpg" class="image-fit" alt="{{credit.produit}}">
+                                <img *ngSwitchCase="'Maison'" src="assets/images/credit/CreditMaison.jpg" class="image-fit" alt="{{credit.produit}}">
+                                <img *ngSwitchCase="'appartement'" src="assets/images/credit/CreditAppar.jpg" class="image-fit" alt="{{credit.produit}}">
                                 
                             </div>
                             <div class="blog-meta">
-                                <h2 [ngSwitch]="credit.Status">
-                                    <a href="#" *ngSwitchCase="'REFUS'"  class="text-custom-black fw-600">malheuresement votre crédit a été Refusé</a>
-                                    <a href="#" *ngSwitchCase="'ENCOURSDETRAITEMENT'" class="text-custom-black fw-600">votre credit est en cours de traitement</a>
-                                    <a href="#" *ngSwitchCase="'ACCEPTE'" class="text-custom-black fw-600">votre credit est Accepté </a>
+                                <h2 [ngSwitch]="credit.status">
+                                    <a href="#" *ngSwitchCase="'REFUS'"  class="text-custom-black fw-600">Malheuresement votre crédit a été Refusé</a>
+                                    <a href="#" *ngSwitchCase="'ENCOURSDETRAITEMENT'" class="text-custom-black fw-600">Votre credit est en cours de traitement</a>
+                                    <a href="#" *ngSwitchCase="'ACCEPTE'" class="text-custom-black fw-600">Votre credit est Accepté </a>
                                     
                                 </h2>
                                 

@@ -21,6 +21,10 @@ import { AjoutCreditLibreComponent } from './components/pages/credit-libre/ajout
 import { ListesCreditsComponent } from './components/pages/CreditImmob/listes-credits/listes-credits.component';
 import { CreditDetailComponent } from './components/pages/CreditImmob/credit-detail/credit-detail.component';
 import { SimulateurCreditImmobComponent } from './components/pages/simulateur-credit-immob/simulateur-credit-immob.component';
+import { ListeCreditBackComponent } from './components/pages/CreditImmob/liste-credit-back/liste-credit-back.component';
+import { CreditEtuComponent } from './components/pages/CreditEtudiant/credit-etu/credit-etu.component';
+import { ListCreditsComponent } from './components/pages/CreditEtudiant/list-credits/list-credits.component';
+import { ListCreditsBackComponent } from './components/pages/CreditEtudiant/list-credits-back/list-credits-back.component';
 
 
 
@@ -64,8 +68,12 @@ const routes: Routes = [
   { path: 'listeCreditByClient', component : ListesCreditsComponent},
   { path: 'offre-assurance/:id', component : OffreassurancedetailComponent },
   { path: 'add-offre', component : AddOffreAssuranceComponent },
-  { path: 'credit-detail/:id', component : CreditDetailComponent },
+  { path: 'credit-detail/:idCredit', component : CreditDetailComponent },
   { path: 'simulateurImm', component : SimulateurCreditImmobComponent},
+  { path: 'creditBackImm', component : ListeCreditBackComponent},
+  { path: 'AjoutCreditEtu', component : CreditEtuComponent},
+  { path: 'CreditBackEtu', component : ListCreditsBackComponent},
+  { path: 'ListeCreditEtu', component : ListCreditsComponent},
   { path: '**', loadChildren: () => import('./components/pages/error/error.module').then(m => m.ErrorModule), data: { breadcrumb: 'Error 404' } }
 ];
 

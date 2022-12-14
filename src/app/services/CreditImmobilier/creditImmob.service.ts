@@ -30,16 +30,35 @@ export class CreditImmobilierService {
     tabAmortissement(credit:CreditImmobilier): Observable<Amortissement[]>{
       return this.httpClient.post<Amortissement[]>(`${this.API_URL}/tabAmor`, credit);
     }
-    createCredit(Credit: CreditImmobilier,idUser:number): Observable<Object>{
-      return this.httpClient.post(`${this.API_URL}/add-creditImob/1`, Credit);
+    createCredit(Credit: CreditImmobilier,idUser:number): Observable<CreditImmobilier>{
+      return this.httpClient.post<CreditImmobilier>(`${this.API_URL}/add-creditImob/1`, Credit);
     }
 
     getAllCreditbyuser(idUser:number):Observable<CreditImmobilier[]>{
       return this.httpClient.get<CreditImmobilier[]>(`${this.API_URL}/retrieve-all-creditbyuser/${idUser}`);
     }
-    getCredit(idUser:number):Observable<CreditImmobilier[]>{
-      return this.httpClient.get<CreditImmobilier[]>(`${this.API_URL}/retrieve-all-credit/${idUser}`);
+    getCredit(idUser:number):Observable<CreditImmobilier>{
+      return this.httpClient.get<CreditImmobilier>(`${this.API_URL}/retrieve-all-credit/${idUser}`);
     }
+    downloadFile(Credit: Amortissement[]) {
+      return this.httpClient.post<any>(`${this.API_URL}/export/excel`, {responseType: 'arraybuffer' as'json',Credit});
+    }
+    downloaddFile(Credit: Amortissement[]) {
+      return this.httpClient.get<any>(`${this.API_URL}/export`);
+    }
+
+
+    accepter(idUser:number){
+      return this.httpClient.get(`${this.API_URL}/accepter/${idUser}`);
+    }
+    refuser(idUser:number){
+      return this.httpClient.get(`${this.API_URL}/refuser/${idUser}`);
+    }
+    createCreditconfirmer(Credit: CreditImmobilier): Observable<CreditImmobilier>{
+      return this.httpClient.post<CreditImmobilier>(`${this.API_URL}/add-creditveriff`, Credit);
+    }
+
+
   
    
   

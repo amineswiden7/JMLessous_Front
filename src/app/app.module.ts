@@ -43,6 +43,10 @@ import { CreditDetailComponent } from './components/pages/CreditImmob/credit-det
 import { SimulateurCreditImmobComponent } from './components/pages/simulateur-credit-immob/simulateur-credit-immob.component';
 
 import { TabAmorComponent } from './components/pages/simulateur-credit-immob/tab-amor/tab-amor.component';
+import { ListeCreditBackComponent } from './components/pages/CreditImmob/liste-credit-back/liste-credit-back.component';
+import { ListCreditsComponent } from './components/pages/CreditEtudiant/list-credits/list-credits.component';
+import { ListCreditsBackComponent } from './components/pages/CreditEtudiant/list-credits-back/list-credits-back.component';
+import { CreditEtuComponent } from './components/pages/CreditEtudiant/credit-etu/credit-etu.component';
 
 
 
@@ -79,7 +83,11 @@ import { TabAmorComponent } from './components/pages/simulateur-credit-immob/tab
     CreditDetailComponent,
     
     SimulateurCreditImmobComponent,
-    TabAmorComponent
+    TabAmorComponent,
+    ListeCreditBackComponent,
+    ListCreditsComponent,
+    ListCreditsBackComponent,
+    CreditEtuComponent
 
 
   ],
