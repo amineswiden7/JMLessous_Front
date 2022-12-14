@@ -18,12 +18,13 @@
                                   <p class="text-dark">Call us today, leave a message, email or find your nearest office below and We are here for you 24 hours , 7 days a week.</p>
                                   <h6 class="fs-20 mt-4 text-dark">We are here for you 24 hours a day, 7 days a week</h6>
                                   <div class="LOANLY-address">
-                                      <p class="text-dark "><span class="fw-600">Interet : </span> {{creditImmobb.tauxNominal}}</p>
-                                      <p class="text-dark "><span class="fw-600">Mensualite : </span> {{creditImmobb.mensualite}}</p> 
-                                      <p class="text-dark "><span class="fw-600">Montant de credit : </span> {{creditImmobb.montantCredit}}</p> 
+                                      <p class="text-dark "><span class="fw-600">Interet : </span> {{listCredit.interest}}</p>
+                                      <p class="text-dark "><span class="fw-600">Amortissement : </span> {{listCredit.amortissement}}</p>
+                                      <p class="text-dark "><span class="fw-600">Mensualite : </span> {{listCredit.mensualite}}</p> 
+                                      <p class="text-dark "><span class="fw-600">Montant de credit : </span> {{listCredit.montantR}}</p> 
 
                                   </div>
-                                  <button type="submit" class="btn-first btn-submit-fill"  (click)  = "confirmer()"><i class="fas fa-phone mr-2 fs-16"></i><span class="fs-16">Télécharger votre tableau d'amortissement</span>
+                                  <button type="submit" class="btn-first btn-submit-fill"  (click)  = "tabAmortissement(creditImmob)"><i class="fas fa-phone mr-2 fs-16"></i><span class="fs-16">Télécharger votre tableau d'amortissement</span>
                                   </button>
                               </div>
                           </div>
@@ -31,9 +32,9 @@
                       <div class="col-lg-6">
                           <div class="right-side full-height bg-border">
                               <div class="section-heading">
-                                  <h3 class="text-white fw-600"> credit immobilier</h3>
+                                  <h3 class="text-white fw-600">Simulateur de credit immobilier</h3>
                               </div>
-                              <form class="form-style-2 form-style-3" (ngSubmit)="addCredit()">
+                              <form class="form-style-2 form-style-3" (ngSubmit)="simulater()">
                                   <div class="row">
                                       <div class="col-md-12">
                                           <div class="form-group">

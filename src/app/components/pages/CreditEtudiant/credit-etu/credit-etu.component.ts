@@ -1,22 +1,22 @@
 import { Component, OnInit } from '@angular/core';
-import { NgWizardConfig, NgWizardService, StepChangedArgs, STEP_STATE, THEME } from 'ng-wizard';
-import { CreditImmobilier } from 'src/app/models/creditImmobilier';
-import Swal from 'sweetalert2';
-import { UserService } from 'src/app/services/user.service';
-import { Utilisateur } from 'src/app/models/utilisateur';
-import { CreditImmobilierService } from 'src/app/services/CreditImmobilier/creditImmob.service';
 import { Router } from '@angular/router';
+import { NgWizardConfig, NgWizardService, STEP_STATE, THEME } from 'ng-wizard';
 import { Credit } from 'src/app/models/credit';
-@Component({
-  selector: 'app-create-credit',
-  templateUrl: './create-credit.component.html',
-  styleUrls: ['./create-credit.component.css']
-})
-export class CreateCreditComponent implements OnInit {
+import { CreditEtudiant } from 'src/app/models/creditEtudiant';
+import { CreditEtudiantService } from 'src/app/services/CreditEtudiant/CreditEtudiant.service';
+import { UserService } from 'src/app/services/user.service';
+import Swal from 'sweetalert2';
 
-  creditImmob= new CreditImmobilier();
-  creditImmobb= new CreditImmobilier();
-  creditImmobbb= new CreditImmobilier();
+@Component({
+  selector: 'app-credit-etu',
+  templateUrl: './credit-etu.component.html',
+  styleUrls: ['./credit-etu.component.css']
+})
+export class CreditEtuComponent implements OnInit {
+  creditImmob= new CreditEtudiant();
+  creditImmobb= new CreditEtudiant();
+  creditImmobbb= new CreditEtudiant();
+
   credit=new Credit();
   idUser:any;
   id:any;
@@ -39,45 +39,36 @@ export class CreateCreditComponent implements OnInit {
     theme: THEME.arrows,
   };
 
-  constructor(private ngWizardService: NgWizardService, private userS:UserService,private creditImmobS:CreditImmobilierService,private router: Router) { }
+  constructor(private ngWizardService: NgWizardService, private userS:UserService,private creditImmobS:CreditEtudiantService,private router: Router) { }
 
   ngOnInit(): void {
-    //this.idcredit = this.route.snapshot.params['idCredit'];
   }
-
-  showPreviousStep(_event?: Event) {
-    this.ngWizardService.previous();
-  }
-  showNextStep(_event?: Event) {
-    this.ngWizardService.next();
-  }
-  stepChanged(_args: StepChangedArgs) { }
-
-
-
   addCredit(){
     this.creditImmobS.createCredit(this.creditImmob,1).subscribe({
       
       next:res=>{
       console.log(this.creditImmob);
-      console.log(this.creditImmob.idCredit);
+      console.log(this.creditImmob.Score);
       console.log(this.idUser);
       this.isSuccessful = true;
-      this.creditImmobb=res;
         this.isSignUpFailed = false;
+        this.creditImmobb=res;
+        console.log(this.creditImmobb)
     },
     error:err => {
       this.errorMessage = err.error.message;
       this.isSignUpFailed = true;
     },
     complete: () => {
-      Swal.fire('Merci pour votre confiance ', 'your complaint has been sent successfully !', 'success')  
+     
       //this.goToEmployeeList()
       this.id=this.creditImmob.idCredit;
      
-      console.log(this.creditImmob.montantmensuelpretpayer)
+      //console.log(this.creditImmob.montantmensuelpretpayer)
       //this.router.navigate(['/credit-detail/{{creditImmob.idCredit}}']);
     }
+
+    
     
     
     
@@ -86,10 +77,10 @@ export class CreateCreditComponent implements OnInit {
     
   });
  }
- goToEmployeeList(){
-  this.router.navigate(['/credit-detail/{{creditImmob.idCredit}}']);
-}
-confirmer(){
+
+
+
+ confirmer(){
   //    this.creditLibre.tauxInteret=this.counter;
         this.creditImmobS.createCreditconfirmer(this.creditImmobb).subscribe(res=>{ 
           console.log(this.creditImmobb)
@@ -97,7 +88,7 @@ confirmer(){
          this.creditImmobbb=res;
          console.log(this.creditImmobbb);
          Swal.fire('Merci pour votre confiance ', 'Votre crédit a éte ajouté avec succès!', 'success')  
-         this.router.navigate(['/listeCreditByClient']);
+         this.router.navigate(['/ListeCreditEtu']);
 
 
 })
@@ -106,9 +97,5 @@ confirmer(){
 
 
 };
-
-
-
-
 
 }

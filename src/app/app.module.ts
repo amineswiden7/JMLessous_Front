@@ -56,6 +56,18 @@ import { BarSideProfileComponent } from './components/pages/utilisateur-profile/
 
 import { CreateCreditComponent } from './components/pages/CreditImmob/create-credit/create-credit.component';
 import { ListesCreditsComponent } from './components/pages/CreditImmob/listes-credits/listes-credits.component';
+import { CreditDetailComponent } from './components/pages/CreditImmob/credit-detail/credit-detail.component';
+
+import { SimulateurCreditImmobComponent } from './components/pages/simulateur-credit-immob/simulateur-credit-immob.component';
+
+import { TabAmorComponent } from './components/pages/simulateur-credit-immob/tab-amor/tab-amor.component';
+import { ListeCreditBackComponent } from './components/pages/CreditImmob/liste-credit-back/liste-credit-back.component';
+import { ListCreditsComponent } from './components/pages/CreditEtudiant/list-credits/list-credits.component';
+import { ListCreditsBackComponent } from './components/pages/CreditEtudiant/list-credits-back/list-credits-back.component';
+import { CreditEtuComponent } from './components/pages/CreditEtudiant/credit-etu/credit-etu.component';
+
+
+
 import { AuthInterceptor } from './helpers/authInterceptor';
 @NgModule({
   declarations: [
@@ -103,7 +115,17 @@ import { AuthInterceptor } from './helpers/authInterceptor';
 
     CreateCreditComponent,
     ListesCreditsComponent,
-    TabAmortissementLibreComponent
+    TabAmortissementLibreComponent,
+    CreditDetailComponent,
+    
+    SimulateurCreditImmobComponent,
+    TabAmorComponent,
+    ListeCreditBackComponent,
+    ListCreditsComponent,
+    ListCreditsBackComponent,
+    CreditEtuComponent
+
+   
 
 
   ],
