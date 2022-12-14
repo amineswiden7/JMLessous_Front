@@ -27,7 +27,6 @@
                                                     name="montantCredit"
                                                     [(ngModel)]="creditLibre.montantCredit"
                                                     required
-                                                    minlength="7"
                                                     #montantCredit="ngModel">
                                             </div>
                                         </div>
@@ -41,7 +40,6 @@
                                                 name="duree"
                                                 [(ngModel)]="creditLibre.duree"
                                                 required
-                                                minlength="1"
                                                 #duree="ngModel">
                                             </div>
                                         </div>
@@ -55,7 +53,7 @@
                                                 [(ngModel)]="creditLibre.dateFin"
                                                 required
                                                 #dateFin="ngModel"
-                                                placeholder="01/01/1990">
+                                                >
                                             </div>
                                         </div>
                                         <div class="col-md-6">
@@ -67,29 +65,31 @@
                                                 [(ngModel)]="idGarantie"
                                                 required
                                                  >
-                                                
+                                                 <option>garantie</option>
                                                     <option *ngFor = "let g of listG" >{{g.idGarantie}}</option>
                                                    
                                                 </select>
                                             </div>
 
                                         </div>
-                                        <div class="col-md-6">
+                                       <!-- <div class="col-md-6">
                                             <div class="form-group">
                                                 <label class="text-custom-black fs-14 fw-600"> ajouter l'utilisateur</label>
                                                 <select class="custom-select form-control form-control-custom"
-                                                placeholder="utilisateur"
+                                                
                                                 name="idUser"
                                                 [(ngModel)]="idUser"
                                                 required
-                                                #garantie="ngModel" >
-                                                
+                                                #idUser="ngModel" >
+                                                    <option>utilisateur</option>
                                                     <option *ngFor = "let u of listU" >{{u.idUser}}</option>
                                                    
                                                 </select>
+                                               
                                             </div>
 
                                         </div>
+                                        -->
                                        <!--
                                         <div class="col-12">
                                             <div class="radio-box form-group">
@@ -143,7 +143,7 @@
                                             </div>
                                         </div>
                                         <div class="form-group col-lg-12">
-                                            <button class="btn btn-primary btn-block fs-14 fw-600">valider votre credit</button>
+                                            <button type="submit" class="btn btn-primary btn-block fs-14 fw-600">valider votre credit</button>
                                         </div>
                                     
                                           <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">

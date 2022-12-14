@@ -1,5 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { CompteCourant } from 'src/app/models/compte-courant';
 
 @Injectable({
@@ -8,15 +9,19 @@ import { CompteCourant } from 'src/app/models/compte-courant';
 export class ComptecourantService {
   private API_URL = "http://localhost:8083/JMLessous/Compte";
   constructor(private httpClient: HttpClient) { }
-
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+    }),
+  };
   getAllCompteC(){
     return this.httpClient.get(`${this.API_URL}/Listaccounts`)
   }
-  addCompteC(CompteCourant : any,iduser :any) {
-    return this.httpClient.post(`${this.API_URL}/AddAccount/${iduser}`,CompteCourant)
+  addCompteC(compteCourant :CompteCourant ,iduser :any): Observable<CompteCourant> {
+    return this.httpClient.post<CompteCourant>(`${this.API_URL}/AddAccount/${iduser}`,compteCourant);
   }
 
-  editCompteC(CompteCourant : any){
+  editCompteC(CompteCourant : any): Observable<Object>{
     return this.httpClient.put(`${this.API_URL}/modify-Account`, CompteCourant)
   }
 

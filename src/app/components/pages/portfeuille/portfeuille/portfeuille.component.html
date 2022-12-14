@@ -1,0 +1,280 @@
+<app-header></app-header>
+<app-breadcrumb></app-breadcrumb>
+
+<div class="container-fluid py-4">
+    <div class="row">
+        <div >
+            <div class="card mb-4">
+                <div class="card-header pb-0">
+                  <h6>Mon Portfeuille</h6>
+            </div>
+                <br>
+                <div *ngIf="portfeuille == null" class="card-body px-0 pt-0 pb-2">
+                    <div class="container">
+                        <div class="align-middle text-center text-sm" >
+                            <span class="text-primary text-xs font-weight-bold">
+                                Vous n'avez pas de Portfeuille 
+                            </span>
+                        <br>
+                            <button class="badge badge-sm bg-gradient-success"  (click)="openDialogPortfeuille(portfeuilleD)">Créer votre Portfeuille</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div *ngIf="portfeuille != null" class="card-body px-0 pt-0 pb-2">
+                    <div class=" text-center text-sm" >
+                        <span class="text-primary text-lg-start font-weight-bold">
+                            Vous trouvez ici toutes les informations nécessaire à propos votre portfeuille.
+                        </span>
+                    </div>
+                    <br>
+                    <div >
+                            <div class="col-5" style="display:inline-block">
+                                <div class="card bg-gradient-secondary">
+                                    <div class="card-body">
+                                        <div class="row">
+                                        <div class="col">
+                                            <h5 class="card-title text-center text-uppercase text-secondary text-xxs font-weight-bolder text-white">
+                                            Votre Liquidité</h5>
+                                            
+                                            <span class="text-center text-uppercase text-secondary text-xxs font-weight-bolder text-white"><h2>{{portfeuille.solde | number : '1.2' }}</h2></span>
+                                        </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>  
+
+                            <div class="col-2" style="display:inline-block">
+                             
+                            </div>
+
+                            <div class="col-5 " style="display:inline-block">
+                                <div class="card bg-gradient-secondary">
+
+                                <div class="card-body">
+                                    <div class="row">
+                                    <div class="col">
+                                        <h5 class="card-title text-center text-uppercase text-secondary text-xxs font-weight-bolder text-white">
+                                        Performance Générale</h5>
+                                        
+                                        <span *ngIf="(portfeuille.gain  / portfeuille.montant)<0"  class="text-center text-uppercase text-danger text-xxs font-weight-bolder "><h2>{{(portfeuille.gain  / portfeuille.montant) * 100 | number : '1.2'}}%</h2></span>
+                                        <span *ngIf="(portfeuille.gain  / portfeuille.montant)>0" class="text-center text-uppercase text-success text-xxs font-weight-bolder "><h2>{{(portfeuille.gain  / portfeuille.montant) * 100 | number : '1.2'}}%</h2></span>
+                                        <span *ngIf="portfeuille.gain  == 0" class="text-center text-uppercase text-secondary text-xxs font-weight-bolder text-white"><h2>0%</h2></span>
+                                    </div>
+
+                                    </div>
+                                </div>
+                                </div>
+                            </div> 
+                        
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <div *ngIf="portfeuille !=null" class="row">
+      <div class="col-12">
+        <div class="card mb-4">
+          <div class="card-header pb-0">
+            <h6>Mes Valeurs</h6>
+          </div>
+          <div *ngIf="produits.length > 0" class="card-body px-0 pt-0 pb-2">
+            <div class="table-responsive p-0">
+              <table class="table align-items-center mb-0">
+                <thead>
+                  <tr>
+                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-10" >Action</th>
+                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-10">Nom de valeur</th>
+                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-10">Quantité</th>
+                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-10">Prix</th>
+                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-10">Montant</th>
+                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-10">Dernier</th>
+                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-10">Capital</th>
+                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-10">Gain(dt)</th>
+                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-10">Gain(%)</th>
+                    <!--<th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Author</th>
+                    <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Function</th>
+                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
+                    <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Employed</th>
+                    <th class="text-secondary opacity-7"></th>-->
+                  </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let produit of produits;let i = index">
+                        <td class="align-middle text-center text-sm"><button class="badge badge-sm bg-gradient-danger" (click)="openDialog(quantite,produit.isin,produit.last,produit.titre)">Vendre</button></td>
+                        <td class="align-middle text-center text-sm" ><span class="text-primary text-xs font-weight-bold">{{produit.titre}}</span></td>
+                        <td class="align-middle text-center text-sm"><span class="text-primary text-xs font-weight-bold">{{produit.quantite}}</span></td>
+                        <td class="align-middle text-center text-sm"><span class="text-primary text-xs font-weight-bold">{{produit.montantAchat | number : '1.2'}}</span></td>
+                        <td class="align-middle text-center text-sm"><span class="text-primary text-xs font-weight-bold">{{produit.montant | number : '1.2'}}</span></td>
+                        <td class="align-middle text-center text-sm"> <span class="text-primary text-xs font-weight-bold"> {{produit.last | number : '1.2'}}</span></td>
+                        <td class="align-middle text-center text-sm"><span class="text-primary text-xs font-weight-bold">{{produit.capital | number : '1.2'}}</span></td>
+                        <td *ngIf="produit.gain<0"  class="align-middle text-center text-sm"><span class="text-danger text-xs font-weight-bold">{{produit.gain | number : '1.2'}}</span></td>
+                        <td *ngIf="produit.gain>0"  class="align-middle text-center text-sm"><span class="text-success text-xs font-weight-bold">{{produit.gain | number : '1.2'}}</span></td>
+                        <td *ngIf="produit.gain==0"  class="align-middle text-center text-sm"><span class="text-secondary text-xs font-weight-bold">{{produit.gain | number : '1.2'}}</span></td>
+                        <td *ngIf="(produit.gain / produit.montant)<0" class="align-middle text-center text-sm"><span class="text-danger text-xs font-weight-bold">{{(produit.gain / produit.montant) * 100 | number : '1.2'}} %</span></td>
+                        <td *ngIf="(produit.gain / produit.montant) >0" class="align-middle text-center text-sm"><span class="text-success text-xs font-weight-bold">{{(produit.gain / produit.montant) * 100 | number : '1.2'}} %</span></td>
+                        <td *ngIf="(produit.gain / produit.montant) ==0" class="align-middle text-center text-sm"><span class="text-secondary text-xs font-weight-bold">{{(produit.gain / produit.montant) * 100 | number : '1.2'}} %</span></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td class="align-middle text-center text-sm"><span class="text-secondary text-xs font-weight-bold">Totaux</span></td>
+                        <td class="align-middle text-center text-sm"><span class="text-primary text-xs font-weight-bold">{{portfeuille.capital | number : '1.2' }}</span></td>
+                        <td class="align-middle text-center text-sm"><span class="text-primary text-xs font-weight-bold">{{portfeuille.gain | number : '1.2' }}</span></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+          </div>
+        </div>
+        <div *ngIf="produits.length === 0" class="card-body px-0 pt-0 pb-2">
+            <div class="table-responsive p-0">
+                <div class="align-middle text-center text-sm" >
+                    <span class="text-primary text-xs font-weight-bold">
+                        Vous n'avez aucun produit 
+                    </span>
+                </div>
+                
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12">
+    <div class="card mb-4">
+      <div class="card-header pb-0">
+        <h6>Value At Risk</h6>
+      </div>
+<br>
+      <div >
+        <div class="col-5" style="display:inline-block">
+          <form #var="ngForm" (ngSubmit)="getVar()"novalidate>
+                <div class="row">
+                    <div class="form-group">
+                        <label class="text-custom-black fs-14 fw-600" >Confiance</label>
+                        <input type="number" formControlName="con" class="form-control form-control-custom"  [(ngModel)]="confiance" [ngClass]="{ 'is-invalid': submitted && con.errors }"
+                            placeholder="Intervalle de Confiance"  >
+                            <div *ngIf="submitted && con.errors" class="invalid-feedback">
+                              <div *ngIf="con.errors.min">taux minimal est 1%</div>
+                              <div *ngIf="con.errors.max">taux maximal est 99%</div>
+                              <div *ngIf="con.errors.required">Le taux de confiance est obligatoire</div>
+
+                            </div>
+                    </div>
+                </div>  
+                
+                <div class="row">
+                  <div class="form-group">
+                    <label class="text-custom-black fs-14 fw-600" >Horizon</label>
+                    <input type="number" formControlName="hor" class="form-control form-control-custom" [(ngModel)]="horizon" [ngClass]="{ 'is-invalid': submitted && hor.errors }"
+                        placeholder="Horizon en jours"  >
+                        <div *ngIf="submitted && hor.errors" class="invalid-feedback">
+                          <div *ngIf="hor.errors.required">L'horizon est obligatoire</div>
+                          <div *ngIf="hor.errors.min">Nombre de jour minimal est 1</div>
+                        </div>
+                  </div>
+                </div>
+
+                  <div class="form-group ">
+                    <button type="submit"  class="btn btn-primary btn-block fs-14 fw-600">Vérifier</button>
+                  </div>
+          </form>
+        </div>
+        <div class="col-2" style="display:inline-block"> </div>
+        <div class="col-5" style="display:inline-block;"> 
+              <div class="card bg-gradient-secondary">
+
+                <div class="card-body">
+                    <div class="row">
+                    <div class="col">
+                        <h5 class="card-title text-center text-uppercase text-secondary text-xxs font-weight-bolder text-white">
+                        Value at Risk</h5>
+                        
+                        <span class="text-center text-uppercase text-secondary text-xxs font-weight-bold text-white "><h2>{{(portfeuille.montant * Pvar)  | number : '1.1'}}</h2></span>
+                        
+                    </div>
+                    </div>
+                </div>
+                
+              </div>
+              
+              <div> {{horizon}} jour(s) Portfeuille VaR à {{confiance}}% intervalle de confiance est {{Pvar*portfeuille.montant | number : '1.1' }}
+              </div>
+        </div>
+          
+      </div>
+
+    </div>
+  </div>
+
+
+  <!--Creation de portfeuille-->
+  <ng-template #portfeuilleD let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title" style="color: #27346a">Portfeuille</h4>
+      <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+      <div class="container">
+        <form #action="ngForm" (ngSubmit)=" addPortfeuille()" novalidate>
+          <div class="row">
+              <div class="col-12">
+                  <div class="form-group">
+                      <label class="text-custom-black fs-14 fw-600" >Montant que vous voulez investir</label>
+                      <input type="number" name="#" class="form-control form-control-custom" [(ngModel)]="solde"
+                          placeholder="Montant" required>
+                  </div>
+              </div>
+            </div>
+              <div class="modal-footer">
+                <button type="submit" class="btn btn-primary">Ajouter</button>
+  
+                <button type="button" class="btn btn-outline-dark" (click)="d('Save click')">Fermer</button>
+              </div>
+        </form>
+  
+        
+      </div>
+    </div>  
+  </ng-template>
+
+    <!--Vente Produit-->
+    <ng-template #quantite let-c="close" let-d="dismiss">
+        <div class="modal-header">
+          <h4 class="modal-title" id="modal-basic-title" style="color: #27346a">{{titre}}</h4>
+          <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')"></button>
+        </div>
+        <div class="modal-body">
+          <div class="container">
+            <form #action="ngForm" (ngSubmit)=" vendre()" novalidate>
+              <div class="row">
+                  <div class="col-12">
+                      <div class="form-group">
+                          <label class="text-custom-black fs-14 fw-600" >Nombre d'actions</label>
+                          <input type="number" name="#" class="form-control form-control-custom" [(ngModel)]="nombre"
+                              placeholder="Nombre d'action" required>
+                      </div>
+                  </div>
+                </div>
+                  <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary">Valider</button>
+      
+                    <button type="button" class="btn btn-outline-dark" (click)="d('Save click')">Fermer</button>
+                  </div>
+            </form>
+      
+            
+          </div>
+        </div>
+        
+      </ng-template>
+    
+  <app-footer></app-footer>
+  
+ 

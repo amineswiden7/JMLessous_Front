@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Utilisateur } from 'src/app/models/utilisateur';
 import { AuthService } from '../../../services/auth.service';
 
 @Component({
@@ -8,18 +9,23 @@ import { AuthService } from '../../../services/auth.service';
 })
 export class RegisterComponent implements OnInit {
 
-  form: any = {};
+  user= new Utilisateur() ;
   isSuccessful = false;
   isSignUpFailed = false;
   errorMessage = '';
-
-  constructor(private authService: AuthService) { }
+prenom:string="";
+  constructor(private authService: AuthService) { 
+    this.user.role="CLIENT";
+  }
 
   ngOnInit(): void {
+   console.log(this.user)
   }
 
   onSubmit(): void {
-    this.authService.register(this.form).subscribe(
+    console.log(this.user)
+    this.user.prénom=this.prenom;
+    this.authService.register(this.user).subscribe(
       data => {
         console.log(data);
         this.isSuccessful = true;

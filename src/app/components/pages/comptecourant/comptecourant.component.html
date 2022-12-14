@@ -1,63 +1,204 @@
 <app-header></app-header>
 <div class="overlapsec"></div>
 <app-breadcrumb></app-breadcrumb>
-<!-- Start Contact -->
-<section class="section-padding bg-gray contact-us">
+<!-- Start User Details -->
+<section class="section-padding-bottom user-info-details">
     <div class="container">
         <div class="row">
-            <div class="col-xl-5 col-lg-4 mb-md-80">
-                <div class="contact-form full-height align-self-center bx-wrapper bg-custom-white">
-                    <h4 class="text-custom-black fw-600">Get In Touch</h4>
-                    <p class="text-light-white no-margin">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                        do eiusmod tempor incididunt.</p>
-                    <form class="form-layout-1">
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label class="text-left">First Name</label>
-                                    <input type="text" name="#" class="form-control" placeholder="First Name">
+            <div class="offset-lg-3 col-lg-6">
+                <div class="user-info-tabs">
+                    <ng-wizard [config]="defaultconfig" (stepChanged)="stepChanged($event)" class="step-app">
+                        <ng-wizard-step [description]="'Basic Info'">
+                            <div class="step-tab-inner">
+                                <div class="heading text-center">
+                                    <h4 class="text-custom-black fw-600">Enter Les Informations Basiques</h4>
+                                    <p class="text-custom-black">Vérifier que vous etes client de la banque<sup>*</sup></p>
                                 </div>
+                                <form>
+                                    <div class="row">
+                                        
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="text-custom-black fs-14 fw-600">Nom</label>
+                                                <input type="text" name="#" class="form-control form-control-custom"
+                                                value="{{Utilisateur.nom}}" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="text-custom-black fs-14 fw-600">Prénom</label>
+                                                <input type="text" name="#" class="form-control form-control-custom"
+                                                value="{{Utilisateur.prenom}}" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="text-custom-black fs-14 fw-600">Date de naissance</label>
+                                                <input type="text" name="#" class="form-control form-control-custom"
+                                                value="{{Utilisateur.dateNaissance}}" disabled>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="text-custom-black fs-14 fw-600">Adresse Email</label>
+                                                <input type="email" name="#" class="form-control form-control-custom"
+                                                value="{{Utilisateur.email}}" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="radio-box form-group">
+                                                <div class="custom-radio">
+                                                    <input id="phone1" name="phonetype" type="radio" checked>
+                                                    <label for="phone1">ETUDIANT</label>
+                                                </div>
+                                                <div class="custom-radio">
+                                                    <input id="phone2" name="phonetype" type="radio">
+                                                    <label for="phone2">SALARIE</label>
+                                                </div>
+                                                <div class="custom-radio">
+                                                    <input id="phone3" name="phonetype" type="radio">
+                                                    <label for="phone3">LIBRE</label>
+                                                </div>
+                                                <div class="custom-radio">
+                                                    <input id="phone3" name="phonetype" type="radio">
+                                                    <label for="phone3">AUTRE</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                 
+                                 
+                                    </div>
+                                </form>
                             </div>
-                            <div class="col-sm-6">
-                                <div class="form-group">
-                                    <label class="text-left">Last Name</label>
-                                    <input type="text" name="#" class="form-control" placeholder="Last Name">
+                        </ng-wizard-step>
+                        <ng-wizard-step [description]="'Personal Info'">
+                            <div class="step-tab-inner">
+                                <div class="heading text-center">
+                                    <h4 class="text-custom-black fw-600">Enter Les Information Personnelles</h4>
                                 </div>
+                                <form>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label class="text-custom-black fs-14 fw-600">Numéro carte d'identité</label>
+                                                <input type="number" name="#" class="form-control form-control-custom"
+                                                value="{{Utilisateur.cin}}" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label class="text-custom-black fs-14 fw-600">Adresse</label>
+                                                <input type="text" name="#" class="form-control form-control-custom"
+                                                value="{{Utilisateur.adresse}}" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label class="text-custom-black fs-14 fw-600">Téléphone</label>
+                                                <input type="number" name="#" class="form-control form-control-custom"
+                                                value="{{Utilisateur.telephone}}" disabled>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label class="text-custom-black fs-14 fw-600">Salaire</label>
+                                                <input type="text" name="#" class="form-control form-control-custom"
+                                                value="{{Utilisateur.salaire}}" disabled>
+                                            </div>
+                                        </div>
+                                       
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label class="custom-checkbox text-custom-black">
+                                                    <input type="checkbox" name="#">
+                                                    <span class="checkmark"></span>
+                                                    J'accepte les <a href="#">termes et conditions</a> et <a
+                                                        href="#">la politique de confidentialité.</a>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
-                            <div class="col-12 mb-xl-20">
-                                <div class="form-group">
-                                    <label class="text-left">Email Address</label>
-                                    <input type="email" name="#" class="form-control" placeholder="Email Address">
+                        </ng-wizard-step>
+                        <ng-wizard-step [description]="'Business Location'">
+                            <div class="step-tab-inner">
+                                <div class="heading text-center">
+                                    <h4 class="text-custom-black fw-600">Enter Les Informations Du Compte</h4>
                                 </div>
-                                <div class="form-group">
-                                    <label class="text-left">Message</label>
-                                    <textarea rows="5" name="#" class="form-control"
-                                        placeholder="Write Something"></textarea>
-                                </div>
+                                <form  (ngSubmit)="addCompte()" >
+                                    <div class="row">
+                                    
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label class="text-custom-black fs-14 fw-600">Vercement Initial</label>
+                                                <input type="number" name="#" class="form-control form-control-custom"
+                                                    placeholder="Vercement Initial."
+                                                    [(ngModel)]="comptecourant.solde"
+                                                    required
+                                                    minlength="7"
+                                                    #solde="ngModel">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">   
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label class="text-custom-black fs-14 fw-600">Etes vous sur de creer un compte chez Jmlessous</label>
+                                                <div class="radio-box">
+                                                    <div class="custom-radio">
+                                                        <input id="yes" name="nationality" type="radio" checked>
+                                                        <label for="yes">Oui</label>
+                                                    </div>
+                                                    <div class="custom-radio">
+                                                        <input id="no" name="nationality" type="radio">
+                                                        <label for="no">Non</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label class="custom-checkbox text-custom-black">
+                                                    <input type="checkbox" name="#">
+                                                    <span class="checkmark"></span>
+                                                    J'accepte de recevoir les divulgations de mon compte par voie électronique à n'importe quel e-mail
+                                                    adresse fournie par moi.
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label class="custom-checkbox text-custom-black">
+                                                    <input type="checkbox" name="#">
+                                                    <span class="checkmark"></span>
+                                                    Je comprends qu'en cliquant sur le bouton "Soumettre" ci-dessous, je suis
+                                                    client actif à Jmlessous. Répondre à ces questions
+                                                    me permet de créer mon compte et n'aura pas d'impat Personnel.Je
+                                                    comprendre que si je signe le contrat , Jmlessous,
+                                                    n'effectuera pas ma sécurité publique et mes données Personnelles.
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-lg-12">
+                                            <button class="btn btn-primary btn-block fs-14 fw-600" 
+                                            (click)="goToUserCompte()">valider votre compte</button>
+                                        </div>
+                                        
+                                    </div>
+                                </form>
+                                <div class="alert alert-success" *ngIf="isSuccessful">
+                                     successful!
+                                  </div>
                             </div>
-                            <div class="col-12">
-                                <button type="submit"
-                                    class="btn-first btn-submit text-light-blue full-width">Submit</button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-            <div class="col-xl-7 col-lg-8">
-                <iframe title="map" class="full-width full-height"
-                    src="https://maps.google.com/maps?q=university%20of%20san%20francisco&amp;t=&amp;z=13&amp;ie=UTF8&amp;iwloc=&amp;output=embed"></iframe>
-            </div>
-        </div>
-    </div>
-</section>
-<!-- End Contact -->
-<!-- Start Contact Bottom -->
-<section class="section-padding bg-gray contact-bottom">
-    <div class="container">
-        <div class="row">
-            
-        </div>
-    </div>
-</section>
-<!-- End Contact Bottom -->
+                        </ng-wizard-step>
+                       </ng-wizard>
+                       </div>
+                       </div>
+                       </div>
+                       </div>
+                       </section>              
+<!-- Start User Details -->
+
 <app-footer></app-footer>
