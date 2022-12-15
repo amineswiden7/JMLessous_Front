@@ -4,7 +4,7 @@ export class Utilisateur {
       cin:any;
 
      nom:any;
-     prénom:any;
+     prenom:any;
     
      dateNaissance:any;
     telephone:any;

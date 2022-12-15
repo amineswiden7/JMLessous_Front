@@ -40,8 +40,8 @@ export class CreditImmobilierService {
     getCredit(idUser:number):Observable<CreditImmobilier>{
       return this.httpClient.get<CreditImmobilier>(`${this.API_URL}/retrieve-all-credit/${idUser}`);
     }
-    downloadFile(Credit: Amortissement[]) {
-      return this.httpClient.post<any>(`${this.API_URL}/export/excel`, {responseType: 'arraybuffer' as'json',Credit});
+    downloadFile() {
+      return this.httpClient.get<any>(`${this.API_URL}/export/excel`,{responseType: 'arraybuffer' as 'json'});
     }
     downloaddFile(Credit: Amortissement[]) {
       return this.httpClient.get<any>(`${this.API_URL}/export`);

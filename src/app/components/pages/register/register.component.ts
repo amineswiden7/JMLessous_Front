@@ -24,7 +24,7 @@ prenom:string="";
 
   onSubmit(): void {
     console.log(this.user)
-    this.user.prénom=this.prenom;
+    this.user.prenom=this.prenom;
     this.authService.register(this.user).subscribe(
       data => {
         console.log(data);
