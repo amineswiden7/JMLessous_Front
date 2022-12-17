@@ -1,0 +1,214 @@
+<!-- Start User Details -->
+<app-header></app-header>
+<breadcrumb #parent>
+    <div class="sub-header p-relative">
+      <div class="overlay overlay-bg-black"></div>
+      <div class="pattern"></div>
+      <div class="section-padding">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+  
+                <div class="sub-header-content p-relative">
+                  <h1 class="text-custom-white lh-default fw-600">Absence</h1>
+                  <ul class="custom">
+                    <li><a >Home</a></li>
+                    <li >
+  
+                        <a class="text-custom-white">Ajout d'absence</a>
+                    </li>
+  
+                  </ul>
+                </div>
+  
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </breadcrumb>
+<section class="section-padding-bottom user-info-details">
+    <div class="container">
+        <div class="row">
+            <div class="offset-lg-3 col-lg-6">
+                <div class="user-info-tabs">
+                    <ng-wizard [config]="defaultconfig" (stepChanged)="stepChanged($event)" class="step-app">
+                        <ng-wizard-step [description]="'Basic Info'">
+                            <div class="step-tab-inner">
+                                <div class="heading text-center">
+                                    <h4 class="text-custom-black fw-600">Entrer l'absence d'un employé</h4>
+                                   
+                                </div>
+                                <form  *ngIf="!isSuccessful"
+                                name="form"
+                                (ngSubmit)="f.form.valid && addAbsence()"
+                                #f="ngForm"
+                                novalidate>
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label class="text-custom-black fs-14 fw-600">Date Debut</label>
+                                                <input 
+                                                    class="form-control form-control-custom"
+                                                    placeholder="dateDebut"
+                                                    type="date"
+                                                    name="dateDebut"
+                                                    [(ngModel)]="Absence.dateDebut"
+                                                    required
+                                                    #montantCredit="ngModel">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="text-custom-black fs-14 fw-600">Date Fin</label>
+                                                <input 
+                                                class="form-control form-control-custom"
+                                                placeholder="dateFin"
+                                                type="date"
+                                                name="dateFin"
+                                                [(ngModel)]="Absence.dateFin"
+                                                required
+                                                #duree="ngModel">
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="text-custom-black fs-14 fw-600">Motif d'absence</label>
+                                                <input type="text" 
+                                                class="form-control datepickrnew form-control-custom"
+                                                placeholder="motif"
+                                                name="motif"
+                                                [(ngModel)]="Absence.motif"
+                                                required
+                                                #motif="ngModel"
+                                                >
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="text-custom-black fs-14 fw-600"> Employé</label>
+                                                <select class="custom-select form-control form-control-custom"
+                                                placeholder="utilisateur"
+                                                name="utilisateurAbsence"
+                                                [(ngModel)]="Absence.utilisateurAbsence"
+                                                required
+                                                 >
+                                                 <option>employé</option>
+                                                    <option *ngFor = "let g of listU" >{{g.nom}}</option>
+                                                   
+                                                </select>
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label class="text-custom-black fs-14 fw-600"> type d'absence</label>
+                                              <select  class="custom-select form-control form-control-custom" [(ngModel)]="Absence.typeAbsence"  placeholder="type d'absence" [ngModelOptions]="{standalone: true}">
+                                                <option  class="form-control" selected value="CONGE">Congé </option>
+                                                <option class="form-control" value="ABSENCENONJUSTIFIEE">Absence non justifiée </option>
+                                               
+                                              </select>
+                                            </div>
+                                          
+                                        </div>
+
+
+
+
+
+
+
+                                       <!-- <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="text-custom-black fs-14 fw-600"> ajouter l'utilisateur</label>
+                                                <select class="custom-select form-control form-control-custom"
+                                                
+                                                name="idUser"
+                                                [(ngModel)]="idUser"
+                                                required
+                                                #idUser="ngModel" >
+                                                    <option>utilisateur</option>
+                                                    <option *ngFor = "let u of listU" >{{u.idUser}}</option>
+                                                   
+                                                </select>
+                                               
+                                            </div>
+
+                                        </div>
+                                        -->
+                                       <!--
+                                        <div class="col-12">
+                                            <div class="radio-box form-group">
+                                                <div class="custom-radio">
+                                                    <input id="phone1" name="phonetype" type="radio" checked>
+                                                    <label for="phone1">Business</label>
+                                                </div>
+                                                <div class="custom-radio">
+                                                    <input id="phone2" name="phonetype" type="radio">
+                                                    <label for="phone2">Mobile</label>
+                                                </div>
+                                                <div class="custom-radio">
+                                                    <input id="phone3" name="phonetype" type="radio">
+                                                    <label for="phone3">Home</label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label class="text-custom-black fs-14 fw-600">Primary Loan
+                                                    Purpose</label>
+                                                <select class="custom-select form-control form-control-custom">
+                                                    <option>Purchase business location</option>
+                                                    <option>Option 2</option>
+                                                    <option>Option 3</option>
+                                                    <option>Option 4</option>
+                                                    <option>Option 5</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                <label class="text-custom-black fs-14 fw-600">Reference</label>
+                                                <select class="custom-select form-control form-control-custom">
+                                                    <option>Banner/Digital Ad</option>
+                                                    <option>Option 2</option>
+                                                    <option>Option 3</option>
+                                                    <option>Option 4</option>
+                                                    <option>Option 5</option>
+                                                </select>
+                                            </div>
+                                        </div> -->
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label class="custom-checkbox text-custom-black">
+                                                    <input type="checkbox" name="#">
+                                                    <span class="checkmark"></span>
+                                                    I Agree to the <a href="#">terms & conditions</a> and <a
+                                                        href="#">privacy policy.</a>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-lg-12">
+                                            <button type="submit" class="btn btn-primary btn-block fs-14 fw-600">Valider</button>
+                                        </div>
+                                    
+                                          <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
+                                            Signup failed!<br />{{ errorMessage }}
+                                          </div>
+                                    </div>
+                                </form>
+                                <div class="alert alert-success" *ngIf="isSuccessful">
+                                    Your registration is successful!
+                                  </div>
+                            </div>
+                        </ng-wizard-step>
+                        
+                        
+                    </ng-wizard>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<app-footer></app-footer>
+<!-- Start User Details -->

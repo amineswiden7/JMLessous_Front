@@ -18,8 +18,8 @@ import { Absence } from "src/app/models/absence";
       getAllAbsence():Observable<Absence[]>{
         return this.httpClient.get<Absence[]>(`${this.API_URL}/retrieve-all-Absence`);
       }
-      createCredit(Credit: Absence,idUser:number): Observable<Absence>{
-        return this.httpClient.post<Absence>(`${this.API_URL}/add-creditImob/1`, Credit);
+      createAbsence(Absence: Absence): Observable<Absence>{
+        return this.httpClient.post<Absence>(`${this.API_URL}/add-Absence`, Absence);
       }
       getAllAbsencebyuser(idUser:number):Observable<Absence[]>{
         return this.httpClient.get<Absence[]>(`${this.API_URL}/retrieve-all-Absence/${idUser}`);

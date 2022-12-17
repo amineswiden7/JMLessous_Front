@@ -69,6 +69,9 @@ import { CreditEtuComponent } from './components/pages/CreditEtudiant/credit-etu
 
 
 import { AuthInterceptor } from './helpers/authInterceptor';
+import { CreateAbsenceComponent } from './components/pages/Absence/create-absence/create-absence.component';
+import { ListeAbsenceComponent } from './components/pages/Absence/liste-absence/liste-absence.component';
+import { ListeAbsenceByClientComponent } from './components/pages/Absence/liste-absence-by-client/liste-absence-by-client.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -123,7 +126,10 @@ import { AuthInterceptor } from './helpers/authInterceptor';
     ListeCreditBackComponent,
     ListCreditsComponent,
     ListCreditsBackComponent,
-    CreditEtuComponent
+    CreditEtuComponent,
+    CreateAbsenceComponent,
+    ListeAbsenceComponent,
+    ListeAbsenceByClientComponent
 
    
 
