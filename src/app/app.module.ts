@@ -36,6 +36,17 @@ import { GarantieComponent } from './components/pages/garantie/garantie.componen
 import { AjoutCreditLibreComponent } from './components/pages/credit-libre/ajout-credit-libre/ajout-credit-libre.component';
 import { SimulateurCreditLibreComponent } from './components/pages/simulateur-credit-libre/simulateur-credit-libre.component';
 import { TabAmortissementLibreComponent } from './components/pages/simulateur-credit-libre/tab-amortissement-libre/tab-amortissement-libre.component';
+import { ConfigOffreAssuranceComponent } from './components/pages/assurance/config-offre-assurance/config-offre-assurance.component';
+import {NgWizardModule} from 'ng-wizard';
+import { OffresAssureursComponent } from './components/pages/assurance/offres-assureurs/offres-assureurs.component';
+import { SideBarOffresAssureursComponent } from './components/pages/assurance/offres-assureurs/side-bar-offres-assureurs/side-bar-offres-assureurs.component';
+import {NgxPaginationModule} from 'ngx-pagination';
+import { BankOffreAssurListComponent } from './components/pages/assurance/bank-offre-assur-list/bank-offre-assur-list.component';
+import { OffreValidationComponent } from './components/pages/assurance/offre-validation/offre-validation.component';
+import { ContractRegistrationComponent } from './components/pages/assurance/contract-registration/contract-registration.component';
+import {SlickCarouselModule} from 'ngx-slick-carousel';
+import { ContractsListAgComponent } from './components/pages/assurance/contracts-list-ag/contracts-list-ag.component';
+import { ContractsListClientComponent } from './components/pages/assurance/contracts-list-client/contracts-list-client.component';
 
 
 
@@ -56,7 +67,7 @@ import { TabAmortissementLibreComponent } from './components/pages/simulateur-cr
 
     AddOffreAssuranceComponent,
     CreditLibreComponent,
- 
+
     ComptecourantComponent,
 
 
@@ -66,11 +77,19 @@ import { TabAmortissementLibreComponent } from './components/pages/simulateur-cr
     GarantieComponent,
     AjoutCreditLibreComponent,
     SimulateurCreditLibreComponent,
-    TabAmortissementLibreComponent
+    TabAmortissementLibreComponent,
+    ConfigOffreAssuranceComponent,
+    OffresAssureursComponent,
+    SideBarOffresAssureursComponent,
+    BankOffreAssurListComponent,
+    OffreValidationComponent,
+    ContractRegistrationComponent,
+    ContractsListAgComponent,
+    ContractsListClientComponent
 
 
   ],
-  imports: [
+    imports: [
         BrowserModule,
         FormsModule,
         AppRoutingModule,
@@ -82,9 +101,12 @@ import { TabAmortissementLibreComponent } from './components/pages/simulateur-cr
         MatTableModule,
         MatTabsModule,
         ReactiveFormsModule,
-        AngularEditorModule 
+        AngularEditorModule,
+        NgWizardModule,
+        NgxPaginationModule,
+        SlickCarouselModule
     ],
-  providers: [ ],
+  providers: [OffresAssureursComponent ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

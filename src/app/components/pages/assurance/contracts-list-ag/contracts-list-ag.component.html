@@ -1,0 +1,58 @@
+<app-header></app-header>
+<app-breadcrumb></app-breadcrumb>
+<section class="section-padding our_articles">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-heading">
+        <h3 class="text-custom-black fw-700">Contrats enregistrés</h3>
+        <div class="section-description">
+          <p class="text-light-white">Liste des contrats enregistrés pour cette offre</p>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12 no-padding">
+        <ngx-slick-carousel #slickModal="slick-carousel" [config]="blogConfig" class="blog-slider">
+          <article ngxSlickItem class="post col-12" *ngFor="let contrat of listeContrats">
+            <div class="single-blog">
+              <div class="post-meta">
+                <div class="post-date"><a routerLink="/blog-single/{{contrat.idContrat}}"
+                                          class="text-custom-white"> {{contrat.dateAjout | date: 'dd/MM/yyyy'}}</a>
+                </div>
+              </div>
+              <div class="blog-photo">
+                <img *ngIf="contrat.statut=='PENDING'" src="https://novalex.co/wp-content/uploads/2021/09/redaction-contrat.jpeg" class="full-width full-height" style="width: 350px; height: 233px" alt="Contrat en cours de validation">
+                <img *ngIf="contrat.statut=='REGULATED'" src="https://img.freepik.com/photos-premium/partenariat-poignee-main-deux-hommes-affaires-apres-signature-du-contrat-travail-au-bureau-salle-reunion_33829-185.jpg?w=2000" style="width: 350px; height: 233px" class="full-width full-height" alt="Contrat accepté et reglé">
+                <img *ngIf="contrat.statut=='REJECTED'" src="https://assets.greentechmedia.com/assets/content/cache/made/assets/content/cache/remote/https_assets.greentechmedia.com/content/images/articles/Rejected_stamp_XL_721_420_80_s_c1.jpg" style="width: 350px; height: 233px" class="full-width full-height" alt="Contrat rejeté">
+              </div>
+              <div class="post-contnet">
+                <h2 class="post-title text-custom-black">Catégorie du contrat : {{contrat.categorie}}</h2>
+                <h6 class="text-custom-black">Statut : {{contrat.statut}}</h6>
+                <p class="text-light-white">Prime : {{contrat.prime}} DT.</p>
+                <p class="text-light-white">Date début : {{contrat.dateDebut | date: 'dd/MM/yyyy'}}</p> <p class="text-light-white">Date fin : {{contrat.dateFin | date: 'dd/MM/yyyy'}}
+                </p>
+<!--                <div class="post-author"> <span class="text-custom-black fw-500 fs-14">Nom et prénom du propriétaire :-->
+<!--                                        <a class="text-light-blue">{{contrat.nomPrenomAssure}}</a></span>-->
+<!--                </div>-->
+              </div>
+              <div class="blog-overlay">
+                <div class="right-text-effect post-content">
+                  <h2 class="post-title"><a class="text-white">Informations du propriétaire du contrat</a></h2>
+                  <p>Nom et prénom : {{contrat.nomPrenomAssure}}</p>
+                  <p>N° CIN : {{contrat.cinAssure}}</p>
+                  <p>N° du téléphone : {{contrat.telAssure}}</p>
+                  <p>Email : {{contrat.emailAssure}}</p>
+                </div>
+                <div class="blog-read-more-icon" *ngIf="contrat.statut=='PENDING'">
+                  <div class="post-author"><a (click)="decliner(contrat.idContrat)" class="btn fw-500 fs-14">Décliner</a></div>
+                  <a (click)="accepter(contrat.idContrat)" class="btn fw-500 fs-14">Marquer comme réglé</a>
+                </div>
+              </div>
+            </div>
+          </article>
+        </ngx-slick-carousel>
+      </div>
+    </div>
+  </div>
+</section>
+<app-footer></app-footer>

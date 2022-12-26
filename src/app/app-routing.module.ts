@@ -16,6 +16,13 @@ import { ComptecourantComponent } from './components/pages/comptecourant/comptec
 
 import { CreditLibreComponent } from './components/pages/credit-libre/credit-libre.component';
 import { SimulateurCreditLibreComponent } from './components/pages/simulateur-credit-libre/simulateur-credit-libre.component';
+import {ConfigOffreAssuranceComponent} from './components/pages/assurance/config-offre-assurance/config-offre-assurance.component';
+import {OffresAssureursComponent} from './components/pages/assurance/offres-assureurs/offres-assureurs.component';
+import {BankOffreAssurListComponent} from './components/pages/assurance/bank-offre-assur-list/bank-offre-assur-list.component';
+import {OffreValidationComponent} from './components/pages/assurance/offre-validation/offre-validation.component';
+import {ContractRegistrationComponent} from './components/pages/assurance/contract-registration/contract-registration.component';
+import {ContractsListAgComponent} from './components/pages/assurance/contracts-list-ag/contracts-list-ag.component';
+import {ContractsListClientComponent} from './components/pages/assurance/contracts-list-client/contracts-list-client.component';
 
 
 
@@ -57,6 +64,13 @@ const routes: Routes = [
   { path: 'offre-assurance', component : OffreassurancelistComponent},
   { path: 'offre-assurance/:id', component : OffreassurancedetailComponent },
   { path: 'add-offre', component : AddOffreAssuranceComponent },
+  { path: 'config-offre/:id', component : ConfigOffreAssuranceComponent },
+  { path: 'offres-assureurs', component : OffresAssureursComponent },
+  { path: 'offres-list-bank', component : BankOffreAssurListComponent },
+  { path: 'offre-validation/:id', component : OffreValidationComponent },
+  { path: 'offre-contrats-ag/:id', component : ContractsListAgComponent },
+  { path: 'mycontratslist/:id', component : ContractsListClientComponent },
+  { path: 'contract-registration/:id', component : ContractRegistrationComponent },
   { path: '**', loadChildren: () => import('./components/pages/error/error.module').then(m => m.ErrorModule), data: { breadcrumb: 'Error 404' } }
 ];
 
