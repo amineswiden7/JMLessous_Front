@@ -1,0 +1,51 @@
+<app-header></app-header>
+<app-breadcrumb></app-breadcrumb>
+<section class="section-padding bg-gray our-articles">
+  <div class="container">
+    <div class="row">
+      <aside class="col-lg-4 mb-md-80">
+        <app-side-bar-offres-assureurs></app-side-bar-offres-assureurs>
+      </aside>
+      <div class="col-lg-8">
+        <div class="row">
+          <article class="col-lg-6 col-md-6 post mb-xl-30" *ngFor="let item of diffused | paginate: { itemsPerPage: 4, currentPage: page }">
+            <div class="post-wrapper">
+              <div class="blog-img animate-img">
+                <a routerLink="/offre-assurance/{{item.idOffreAssurance}}" [ngSwitch]="item.categorie">
+                  <img *ngSwitchCase="'AUTOMOBILE'" src="assets/images/assurance/voiture.jpg" class="image-fit"
+                       alt="{{item.categorie}}">
+                  <img *ngSwitchCase="'HABITATION'" src="assets/images/assurance/maison2.jpg" class="image-fit"
+                       alt="{{item.categorie}}">
+                  <img *ngSwitchCase="'RENTE_VIAGERE'" src="assets/images/assurance/ecole.jpg" class="image-fit"
+                       alt="{{item.categorie}}">
+                  <img *ngSwitchCase="'RESPONSABILITE_CIVILE'" src="assets/images/assurance/civil.jpg" class="image-fit"
+                       alt="{{item.categorie}}">
+                  <img *ngSwitchCase="'EMPRUNTEUR'" src="assets/images/assurance/emprunt.jpg" class="image-fit"
+                       alt="{{item.categorie}}">
+                </a>
+              </div>
+              <div class="blog-meta padding-20">
+                <div class="post-content">
+                  <h2><a routerLink="/offre-assurance/{{item.idOffreAssurance}}"
+                         class="text-custom-black fw-600">{{item.assurance | slice:0:25}}</a></h2>
+                  <p class="text-light-white">{{item.shortDescription}}</p>
+                </div>
+                <a *ngIf="item.statut=='NOTPUBLISHED'" routerLink="/config-offre/{{item.idOffreAssurance}}" class="btn btn-primary">Configurer l'offre</a>
+                <a *ngIf="item.statut=='PUBLISHED'" routerLink="/offre-contrats-ag/{{item.idOffreAssurance}}" class="btn btn-primary">Liste des contrats</a>
+
+              </div>
+            </div>
+          </article>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <nav class="mt-5">
+              <pagination-controls (pageChange)="page = $event"></pagination-controls>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<app-footer></app-footer>

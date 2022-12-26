@@ -2,7 +2,7 @@ import { OrdreComponent } from './components/pages/ordre/ordre/ordre.component';
 import { PortfeuilleComponent } from './components/pages/portfeuille/portfeuille/portfeuille.component';
 import { AddOffreAssuranceComponent } from './components/pages/assurance/add-offre-assurance/add-offre-assurance.component';
 import { OffreassuranceComponent } from './components/pages/assurance/offreassurance/offreassurance.component';
-import { NgModule } from '@angular/core'; 
+import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { RegisterComponent } from './components/pages/register/register.component';
 import { LoginComponent } from './components/pages/login/login.component';
@@ -18,16 +18,22 @@ import { ComptecourantComponent } from './components/pages/comptecourant/comptec
 
 import { CreditLibreComponent } from './components/pages/credit-libre/credit-libre.component';
 import { SimulateurCreditLibreComponent } from './components/pages/simulateur-credit-libre/simulateur-credit-libre.component';
+import {ConfigOffreAssuranceComponent} from './components/pages/assurance/config-offre-assurance/config-offre-assurance.component';
+import {OffresAssureursComponent} from './components/pages/assurance/offres-assureurs/offres-assureurs.component';
+import {BankOffreAssurListComponent} from './components/pages/assurance/bank-offre-assur-list/bank-offre-assur-list.component';
+import {OffreValidationComponent} from './components/pages/assurance/offre-validation/offre-validation.component';
+import {ContractRegistrationComponent} from './components/pages/assurance/contract-registration/contract-registration.component';
+import {ContractsListAgComponent} from './components/pages/assurance/contracts-list-ag/contracts-list-ag.component';
+import {ContractsListClientComponent} from './components/pages/assurance/contracts-list-client/contracts-list-client.component';
 
 import { AdminCreditLibreComponent } from './components/pages/admin-credit-libre/admin-credit-libre.component';
 import { UtilisateurProfileComponent } from './components/pages/utilisateur-profile/utilisateur-profile.component';
-//import { UserDashboardComponent } from './components/pages/user-dashboard/user-dashboard.component';
-
+// import { UserDashboardComponent } from './components/pages/user-dashboard/user-dashboard.component';
 import { CompteepargneComponent } from './components/compteepargne/compteepargne.component';
 import { UsercompteComponent } from './components/pages/usercompte/usercompte.component';
 import { TransactionValidComponent } from './components/pages/transaction-valid/transaction-validation.component';
 import { CurrencyconvComponent } from './components/pages/currencyconv/currencyconv.component';
-import { CreateCreditComponent } from './components/pages/CreditImmob/create-credit/create-credit.component'; 
+import { CreateCreditComponent } from './components/pages/CreditImmob/create-credit/create-credit.component';
 import { AjoutCreditLibreComponent } from './components/pages/credit-libre/ajout-credit-libre/ajout-credit-libre.component';
 import { ListesCreditsComponent } from './components/pages/CreditImmob/listes-credits/listes-credits.component';
 import { CreditDetailComponent } from './components/pages/CreditImmob/credit-detail/credit-detail.component';
@@ -42,15 +48,14 @@ import { ListCreditsBackComponent } from './components/pages/CreditEtudiant/list
 
 const routes: Routes = [
 
-  {path: 'compte',component :CompteComponent},
-  {path: 'courant',component :ComptecourantComponent},
-  {path: 'adminCreditLibre', component:AdminCreditLibreComponent},
-  {path: 'utilisateurProfile', component:UtilisateurProfileComponent},
-  {path: 'epargne',component :CompteepargneComponent},
-  {path: 'usercompte',component :UsercompteComponent},
-  {path: 'trans',component :TransactionValidComponent},
-  {path: 'currency',component :CurrencyconvComponent},
-  
+  {path: 'compte', component: CompteComponent},
+  {path: 'courant', component: ComptecourantComponent},
+  {path: 'adminCreditLibre', component: AdminCreditLibreComponent},
+  {path: 'utilisateurProfile', component: UtilisateurProfileComponent},
+  {path: 'epargne', component: CompteepargneComponent},
+  {path: 'usercompte', component: UsercompteComponent},
+  {path: 'trans', component: TransactionValidComponent},
+  {path: 'currency', component: CurrencyconvComponent},
   { path: 'coursActions', component: MarcheactionsComponent},
   { path: 'LoginPage', component: LoginComponent},
   { path: 'RegisterPage', component: RegisterComponent},
@@ -79,7 +84,6 @@ const routes: Routes = [
   { path: 'service-detail/:id', loadChildren: () => import('./components/pages/servicedetail/servicedetail.module').then(m => m.ServicedetailModule), data: { breadcrumb: 'Service Details' } },
   { path: 'team', loadChildren: () => import('./components/pages/team/team.module').then(m => m.TeamModule), data: { breadcrumb: 'Team' } },
   // tslint:disable-next-line:max-line-length
-
   { path: 'loan-dashboard', loadChildren: () => import('./components/pages/userdashboard/userdashboard.module').then(m => m.UserdashboardModule), data: { breadcrumb: 'User Dashboard' } },
   { path: 'offre-assurance', component : OffreassurancelistComponent},
   { path: 'createcredit', component : CreateCreditComponent},
@@ -94,6 +98,13 @@ const routes: Routes = [
   { path: 'ListeCreditEtu', component : ListCreditsComponent},
   { path: 'Mon-Portfeuille', component : PortfeuilleComponent },
   { path: 'Mes-Mouvement', component : OrdreComponent },
+  { path: 'config-offre/:id', component : ConfigOffreAssuranceComponent },
+  { path: 'offres-assureurs', component : OffresAssureursComponent },
+  { path: 'offres-list-bank', component : BankOffreAssurListComponent },
+  { path: 'offre-validation/:id', component : OffreValidationComponent },
+  { path: 'offre-contrats-ag/:id', component : ContractsListAgComponent },
+  { path: 'mycontratslist/:id', component : ContractsListClientComponent },
+  { path: 'contract-registration/:id', component : ContractRegistrationComponent },
   { path: '**', loadChildren: () => import('./components/pages/error/error.module').then(m => m.ErrorModule), data: { breadcrumb: 'Error 404' } }
 ];
 

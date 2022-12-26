@@ -3,13 +3,10 @@
         <div class="row">
             <div class="offset-lg-3 col-lg-6">
                 <div class="user-info-tabs">
-                    <ng-wizard  class="step-app">
-                        <ng-wizard-step [description]="'Basic Info'">
-                            <div class="step-tab-inner">
+                        <div class="step-tab-inner">
                                 <div class="heading text-center">
-                                    <h4 class="text-custom-black fw-600">Enter Basic Information</h4>
-                                    <p class="text-custom-black">Check your business's eligibility without impacting
-                                        your credit.<sup>*</sup></p>
+                                    <h4 class="text-custom-black fw-600">Informations générales</h4>
+                                    <p class="text-custom-black">Merci de renseigner les informations générales à propos votre agence et l'offre proposé.<sup>*</sup></p>
                                 </div>
                                 <form #offre="ngForm" (ngSubmit)="offre.form.valid && addOffre()" novalidate>
                                     <div class="row">
@@ -20,43 +17,52 @@
                                                     placeholder="Nom Assurance" required>
                                             </div>
                                         </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label class="text-custom-black fs-14 fw-600"  >Catégorie Assurance</label>
-                                                <select  class="form-control form-control-custom" [(ngModel)]="offreAssurance.categorie" [ngModelOptions]="{standalone: true}"
-                                                    placeholder="Choisir une catégorie" required>
-                                                    <option value="AUTOMOBILE">Assurance Automobile</option>
-                                                    <option value="HABITATION">Assurance Habitation</option>
-                                                    <option value="SCOLAIRE">Assurance Scolaire</option>
-                                                    <option value="RESPONSABILITE_CIVILE">Assurance Responsabilité civile</option>
-                                                    <option value="EMPRUNTEUR">Assurance Emprunteur</option>
-                                                </select>
-                                            </div>
+                                      <div class="col-md-6">
+                                        <div class="form-group">
+                                          <label class="text-custom-black fs-14 fw-600" >Type Assurance</label>
+                                          <select  class="form-control form-control-custom" [(ngModel)]="offreAssurance.type" [ngModelOptions]="{standalone: true}"
+                                                   placeholder="" required>
+                                            <option value="VIE">Assurance Vie</option>
+                                            <option value="NONVIE">Assurace Non Vie</option>
+                                          </select>
                                         </div>
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label class="text-custom-black fs-14 fw-600" >Type Assurance</label>
-                                                <select  class="form-control form-control-custom" [(ngModel)]="offreAssurance.type" [ngModelOptions]="{standalone: true}"
-                                                    placeholder="" required>
-                                                    <option value="VIE">Assurance Vie</option>
-                                                    <option value="NONVIE">Assurace Non Vie</option>
-                                                </select>
-                                            </div>
+                                      </div>
+                                      <div class="col-md-6" *ngIf="offreAssurance.type=='VIE'">
+                                        <div class="form-group">
+                                          <label class="text-custom-black fs-14 fw-600"  >Catégorie Assurance</label>
+                                          <select  class="form-control form-control-custom" [(ngModel)]="offreAssurance.categorie" [ngModelOptions]="{standalone: true}"
+                                                   placeholder="Choisir une catégorie" required>
+                                            <option value="EMPRUNTEUR">Assurance Emprunteur</option>
+                                            <option value="RENTE_VIAGERE">Rente viagère</option>
+                                          </select>
                                         </div>
-                                        <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label class="text-custom-black fs-14 fw-600">Période Minimale</label>
-                                                    <input type="number" class="form-control form-control-custom " [(ngModel)]="offreAssurance.minPeriode" [ngModelOptions]="{standalone: true}"
-                                                        placeholder="Période minimale du contrat" required>
-                                                </div>
-                                            </div>
-                                            <div class="col-md-6">
-                                                <div class="form-group">
-                                                    <label class="text-custom-black fs-14 fw-600">Période Maximale</label>
-                                                    <input type="number" class="form-control form-control-custom" [(ngModel)]="offreAssurance.maxPeriode" [ngModelOptions]="{standalone: true}"
-                                                        placeholder="Période minimale du contrat" required>
-                                                </div>
-                                            </div>
+                                      </div>
+                                      <div class="col-md-6" *ngIf="offreAssurance.type!='VIE'">
+                                        <div class="form-group">
+                                          <label class="text-custom-black fs-14 fw-600"  >Catégorie Assurance</label>
+                                          <select  class="form-control form-control-custom" [(ngModel)]="offreAssurance.categorie" [ngModelOptions]="{standalone: true}"
+                                                   placeholder="Choisir une catégorie" required>
+                                            <option value="AUTOMOBILE">Assurance Automobile</option>
+                                            <option value="HABITATION">Assurance Multi-risque Habitation</option>
+                                            <option value="RESPONSABILITE_CIVILE">Assurance Responsabilité civile</option>
+                                          </select>
+                                        </div>
+                                      </div>
+
+<!--                                        <div class="col-md-6">-->
+<!--                                                <div class="form-group">-->
+<!--                                                    <label class="text-custom-black fs-14 fw-600">Période Minimale</label>-->
+<!--                                                    <input type="number" class="form-control form-control-custom " [(ngModel)]="offreAssurance.minPeriode" [ngModelOptions]="{standalone: true}"-->
+<!--                                                        placeholder="Période minimale du contrat" required>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
+<!--                                            <div class="col-md-6">-->
+<!--                                                <div class="form-group">-->
+<!--                                                    <label class="text-custom-black fs-14 fw-600">Période Maximale</label>-->
+<!--                                                    <input type="number" class="form-control form-control-custom" [(ngModel)]="offreAssurance.maxPeriode"-->
+<!--                                                        placeholder="Période minimale du contrat" required>-->
+<!--                                                </div>-->
+<!--                                            </div>-->
 
 
 
@@ -72,7 +78,7 @@
                                                     <input type="number" class="text-custom-black fs-14 fw-600" value="10">
                                                 </div>
                                             </div>
-                                            
+
                                         <div class="col-12">
                                             <div class="slider">
                                               <div class="progress"></div>
@@ -84,41 +90,47 @@
 
                                         </div>-->
                                         <br>
+<!--                                        <div class="col-12">-->
+<!--                                            <div class="form-group">-->
+<!--                                                <label class="text-custom-black fs-14 fw-600">Type Période</label>-->
+<!--                                                <select  name="#" class="form-control form-control-custom" [(ngModel)]="offreAssurance.typePeriode" [ngModelOptions]="{standalone: true}"-->
+<!--                                                    placeholder="" required>-->
+<!--                                                    <option value="ANNEE">Année</option>-->
+<!--                                                    <option value="MOIS">Mois</option>-->
+<!--                                                </select>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+
+<!--                                        <div class="col-md-6">-->
+<!--                                            <div class="form-group">-->
+<!--                                                <label class="text-custom-black fs-14 fw-600">Taux d'Intéret Minimum</label>-->
+<!--                                                <input type="number" class="form-control form-control-custom " [(ngModel)]="offreAssurance.minInteret" [ngModelOptions]="{standalone: true}"-->
+<!--                                                    placeholder="Intéret minimum du contrat" required >-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+
+<!--                                        <div class="col-md-6">-->
+<!--                                            <div class="form-group">-->
+<!--                                                <label class="text-custom-black fs-14 fw-600">Taux d'Intéret Maximum</label>-->
+<!--                                                <input type="number" class="form-control form-control-custom" [(ngModel)]="offreAssurance.maxInteret"-->
+<!--                                                    placeholder="Intéret maximum du contrat" required>-->
+<!--                                            </div>-->
+<!--                                        </div>-->
+
                                         <div class="col-12">
                                             <div class="form-group">
-                                                <label class="text-custom-black fs-14 fw-600">Type Période</label>
-                                                <select  name="#" class="form-control form-control-custom" [(ngModel)]="offreAssurance.typePeriode" [ngModelOptions]="{standalone: true}"
-                                                    placeholder="" required>
-                                                    <option value="ANNEE">Année</option>
-                                                    <option value="MOIS">Mois</option>
-                                                </select>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label class="text-custom-black fs-14 fw-600">Taux d'Intéret Minimum</label>
-                                                <input type="number" class="form-control form-control-custom " [(ngModel)]="offreAssurance.minInteret" [ngModelOptions]="{standalone: true}"
-                                                    placeholder="Intéret minimum du contrat" required >
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="col-md-6">
-                                            <div class="form-group">
-                                                <label class="text-custom-black fs-14 fw-600">Taux d'Intéret Maximum</label>
-                                                <input type="number" class="form-control form-control-custom" [(ngModel)]="offreAssurance.maxInteret" [ngModelOptions]="{standalone: true}"
-                                                    placeholder="Intéret maximum du contrat" required>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-12">
-                                            <div class="form-group">
-                                                <label class="text-custom-black fs-14 fw-600">Courte Desciption</label>
+                                                <label class="text-custom-black fs-14 fw-600">Titre de l'offre</label>
                                                 <input type="text" class="form-control form-control-custom" [(ngModel)]="offreAssurance.shortDescription" [ngModelOptions]="{standalone: true}"
                                                     placeholder="Décrivez votre offre..." required>
                                             </div>
                                         </div>
-
+                                      <div class="col-12">
+                                        <div class="form-group">
+                                          <label class="text-custom-black fs-14 fw-600">Lien de votre logo</label>
+                                          <input type="text" class="form-control form-control-custom" [(ngModel)]="offreAssurance.lienLogo" [ngModelOptions]="{standalone: true}"
+                                                 placeholder="Lien valide contenant votre logo" required>
+                                        </div>
+                                      </div>
                                         <div class="col-12">
                                             <div class="form-group">
                                                 <label class="text-custom-black fs-14 fw-600">Déscription de l'offre</label>
@@ -127,25 +139,27 @@
                                                 <angular-editor [(ngModel)]="offreAssurance.description" [config]="config" [ngModelOptions]="{standalone: true}"></angular-editor>
                                             </div>
                                         </div>
-                                        <div class="form-group col-lg-12">
-                                            <button class="btn btn-primary btn-block fs-14 fw-600">Ajouter</button>
-                                        </div>
+                                    </div>
+
                                     <!--
                                         <div class="alert alert-warning" *ngIf="f.submitted && isSignUpFailed">
                                             Signup failed!<br />{{ errorMessage }}
                                         </div>-->
-                                    </div>
+
+
+                                  <div class="form-group col-lg-12">
+                                    <button class="btn btn-primary btn-block fs-14 fw-600">Ajouter</button>
+                                  </div>
+
                                 </form>
+
                             </div>
-                        </ng-wizard-step>
-                        
-                    </ng-wizard>
                 </div>
             </div>
         </div>
     </div>
 </section>
-
+<app-footer></app-footer>
 <script >
 
 const rangeInput = document.querySelectorAll(".range-input input"),

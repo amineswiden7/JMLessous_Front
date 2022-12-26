@@ -1,0 +1,348 @@
+<app-header></app-header>
+<app-breadcrumb></app-breadcrumb>
+<section class="section-padding-bottom user-info-details">
+  <div class="container">
+    <div class="row">
+      <div class="offset-lg-3 col-lg-6">
+        <div class="user-info-tabs">
+          <ng-wizard [config]="defaultconfig" (stepChanged)="stepChanged($event)" class="step-app">
+            <ng-wizard-step [description]="'Prime pure'">
+              <div class="step-tab-inner">
+                <div class="heading text-center">
+                  <h4 class="text-custom-black fw-600">Étude du portfeuil</h4>
+                  <p class="text-custom-black">Calculez la prime pure de votre offre en remplissant les données de votre portfeuil.<sup>*</sup></p>
+                </div>
+<!--                <form #offre="ngForm">-->
+                <form [formGroup]="firstF">
+                  <div class="row">
+                    <div class="col-12">
+                      <div class="form-group">
+                        <label class="text-custom-black fs-14 fw-600">Nombre des assurés</label>
+                        <input type="number" name="nbreAssur" class="form-control form-control-custom" [(ngModel)]="nbreAssur" formControlName="nbreAssur" min="0"
+                               placeholder="Nombre des assurés" required>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <div class="form-group">
+                        <label class="text-custom-black fs-14 fw-600">Nombre des sinistres</label>
+                        <input type="number" name="nbreSin" class="form-control form-control-custom" [(ngModel)]="nbreSin" formControlName="nbreSin" max="{{nbreAssur}}" min="0"
+                               placeholder="Nombre des sinistres" required>
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <div class="form-group">
+                        <label class="text-custom-black fs-14 fw-600">Coût total des sinistres (en DT)</label>
+                        <input type="number" name="coutSin" class="form-control form-control-custom" [(ngModel)]="coutSin" formControlName="coutSin" min="0"
+                               placeholder="Coût total en DT" required>
+                      </div>
+                    </div>
+
+                  </div>
+                </form>
+              </div>
+            </ng-wizard-step>
+            <ng-wizard-step [description]="'Intervalle de flexibilité'">
+              <div class="step-tab-inner">
+                <div class="heading text-center">
+                  <h4 class="text-custom-black fw-600">Votre prime pure est de : {{(coutSin/nbreAssur).toFixed(3)}} DT</h4>
+                  <p class="text-custom-black">Veuillez donner un intervalle de flexibilité en DT (Si la prime est de 500DT et l'intervalle est de 50DT, les primes vont être compris entre 450DT-550DT)<sup>*</sup></p>
+                </div>
+                <form [formGroup]="seconF">
+                  <div class="row">
+                    <div class="col-12">
+                      <div class="form-group">
+                        <label class="text-custom-black fs-14 fw-600">Intervalle de flexibilité (en DT)</label>
+                        <input type="number" name="interFlex" class="form-control form-control-custom" formControlName="interFlex" [(ngModel)]="offreAssurance.interFlex" formControlName="interFlex" min="0" max="{{(coutSin/nbreAssur)}}"
+                               placeholder="Intervalle en DT" required>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </ng-wizard-step>
+            <ng-wizard-step [description]="'Simulateur'">
+              <div class="step-tab-inner">
+                <div class="heading text-center">
+                  <h4 class="text-custom-black fw-600">Configurez votre simulateur.</h4>
+                  <p class="text-custom-black">Paramétrez les facteurs de simulation de votre offre en attribuat un score à chaque critère client. Plus le score est fort plus la prime est élevée.<sup>*</sup></p>
+                </div>
+                <form [formGroup]="thirdF">
+                  <div class="row">
+                    <div class="col-12">
+                      <div class="form-group">
+                        <label class="text-custom-black fs-16 fw-600">Sexe</label>
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="text-custom-black fs-10 fw-600">Homme</label>
+                        <input type="number" name="scoreHomme" class="form-control form-control-custom" [(ngModel)]="offreAssurance.scoreHomme" formControlName="scoreHomme" min="0"
+                               placeholder="Score du sexe homme">
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <label class="text-custom-black fs-10 fw-600">Femme</label>
+                        <input type="number" name="scoreFemme" class="form-control form-control-custom" [(ngModel)]="offreAssurance.scoreFemme" formControlName="scoreFemme" min="0"
+                               placeholder="Score du sexe femme">
+                      </div>
+                    </div>
+
+                        <div class="col-12">
+                          <div class="form-group">
+                            <label class="text-custom-black fs-16 fw-600">Nombre d'années de circulation de la voiture (De 0 à 30ans)</label>
+                            <label class="text-light-grey mb-xl-20">C'est un score à correspondance linéaire, plus la voiture est encienne plus le score est proche de sa valeur minimale.</label>
+                          </div>
+                        </div>
+                        <div class="col-lg-6">
+                          <div class="form-group">
+                            <label class="text-custom-black fs-10 fw-600">Score minimal</label>
+                            <input type="number" name="scoreCircMin" class="form-control form-control-custom" [(ngModel)]="offreAssurance.scoreCircMin" formControlName="scoreCircMin" min="0" max="{{offreAssurance.scoreCircMax}}"
+                                   placeholder="Score minimal">
+                          </div>
+                        </div>
+                        <div class="col-lg-6">
+                          <div class="form-group">
+                            <label class="text-custom-black fs-10 fw-600">Score maximal</label>
+                            <input type="number" name="scoreCircMax" class="form-control form-control-custom" [(ngModel)]="offreAssurance.scoreCircMax" formControlName="scoreCircMax" min="{{offreAssurance.scoreCircMin}}"
+                                   placeholder="Score maximal">
+                          </div>
+                        </div>
+
+                        <div class="col-12">
+                            <div class="form-group">
+                              <label class="text-custom-black fs-16 fw-600">Valeur vénale de la voiture (De 6000 à 300000DT)</label>
+                              <label class="text-light-grey mb-xl-20">C'est un score à correspondance linéaire inverse, plus vaut la voiture plus vaut le score.</label>
+                            </div>
+                        </div>
+                          <div class="col-lg-6">
+                            <div class="form-group">
+                              <label class="text-custom-black fs-10 fw-600">Score minimal</label>
+                              <input type="number" name="scoreValMin" class="form-control form-control-custom" [(ngModel)]="offreAssurance.scoreValMin" formControlName="scoreValMin" min="0" max="{{offreAssurance.scoreValMax}}"
+                                     placeholder="Score minimal">
+                            </div>
+                          </div>
+                          <div class="col-lg-6">
+                            <div class="form-group">
+                              <label class="text-custom-black fs-10 fw-600">Score maximal</label>
+                              <input type="number" name="scoreValMax" class="form-control form-control-custom" [(ngModel)]="offreAssurance.scoreValMax" formControlName="scoreValMax" min="{{offreAssurance.scoreValMin}}"
+                                     placeholder="Score maximal">
+                            </div>
+                          </div>
+
+                    <div class="col-12">
+                      <div class="form-group">
+                        <label class="text-custom-black fs-16 fw-600">Puissance fiscale de la voiture</label>
+                      </div>
+                    </div>
+                    <div class="col-lg-3">
+                      <div class="form-group">
+                        <label class="text-custom-black fs-10 fw-600">2 CV</label>
+                        <input type="number" name="cv2" class="form-control form-control-custom" [(ngModel)]="offreAssurance.scorePuissance.cv2" formControlName="cv2" min="0" required>
+                      </div>
+                    </div>
+                    <div class="col-lg-3">
+                      <div class="form-group">
+                        <label class="text-custom-black fs-10 fw-600">3 CV</label>
+                        <input type="number" name="cv3" class="form-control form-control-custom" [(ngModel)]="offreAssurance.scorePuissance.cv3" formControlName="cv3" min="0" required>
+                      </div>
+                    </div>
+                    <div class="col-lg-3">
+                      <div class="form-group">
+                        <label class="text-custom-black fs-10 fw-600">4 CV</label>
+                        <input type="number" name="cv4" class="form-control form-control-custom" [(ngModel)]="offreAssurance.scorePuissance.cv4" formControlName="cv4" min="0" required>
+                      </div>
+                    </div>
+                    <div class="col-lg-3">
+                      <div class="form-group">
+                        <label class="text-custom-black fs-10 fw-600">5 CV</label>
+                        <input type="number" name="cv5" class="form-control form-control-custom" [(ngModel)]="offreAssurance.scorePuissance.cv5" formControlName="cv5" min="0" required>
+                      </div>
+                    </div>
+                    <div class="col-lg-3">
+                      <div class="form-group">
+                        <label class="text-custom-black fs-10 fw-600">6 CV</label>
+                        <input type="number" name="cv6" class="form-control form-control-custom" [(ngModel)]="offreAssurance.scorePuissance.cv6" formControlName="cv6" min="0" required>
+                      </div>
+                    </div>
+                    <div class="col-lg-3">
+                      <div class="form-group">
+                        <label class="text-custom-black fs-10 fw-600">7 CV</label>
+                        <input type="number" name="cv7" class="form-control form-control-custom" [(ngModel)]="offreAssurance.scorePuissance.cv7" formControlName="cv7" min="0" required>
+                      </div>
+                    </div>
+                    <div class="col-lg-3">
+                      <div class="form-group">
+                        <label class="text-custom-black fs-10 fw-600">8 CV</label>
+                        <input type="number" name="cv8" class="form-control form-control-custom" [(ngModel)]="offreAssurance.scorePuissance.cv8" formControlName="cv8" min="0" required>
+                      </div>
+                    </div>
+                    <div class="col-lg-3">
+                      <div class="form-group">
+                        <label class="text-custom-black fs-10 fw-600">9 CV</label>
+                        <input type="number" name="cv9" class="form-control form-control-custom" [(ngModel)]="offreAssurance.scorePuissance.cv9" formControlName="cv9" min="0" required>
+                      </div>
+                    </div>
+                    <div class="col-lg-3">
+                      <div class="form-group">
+                        <label class="text-custom-black fs-10 fw-600">10 CV</label>
+                        <input type="number" name="cv10" class="form-control form-control-custom" [(ngModel)]="offreAssurance.scorePuissance.cv10" formControlName="cv10" min="0" required>
+                      </div>
+                    </div>
+                    <div class="col-lg-3">
+                      <div class="form-group">
+                        <label class="text-custom-black fs-10 fw-600">11 CV</label>
+                        <input type="number" name="cv11" class="form-control form-control-custom" [(ngModel)]="offreAssurance.scorePuissance.cv11" formControlName="cv11" min="0" required>
+                      </div>
+                    </div>
+                    <div class="col-lg-3">
+                      <div class="form-group">
+                        <label class="text-custom-black fs-10 fw-600">12 CV</label>
+                        <input type="number" name="cv12" class="form-control form-control-custom" [(ngModel)]="offreAssurance.scorePuissance.cv12" formControlName="cv12" min="0" required>
+                      </div>
+                    </div>
+                    <div class="col-lg-3">
+                      <div class="form-group">
+                        <label class="text-custom-black fs-10 fw-600">13 CV</label>
+                        <input type="number" name="cv13" class="form-control form-control-custom" [(ngModel)]="offreAssurance.scorePuissance.cv13" formControlName="cv13" min="0" required>
+                      </div>
+                    </div>
+                    <div class="col-lg-3">
+                      <div class="form-group">
+                        <label class="text-custom-black fs-10 fw-600">14 CV</label>
+                        <input type="number" name="cv14" class="form-control form-control-custom" [(ngModel)]="offreAssurance.scorePuissance.cv14" formControlName="cv14" min="0" required>
+                      </div>
+                    </div>
+                    <div class="col-lg-3">
+                      <div class="form-group">
+                        <label class="text-custom-black fs-10 fw-600">15 CV et plus</label>
+                        <input type="number" name="cv15p" class="form-control form-control-custom" [(ngModel)]="offreAssurance.scorePuissance.cv15p" formControlName="cv15p" min="0" required>
+                      </div>
+                    </div>
+
+                    <div class="col-12">
+                      <div class="form-group">
+                        <label class="text-custom-black fs-16 fw-600">Classe bonus malus</label>
+                      </div>
+                    </div>
+                    <div class="col-lg-3">
+                      <div class="form-group">
+                        <label class="text-custom-black fs-10 fw-600">1</label>
+                        <input type="number" name="b1" class="form-control form-control-custom" [(ngModel)]="offreAssurance.scoreBonus.b1" formControlName="b1" min="0" required>
+                      </div>
+                    </div>
+                    <div class="col-lg-3">
+                      <div class="form-group">
+                        <label class="text-custom-black fs-10 fw-600">2</label>
+                        <input type="number" name="b2" class="form-control form-control-custom" [(ngModel)]="offreAssurance.scoreBonus.b2" formControlName="b2" min="0" required>
+                      </div>
+                    </div>
+                    <div class="col-lg-3">
+                      <div class="form-group">
+                        <label class="text-custom-black fs-10 fw-600">3</label>
+                        <input type="number" name="b3" class="form-control form-control-custom" [(ngModel)]="offreAssurance.scoreBonus.b3" formControlName="b3" min="0" required>
+                      </div>
+                    </div>
+                    <div class="col-lg-3">
+                      <div class="form-group">
+                        <label class="text-custom-black fs-10 fw-600">4</label>
+                        <input type="number" name="b4" class="form-control form-control-custom" [(ngModel)]="offreAssurance.scoreBonus.b4" formControlName="b4" min="0" required>
+                      </div>
+                    </div>
+                    <div class="col-lg-3">
+                      <div class="form-group">
+                        <label class="text-custom-black fs-10 fw-600">5</label>
+                        <input type="number" name="b5" class="form-control form-control-custom" [(ngModel)]="offreAssurance.scoreBonus.b5" formControlName="b5" min="0" required>
+                      </div>
+                    </div>
+                    <div class="col-lg-3">
+                      <div class="form-group">
+                        <label class="text-custom-black fs-10 fw-600">6</label>
+                        <input type="number" name="b6" class="form-control form-control-custom" [(ngModel)]="offreAssurance.scoreBonus.b6" formControlName="b6" min="0" required>
+                      </div>
+                    </div>
+                    <div class="col-lg-3">
+                      <div class="form-group">
+                        <label class="text-custom-black fs-10 fw-600">7</label>
+                        <input type="number" name="b7" class="form-control form-control-custom" [(ngModel)]="offreAssurance.scoreBonus.b7" formControlName="b7" min="0" required>
+                      </div>
+                    </div>
+                    <div class="col-lg-3">
+                      <div class="form-group">
+                        <label class="text-custom-black fs-10 fw-600">8</label>
+                        <input type="number" name="b8" class="form-control form-control-custom" [(ngModel)]="offreAssurance.scoreBonus.b8" formControlName="b8" min="0" required>
+                      </div>
+                    </div>
+                    <div class="col-lg-3">
+                      <div class="form-group">
+                        <label class="text-custom-black fs-10 fw-600">9</label>
+                        <input type="number" name="b9" class="form-control form-control-custom" [(ngModel)]="offreAssurance.scoreBonus.b9" formControlName="b9" min="0" required>
+                      </div>
+                    </div>
+                    <div class="col-lg-3">
+                      <div class="form-group">
+                        <label class="text-custom-black fs-10 fw-600">10</label>
+                        <input type="number" name="b10" class="form-control form-control-custom" [(ngModel)]="offreAssurance.scoreBonus.b10" formControlName="b10" min="0" required>
+                      </div>
+                    </div>
+                    <div class="col-lg-3">
+                      <div class="form-group">
+                        <label class="text-custom-black fs-10 fw-600">11</label>
+                        <input type="number" name="b11" class="form-control form-control-custom" [(ngModel)]="offreAssurance.scoreBonus.b11" formControlName="b11" min="0" required>
+                      </div>
+                    </div>
+                    <div class="col-lg-3">
+                      <div class="form-group">
+                        <label class="text-custom-black fs-10 fw-600">12</label>
+                        <input type="number" name="b12" class="form-control form-control-custom" [(ngModel)]="offreAssurance.scoreBonus.b12" formControlName="b12" min="0" required>
+                      </div>
+                    </div>
+
+                  </div>
+                </form>
+              </div>
+            </ng-wizard-step>
+            <ng-wizard-step [description]="'Commission'">
+              <div class="step-tab-inner">
+                <div class="heading text-center">
+                  <h4 class="text-custom-black fw-600">Commission JMlessous.</h4>
+                  <p class="text-custom-black">Merci d'indiquer la commission proposée.<sup>*</sup></p>
+                </div>
+                <form [formGroup]="forthF">
+                  <div class="row">
+
+                    <div class="col-12">
+                      <div class="form-group mb-1">
+                        <label class="text-custom-black fs-14 fw-600">Pourcentage de commission sur la prime</label>
+                        <input type="number" name="commission" class="form-control form-control-custom" [(ngModel)]="offreAssurance.commission" formControlName="commission" min="0" required
+                               placeholder="Commission %">
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <div class="form-group mb-1">
+                        <label class="text-custom-black fs-14 fw-600">Lien google form</label>
+                        <input type="text" name="lienForm" class="form-control form-control-custom" [(ngModel)]="offreAssurance.lienForm" formControlName="lienForm"
+                               placeholder="Form contetnant des informations additionnelles d'enregistrement">
+                      </div>
+                    </div>
+                    <div class="col-12">
+                      <div class="form-group">
+                        <label class="custom-checkbox text-custom-black">
+                          <input type="checkbox" name="acceptation" [checked]="acceptation" (change)="acceptation = !acceptation">
+                          <span class="checkmark"></span>
+                          Je m'engage à fournir tous les documents juridiques nécessaires et à signer un contrat officiel de partenariat avec la banque JMlessous.
+                        </label>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </ng-wizard-step>
+          </ng-wizard>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<app-footer></app-footer>
+

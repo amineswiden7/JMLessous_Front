@@ -3,7 +3,7 @@ import { OffreAssuranceService } from 'src/app/services/assurance/offre-assuranc
 import { OffreAssurance } from './../../../models/offre-assurance';
 import { STEPPER_GLOBAL_OPTIONS } from '@angular/cdk/stepper';
 import { Component, OnInit, Input } from '@angular/core';
-import { FormBuilder,FormGroup, Validators,FormControl} from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl} from '@angular/forms';
 import { NgWizardConfig, NgWizardService, StepChangedArgs, STEP_STATE, THEME } from 'ng-wizard';
 import { AngularEditorConfig } from '@kolkov/angular-editor';
 
@@ -22,19 +22,20 @@ declare var tinymce: any;
 })
 export class AddOffreAssuranceComponent implements OnInit {
 
+  phase: number;
 
   @Input() offreAssurance = {
-    minInteret: 0,
-    maxInteret: 0,
-    minPeriode : 0,
-    maxPeriode : 0,
-    type :"",
-    categorie :"",
-    image :"",
-    description:"",
-    shortDescription:"",
-    assurance : "",
-    typePeriode :""}
+    type : '',
+    categorie : '',
+    image : '',
+    description: '',
+    shortDescription: '',
+    assurance : '',
+    // typePeriode : '',
+    nbreContrats : 0,
+    gainTotal : 0,
+    lienLogo : '',
+    statut : 'NOTPUBLISHED'};
 
     htmlContent = '';
     config: AngularEditorConfig = {
@@ -75,16 +76,17 @@ export class AddOffreAssuranceComponent implements OnInit {
     ],
     toolbarPosition: 'top',
     toolbarHiddenButtons: [
-      ['upload','uploadurl']
+      ['upload', 'uploadurl']
     ]
     };
-  
-    //offreAssurance = new OffreAssurance();
-  
-  constructor(private ngWizardService: NgWizardService,private _formBuilder: FormBuilder,private service: OffreAssuranceService,public router: Router) {
+
+    // offreAssurance = new OffreAssurance();
+
+  // tslint:disable-next-line:variable-name
+  constructor(private _formBuilder: FormBuilder, private service: OffreAssuranceService, public router: Router) {
   }
   ngOnInit() {
-      
+
   /*tinymce.init({
     selector: 'textarea',
     hidden : false,
@@ -95,10 +97,11 @@ export class AddOffreAssuranceComponent implements OnInit {
   });*/
   }
 
+
   addOffre() {
     this.service.addOffreAssurance(this.offreAssurance).subscribe((data: {}) => {
       console.log(this.offreAssurance);
-        this.router.navigate(['/offre-assurance']);
+      this.router.navigate(['/offres-assureurs']);
     });
   }
 
