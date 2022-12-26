@@ -1,3 +1,5 @@
+import { OrdreComponent } from './components/pages/ordre/ordre/ordre.component';
+import { PortfeuilleComponent } from './components/pages/portfeuille/portfeuille/portfeuille.component';
 import { AddOffreAssuranceComponent } from './components/pages/assurance/add-offre-assurance/add-offre-assurance.component';
 import { OffreassuranceComponent } from './components/pages/assurance/offreassurance/offreassurance.component';
 import { NgModule } from '@angular/core';
@@ -24,13 +26,36 @@ import {ContractRegistrationComponent} from './components/pages/assurance/contra
 import {ContractsListAgComponent} from './components/pages/assurance/contracts-list-ag/contracts-list-ag.component';
 import {ContractsListClientComponent} from './components/pages/assurance/contracts-list-client/contracts-list-client.component';
 
+import { AdminCreditLibreComponent } from './components/pages/admin-credit-libre/admin-credit-libre.component';
+import { UtilisateurProfileComponent } from './components/pages/utilisateur-profile/utilisateur-profile.component';
+// import { UserDashboardComponent } from './components/pages/user-dashboard/user-dashboard.component';
+import { CompteepargneComponent } from './components/compteepargne/compteepargne.component';
+import { UsercompteComponent } from './components/pages/usercompte/usercompte.component';
+import { TransactionValidComponent } from './components/pages/transaction-valid/transaction-validation.component';
+import { CurrencyconvComponent } from './components/pages/currencyconv/currencyconv.component';
+import { CreateCreditComponent } from './components/pages/CreditImmob/create-credit/create-credit.component';
+import { AjoutCreditLibreComponent } from './components/pages/credit-libre/ajout-credit-libre/ajout-credit-libre.component';
+import { ListesCreditsComponent } from './components/pages/CreditImmob/listes-credits/listes-credits.component';
+import { CreditDetailComponent } from './components/pages/CreditImmob/credit-detail/credit-detail.component';
+import { SimulateurCreditImmobComponent } from './components/pages/simulateur-credit-immob/simulateur-credit-immob.component';
+import { ListeCreditBackComponent } from './components/pages/CreditImmob/liste-credit-back/liste-credit-back.component';
+import { CreditEtuComponent } from './components/pages/CreditEtudiant/credit-etu/credit-etu.component';
+import { ListCreditsComponent } from './components/pages/CreditEtudiant/list-credits/list-credits.component';
+import { ListCreditsBackComponent } from './components/pages/CreditEtudiant/list-credits-back/list-credits-back.component';
+
+
 
 
 const routes: Routes = [
 
-  {path: 'compte',component :CompteComponent},
-  {path: 'courant',component :ComptecourantComponent},
-
+  {path: 'compte', component: CompteComponent},
+  {path: 'courant', component: ComptecourantComponent},
+  {path: 'adminCreditLibre', component: AdminCreditLibreComponent},
+  {path: 'utilisateurProfile', component: UtilisateurProfileComponent},
+  {path: 'epargne', component: CompteepargneComponent},
+  {path: 'usercompte', component: UsercompteComponent},
+  {path: 'trans', component: TransactionValidComponent},
+  {path: 'currency', component: CurrencyconvComponent},
   { path: 'coursActions', component: MarcheactionsComponent},
   { path: 'LoginPage', component: LoginComponent},
   { path: 'RegisterPage', component: RegisterComponent},
@@ -59,11 +84,20 @@ const routes: Routes = [
   { path: 'service-detail/:id', loadChildren: () => import('./components/pages/servicedetail/servicedetail.module').then(m => m.ServicedetailModule), data: { breadcrumb: 'Service Details' } },
   { path: 'team', loadChildren: () => import('./components/pages/team/team.module').then(m => m.TeamModule), data: { breadcrumb: 'Team' } },
   // tslint:disable-next-line:max-line-length
-
   { path: 'loan-dashboard', loadChildren: () => import('./components/pages/userdashboard/userdashboard.module').then(m => m.UserdashboardModule), data: { breadcrumb: 'User Dashboard' } },
   { path: 'offre-assurance', component : OffreassurancelistComponent},
+  { path: 'createcredit', component : CreateCreditComponent},
+  { path: 'listeCreditByClient', component : ListesCreditsComponent},
   { path: 'offre-assurance/:id', component : OffreassurancedetailComponent },
   { path: 'add-offre', component : AddOffreAssuranceComponent },
+  { path: 'credit-detail/:idCredit', component : CreditDetailComponent },
+  { path: 'simulateurImm', component : SimulateurCreditImmobComponent},
+  { path: 'creditBackImm', component : ListeCreditBackComponent},
+  { path: 'AjoutCreditEtu', component : CreditEtuComponent},
+  { path: 'CreditBackEtu', component : ListCreditsBackComponent},
+  { path: 'ListeCreditEtu', component : ListCreditsComponent},
+  { path: 'Mon-Portfeuille', component : PortfeuilleComponent },
+  { path: 'Mes-Mouvement', component : OrdreComponent },
   { path: 'config-offre/:id', component : ConfigOffreAssuranceComponent },
   { path: 'offres-assureurs', component : OffresAssureursComponent },
   { path: 'offres-list-bank', component : BankOffreAssurListComponent },
@@ -75,7 +109,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

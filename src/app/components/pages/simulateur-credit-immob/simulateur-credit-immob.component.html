@@ -1,0 +1,131 @@
+<app-header></app-header>
+<app-breadcrumb></app-breadcrumb>
+
+<section class="book-appointment parallax section-padding" id="book-appointment">
+  <div class="overlay overlay-bg-black"></div>
+  <div class="pattern"></div>
+  <div class="container">
+      <div class="row">
+          <div class="col-12">
+              <div class="appointment-sec">
+                  <div class="row no-gutters">
+                      <div class="col-lg-6 ">
+                          <div class="padding-40 full-height bg-white">
+                              <div class="align-self-center">
+                                  <div class="section-heading">
+                                      <h3 class="text-custom-blue fw-600 ">Votre simulation</h3>
+                                  </div>
+                                  <p class="text-dark">Call us today, leave a message, email or find your nearest office below and We are here for you 24 hours , 7 days a week.</p>
+                                  <h6 class="fs-20 mt-4 text-dark">We are here for you 24 hours a day, 7 days a week</h6>
+                                  <div class="LOANLY-address">
+                                      <p class="text-dark "><span class="fw-600">Interet : </span> {{listCredit.interest}}</p>
+                                      <p class="text-dark "><span class="fw-600">Amortissement : </span> {{listCredit.amortissement}}</p>
+                                      <p class="text-dark "><span class="fw-600">Mensualite : </span> {{listCredit.mensualite}}</p> 
+                                      <p class="text-dark "><span class="fw-600">Montant de credit : </span> {{listCredit.montantR}}</p> 
+
+                                  </div>
+                                  <button type="submit" class="btn-first btn-submit-fill"  (click)  = "tabAmortissement(creditImmob)"><i class="fas fa-phone mr-2 fs-16"></i><span class="fs-16">Télécharger votre tableau d'amortissement</span>
+                                  </button>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-lg-6">
+                          <div class="right-side full-height bg-border">
+                              <div class="section-heading">
+                                  <h3 class="text-white fw-600">Simulateur de credit immobilier</h3>
+                              </div>
+                              <form class="form-style-2 form-style-3" (ngSubmit)="simulater()">
+                                  <div class="row">
+                                      <div class="col-md-12">
+                                          <div class="form-group">
+                                              <div class="input-group"> <span class="input-group-preappend"><i class="fas fa-money-bill"></i></span>
+                                                  <input type="number" name="#" class="form-control"[(ngModel)]="creditImmob.montantCredit" placeholder="Montant de credit" [ngModelOptions]="{standalone: true}">
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <div class="col-md-12">
+                                          <div class="form-group">
+                                              <div class="input-group"> <span class="input-group-preappend"><i class="fas fa-hourglass"></i></span>
+                                                  <input type="number" name="#" class="form-control" [(ngModel)]="creditImmob.duree" placeholder="duree" [ngModelOptions]="{standalone: true}">
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <div class="col-md-12">
+                                          <div class="form-group">
+                                              <div class="input-group"> <span class="input-group-preappend"><i class="fas fa-home"></i></span>
+                                                <br>
+                                                <select  class="form-control"  [(ngModel)]="creditImmob.destination"  placeholder="apportPersonnel" [ngModelOptions]="{standalone: true}">
+                                                  <option  class="form-control" selected value="residence principal">residence principal</option>
+                                                  <option class="form-control" value="residence secondaire">residence secondaire</option>
+                                                  <option class="form-control" value="location">location</option>
+                                                </select>
+                                              </div>
+                                          </div>
+                                          <div class="form-group">
+                                            <div class="input-group"> <span class="input-group-preappend"><i class="fas fa-wallet"></i></span>
+                                                <input type="number" name="#" class="form-control" [(ngModel)]="creditImmob.apportPersonnel" placeholder="apportPersonnel"[ngModelOptions]="{standalone: true}">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                          <div class="input-group"> <span class="input-group-preappend"><i class="fas fa-wallet"></i></span>
+                                              <input type="number" name="#" class="form-control" [(ngModel)]="creditImmob.montantmensuelpretpayer" placeholder="montantmensuelpretpayer"[ngModelOptions]="{standalone: true}">
+                                          </div>
+                                      </div>
+                                      <div class="form-group">
+                                        <div class="input-group"> <span class="input-group-preappend"><i class="fas fa-school"></i></span>
+                                          <select  class="form-control"  [(ngModel)]="creditImmob.produit" name="produit"  [ngModelOptions]="{standalone: true}" >
+                                            <option selected value="terrain">terrain</option>
+                                            <option value="Maison">maison</option>
+                                            <option value="Appartement">appartement</option>
+                                  
+                                          </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                      <div class="input-group"> <span class="input-group-preappend"><i class="fas fa-map-marker-alt"></i></span>
+                                        <select  class="form-control" [(ngModel)]="creditImmob.localisation"  placeholder="localisation"   [ngModelOptions]="{standalone: true}">
+                                          <option  class="form-control" value="Tunis">Tunis</option>
+                                          <option class="form-control"  value="BanlieueNord">BanlieueNord</option>
+                                          <option class="form-control"  value="BanlieueSud">BanlieueSud</option>
+                                          <option  class="form-control" value="LesCôtes">LesCôtes</option>
+                                
+                                        </select>
+                                      </div>
+                                    </div>
+                                    <div class="form-group">
+                                      <div class="input-group"> <span class="input-group-preappend"><i class="fas fa-money-check-alt"></i></span>
+                                          <input type="number" name="#" class="form-control" [(ngModel)]="creditImmob.MontantReventResidencePrincipal" placeholder="MontantReventResidencePrincipal" [ngModelOptions]="{standalone: true}">
+                                      </div>
+                                  </div>
+                                      </div>
+                                      <div class="col-md-12">
+                                          <button type="submit" class="btn-first btn-submit full-width"  >Simulate</button>
+                                      </div>
+                                  </div>
+                              </form>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+  <app-footer></app-footer>
+  
+  
+  
+  
+  
+  
+  
+  
+    
+ 
+  
+  
+  
+  
+  
+  
+  

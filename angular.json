@@ -21,7 +21,8 @@
             "aot": true,
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              { "glob": "**/*", "input": "node_modules/tinymce", "output": "/tinymce/" }
             ],
             "styles": [
               "./node_modules/bootstrap/dist/css/bootstrap.min.css",
@@ -31,11 +32,20 @@
               "src/assets/font/flaticon.css",
               "src/assets/css/style.css",
               "src/assets/css/responsive.css",
-              "src/styles.css"
+              "src/styles.css",
+
+              "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
+
+              "node_modules/tinymce/skins/content/default/content.min.css",
+              "node_modules/tinymce/skins/ui/oxide/skin.min.css",
+              "node_modules/tinymce/skins/ui/oxide/content.min.css"
+
             ],
             "scripts": [
               "./node_modules/jquery/dist/jquery.min.js",
-              "./node_modules/slick-carousel/slick/slick.min.js"
+              "./node_modules/slick-carousel/slick/slick.min.js",
+              "node_modules/tinymce/tinymce.min.js",
+              "node_modules/tinymce/themes/silver/theme.js"
             ]
           },
           "configurations": {
@@ -72,6 +82,7 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
+            "proxyConfig": "proxy.config.json",
             "browserTarget": "Loanly:build"
           },
           "configurations": {
