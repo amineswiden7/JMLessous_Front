@@ -4,12 +4,12 @@ export class Utilisateur {
       cin:any;
 
      nom:any;
-     prénom:any;
-    
+     prenom:any;
+
      dateNaissance:any;
     telephone:any;
      salaire:any;
-    
+
     profession:any;
     email:any;
      login:any;
@@ -27,4 +27,3 @@ export class Utilisateur {
     absences:any;
      contratAssurances:any;
 }
- 
