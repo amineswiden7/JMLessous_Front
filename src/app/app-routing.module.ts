@@ -42,6 +42,7 @@ import { ListeCreditBackComponent } from './components/pages/CreditImmob/liste-c
 import { CreditEtuComponent } from './components/pages/CreditEtudiant/credit-etu/credit-etu.component';
 import { ListCreditsComponent } from './components/pages/CreditEtudiant/list-credits/list-credits.component';
 import { ListCreditsBackComponent } from './components/pages/CreditEtudiant/list-credits-back/list-credits-back.component';
+import {DashboardComponent} from './components/pages/dashboard/dashboard.component';
 
 
 
@@ -105,6 +106,7 @@ const routes: Routes = [
   { path: 'offre-contrats-ag/:id', component : ContractsListAgComponent },
   { path: 'mycontratslist/:id', component : ContractsListClientComponent },
   { path: 'contract-registration/:id', component : ContractRegistrationComponent },
+  { path: 'view-dashboard', component : DashboardComponent },
   { path: '**', loadChildren: () => import('./components/pages/error/error.module').then(m => m.ErrorModule), data: { breadcrumb: 'Error 404' } }
 ];
 

@@ -98,7 +98,7 @@ export class AddOffreAssuranceComponent implements OnInit {
   }
 
 
-  addOffre() {
+  addOffre(): void {
     this.service.addOffreAssurance(this.offreAssurance).subscribe((data: {}) => {
       console.log(this.offreAssurance);
       this.router.navigate(['/offres-assureurs']);

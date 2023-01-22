@@ -27,7 +27,15 @@ export class ContractRegistrationComponent implements OnInit {
     valeurVoit: 6000,
     nbreCirc: 0,
     puissance: null,
-    classe: null
+    classe: null,
+    montant: null,
+    interet: null,
+    annuite: null,
+    nbreAnnuite: null,
+    age: null,
+    isUnique: 'true',
+    ageDebutRemb: null,
+    nbreRemb: null
   };
   firstF = new FormGroup(
     {
@@ -36,6 +44,25 @@ export class ContractRegistrationComponent implements OnInit {
       nbreCirc: new FormControl(),
       puissance: new FormControl(),
       classe: new FormControl()
+    }
+  );
+  firstFV = new FormGroup(
+    {
+      montant: new FormControl(),
+      interet: new FormControl(),
+      annuite: new FormControl(),
+      nbreAnnuite: new FormControl(),
+      age: new FormControl()
+    }
+  );
+  firstFVR = new FormGroup(
+    {
+      montant: new FormControl(),
+      isUnique: new FormControl(),
+      ageDebutRemb: new FormControl(),
+      nbreAnnuite: new FormControl(),
+      nbreRemb: new FormControl(),
+      age: new FormControl()
     }
   );
   seconF = new FormGroup(
@@ -85,20 +112,38 @@ export class ContractRegistrationComponent implements OnInit {
 
   nextAction(): void{
     if (this.step === 'first') {
-      if (this.firstF.valid){
-        this.service.calculatePrimeAut(this.params).subscribe(
-          res => {
-            this.prime = res;
-            this.ngWizardService.next();
-          }
-        );
+      if (this.offreAssurance.categorie === 'AUTOMOBILE' || this.offreAssurance.categorie === 'HABITATION'
+        || this.offreAssurance.categorie === 'RENTE_VIAGERE' || this.offreAssurance.categorie === 'EMPRUNTEUR'){
+        if (this.firstF.valid || this.firstFV.valid){
+          this.service.calculatePrimeAut(this.params).subscribe(
+            res => {
+              this.prime = res;
+              if (this.offreAssurance.categorie === 'RENTE_VIAGERE'){
+                this.contrat.montantRente = res;
+                this.contrat.prime = this.params.montant;
+                this.contrat.nbreRemb = this.params.nbreRemb;
+                if (this.params.isUnique === 'false'){
+                  this.contrat.typePrime = 'Prime périodique';
+                  this.contrat.nbreAnnuites = this.params.nbreAnnuite;
+                }
+                else {this.contrat.typePrime = 'Prime unique'; }
+              }
+              this.ngWizardService.next();
+            }
+          );
+        }
+        else {
+          alert('Veuillez renseigner toutes les informations demandées correctement.');
+        }
       }
-      else {
-        alert('Veuillez renseigner toutes les informations demandées correctement.');
+      else{
+        this.ngWizardService.next();
       }
     }
     if (this.step === 'second') {
-      this.contrat.prime = this.prime;
+      if (this.offreAssurance.categorie !== 'RENTE_VIAGERE'){
+        this.contrat.prime = this.prime;
+      }
       this.ngWizardService.next();
     }
     if (this.step === 'final') {
@@ -143,6 +188,10 @@ export class ContractRegistrationComponent implements OnInit {
     }
   }
 
+  isNotUnique(): boolean{
+    return this.params.isUnique === 'false';
+  }
+
   loadOffre(id: any): void {
     this.service.getOffreById(id).subscribe(
       data => {
@@ -154,6 +203,10 @@ export class ContractRegistrationComponent implements OnInit {
         this.contrat.regulated = false;
         this.link = this.offreAssurance.lienForm + '&embedded=true';
         this.urlSafe = this.sanitizer.bypassSecurityTrustResourceUrl(this.link);
+        if (this.contrat.categorie === 'RESPONSABILITE_CIVILE'){
+          this.prime = this.offreAssurance.primePure;
+          this.contrat.prime = this.prime;
+        }
       }
     );
   }

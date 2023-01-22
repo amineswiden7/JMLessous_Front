@@ -39,9 +39,9 @@
                   <div class="row">
                     <div class="col-12 no-padding">
                       <ngx-slick-carousel #slickModal="slick-carousel" [config]="blogConfig" class="blog-slider">
-                        <article ngxSlickItem class="post col-12" *ngFor="let offre of offresAuto;let i = index">
+                        <div ngxSlickItem class="post col-12" *ngFor="let offre of offresAuto;let i = index">
                           <app-offreassurance [offre]="offre" class="col-lg-4 col-md-6 post mb-xl-30" ></app-offreassurance>
-                        </article>
+                        </div>
                       </ngx-slick-carousel>
                     </div>
                   </div>
@@ -88,7 +88,38 @@
                     <div class="col-12 no-padding">
                       <ngx-slick-carousel #slickModal="slick-carousel" [config]="blogConfig" class="blog-slider">
                         <article ngxSlickItem class="post col-12" *ngFor="let offre of offresEmp;let i = index">
-                          <app-offreassurance [offre]="offre" class="col-lg-4 col-md-6 post mb-xl-30" ></app-offreassurance>
+                          <div class="post-wrapper">
+                            <div class="blog-img animate-img">
+                              <a routerLink="/offre-assurance/{{offre.idOffreAssurance}}">
+                                <img src="assets/images/assurance/emprunt.jpg" class="image-fit"
+                                     alt="{{offre.categorie}}">
+                              </a>
+                            </div>
+                            <div class="blog-meta padding-20">
+                              <div class="post-meta">
+                                <!--      <div class="author-img">-->
+                                <!--        <img src="assets/images/clients/client1.jpg" class="rounded-circle" alt="{{offre.assurance}}">-->
+                                <!--      </div>-->
+                                <div class="author-meta">
+                                  <h5 class="no-margin"><a routerLink="/offre-assurance/{{offre.idOffreAssurance}}"
+                                                           class="text-custom-white">{{offre.assurance}}</a></h5>
+                                  <p class="no-margin text-custom-white"><a routerLink="/offre-assurance{{offre.idOffreAssurance}}"
+                                                                            class="text-custom-white">Mehdi Hantous</a> | {{offre.minPeriode}} {{offre.typePeriode}}</p>
+                                </div>
+                              </div>
+                              <div class="post-content">
+                                <h5>
+                                  <a routerLink="/offre-assurance/{{offre.idOffreAssurance}}"
+                                     class="text-custom-black fw-600">Assurance Emprunteur</a>
+                                </h5>
+                                <p class="text-light-white" style="height:60px;line-height:20px;overflow:hidden;">{{offre.shortDescription}}</p>
+                              </div>
+                              <div class="blog-links">
+                                <a routerLink="/offre-assurance/{{offre.idOffreAssurance}}" class="btn btn-sm btn-primary">Voir Détails</a>
+                              </div>
+                            </div>
+                          </div>
+<!--                          <app-offreassurance [offre]="offre" class="col-lg-4 col-md-6 post mb-xl-30" ></app-offreassurance>-->
                         </article>
                       </ngx-slick-carousel>
                     </div>

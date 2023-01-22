@@ -6,7 +6,7 @@
         alt="{{offre.categorie}}">
       <img *ngSwitchCase="'HABITATION'" src="assets/images/assurance/maison2.jpg" class="image-fit"
         alt="{{offre.categorie}}">
-      <img *ngSwitchCase="'SCOLAIRE'" src="assets/images/assurance/ecole.jpg" class="image-fit"
+      <img *ngSwitchCase="'RENTE_VIAGERE'" src="assets/images/assurance/ecole.jpg" class="image-fit"
         alt="{{offre.categorie}}">
       <img *ngSwitchCase="'RESPONSABILITE_CIVILE'" src="assets/images/assurance/civil.jpg" class="image-fit"
         alt="{{offre.categorie}}">
@@ -32,8 +32,8 @@
           class="text-custom-black fw-600">Assurance Automobile</a>
         <a routerLink="/offre-assurance/{{offre.idOffreAssurance}}" *ngSwitchCase="'HABITATION'"
           class="text-custom-black fw-600">Assurance Habitation</a>
-        <a routerLink="/offre-assurance/{{offre.idOffreAssurance}}" *ngSwitchCase="'SCOLAIRE'"
-          class="text-custom-black fw-600">Assurance Scolaire</a>
+        <a routerLink="/offre-assurance/{{offre.idOffreAssurance}}" *ngSwitchCase="'RENTE_VIAGERE'"
+          class="text-custom-black fw-600">Assurance Rente viagère</a>
         <a routerLink="/offre-assurance/{{offre.idOffreAssurance}}" *ngSwitchCase="'RESPONSABILITE_CIVILE'"
           class="text-custom-black fw-600">Assurance Responsabilité Civile</a>
         <a routerLink="/offre-assurance/{{offre.idOffreAssurance}}" *ngSwitchCase="'EMPRUNTEUR'"

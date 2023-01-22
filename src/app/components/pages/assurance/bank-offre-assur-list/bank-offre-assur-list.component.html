@@ -84,6 +84,10 @@
                                                                                                        class="btn-first btn-submit-fill">Contrats</a>
                         <a *ngIf="offreAut.lienForm!=null" href="{{offreAut.lienForm}}" class="Loan-content" target="_blank">Lien du formulaire joint</a>
                       </td>
+                      <td class="lw-table-data-3 choose-btn" *ngIf="offreAut.statut=='SUSPENDED'"> <a routerLink="/offre-contrats-ag/{{offreAut.idOffreAssurance}}"
+                                                                                                      class="btn-first btn-submit-fill">Contrats</a>
+                        <a *ngIf="offreAut.lienForm!=null" href="{{offreAut.lienForm}}" class="Loan-content" target="_blank">Lien du formulaire joint</a>
+                      </td>
                     </tr>
                   </table>
                 </div>
@@ -167,6 +171,10 @@
                                                                                                       class="btn-first btn-submit-fill">Contrats</a>
                         <a *ngIf="offreAut.lienForm!=null" href="{{offreAut.lienForm}}" class="Loan-content" target="_blank">Lien du formulaire joint</a>
                       </td>
+                      <td class="lw-table-data-3 choose-btn" *ngIf="offreAut.statut=='SUSPENDED'"> <a routerLink="/offre-contrats-ag/{{offreAut.idOffreAssurance}}"
+                                                                                                      class="btn-first btn-submit-fill">Contrats</a>
+                        <a *ngIf="offreAut.lienForm!=null" href="{{offreAut.lienForm}}" class="Loan-content" target="_blank">Lien du formulaire joint</a>
+                      </td>
                     </tr>
                   </table>
                 </div>
@@ -204,10 +212,6 @@
                       <td class="lw-table-data-3">
                         <ul>
                           <li> <strong>{{offreAut.primePure}} DT</strong>
-                          </li>
-                          <li> <span>
-                                                            Avec une marge de {{offreAut.interFlex}}
-                                                        </span>
                           </li>
                         </ul>
                       </td>
@@ -247,6 +251,10 @@
                         <a *ngIf="offreAut.lienForm!=null" href="{{offreAut.lienForm}}" class="Loan-content" target="_blank">Lien du formulaire joint</a>
                       </td>
                       <td class="lw-table-data-3 choose-btn" *ngIf="offreAut.statut=='PUBLISHED'"> <a routerLink="/offre-contrats-ag/{{offreAut.idOffreAssurance}}"
+                                                                                                      class="btn-first btn-submit-fill">Contrats</a>
+                        <a *ngIf="offreAut.lienForm!=null" href="{{offreAut.lienForm}}" class="Loan-content" target="_blank">Lien du formulaire joint</a>
+                      </td>
+                      <td class="lw-table-data-3 choose-btn" *ngIf="offreAut.statut=='SUSPENDED'"> <a routerLink="/offre-contrats-ag/{{offreAut.idOffreAssurance}}"
                                                                                                       class="btn-first btn-submit-fill">Contrats</a>
                         <a *ngIf="offreAut.lienForm!=null" href="{{offreAut.lienForm}}" class="Loan-content" target="_blank">Lien du formulaire joint</a>
                       </td>
@@ -288,9 +296,88 @@
                         <ul>
                           <li> <strong>{{offreAut.primePure}} DT</strong>
                           </li>
+                        </ul>
+                      </td>
+                      <td class="lw-table-data-3">
+                        <ul>
+                          <li> <strong>{{offreAut.statut}}</strong>
+                          </li>
                           <li> <span>
-                                                            Avec une marge de {{offreAut.interFlex}}
+
                                                         </span>
+                          </li>
+                        </ul>
+
+                      </td>
+                      <td class="lw-table-data-3">
+                        <ul>
+                          <li> <strong>{{offreAut.commission}} %</strong>
+                          </li>
+                          <li> <span>
+                                                            Pourcentage sur prime.
+                                                        </span>
+                          </li>
+                        </ul>
+                      </td>
+                      <td class="lw-table-data-3">
+                        <ul>
+                          <li> <strong>{{offreAut.gainTotal}} DT</strong>
+                          </li>
+                          <li> <span>
+                                                            {{offreAut.nbreContrats}} contrats signés.
+                                                        </span>
+                          </li>
+                        </ul>
+                      </td>
+                      <td class="lw-table-data-3 choose-btn" *ngIf="offreAut.statut=='VALIDATION'"> <a routerLink="/offre-validation/{{offreAut.idOffreAssurance}}"
+                                                                                                       class="btn-first btn-submit-fill">Valider</a>
+                        <a *ngIf="offreAut.lienForm!=null" href="{{offreAut.lienForm}}" class="Loan-content" target="_blank">Lien du formulaire joint</a>
+                      </td>
+                      <td class="lw-table-data-3 choose-btn" *ngIf="offreAut.statut=='PUBLISHED'"> <a routerLink="/offre-contrats-ag/{{offreAut.idOffreAssurance}}"
+                                                                                                      class="btn-first btn-submit-fill">Contrats</a>
+                        <a *ngIf="offreAut.lienForm!=null" href="{{offreAut.lienForm}}" class="Loan-content" target="_blank">Lien du formulaire joint</a>
+                      </td>
+                      <td class="lw-table-data-3 choose-btn" *ngIf="offreAut.statut=='SUSPENDED'"> <a routerLink="/offre-contrats-ag/{{offreAut.idOffreAssurance}}"
+                                                                                                      class="btn-first btn-submit-fill">Contrats</a>
+                        <a *ngIf="offreAut.lienForm!=null" href="{{offreAut.lienForm}}" class="Loan-content" target="_blank">Lien du formulaire joint</a>
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+              </ng-template>
+            </li>
+            <li [ngbNavItem]="5">
+              <a ngbNavLink>
+                Rente viagère
+              </a>
+              <ng-template ngbNavContent>
+                <div class="table-responsive">
+                  <table class="lw-tab-table">
+                    <tr class="lw-table-row-1">
+                      <th>ID</th>
+                      <th>Agence</th>
+                      <th>Prime Pure</th>
+                      <th>Statut</th>
+                      <th>Commission</th>
+                      <th>Gain total</th>
+                      <th>Action</th>
+                    </tr>
+                    <tr *ngFor="let offreAut of renteOffers">
+                      <td class="lw-table-data-1">{{offreAut.idOffreAssurance}}</td>
+                      <td class="lw-table-data-3">
+                        <ul>
+                          <li> <strong>{{offreAut.assurance}}</strong>
+                          </li>
+                          <li> <span>
+
+                                                        </span>
+                          </li>
+                        </ul>
+
+                      </td>
+                      <td class="lw-table-data-3">
+                        <ul>
+                          <li> <strong>{{offreAut.primePure}} DT</strong>
                           </li>
                         </ul>
                       </td>
@@ -333,86 +420,7 @@
                                                                                                       class="btn-first btn-submit-fill">Contrats</a>
                         <a *ngIf="offreAut.lienForm!=null" href="{{offreAut.lienForm}}" class="Loan-content" target="_blank">Lien du formulaire joint</a>
                       </td>
-                    </tr>
-                  </table>
-                </div>
-              </ng-template>
-            </li>
-            <li [ngbNavItem]="5">
-              <a ngbNavLink>
-                Rente viagère
-              </a>
-              <ng-template ngbNavContent>
-                <div class="table-responsive">
-                  <table class="lw-tab-table">
-                    <tr class="lw-table-row-1">
-                      <th>ID</th>
-                      <th>Agence</th>
-                      <th>Prime Pure</th>
-                      <th>Statut</th>
-                      <th>Commission</th>
-                      <th>Gain total</th>
-                      <th>Action</th>
-                    </tr>
-                    <tr *ngFor="let offreAut of renteOffers">
-                      <td class="lw-table-data-1">{{offreAut.idOffreAssurance}}</td>
-                      <td class="lw-table-data-3">
-                        <ul>
-                          <li> <strong>{{offreAut.assurance}}</strong>
-                          </li>
-                          <li> <span>
-
-                                                        </span>
-                          </li>
-                        </ul>
-
-                      </td>
-                      <td class="lw-table-data-3">
-                        <ul>
-                          <li> <strong>{{offreAut.primePure}} DT</strong>
-                          </li>
-                          <li> <span>
-                                                            Avec une marge de {{offreAut.interFlex}}
-                                                        </span>
-                          </li>
-                        </ul>
-                      </td>
-                      <td class="lw-table-data-3">
-                        <ul>
-                          <li> <strong>{{offreAut.statut}}</strong>
-                          </li>
-                          <li> <span>
-
-                                                        </span>
-                          </li>
-                        </ul>
-
-                      </td>
-                      <td class="lw-table-data-3">
-                        <ul>
-                          <li> <strong>{{offreAut.commission}} %</strong>
-                          </li>
-                          <li> <span>
-                                                            Pourcentage sur prime.
-                                                        </span>
-                          </li>
-                        </ul>
-                      </td>
-                      <td class="lw-table-data-3">
-                        <ul>
-                          <li> <strong>{{offreAut.gainTotal}} DT</strong>
-                          </li>
-                          <li> <span>
-                                                            {{offreAut.nbreContrats}} contrats signés.
-                                                        </span>
-                          </li>
-                        </ul>
-                      </td>
-                      <td class="lw-table-data-3 choose-btn" *ngIf="offreAut.statut=='VALIDATION'"> <a routerLink="/offre-validation/{{offreAut.idOffreAssurance}}"
-                                                                                                       class="btn-first btn-submit-fill">Valider</a>
-                        <a *ngIf="offreAut.lienForm!=null" href="{{offreAut.lienForm}}" class="Loan-content" target="_blank">Lien du formulaire joint</a>
-                      </td>
-                      <td class="lw-table-data-3 choose-btn" *ngIf="offreAut.statut=='PUBLISHED'"> <a routerLink="/offre-contrats-ag/{{offreAut.idOffreAssurance}}"
+                      <td class="lw-table-data-3 choose-btn" *ngIf="offreAut.statut=='SUSPENDED'"> <a routerLink="/offre-contrats-ag/{{offreAut.idOffreAssurance}}"
                                                                                                       class="btn-first btn-submit-fill">Contrats</a>
                         <a *ngIf="offreAut.lienForm!=null" href="{{offreAut.lienForm}}" class="Loan-content" target="_blank">Lien du formulaire joint</a>
                       </td>

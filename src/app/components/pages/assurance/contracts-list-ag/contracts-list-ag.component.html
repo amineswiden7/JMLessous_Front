@@ -25,7 +25,7 @@
                 <img *ngIf="contrat.statut=='REGULATED'" src="https://img.freepik.com/photos-premium/partenariat-poignee-main-deux-hommes-affaires-apres-signature-du-contrat-travail-au-bureau-salle-reunion_33829-185.jpg?w=2000" style="width: 350px; height: 233px" class="full-width full-height" alt="Contrat accepté et reglé">
                 <img *ngIf="contrat.statut=='REJECTED'" src="https://assets.greentechmedia.com/assets/content/cache/made/assets/content/cache/remote/https_assets.greentechmedia.com/content/images/articles/Rejected_stamp_XL_721_420_80_s_c1.jpg" style="width: 350px; height: 233px" class="full-width full-height" alt="Contrat rejeté">
               </div>
-              <div class="post-contnet">
+              <div class="post-contnet" *ngIf="contrat.categorie!='RENTE_VIAGERE'">
                 <h2 class="post-title text-custom-black">Catégorie du contrat : {{contrat.categorie}}</h2>
                 <h6 class="text-custom-black">Statut : {{contrat.statut}}</h6>
                 <p class="text-light-white">Prime : {{contrat.prime}} DT.</p>
@@ -34,6 +34,18 @@
 <!--                <div class="post-author"> <span class="text-custom-black fw-500 fs-14">Nom et prénom du propriétaire :-->
 <!--                                        <a class="text-light-blue">{{contrat.nomPrenomAssure}}</a></span>-->
 <!--                </div>-->
+              </div>
+              <div class="post-contnet" *ngIf="contrat.categorie=='RENTE_VIAGERE'">
+                <h2 class="post-title text-custom-black">Catégorie du contrat : {{contrat.categorie}}</h2>
+                <h6 class="text-custom-black">Statut : {{contrat.statut}}</h6>
+                <p class="text-light-white">Prime : {{contrat.prime}} DT.</p>
+                <p class="text-light-white">Type : {{contrat.typePrime}} ({{contrat.nbreAnnuites}})</p>
+                <p class="text-light-white">Valeur de la rente : {{contrat.montantRente}} DT {{contrat.nbreRemb}} fois remboursés</p>
+                <p class="text-light-white">Date début : {{contrat.dateDebut | date: 'dd/MM/yyyy'}}</p> <p class="text-light-white">Date fin : {{contrat.dateFin | date: 'dd/MM/yyyy'}}
+              </p>
+                <!--                <div class="post-author"> <span class="text-custom-black fw-500 fs-14">Nom et prénom du propriétaire :-->
+                <!--                                        <a class="text-light-blue">{{contrat.nomPrenomAssure}}</a></span>-->
+                <!--                </div>-->
               </div>
               <div class="blog-overlay">
                 <div class="right-text-effect post-content">
