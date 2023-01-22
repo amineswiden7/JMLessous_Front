@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import blogbox from '../../../../data/blog.json';
 import {OffreAssuranceService} from '../../../../services/assurance/offre-assurance.service';
+import {OffreAssurance} from '../../../models/offre-assurance';
 
 @Component({
   selector: 'app-offres-assureurs',
@@ -77,6 +78,14 @@ export class OffresAssureursComponent implements OnInit {
         this.notPublishedOffers = data;
       }
     );
+  }
+
+  updateOffre(id: number, statut: string): void{
+    this.service.getOffreById(id).subscribe(data => {
+      data.statut = statut;
+      console.log(data);
+      this.service.updateOffreAssurance(data).subscribe(res => {this.ngOnInit(); });
+    });
   }
 
 }

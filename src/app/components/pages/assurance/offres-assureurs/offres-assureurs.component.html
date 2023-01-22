@@ -30,8 +30,25 @@
                          class="text-custom-black fw-600">{{item.assurance | slice:0:25}}</a></h2>
                   <p class="text-light-white">{{item.shortDescription}}</p>
                 </div>
-                <a *ngIf="item.statut=='NOTPUBLISHED'" routerLink="/config-offre/{{item.idOffreAssurance}}" class="btn btn-primary">Configurer l'offre</a>
-                <a *ngIf="item.statut=='PUBLISHED'" routerLink="/offre-contrats-ag/{{item.idOffreAssurance}}" class="btn btn-primary">Liste des contrats</a>
+                <div class="row" *ngIf="item.statut=='NOTPUBLISHED'" >
+                  <div class="col-12">
+                    <a routerLink="/config-offre/{{item.idOffreAssurance}}" class="btn btn-primary">Configurer l'offre</a>
+                  </div>
+                </div>
+                <div class="row" *ngIf="item.statut=='SUSPENDED'" >
+                  <div class="col-12">
+                    <a (click)="updateOffre(item.idOffreAssurance,'PUBLISHED')" style="color: white" class="btn btn-primary">Reprendre l'offre</a>
+                  </div>
+                </div>
+                <div class="row" *ngIf="item.statut=='PUBLISHED'">
+                  <div class="col-6">
+                    <a (click)="updateOffre(item.idOffreAssurance,'SUSPENDED')" style="color: white" class="btn btn-danger">Suspendre l'offre</a>
+                  </div>
+                  <div class="col-6">
+                    <a routerLink="/offre-contrats-ag/{{item.idOffreAssurance}}" class="btn btn-primary">Liste des contrats</a>
+                  </div>
+                </div>
+
 
               </div>
             </div>

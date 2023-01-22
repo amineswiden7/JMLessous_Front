@@ -80,6 +80,7 @@ import { CreditEtuComponent } from './components/pages/CreditEtudiant/credit-etu
 
 
 import { AuthInterceptor } from './helpers/authInterceptor';
+import { DashboardComponent } from './components/pages/dashboard/dashboard.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -140,7 +141,8 @@ import { AuthInterceptor } from './helpers/authInterceptor';
     OffreValidationComponent,
     ContractRegistrationComponent,
     ContractsListAgComponent,
-    ContractsListClientComponent
+    ContractsListClientComponent,
+    DashboardComponent
 
   ],
 

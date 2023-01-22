@@ -14,6 +14,10 @@ export class ContratAssurance {
   categorie: string;
   regulated: boolean;
   prime: number;
+  typePrime: string;
+  nbreAnnuites: number;
+  nbreRemb: number;
+  montantRente: number;
   statut: string;
   interet: number;
   commission: number;

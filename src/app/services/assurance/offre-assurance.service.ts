@@ -49,7 +49,7 @@ export class OffreAssuranceService {
         );
   }
 
-  updateOffreAssurance(c: any): Observable<OffreAssurance>{
+  updateOffreAssurance(c: OffreAssurance): Observable<OffreAssurance>{
     return this.http.put<OffreAssurance>(
       this.url + 'updateoffre',
       JSON.stringify(c),

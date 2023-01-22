@@ -20,6 +20,8 @@ export class ConfigOffreAssuranceComponent implements OnInit {
   nbreAssur: number;
   nbreSin: number;
   coutSin: number;
+  nbreAnnees: number;
+  facteurPareto: number;
   idOffre: any;
   acceptation = false;
   step = 'first';
@@ -29,6 +31,24 @@ export class ConfigOffreAssuranceComponent implements OnInit {
       nbreAssur: new FormControl(),
       nbreSin: new FormControl(),
       coutSin: new FormControl()
+    }
+  );
+  firstFRC = new FormGroup(
+    {
+      nbreAnnees: new FormControl(),
+      nbreSin: new FormControl(),
+      facteurPareto: new FormControl(),
+      coutSin: new FormControl()
+    }
+  );
+  firstFV = new FormGroup(
+    {
+      interet: new FormControl()
+    }
+  );
+  secondFV = new FormGroup(
+    {
+      primePure: new FormControl()
     }
   );
   seconF = new FormGroup(
@@ -68,6 +88,24 @@ export class ConfigOffreAssuranceComponent implements OnInit {
       cv13: new FormControl(),
       cv14: new FormControl(),
       cv15p: new FormControl(),
+    }
+  );
+  thirdFH = new FormGroup(
+    {
+      scoreHomme: new FormControl(),
+      scoreFemme: new FormControl(),
+      scoreCircMin: new FormControl(),
+      scoreCircMax: new FormControl(),
+      scoreValMin: new FormControl(),
+      scoreValMax: new FormControl(),
+    }
+  );
+  thirdFV = new FormGroup(
+    {
+      minAge: new FormControl(),
+      maxAge: new FormControl(),
+      minPeriode: new FormControl(),
+      maxPeriode: new FormControl()
     }
   );
   forthF = new FormGroup(
@@ -117,6 +155,8 @@ export class ConfigOffreAssuranceComponent implements OnInit {
       cv15p: null,
     },
     commission: null,
+    gainTotal: 0,
+    nbreContrats: 0,
     type: null,
     categorie: null,
     image: null,
@@ -124,7 +164,14 @@ export class ConfigOffreAssuranceComponent implements OnInit {
     shortDescription: null,
     assurance: null,
     typePeriode: null,
+    minAge: null,
+    maxAge: null,
+    interet: null,
+    minPeriode: null,
+    maxPeriode: null,
     lienForm: null,
+    lienLogo: null,
+    seuilCouv: null,
     statut : 'VALIDATION'
   };
 
@@ -167,7 +214,7 @@ export class ConfigOffreAssuranceComponent implements OnInit {
   }
   nextAction(): void{
     if (this.step === 'first') {
-      if (this.firstF.valid){
+      if (this.firstF.valid || this.firstFRC.valid || this.firstFV.valid){
         this.ngWizardService.next();
       }
       else {
@@ -175,7 +222,7 @@ export class ConfigOffreAssuranceComponent implements OnInit {
       }
     }
     if (this.step === 'second') {
-      if (this.seconF.valid){
+      if (this.seconF.valid || this.secondFV.valid){
         this.ngWizardService.next();
       }
       else {
@@ -183,7 +230,7 @@ export class ConfigOffreAssuranceComponent implements OnInit {
       }
     }
     if (this.step === 'third') {
-      if (this.thirdF.valid){
+      if (this.thirdF.valid || this.thirdFH.valid || this.thirdFV.valid){
         this.ngWizardService.next();
       }
       else {
@@ -193,7 +240,14 @@ export class ConfigOffreAssuranceComponent implements OnInit {
     if (this.step === 'final') {
       if (this.forthF.valid){
         if (this.acceptation === true){
-          this.offreAssurance.primePure = this.coutSin / this.nbreAssur;
+          if (this.offreAssurance.categorie === 'AUTOMOBILE' || this.offreAssurance.categorie === 'HABITATION') {
+            this.offreAssurance.primePure = this.coutSin / this.nbreAssur;
+          }
+          if (this.offreAssurance.categorie === 'RESPONSABILITE_CIVILE'){
+            this.offreAssurance.primePure =
+              ((this.nbreSin / this.nbreAnnees) * ((this.facteurPareto * this.coutSin) / (this.facteurPareto - 1)));
+            this.offreAssurance.seuilCouv = this.coutSin;
+          }
           this.service.updateOffreAssurance(this.offreAssurance).subscribe(data => {
             this.router.navigate(['/offres-assureurs']);
           }, error => {console.log(error); });
@@ -254,6 +308,8 @@ export class ConfigOffreAssuranceComponent implements OnInit {
         this.offreAssurance.shortDescription = data.shortDescription;
         this.offreAssurance.assurance = data.assurance;
         this.offreAssurance.typePeriode = data.typePeriode;
+        this.offreAssurance.lienLogo = data.lienLogo;
+        this.offreAssurance.gainTotal = data.gainTotal;
         console.log(this.offreAssurance);
       }
     );
