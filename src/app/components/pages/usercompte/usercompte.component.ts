@@ -6,6 +6,8 @@ import { Utilisateur } from 'src/app/models/utilisateur';
 import { Transaction } from 'src/app/models/transaction';
 import { UserService } from 'src/app/services/user.service';
 import { TransactionService } from 'src/app/services/transaction/transaction.service';
+import { ComptecourantService } from 'src/app/services/compte/comptecourant.service';
+
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { MatDialog } from '@angular/material';
 import { TransactionValidComponent } from '../transaction-valid/transaction-validation.component';
@@ -19,6 +21,8 @@ import {saveAs} from 'file-saver/dist/FileSaver';
 })
 
 export class UsercompteComponent implements OnInit {
+  numCompte !:any;
+
   idUser:any;
   Utilisateur:Utilisateur;
   CompteCourant:CompteCourant;
@@ -35,33 +39,48 @@ export class UsercompteComponent implements OnInit {
  page: number = 1;
  constructor(private TransactionService:TransactionService
   ,private UserService:UserService
+  ,private ComptecourantService:ComptecourantService
   ,private modalService: NgbModal
   ,public dialog : MatDialog
   ,private router: Router,
   private http:HttpClient,
   private route:ActivatedRoute) { }
  ngOnInit(): void {
-  this.idUser=1;
-  
-  this.rib1="0192000410JGRDSHKLU9Z40";
-  console.log(this.rib1); 
-  this.TransactionService.gettransactionsByRib(this.rib1).subscribe(data => {
+  this.numCompte = this.route.snapshot.params['numCompte'];
+  this.loadcompte(this.numCompte);
+  //Afficage transactionS
+  this.idUser=10;
+ // this.rib1="0192000410NAPNVKFJWT990";
+ // console.log(this.rib1); 
+  this.TransactionService.gettransactionsByidcpt(this.numCompte).subscribe(data => {
   this.listTransaction = data;
   },
   error => console.log(error));
   
+  //el user
   this.UserService.getUser(this.idUser).subscribe(res=>{  
     this.Utilisateur=res;
     console.log(this.Utilisateur);
   },
   error => console.log(error));
 
-  this.UserService.getCpt(this.idUser).subscribe(res=>{  
+  //nekhou fil compte mtaa el user 
+ /* this.UserService.getCpt(this.idUser).subscribe(res=>{  
     this.CompteCourant=res;
     console.log(this.CompteCourant);
   },
   error => console.log(error));
- }
+ 
+*/
+}
+
+
+  loadcompte(numCompte:any) {
+    return this.ComptecourantService.getCompteC(numCompte).subscribe(
+      data => {console.log(data);
+      this.CompteCourant=data;}
+    )
+  }
 
  savetransactions(){
   console.log(this.transaction);
@@ -123,7 +142,7 @@ openVerticallyCentered(content: any) {
 }
 PDF(){
   //  alert('downalded');
-    this.http.get('http://localhost:8083/JMLessous/Transaction/export/0192000410JGRDSHKLU9Z40',{responseType:'arraybuffer'}).subscribe(pdf=>{
+    this.http.get('http://localhost:8083/JMLessous/Transaction/export/0192000410NAPNVKFJWT990',{responseType:'arraybuffer'}).subscribe(pdf=>{
     //pour que le doc soit .pdf  
     const blob = new Blob([pdf],{type:'application/pdf'});
       const filename = 'Relevé-Bancaire.pdf';

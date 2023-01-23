@@ -20,6 +20,9 @@ export class UtilisateurProfileComponent implements OnInit {
   amort:number[]=[];
   inter:number[]=[];
   label:number[]=[];
+  valeur:number;
+  type:string;
+  salaire:number;
   ngOnInit(): void {
    
     this.viewChart();
@@ -40,7 +43,10 @@ export class UtilisateurProfileComponent implements OnInit {
   createChart(id:number){
    
     this.getCredit(id);
-    this.creditLibreS.tab(this.creditLibre).subscribe(res=>{console.log(res);this.listCredit=res;this.listAmortissement(res);
+    this.valeur=this.creditLibre.garantie.valeur;
+    this.type=this.creditLibre.garantie.type;
+    this.salaire=this.userConnecte.activeUser.salaire*12;
+    this.creditLibreS.tab(this.creditLibre,this.valeur,this.type,this.salaire).subscribe(res=>{console.log(res);this.listCredit=res;this.listAmortissement(res);
       this.listInteret(res);
       });
       console.log (this.amort);
@@ -92,7 +98,10 @@ export class UtilisateurProfileComponent implements OnInit {
   }
   tabAmortissement(){
     //this.creditLibre.tauxInteret=this.counter;
-      this.creditLibreS.tab(this.creditLibre).subscribe(res=>{  console.log(this.creditLibre);
+    this.valeur=this.creditLibre.garantie.valeur;
+    this.type=this.creditLibre.garantie.type;
+    this.salaire=this.userConnecte.activeUser.salaire*12;
+      this.creditLibreS.tab(this.creditLibre,this.valeur,this.type,this.salaire).subscribe(res=>{  console.log(this.creditLibre);
        this.listCredit=res;
         
            console.log(this.creditLibre);

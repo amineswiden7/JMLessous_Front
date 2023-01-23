@@ -1,0 +1,98 @@
+<app-header></app-header>
+<app-breadcrumb></app-breadcrumb>
+
+<section class="book-appointment parallax section-padding" id="book-appointment">
+  <div class="overlay overlay-bg-black"></div>
+  <div class="pattern"></div>
+  <div class="container">
+      <div class="row">
+          <div class="col-12">
+              <div class="appointment-sec">
+                  <div class="row no-gutters">
+                      <div class="col-lg-6 ">
+                          <div class="padding-40 full-height bg-white">
+                              <div class="align-self-center">
+                                  <div class="section-heading">
+                                      <h3 class="text-custom-blue fw-600 ">Les informations de votre demande de  crédit </h3>
+                                  </div>
+                                  <p class="text-dark">vous pouvez cliquer sur confirmer pour confirmer votre demande </p>
+                                 
+                                  <div class="LOANLY-address">
+                                      <p class="text-dark "><span class="fw-600">Taux d'interet :{{creditImmobb.tauxInteret}} </span> </p>
+                                      <p class="text-dark "><span class="fw-600">montantCredit : </span> {{creditImmobb.montantCredit}}</p>
+                                      <p class="text-dark "><span class="fw-600">Mensualite : </span> {{creditImmobb.mensualite}}</p> 
+                                      
+
+                                  </div>
+                                  <button type="submit" class="btn-first btn-submit-fill"  (click)  = "confirmer()"><i class="fas fa-phone mr-2 fs-16"></i><span class="fs-16">Confirmer votre Demande</span>
+                                  </button>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="col-lg-6">
+                          <div class="right-side full-height bg-border">
+                              <div class="section-heading">
+                                  <h3 class="text-white fw-600">demande  credit etudiant</h3>
+                              </div>
+                              <form class="form-style-2 form-style-3" (ngSubmit)="addCredit()">
+                                  <div class="row">
+                                      <div class="col-md-12">
+                                          <div class="form-group">
+                                              <div class="input-group"> <span class="input-group-preappend"><i class="fas fa-money-bill"></i></span>
+                                                  <input type="number" name="#" class="form-control"[(ngModel)]="creditImmob.montantCredit" placeholder="Montant de credit" [ngModelOptions]="{standalone: true}">
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <div class="col-md-12">
+                                          <div class="form-group">
+                                              <div class="input-group"> <span class="input-group-preappend"><i class="fas fa-hourglass"></i></span>
+                                                  <input type="number" name="#" class="form-control" [(ngModel)]="creditImmob.duree" placeholder="duree" [ngModelOptions]="{standalone: true}">
+                                              </div>
+                                          </div>
+                                      </div>
+                                      <div class="col-md-12">
+                                          <div class="form-group">
+                                              <div class="input-group"> <span class="input-group-preappend"><i class="fas fa-home"></i></span>
+                                                <br>
+                                                <select  class="form-control"  [(ngModel)]="creditImmob.niveauEtude"  placeholder="niveauEtude" [ngModelOptions]="{standalone: true}">
+                                                  <option  class="form-control" selected value="LICENCE">LICENCE</option>
+                                                  <option class="form-control" value="MASTER">MASTER</option>
+                                                  <option class="form-control" value="INGENIERIE">INGENIERIE</option>
+                                                </select>
+                                              </div>
+                                          </div>
+                                          
+                                       
+                                        </div>
+        
+                                      <div class="col-md-12">
+                                          <button type="submit" class="btn-first btn-submit full-width"  >Simulate</button>
+                                      </div>
+                                  </div>
+                              </form>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+  <app-footer></app-footer>
+  
+  
+  
+  
+  
+  
+  
+  
+    
+ 
+  
+  
+  
+  
+  
+  
+  

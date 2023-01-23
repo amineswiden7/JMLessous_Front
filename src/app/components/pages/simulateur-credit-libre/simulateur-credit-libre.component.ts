@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgWizardConfig, NgWizardService, StepChangedArgs, STEP_STATE, THEME } from 'ng-wizard';
 import { Amortissement } from 'src/app/models/amortissement';
 import { CreditLibre } from 'src/app/models/credit-libre';
+import { Garantie } from 'src/app/models/garantie';
 import { CreditLibreService } from 'src/app/services/creditLibre/credit-libre.service';
 @Component({
   selector: 'app-simulateur-credit-libre',
@@ -9,10 +10,10 @@ import { CreditLibreService } from 'src/app/services/creditLibre/credit-libre.se
   styleUrls: ['./simulateur-credit-libre.component.css']
 })
 export class SimulateurCreditLibreComponent implements OnInit {
-
+ gr = new Garantie();
   //creditLibre=new CreditLibre();
   montant:any;
-  taux:any;
+  salaire:any;
   duree:any;
   listCredit=new Amortissement();
   isSuccessful = false;
@@ -59,7 +60,7 @@ export class SimulateurCreditLibreComponent implements OnInit {
   
   simulater(){
 //    this.creditLibre.tauxInteret=this.counter;
-      this.creditLibreS.Simulate(this.montant,this.duree,this.taux).subscribe(res=>{  //console.log(this.creditLibre);
+      this.creditLibreS.Simulate(this.gr,this.montant,this.duree,this.salaire).subscribe(res=>{  //console.log(this.creditLibre);
        this.listCredit=res;
        
           console.log(this.listCredit);

@@ -17,6 +17,7 @@ import { UserService } from 'src/app/services/user.service';
 export class AjoutCreditLibreComponent implements OnInit {
 
   creditLibre=new CreditLibre();
+  cred=new CreditLibre();
   idUser:any;
   idGarantie:any;
   isSuccessful = false;
@@ -40,11 +41,11 @@ export class AjoutCreditLibreComponent implements OnInit {
   };
   listG:Garantie[];
   listU:Utilisateur[];
- 
+ garantie=new Garantie();
   constructor(private ngWizardService: NgWizardService, private userConnecte: UserService , private creditLibreService:CreditLibreService, private garantieS:GarantieService, private userS:UserService) {
   }
   ngOnInit() {
-    this.garantieS.listGarantie().subscribe(res=>{console.log(res); this.listG=res});
+    //this.garantieS.listGarantie().subscribe(res=>{console.log(res); this.listG=res});
     //this.userS.getAllUser().subscribe(res=>{console.log(res); this.listU=res});
     //this.userConnecte.findUserWithToken();
    
@@ -59,19 +60,26 @@ export class AjoutCreditLibreComponent implements OnInit {
 
   addCredit(){
     console.log(this.creditLibre);
-    this.creditLibreService.createCredit(this.creditLibre,this.userConnecte.activeUser.idUser,this.idGarantie).subscribe(res=>{
+    //this.garantie.credit=this.creditLibre;
+   // this.creditLibre.garantie=this.garantie;
+    //console.log(this.creditLibre.garantie);
+    
+    this.creditLibreService.createCredit(this.creditLibre,this.garantie.valeur,this.garantie.type,this.userConnecte.activeUser.idUser).subscribe(res=>{
       console.log(this.creditLibre);
-      console.log(res);
+      console.log(res); 
       this.isSuccessful = true;
-
+      this.garantie.credit=res;
         this.isSignUpFailed = false;
-        window.location.reload();
+        
+        //window.location.reload();
 
     },
     err => {
       this.errorMessage = err.error.message;
       this.isSignUpFailed = true;
     });
+    
+    //this.garantieS.createGarantie(this.garantie).subscribe(res=>{console.log(res);});
  }
 
 }

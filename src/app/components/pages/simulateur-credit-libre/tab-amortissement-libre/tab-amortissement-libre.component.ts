@@ -12,6 +12,9 @@ import { Amortissement } from 'src/app/models/amortissement';
 export class TabAmortissementLibreComponent implements OnInit {
   creditLibre=new CreditLibre();
   listCredit:Amortissement[];
+  valeur:number;
+  type:string;
+  salaire:number;
   isSuccessful = false;
   isSignUpFailed = false;
   errorMessage = '';
@@ -50,8 +53,8 @@ export class TabAmortissementLibreComponent implements OnInit {
   stepChanged(_args: StepChangedArgs) { }
   
   tabAmortissement(){
-    this.creditLibre.tauxInteret=this.counter;
-      this.creditLibreS.tab(this.creditLibre).subscribe(res=>{  console.log(this.creditLibre);
+    //this.creditLibre.tauxInteret=this.counter;
+      this.creditLibreS.tab(this.creditLibre,this.valeur,this.type,this.salaire).subscribe(res=>{  console.log(this.creditLibre);
        this.listCredit=res;
         this.isSuccessful = true;
           this.isSignUpFailed = false;

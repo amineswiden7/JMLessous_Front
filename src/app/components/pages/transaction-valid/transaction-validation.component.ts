@@ -14,58 +14,69 @@ export class TransactionValidComponent implements OnInit {
   rib : string ='' ;
   code:number=0;
   transaction = new Transaction();
-  
+  currency=0;
+  montantAmount;
+  currencyTo=0;
+  coco=0;
   constructor(private transactionsService: TransactionService, private router: Router,private modalService: NgbModal ) {
  // this.transaction={};
    }
   ngOnInit(): void {
    
   }
-  savetransactions(){
-    console.log(this.transaction);
-    this.transactionsService.createtransactions(this.transaction).subscribe( data => {
-      console.log(data);
-      //this.trs={};
-     // this.goTotransactionsList();
-    }) ;
-    console.log(this.transaction);
+  conversion(){
+  
+   
+    //const base = document.querySelector('#currency-from').value;
+   
+    fetch(`https://api.exchangerate.host/latest?/source=ecb&base=${this.currency}`)
+        .then((response) => response.json())
+        .then((data) => {
+         //   const amount = document.querySelector("#amount").value;
+           
+          //  const currencyTo = document.querySelector("#currency-to").value;
+          console.log(data);
+          console.log(this.currency);
+          console.log(this.currencyTo);
+          console.log(this.montantAmount);
+            const rate = data.rates[this.currencyTo];
+            console.log(rate);
+                this.coco= this.montantAmount * rate;
+                console.log("valid: ", this.montantAmount * rate);
+            
+           // document.querySelector(".display-result").innerHTML = `${amount} ${base.toUpperCase()} equal to ${currencyTo} ${convert().toFixed(2)}`;
+        })
+        .catch((error) => {
+            console.log("Error: ", error);
+        });
+        return false;
+}
 
-  }
-  apptransactions(){
-    console.log(this.transaction);
-    this.transactionsService.apptransaction(this.code,this.transaction).subscribe( data => {
+  addtransactions(content){
+    this.transactionsService.addtransactionInter(this.transaction).subscribe( data => {
       console.log(data);
+    }) ;
+    this.openVerticallyCentered(content)
+    console.log(this.transaction);
+  }
+  apptransactionsINTER(){
+    console.log(this.transaction);
+    this.transactionsService.apptransactionInter(this.code,this.transaction).subscribe( data => {
+      console.log(data);
+      window.location.reload();
       //this.trs={};
      // this.goTotransactionsList();
     }) ;
     console.log(this.transaction);
    // this.modalClose.nativeElement.click();
   }
-  addtransactions(content){
-    this.transactionsService.addtransaction(this.transaction).subscribe( data => {
-      console.log(data);
-      //this.trs={};
-     // this.goTotransactionsList();
-    }) ;
-    this.openVerticallyCentered(content)
-    console.log(this.transaction);
-  }
- 
-
-
-
   
-  // tslint:disable-next-line:typedef
   goTotransactionsList(){
     this.router.navigate(['transactionss']);
   }
 
   // tslint:disable-next-line:typedef
   onSubmit(){
-    console.log(this.transaction);
-    this.savetransactions();
-    //il faut recuperer tout l'objet passer par le form et l'envoyer vers l'autre page
-   // this.router.navigate(['apptr']);
   }
 
   verify(i:number)
@@ -79,7 +90,10 @@ export class TransactionValidComponent implements OnInit {
 
     this.router.navigate(['transactionsbyrib',id]);
   }
+  
   openVerticallyCentered(content: any) {
     this.modalService.open(content,{ centered: true });
   }
+ 
+  
 }

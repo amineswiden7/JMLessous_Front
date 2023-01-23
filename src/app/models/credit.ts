@@ -1,3 +1,5 @@
+import { Garantie } from "./garantie";
+
 export class Credit {
      idCredit:any ;
      montantCredit:any;
@@ -15,5 +17,5 @@ export class Credit {
    Motif:any ;
     finC:any;
     compteCredit:any;
-   garantie:any;
+   garantie:Garantie;
 }
