@@ -1,15 +1,15 @@
 <!--<mat-card>
     <mat-card-content>
       <div class="row">
-  
+
         <div class="col-md-10">
-  
+
           <mat-card-title>Trouvez l'offre assurance qui vous convient</mat-card-title>
           <br>
           <mat-card-subtitle>Assurance</mat-card-subtitle>
-  
+
         </div>
-  
+
       </div>
     </mat-card-content>
   </mat-card>
@@ -17,12 +17,146 @@
 <app-header></app-header>
 <app-breadcrumb></app-breadcrumb>
 
-  <section class="section-padding bg-gray our-articles">
-    <div class="container">
-        <div class="row">
-       <app-offreassurance *ngFor="let offre of listOffres;let i = index" [offre]="offre" class="col-lg-4 col-md-6 post mb-xl-30" ></app-offreassurance>
+<section class="why-choose-us-style-2 section-padding">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="square-tabs">
+          <div class="section-header">
+            <div class="section-heading">
+              <h3 class="text-custom-black fw-700">Les offres de nos partenaires d'assurance</h3>
+              <div class="section-description">
+                <p class="text-custom-black">Grâce aux conventions signées entre la banque JMlessous et un groupe des agences d'assurance tunisiennes;
+                  vous pouvez bénéficier d'un ensemble d'offres de contrats d'assurance à des prix exceptionnels. </p>
+              </div>
+            </div>
+          </div>
+          <ul ngbNav #navwhyus="ngbNav" class="nav nav-tabs custom mb-xl-20">
+            <li [ngbNavItem]="1">
+              <a ngbNavLink>Automobile</a>
+              <ng-template ngbNavContent>
+                <div>
+                  <div class="row">
+                    <div class="col-12 no-padding">
+                      <ngx-slick-carousel #slickModal="slick-carousel" [config]="blogConfig" class="blog-slider">
+                        <div ngxSlickItem class="post col-12" *ngFor="let offre of offresAuto;let i = index">
+                          <app-offreassurance [offre]="offre" class="col-lg-4 col-md-6 post mb-xl-30" ></app-offreassurance>
+                        </div>
+                      </ngx-slick-carousel>
+                    </div>
+                  </div>
+                </div>
+              </ng-template>
+            </li>
+            <li [ngbNavItem]="2">
+              <a ngbNavLink>Habitation</a>
+              <ng-template ngbNavContent>
+                <div>
+                  <div class="row">
+                    <div class="col-12 no-padding">
+                      <ngx-slick-carousel #slickModal="slick-carousel" [config]="blogConfig" class="blog-slider">
+                        <article ngxSlickItem class="post col-12" *ngFor="let offre of offresHabit;let i = index">
+                          <app-offreassurance [offre]="offre" class="col-lg-4 col-md-6 post mb-xl-30" ></app-offreassurance>
+                        </article>
+                      </ngx-slick-carousel>
+                    </div>
+                  </div>
+                </div>
+              </ng-template>
+            </li>
+            <li [ngbNavItem]="3">
+              <a ngbNavLink>Responsabilité civile</a>
+              <ng-template ngbNavContent>
+                <div>
+                  <div class="row">
+                    <div class="col-12 no-padding">
+                      <ngx-slick-carousel #slickModal="slick-carousel" [config]="blogConfig" class="blog-slider">
+                        <article ngxSlickItem class="post col-12" *ngFor="let offre of offresResp;let i = index">
+                          <app-offreassurance [offre]="offre" class="col-lg-4 col-md-6 post mb-xl-30" ></app-offreassurance>
+                        </article>
+                      </ngx-slick-carousel>
+                    </div>
+                  </div>
+                </div>
+              </ng-template>
+            </li>
+            <li [ngbNavItem]="4">
+              <a ngbNavLink>Empreinteur</a>
+              <ng-template ngbNavContent>
+                <div>
+                  <div class="row">
+                    <div class="col-12 no-padding">
+                      <ngx-slick-carousel #slickModal="slick-carousel" [config]="blogConfig" class="blog-slider">
+                        <article ngxSlickItem class="post col-12" *ngFor="let offre of offresEmp;let i = index">
+                          <div class="post-wrapper">
+                            <div class="blog-img animate-img">
+                              <a routerLink="/offre-assurance/{{offre.idOffreAssurance}}">
+                                <img src="assets/images/assurance/emprunt.jpg" class="image-fit"
+                                     alt="{{offre.categorie}}">
+                              </a>
+                            </div>
+                            <div class="blog-meta padding-20">
+                              <div class="post-meta">
+                                <!--      <div class="author-img">-->
+                                <!--        <img src="assets/images/clients/client1.jpg" class="rounded-circle" alt="{{offre.assurance}}">-->
+                                <!--      </div>-->
+                                <div class="author-meta">
+                                  <h5 class="no-margin"><a routerLink="/offre-assurance/{{offre.idOffreAssurance}}"
+                                                           class="text-custom-white">{{offre.assurance}}</a></h5>
+                                  <p class="no-margin text-custom-white"><a routerLink="/offre-assurance{{offre.idOffreAssurance}}"
+                                                                            class="text-custom-white">Mehdi Hantous</a> | {{offre.minPeriode}} {{offre.typePeriode}}</p>
+                                </div>
+                              </div>
+                              <div class="post-content">
+                                <h5>
+                                  <a routerLink="/offre-assurance/{{offre.idOffreAssurance}}"
+                                     class="text-custom-black fw-600">Assurance Emprunteur</a>
+                                </h5>
+                                <p class="text-light-white" style="height:60px;line-height:20px;overflow:hidden;">{{offre.shortDescription}}</p>
+                              </div>
+                              <div class="blog-links">
+                                <a routerLink="/offre-assurance/{{offre.idOffreAssurance}}" class="btn btn-sm btn-primary">Voir Détails</a>
+                              </div>
+                            </div>
+                          </div>
+<!--                          <app-offreassurance [offre]="offre" class="col-lg-4 col-md-6 post mb-xl-30" ></app-offreassurance>-->
+                        </article>
+                      </ngx-slick-carousel>
+                    </div>
+                  </div>
+                </div>
+              </ng-template>
+            </li>
+            <li [ngbNavItem]="5">
+              <a ngbNavLink>Rente viagère</a>
+              <ng-template ngbNavContent>
+                <div>
+                  <div class="row">
+                    <div class="col-12 no-padding">
+                      <ngx-slick-carousel #slickModal="slick-carousel" [config]="blogConfig" class="blog-slider">
+                        <article ngxSlickItem class="post col-12" *ngFor="let offre of offresRente;let i = index">
+                          <app-offreassurance [offre]="offre" class="col-lg-4 col-md-6 post mb-xl-30" ></app-offreassurance>
+                        </article>
+                      </ngx-slick-carousel>
+                    </div>
+                  </div>
+                </div>
+              </ng-template>
+            </li>
+          </ul>
+          <div [ngbNavOutlet]="navwhyus" class="padding-20 bx-wrapper bg-custom-white"></div>
+        </div>
+      </div>
     </div>
   </div>
-  </section>
+</section>
+
+<!--  <section class="section-padding bg-gray our-articles">-->
+<!--    <div class="container">-->
+<!--        <div class="row">-->
+<!--       <app-offreassurance *ngFor="let offre of listOffres;let i = index" [offre]="offre" class="col-lg-4 col-md-6 post mb-xl-30" ></app-offreassurance>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--  </section>-->
 
 <app-footer></app-footer>
