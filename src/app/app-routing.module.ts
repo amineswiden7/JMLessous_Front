@@ -31,11 +31,11 @@ import { CreateCreditComponent } from './components/pages/CreditImmob/create-cre
 import { AjoutCreditLibreComponent } from './components/pages/credit-libre/ajout-credit-libre/ajout-credit-libre.component';
 import { ListesCreditsComponent } from './components/pages/CreditImmob/listes-credits/listes-credits.component';
 
-
+import { AffecterSalaireComponent } from './components/pages/affecter-salaire/affecter-salaire.component';
 
 
 const routes: Routes = [
-
+  {path: 'affecterSalaire',component :AffecterSalaireComponent},
   {path: 'compte',component :CompteComponent},
   {path: 'courant',component :ComptecourantComponent},
   {path: 'adminCreditLibre', component:AdminCreditLibreComponent},

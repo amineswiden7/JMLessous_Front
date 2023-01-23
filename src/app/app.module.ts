@@ -40,6 +40,7 @@ import { SimulateurCreditLibreComponent } from './components/pages/simulateur-cr
 import { TabAmortissementLibreComponent } from './components/pages/simulateur-credit-libre/tab-amortissement-libre/tab-amortissement-libre.component';
 import { AdminCreditLibreComponent } from './components/pages/admin-credit-libre/admin-credit-libre.component';
 import { DialogueComponent } from './components/pages/admin-credit-libre/dialogue/dialogue.component';
+
 import { CompteepargneComponent } from './components/compteepargne/compteepargne.component';
 import { UsercompteComponent } from './components/pages/usercompte/usercompte.component';
 import { TransactionValidComponent } from './components/pages/transaction-valid/transaction-validation.component';
@@ -57,6 +58,8 @@ import { BarSideProfileComponent } from './components/pages/utilisateur-profile/
 import { CreateCreditComponent } from './components/pages/CreditImmob/create-credit/create-credit.component';
 import { ListesCreditsComponent } from './components/pages/CreditImmob/listes-credits/listes-credits.component';
 import { AuthInterceptor } from './helpers/authInterceptor';
+import { AffecterSalaireComponent } from './components/pages/affecter-salaire/affecter-salaire.component';
+import { DialogueSComponent } from './components/pages/affecter-salaire/dialogue-s/dialogue-s.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -103,13 +106,16 @@ import { AuthInterceptor } from './helpers/authInterceptor';
 
     CreateCreditComponent,
     ListesCreditsComponent,
-    TabAmortissementLibreComponent
+    TabAmortissementLibreComponent,
+    AffecterSalaireComponent,
+    DialogueSComponent
 
 
   ],
 
   entryComponents:[
     DialogueComponent,
+    DialogueSComponent
  ],
 
   imports: [

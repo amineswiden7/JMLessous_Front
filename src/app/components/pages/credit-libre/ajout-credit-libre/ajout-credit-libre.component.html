@@ -56,19 +56,34 @@
                                                 >
                                             </div>
                                         </div>
+                                        <div class="col-md-12">
+                                            <p class="text-custom-black fs-14 fw-600"> remplire les paramétre de votre garantie</p>
+                                        </div>
                                         <div class="col-md-6">
                                             <div class="form-group">
-                                                <label class="text-custom-black fs-14 fw-600"> choisir le garantie</label>
-                                                <select class="custom-select form-control form-control-custom"
+                                                <label class="text-custom-black fs-14 fw-600"> valeur du garantie</label>
+                                                <input class="custom-select form-control form-control-custom" type="number"
                                                 placeholder="garantie"
-                                                name="idGarantie"
-                                                [(ngModel)]="idGarantie"
+                                                name="valeur"
+                                                [(ngModel)]="garantie.valeur"
                                                 required
+                                                #valeur="ngModel"
                                                  >
-                                                 <option>garantie</option>
-                                                    <option *ngFor = "let g of listG" >{{g.idGarantie}}</option>
-                                                   
-                                                </select>
+                                               
+                                            </div>
+
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label class="text-custom-black fs-14 fw-600"> type du garantie</label>
+                                                <input class="custom-select form-control form-control-custom" type="text"
+                                                placeholder="type garantie"
+                                                name="valeur"
+                                                [(ngModel)]="garantie.type"
+                                                required
+                                                #type="ngModel"
+                                                 >
+                                               
                                             </div>
 
                                         </div>
