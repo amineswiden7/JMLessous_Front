@@ -48,7 +48,7 @@ export class CreateAbsenceComponent implements OnInit {
   stepChanged(_args: StepChangedArgs) { }
   addAbsence(){
     console.log(this.Absence);
-    this.absenceService.createAbsence(this.Absence,).subscribe(res=>{
+    this.absenceService.createAbsence(this.Absence).subscribe(res=>{
       console.log(this.Absence);
       console.log(res);
       this.isSuccessful = true;
