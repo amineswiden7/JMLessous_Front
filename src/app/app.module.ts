@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule,LOCALE_ID } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule, LOCALE_ID } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -38,6 +38,17 @@ import { GarantieComponent } from './components/pages/garantie/garantie.componen
 import { AjoutCreditLibreComponent } from './components/pages/credit-libre/ajout-credit-libre/ajout-credit-libre.component';
 import { SimulateurCreditLibreComponent } from './components/pages/simulateur-credit-libre/simulateur-credit-libre.component';
 import { TabAmortissementLibreComponent } from './components/pages/simulateur-credit-libre/tab-amortissement-libre/tab-amortissement-libre.component';
+import { ConfigOffreAssuranceComponent } from './components/pages/assurance/config-offre-assurance/config-offre-assurance.component';
+import {NgWizardModule} from 'ng-wizard';
+import { OffresAssureursComponent } from './components/pages/assurance/offres-assureurs/offres-assureurs.component';
+import { SideBarOffresAssureursComponent } from './components/pages/assurance/offres-assureurs/side-bar-offres-assureurs/side-bar-offres-assureurs.component';
+import {NgxPaginationModule} from 'ngx-pagination';
+import { BankOffreAssurListComponent } from './components/pages/assurance/bank-offre-assur-list/bank-offre-assur-list.component';
+import { OffreValidationComponent } from './components/pages/assurance/offre-validation/offre-validation.component';
+import { ContractRegistrationComponent } from './components/pages/assurance/contract-registration/contract-registration.component';
+import {SlickCarouselModule} from 'ngx-slick-carousel';
+import { ContractsListAgComponent } from './components/pages/assurance/contracts-list-ag/contracts-list-ag.component';
+import { ContractsListClientComponent } from './components/pages/assurance/contracts-list-client/contracts-list-client.component';
 import { AdminCreditLibreComponent } from './components/pages/admin-credit-libre/admin-credit-libre.component';
 import { DialogueComponent } from './components/pages/admin-credit-libre/dialogue/dialogue.component';
 import { CompteepargneComponent } from './components/compteepargne/compteepargne.component';
@@ -72,6 +83,7 @@ import { AuthInterceptor } from './helpers/authInterceptor';
 import { CreateAbsenceComponent } from './components/pages/Absence/create-absence/create-absence.component';
 import { ListeAbsenceComponent } from './components/pages/Absence/liste-absence/liste-absence.component';
 import { ListeAbsenceByClientComponent } from './components/pages/Absence/liste-absence-by-client/liste-absence-by-client.component';
+import { DashboardComponent } from './components/pages/dashboard/dashboard.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -91,7 +103,7 @@ import { ListeAbsenceByClientComponent } from './components/pages/Absence/liste-
 
     AddOffreAssuranceComponent,
     CreditLibreComponent,
- 
+
     ComptecourantComponent,
 
 
@@ -106,7 +118,6 @@ import { ListeAbsenceByClientComponent } from './components/pages/Absence/liste-
     DialogueComponent,
     UtilisateurProfileComponent,
     BarSideProfileComponent,
-    
     CompteepargneComponent,
     UsercompteComponent,
     TransactionValidComponent,
@@ -115,12 +126,10 @@ import { ListeAbsenceByClientComponent } from './components/pages/Absence/liste-
     PortfeuilleComponent,
     AddPortfeuilleComponent,
     OrdreComponent,
-
     CreateCreditComponent,
     ListesCreditsComponent,
     TabAmortissementLibreComponent,
     CreditDetailComponent,
-    
     SimulateurCreditImmobComponent,
     TabAmorComponent,
     ListeCreditBackComponent,
@@ -129,14 +138,24 @@ import { ListeAbsenceByClientComponent } from './components/pages/Absence/liste-
     CreditEtuComponent,
     CreateAbsenceComponent,
     ListeAbsenceComponent,
-    ListeAbsenceByClientComponent
+    ListeAbsenceByClientComponent,
 
    
 
+    
+    ConfigOffreAssuranceComponent,
+    OffresAssureursComponent,
+    SideBarOffresAssureursComponent,
+    BankOffreAssurListComponent,
+    OffreValidationComponent,
+    ContractRegistrationComponent,
+    ContractsListAgComponent,
+    ContractsListClientComponent,
+    DashboardComponent
 
   ],
 
-  entryComponents:[
+  entryComponents: [
     DialogueComponent,
  ],
 
@@ -153,19 +172,22 @@ import { ListeAbsenceByClientComponent } from './components/pages/Absence/liste-
         MatTableModule,
         MatTabsModule,
         MatDialogModule,
-        
         ReactiveFormsModule,
-        AngularEditorModule
+        AngularEditorModule,
+        NgWizardModule,
+        NgxPaginationModule,
+        SlickCarouselModule
     ],
-  providers: [ 
+  providers: [
     { provide: LOCALE_ID, useValue: 'fr-FR'},
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    OffresAssureursComponent
   ],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 
-export class AppModule { 
+export class AppModule {
   constructor() {
     registerLocaleData(fr.default);
   }
