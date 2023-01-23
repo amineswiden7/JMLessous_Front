@@ -51,6 +51,7 @@ import { ContractsListAgComponent } from './components/pages/assurance/contracts
 import { ContractsListClientComponent } from './components/pages/assurance/contracts-list-client/contracts-list-client.component';
 import { AdminCreditLibreComponent } from './components/pages/admin-credit-libre/admin-credit-libre.component';
 import { DialogueComponent } from './components/pages/admin-credit-libre/dialogue/dialogue.component';
+
 import { CompteepargneComponent } from './components/compteepargne/compteepargne.component';
 import { UsercompteComponent } from './components/pages/usercompte/usercompte.component';
 import { TransactionValidComponent } from './components/pages/transaction-valid/transaction-validation.component';
@@ -80,6 +81,8 @@ import { CreditEtuComponent } from './components/pages/CreditEtudiant/credit-etu
 
 
 import { AuthInterceptor } from './helpers/authInterceptor';
+import { AffecterSalaireComponent } from './components/pages/affecter-salaire/affecter-salaire.component';
+import { DialogueSComponent } from './components/pages/affecter-salaire/dialogue-s/dialogue-s.component';
 import { CreateAbsenceComponent } from './components/pages/Absence/create-absence/create-absence.component';
 import { ListeAbsenceComponent } from './components/pages/Absence/liste-absence/liste-absence.component';
 import { ListeAbsenceByClientComponent } from './components/pages/Absence/liste-absence-by-client/liste-absence-by-client.component';
@@ -129,6 +132,9 @@ import { DashboardComponent } from './components/pages/dashboard/dashboard.compo
     CreateCreditComponent,
     ListesCreditsComponent,
     TabAmortissementLibreComponent,
+    AffecterSalaireComponent,
+    DialogueSComponent,
+
     CreditDetailComponent,
     SimulateurCreditImmobComponent,
     TabAmorComponent,
@@ -157,6 +163,7 @@ import { DashboardComponent } from './components/pages/dashboard/dashboard.compo
 
   entryComponents: [
     DialogueComponent,
+    DialogueSComponent
  ],
 
   imports: [

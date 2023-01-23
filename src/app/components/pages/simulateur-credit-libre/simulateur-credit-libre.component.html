@@ -47,13 +47,13 @@
                                             
                                             <form class="form-layout-1">
                                                 <div class="row">
-                                                    <div class="col-sm-6">
+                                                    <div class="col-12 mb-xl-20">
                                                         <div class="form-group">
                                                             <label class="text-left">montant restant</label>
                                                             <input type="number" name="#" class="form-control"  value="{{listCredit.montantR}}" readonly>
                                                         </div>
                                                     </div>
-                                                    <div class="col-sm-6">
+                                                    <div class="col-12 mb-xl-20">
                                                         <div class="form-group">
                                                             <label class="text-left">interet</label>
                                                             <input type="number" name="#" class="form-control"  value="{{listCredit.interest}}"  readonly>
@@ -118,15 +118,36 @@
                                               </div>
                                           </div>
                                           <div class="col-md-12">
-                                              <p class="fw-600 text-center exp-cal2-content">tauxInteret</p>
+                                              <p class="fw-600 text-center exp-cal2-content">salaire</p>
                                               <div >
                                                   <input type="number" class="form-control form-control-custom"  placeholder="00" type="number"
-                                                  name="taux"
-                                                  [(ngModel)]="taux"
+                                                  name="salaire"
+                                                  [(ngModel)]="salaire"
                                                   required > 
-                                                  <p class="fw-600 mt-2 fs-13">entrer le taux souhaité</p>
+                                                  <p class="fw-600 mt-2 fs-13">entrer le salaire annuelle</p>
                                               </div>
                                           </div>
+                                          <p class="fw-600 text-center exp-cal2-content">entrer les parametre de votre garantie</p>
+                                          <div class="col-md-12">
+                                            <p class="fw-600 text-center exp-cal2-content">valeur</p>
+                                            <div >
+                                                <input type="number" class="form-control form-control-custom"  placeholder="00" 
+                                                name="valeur"
+                                                [(ngModel)]="gr.valeur"
+                                                required > 
+                                                <p class="fw-600 mt-2 fs-13">entrer la valeur du garantie</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <p class="fw-600 text-center exp-cal2-content">type du garantie</p>
+                                            <div >
+                                                <input type="text" class="form-control form-control-custom"  placeholder="type garantie" 
+                                                name="type"
+                                                [(ngModel)]="gr.type"
+                                                required > 
+                                                <p class="fw-600 mt-2 fs-13">entrer le type du garantie</p>
+                                            </div>
+                                        </div>
                                           <br>
                                           <br>
                                           <div class="col-md-12 align-self-center">

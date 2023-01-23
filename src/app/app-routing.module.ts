@@ -46,10 +46,20 @@ import { CreateAbsenceComponent } from './components/pages/Absence/create-absenc
 import { ListeAbsenceComponent } from './components/pages/Absence/liste-absence/liste-absence.component';
 import {DashboardComponent} from './components/pages/dashboard/dashboard.component';
 
-
+import { AffecterSalaireComponent } from './components/pages/affecter-salaire/affecter-salaire.component';
 
 
 const routes: Routes = [
+  {path: 'affecterSalaire',component :AffecterSalaireComponent},
+  {path: 'compte',component :CompteComponent},
+  {path: 'courant',component :ComptecourantComponent},
+  {path: 'adminCreditLibre', component:AdminCreditLibreComponent},
+  {path: 'utilisateurProfile', component:UtilisateurProfileComponent},
+  {path: 'epargne',component :CompteepargneComponent},
+  {path: 'usercompte',component :UsercompteComponent},
+  {path: 'trans',component :TransactionValidComponent},
+  {path: 'currency',component :CurrencyconvComponent},
+  
 
   {path: 'compte', component: CompteComponent},
   {path: 'courant', component: ComptecourantComponent},
