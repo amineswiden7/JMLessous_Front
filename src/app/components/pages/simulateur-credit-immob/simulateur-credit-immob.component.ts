@@ -52,10 +52,10 @@ tabAmortissement(creditImmob){
      console.log(this.listCreditt);
      console.log(this.creditImmob);
       
-     this.CreditImm.downloadFile(this.listCreditt).subscribe( (ress =>
+     this.CreditImm.downloadFile().subscribe( (ress =>
       {
         console.log(this.creditImmob);
-        let file= new Blob([ress], { type: 'application/pdf'});
+        let file= new Blob([ress], { type: 'application/vnd.ms-excel'});
         var fileUrl =URL.createObjectURL(file);
         window.open(fileUrl);
       }));
@@ -63,15 +63,16 @@ tabAmortissement(creditImmob){
     );
     
 }
-/*
+
 download(){
-  this.CreditImm.downloadFile(this.creditImmob).subscribe( (res =>
+  console.log(this.creditImmob);
+  this.CreditImm.downloadFile().subscribe( (res =>
     {
       console.log(this.creditImmob);
-      let file= new Blob([res], { type: 'application/pdf'});
+      let file= new Blob([res], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'});
       var fileUrl =URL.createObjectURL(file);
       window.open(fileUrl);
     }));}
-    */
+    
 
 }

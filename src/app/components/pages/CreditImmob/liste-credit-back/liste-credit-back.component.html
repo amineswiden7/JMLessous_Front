@@ -46,10 +46,8 @@
               <th  data-order="desc" data-name="Motif" scope="col">Motif</th>
               
               <th>Actions</th>
-                    </tr>
-                    <tr *ngFor = "let credit of listcredits 
-                   
-              ">
+                     
+                    <tr *ngFor = "let credit of listcredits ">
                       <td class="lw-table-data-2">
                         {{ credit.montantCredit }}
                       </td>
@@ -74,9 +72,10 @@
                       
                       <button  *ngIf="credit.status=='ENCOURSDETRAITEMENT'" (click)  = "Accepter(credit.idCredit)" class = "btn btn-outline-primary"> Accepter Credit</button>
                       <button  *ngIf="credit.status=='ENCOURSDETRAITEMENT'" (click)  = "refuser(credit.idCredit)" class = "btn btn-outline-primary"> refuser Credit</button>
+                      <button class="btn btn-lg btn-outline-primary" (click)="open(content1,credit.idCredit)" >View</button>
                     </tr>
-  
                   </table>
+                  
                   <div class="d-flex justify-content-center">
                     <pagination-controls
                       previousLabel="Prev"
@@ -93,4 +92,35 @@
       </div>
     </div>
   </div>
-             <app-footer></app-footer>
+
+  <ng-template #content1 let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Credit details</h4>
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      <button type="button" class="btn-close" aria-label="Close" (click)="d('Cross click')" ></button>
+    </div>
+    <div class="modal-body">
+      <form>
+        <div class="mb-3">
+          <div>
+              <div>
+                  <label> <b>  solde compte : </b></label> {{CreditImmobilier.compteCredit.solde}}
+              </div>
+              <div>
+                  <label> <b> Numéro compte : </b></label> {{CreditImmobilier.compteCredit.numCompte}}
+              </div>
+              <div>
+                <label> <b> salaire Client : </b></label> {{CreditImmobilier.compteCredit.montantDecouvert}}
+            </div>
+             
+          </div>
+        </div>
+      </form>
+
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="d('Save click')">Close</button>
+    </div>
+  </ng-template>
+  
+  <app-footer></app-footer>
