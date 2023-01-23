@@ -15,7 +15,7 @@ export class TransactionService {
       'Content-Type': 'application/json',
     }),
   };
-  getAllTransactions(){
+getAllTransactions(){
     return this.httpClient.get(`${this.API_URL}/retrieve-all-Transactions`)
   }
 createtransactions( transaction: Transaction) {
@@ -23,13 +23,21 @@ createtransactions( transaction: Transaction) {
  }
 addtransaction(transaction: Transaction): Observable<Object>{
    return this.httpClient.post(`${this.API_URL}/add-Transaction`, transaction);
- 
  }
+ addtransactionInter(transaction: Transaction): Observable<Object>{
+  return this.httpClient.post(`${this.API_URL}/add-TransactionInter`, transaction);
+}
 apptransaction(num: number,transaction: Transaction){
    return this.httpClient.post(`${this.API_URL}/app-TransactionAng/${num}`, transaction);
  }
+ apptransactionInter(num: number,transaction: Transaction){
+  return this.httpClient.post(`${this.API_URL}/app-TransactionInterAng/${num}`, transaction);
+}
 gettransactionsByRib(Rib: string): Observable<Transaction>{
   return this.httpClient.get<Transaction>(`${this.API_URL}/retrieve-Transaction-by-rib/${Rib}`);
+}
+gettransactionsByidcpt(numCompte: string): Observable<Transaction>{
+  return this.httpClient.get<Transaction>(`${this.API_URL}/retrieve-Transaction-by-cpt/${numCompte}`);
 }
 PDF(Rib: string){
   return this.httpClient.get(`${this.API_URL}/export/${Rib}`)

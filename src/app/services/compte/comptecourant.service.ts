@@ -14,12 +14,20 @@ export class ComptecourantService {
       'Content-Type': 'application/json',
     }),
   };
-  getAllCompteC(){
-    return this.httpClient.get(`${this.API_URL}/Listaccounts`)
+  getAllCompteC(): Observable<CompteCourant[]>{
+    return this.httpClient.get<CompteCourant[]>(`${this.API_URL}/Listaccounts`)
+  }
+  getC(iduser :any) {
+    return this.httpClient.get<CompteCourant[]>(`${this.API_URL}/Lista/${iduser}`);
+  }
+  getCompteC(id:any):Observable<CompteCourant>{
+    return this.httpClient.get<CompteCourant>(`${this.API_URL}/compte/${id}`)
   }
   addCompteC(compteCourant :CompteCourant ,iduser :any): Observable<CompteCourant> {
     return this.httpClient.post<CompteCourant>(`${this.API_URL}/AddAccount/${iduser}`,compteCourant);
   }
+
+ 
 
   editCompteC(CompteCourant : any): Observable<Object>{
     return this.httpClient.put(`${this.API_URL}/modify-Account`, CompteCourant)

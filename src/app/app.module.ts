@@ -68,6 +68,12 @@ import { BarSideProfileComponent } from './components/pages/utilisateur-profile/
 
 import { CreateCreditComponent } from './components/pages/CreditImmob/create-credit/create-credit.component';
 import { ListesCreditsComponent } from './components/pages/CreditImmob/listes-credits/listes-credits.component';
+import { ComptechoixComponent } from './components/comptechoix/comptechoix.component';
+import { UsercompteEpComponent } from './components/pages/usercompte-ep/usercompte-ep.component';
+import { AjouterFormationComponent } from './components/pages/formation/ajouter-formation/ajouter-formation.component';
+import { FormationsComponent } from './components/pages/formation/formations/formations.component';
+import { OneFormationComponent } from './components/pages/formation/one-formation/one-formation.component';
+
 import { CreditDetailComponent } from './components/pages/CreditImmob/credit-detail/credit-detail.component';
 
 import { SimulateurCreditImmobComponent } from './components/pages/simulateur-credit-immob/simulateur-credit-immob.component';
@@ -132,6 +138,13 @@ import { DashboardComponent } from './components/pages/dashboard/dashboard.compo
     CreateCreditComponent,
     ListesCreditsComponent,
     TabAmortissementLibreComponent,
+    ComptechoixComponent,
+    UsercompteEpComponent,
+    AjouterFormationComponent,
+    FormationsComponent,
+    OneFormationComponent,
+   
+    
     AffecterSalaireComponent,
     DialogueSComponent,
 

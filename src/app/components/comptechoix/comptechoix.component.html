@@ -1,0 +1,72 @@
+<app-header></app-header>
+<div class="overlapsec"></div>
+<app-breadcrumb></app-breadcrumb>
+<div class="container-fluid py-4">
+    <div class="row">
+        <div >
+            <div class="card mb-4">
+                
+        
+                
+            </div>
+        </div>
+    </div>
+ 
+  </div>
+
+
+
+<div class="section-header">
+    <div class="section-heading">
+        <h3 class="text-custom-black fw-700">Mes Comptes</h3>
+    </div>
+</div>
+<section class="main-services section-padding p-relative">
+    <div class="side-lines"> 
+        <span class="text">Comptes Courant</span>
+        <span class="line"></span>
+    </div>
+    <div class="container">
+       
+        <div class="row">
+            <div class="col-lg-3 col-sm-6" *ngFor = "let accs of acc">
+                <div class="main-services-box p-relative mb-xl-30">
+                    <div class="main-service-wrapper padding-10">
+                        <div class="icon-box"> <i class="flaticon-website"></i>
+                        </div>
+                        <h5 class="fw-700"><a 
+                                class="text-custom-black">RIB COMPTE</a></h5>
+                        <p class="text-light-white no-margin">{{accs.rib}}</p>
+                        <a routerLink="/usercompte/{{accs.numCompte}}" class="btn btn-primary fw-600">Détails Compte</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="main-services section-padding p-relative">
+    <div class="side-lines"> 
+        <span class="text">Comptes Epargne</span>
+        <span class="line"></span>
+    </div>
+    <div class="container">
+       
+        <div class="row">
+            <div class="col-lg-3 col-sm-6" *ngFor = "let acces of accE">
+                <div class="main-services-box p-relative mb-xl-30">
+                    <div class="main-service-wrapper padding-10">
+                        <div class="icon-box"> <i class="flaticon-customer-service"></i>
+                        </div>
+                        <h5 class="fw-700"><a 
+                                class="text-custom-black">RIB COMPTE</a></h5>
+                        <p class="text-light-white no-margin">{{acces.rib}}</p>
+                        <a routerLink="/usercompteE/{{acces.numCompte}}" class="btn btn-primary fw-600">Détails Compte</a>
+                 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<app-footer></app-footer>

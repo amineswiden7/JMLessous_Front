@@ -18,7 +18,6 @@ export class ComptecourantComponent implements OnInit {
   isSuccessful = false;
   isSignUpFailed = false;
   errorMessage = '';
-
   stepStates = {
     normal: STEP_STATE.normal,
   };
@@ -34,14 +33,13 @@ export class ComptecourantComponent implements OnInit {
     selected: 0,
     theme: THEME.arrows,
   };
-
   constructor(private ngWizardService: NgWizardService,private comptecourantService:ComptecourantService
     ,private UserService:UserService
     ,private router: Router,
     private route:ActivatedRoute) {
   }
   ngOnInit() {
-    this.idUser=1;
+    this.idUser=10;
    
       this.UserService.getUser(this.idUser).subscribe(res=>{  
         this.Utilisateur=res;
@@ -57,15 +55,15 @@ export class ComptecourantComponent implements OnInit {
     this.ngWizardService.next();
   }
   stepChanged(_args: StepChangedArgs) { }
-
   addCompte(){
     console.log(this.comptecourant);
     this.comptecourantService.addCompteC(this.comptecourant,this.idUser).subscribe(data=> {
       console.log(data);
+      this.goToUserCompte();
     },
     error => console.log(error));
  }
  goToUserCompte(){
-  this.router.navigate(['usercompte']);
+  this.router.navigate(['choix']);
   }
 }
