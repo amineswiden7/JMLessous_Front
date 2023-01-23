@@ -19,6 +19,7 @@ export class ListeCreditBackComponent implements OnInit {
   filterTerm!: string;
   listCredit: any;
   listcredits: any;
+  CreditImmobilier:CreditImmobilier=new CreditImmobilier();
   
   listC:CreditImmobilier[];
   constructor(private credit:CreditImmobilierService,private modalService: NgbModal,private router: Router) { 
@@ -53,6 +54,11 @@ refuser(id: number){
 
   })
 }
+getCredit(id:number): any{
+  this.credit.getCredit(id).subscribe(data => {
+    this.CreditImmobilier = data;
+  });
+}
 
 onTableDataChange(event: any) {
   this.page = event;
@@ -62,6 +68,20 @@ onTableSizeChange(event: any): void {
   this.tableSize = event.target.value;
   this.page = 1;
   this.getallCredit();
+}
+open(content1,id) {
+  this.credit.getCredit(id).subscribe(data => {
+    this.CreditImmobilier=data;
+    console.log(data);
+  this.modalService.open(content1, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+    this.closeResult = `Closed with: ${result}`;
+   
+    //this.getCredit(id);
+    console.log(this.CreditImmobilier);
+  }, (reason) => {
+    this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+  });
+});
 }
 
 openVerticallyCentered(content) {

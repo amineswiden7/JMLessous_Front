@@ -80,6 +80,9 @@ import { CreditEtuComponent } from './components/pages/CreditEtudiant/credit-etu
 
 
 import { AuthInterceptor } from './helpers/authInterceptor';
+import { CreateAbsenceComponent } from './components/pages/Absence/create-absence/create-absence.component';
+import { ListeAbsenceComponent } from './components/pages/Absence/liste-absence/liste-absence.component';
+import { ListeAbsenceByClientComponent } from './components/pages/Absence/liste-absence-by-client/liste-absence-by-client.component';
 import { DashboardComponent } from './components/pages/dashboard/dashboard.component';
 @NgModule({
   declarations: [
@@ -133,7 +136,13 @@ import { DashboardComponent } from './components/pages/dashboard/dashboard.compo
     ListCreditsComponent,
     ListCreditsBackComponent,
     CreditEtuComponent,
-    TabAmortissementLibreComponent,
+    CreateAbsenceComponent,
+    ListeAbsenceComponent,
+    ListeAbsenceByClientComponent,
+
+   
+
+    
     ConfigOffreAssuranceComponent,
     OffresAssureursComponent,
     SideBarOffresAssureursComponent,

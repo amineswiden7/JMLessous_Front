@@ -42,6 +42,8 @@ import { ListeCreditBackComponent } from './components/pages/CreditImmob/liste-c
 import { CreditEtuComponent } from './components/pages/CreditEtudiant/credit-etu/credit-etu.component';
 import { ListCreditsComponent } from './components/pages/CreditEtudiant/list-credits/list-credits.component';
 import { ListCreditsBackComponent } from './components/pages/CreditEtudiant/list-credits-back/list-credits-back.component';
+import { CreateAbsenceComponent } from './components/pages/Absence/create-absence/create-absence.component';
+import { ListeAbsenceComponent } from './components/pages/Absence/liste-absence/liste-absence.component';
 import {DashboardComponent} from './components/pages/dashboard/dashboard.component';
 
 
@@ -99,6 +101,8 @@ const routes: Routes = [
   { path: 'ListeCreditEtu', component : ListCreditsComponent},
   { path: 'Mon-Portfeuille', component : PortfeuilleComponent },
   { path: 'Mes-Mouvement', component : OrdreComponent },
+  { path: 'AjoutAbsence', component : CreateAbsenceComponent },
+  { path: 'ListeAbsence', component : ListeAbsenceComponent },
   { path: 'config-offre/:id', component : ConfigOffreAssuranceComponent },
   { path: 'offres-assureurs', component : OffresAssureursComponent },
   { path: 'offres-list-bank', component : BankOffreAssurListComponent },
