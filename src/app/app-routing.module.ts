@@ -6,18 +6,14 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { RegisterComponent } from './components/pages/register/register.component';
 import { LoginComponent } from './components/pages/login/login.component';
-import { CompteComponent } from './components/pages/compte/compte.component';
 
 import { OffreassurancedetailComponent } from './components/pages/assurance/offreassurancedetail/offreassurancedetail.component';
 import { OffreassurancelistComponent } from './components/pages/assurance/offreassurancelist/offreassurancelist.component';
-
-import {MarcheactionsComponent} from './components/pages/marcheactions/marcheactions.component';
-
-
-import { ComptecourantComponent } from './components/pages/comptecourant/comptecourant.component';
-
-import { CreditLibreComponent } from './components/pages/credit-libre/credit-libre.component';
 import { SimulateurCreditLibreComponent } from './components/pages/simulateur-credit-libre/simulateur-credit-libre.component';
+import {MarcheactionsComponent} from './components/pages/marcheactions/marcheactions.component';
+import { ComptecourantComponent } from './components/pages/comptecourant/comptecourant.component';
+import { CreditLibreComponent } from './components/pages/credit-libre/credit-libre.component';
+import { CompteComponent } from './components/pages/compte/compte.component';
 import { CompteepargneComponent } from './components/compteepargne/compteepargne.component';
 import { UsercompteComponent } from './components/pages/usercompte/usercompte.component';
 import { TransactionValidComponent } from './components/pages/transaction-valid/transaction-validation.component';
@@ -25,17 +21,31 @@ import { CurrencyconvComponent } from './components/pages/currencyconv/currencyc
 import { CreateCreditComponent } from './components/pages/CreditImmob/create-credit/create-credit.component'; 
 import { AjoutCreditLibreComponent } from './components/pages/credit-libre/ajout-credit-libre/ajout-credit-libre.component';
 import { ListesCreditsComponent } from './components/pages/CreditImmob/listes-credits/listes-credits.component';
+import { ComptechoixComponent } from './components/comptechoix/comptechoix.component';
+import { UsercompteEpComponent } from './components/pages/usercompte-ep/usercompte-ep.component';
+import { AjouterFormationComponent } from './components/pages/formation/ajouter-formation/ajouter-formation.component';
+import { FormationsComponent } from './components/pages/formation/formations/formations.component';
+import { OneFormationComponent } from './components/pages/formation/one-formation/one-formation.component';
 
 
 
 const routes: Routes = [
-
+  {path: 'choix',component :ComptechoixComponent},
   {path: 'compte',component :CompteComponent},
   {path: 'courant',component :ComptecourantComponent},
   {path: 'epargne',component :CompteepargneComponent},
-  {path: 'usercompte',component :UsercompteComponent},
+  {path: 'usercompte/:numCompte',component :UsercompteComponent},
+  {path: 'usercompteE/:numCompte',component :UsercompteEpComponent},
   {path: 'trans',component :TransactionValidComponent},
   {path: 'currency',component :CurrencyconvComponent},
+
+  //{ path: 'courantt', loadChildren: () => import('./components/pages/courant/courant.module').then(m => m.CourantModule), data: { breadcrumb: 'Courant' }  },
+
+
+  {path: 'addformation',component :AjouterFormationComponent},
+  {path: 'formations',component :FormationsComponent},
+  {path: 'formation/:idFormation',component :OneFormationComponent},
+
   
   { path: 'coursActions', component: MarcheactionsComponent},
   { path: 'LoginPage', component: LoginComponent},
