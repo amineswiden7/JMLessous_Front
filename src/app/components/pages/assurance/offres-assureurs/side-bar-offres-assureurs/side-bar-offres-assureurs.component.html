@@ -1,0 +1,37 @@
+<div class="sidebar_wrap">
+  <div class="sidebar">
+
+    <div class="sidebar_widgets mb-xl-30">
+      <div class="widget_title bg-light-blue">
+        <h5 class="no-margin text-custom-white fw-600">Types</h5>
+      </div>
+      <ul class="categories custom">
+        <li> <a class="text-custom-black fs-14"><button (click)="showAll()">Tous</button> <span class="text-light-white">({{offres.allOffers.length}})</span></a>
+        </li>
+        <li> <a class="text-custom-black fs-14"> <button (click)="showNotPub()">Non publié</button>
+            <span class="text-light-white">({{offres.notPublishedOffers.length}})</span>
+          </a>
+        </li>
+        <li> <a class="text-custom-black fs-14"> <button (click)="showValid()">En cours de validation</button>
+          <span class="text-light-white">({{offres.validationOffrees.length}})</span>
+        </a>
+        </li>
+        <li> <a class="text-custom-black fs-14"><button (click)="showRejected()">Refusé</button>
+          <span class="text-light-white">({{offres.rejectedOffers.length}})</span>
+        </a>
+        </li>
+        <li> <a class="text-custom-black fs-14"> <button (click)="showPub()">Publié</button>
+          <span class="text-light-white">({{offres.publishedOffers.length}})</span>
+        </a>
+        </li>
+        <li> <a class="text-custom-black fs-14"> <button (click)="showSuspended()">Suspendu</button>
+          <span class="text-light-white">({{offres.suspendedOffers.length}})</span>
+        </a>
+        </li>
+      </ul>
+    </div>
+    <div class="widget_title">
+      <a class="btn-first btn-submit-fill" href="add-offre">Ajouter une offre</a>
+    </div>
+  </div>
+</div>

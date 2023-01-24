@@ -4,6 +4,7 @@ import { NgWizardConfig, NgWizardService, StepChangedArgs, STEP_STATE, THEME } f
 import { CreditLibre } from 'src/app/models/credit-libre';
 import { Garantie } from 'src/app/models/garantie';
 import { Utilisateur } from 'src/app/models/utilisateur';
+import { AuthService } from 'src/app/services/auth.service';
 
 import { CreditLibreService } from 'src/app/services/creditLibre/credit-libre.service';
 import { GarantieService } from 'src/app/services/garantie.service';
@@ -16,11 +17,13 @@ import { UserService } from 'src/app/services/user.service';
 export class AjoutCreditLibreComponent implements OnInit {
 
   creditLibre=new CreditLibre();
+  cred=new CreditLibre();
   idUser:any;
   idGarantie:any;
   isSuccessful = false;
   isSignUpFailed = false;
   errorMessage = '';
+
   stepStates = {
     normal: STEP_STATE.normal,
   };
@@ -38,11 +41,14 @@ export class AjoutCreditLibreComponent implements OnInit {
   };
   listG:Garantie[];
   listU:Utilisateur[];
-  constructor(private ngWizardService: NgWizardService, private creditLibreService:CreditLibreService, private garantieS:GarantieService, private userS:UserService) {
+ garantie=new Garantie();
+  constructor(private ngWizardService: NgWizardService, private userConnecte: UserService , private creditLibreService:CreditLibreService, private garantieS:GarantieService, private userS:UserService) {
   }
   ngOnInit() {
-    this.garantieS.listGarantie().subscribe(res=>{console.log(res); this.listG=res});
-    this.userS.getAllUser().subscribe(res=>{console.log(res); this.listU=res});
+    //this.garantieS.listGarantie().subscribe(res=>{console.log(res); this.listG=res});
+    //this.userS.getAllUser().subscribe(res=>{console.log(res); this.listU=res});
+    //this.userConnecte.findUserWithToken();
+   
   }
   showPreviousStep(_event?: Event) {
     this.ngWizardService.previous();
@@ -53,16 +59,27 @@ export class AjoutCreditLibreComponent implements OnInit {
   stepChanged(_args: StepChangedArgs) { }
 
   addCredit(){
-    this.creditLibreService.createCredit(this.creditLibre,this.idUser,this.idGarantie).subscribe(res=>{
+    console.log(this.creditLibre);
+    //this.garantie.credit=this.creditLibre;
+   // this.creditLibre.garantie=this.garantie;
+    //console.log(this.creditLibre.garantie);
+    
+    this.creditLibreService.createCredit(this.creditLibre,this.garantie.valeur,this.garantie.type,this.userConnecte.activeUser.idUser).subscribe(res=>{
       console.log(this.creditLibre);
-      console.log(this.idGarantie);
+      console.log(res); 
       this.isSuccessful = true;
-      this.isSignUpFailed = false;
+      this.garantie.credit=res;
+        this.isSignUpFailed = false;
+        
+        //window.location.reload();
+
     },
     err => {
       this.errorMessage = err.error.message;
       this.isSignUpFailed = true;
     });
+    
+    //this.garantieS.createGarantie(this.garantie).subscribe(res=>{console.log(res);});
  }
 
 }

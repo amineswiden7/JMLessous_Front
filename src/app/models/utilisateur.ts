@@ -6,16 +6,17 @@ export class Utilisateur {
      nom:any;
      prenom:any;
     
+
      dateNaissance:any;
     telephone:any;
      salaire:any;
-    
+
     profession:any;
     email:any;
      login:any;
      motDePasse:any;
     adresse:any;
-  role:any;
+    role:string;
     rib:any ;
     iban:any;
      creditAuthorization:any;
@@ -27,4 +28,3 @@ export class Utilisateur {
     absences:any;
      contratAssurances:any;
 }
- 

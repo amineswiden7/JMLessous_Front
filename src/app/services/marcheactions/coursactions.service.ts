@@ -31,4 +31,9 @@ export class CoursactionsService {
     const url = 'http://localhost:8083/JMLessous/Market/getMarket/' + isin;
     return this.http.get<Actiondetailrequest>(url);
   }
+
+  getProdActu(ticker : string): Observable<any>{
+    const url = 'http://127.0.0.1:8000/getProdActu/' + ticker;
+    return this.http.get<any>(url);
+  }
 }

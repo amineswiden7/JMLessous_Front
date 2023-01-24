@@ -1,8 +1,9 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Amortissement } from 'src/app/models/amortissement';
 import { CreditLibre } from 'src/app/models/credit-libre';
+import { Garantie } from 'src/app/models/garantie';
 
 
 
@@ -21,15 +22,28 @@ export class CreditLibreService {
   getAllCreditL():Observable<CreditLibre[]>{
     return this.httpClient.get<CreditLibre[]>(`${this.baseURL}ListCreditLibre`);
   }
+  getAllCreditLUser(idUser:number):Observable<CreditLibre[]>{
+    return this.httpClient.get<CreditLibre[]>(`${this.baseURL}ListCreditLibreUser/${idUser}`);
+  }
+  getAllCreditLStatus(status:any):Observable<CreditLibre[]>{
+    return this.httpClient.get<CreditLibre[]>(`${this.baseURL}ListCreditLibreStatus/${status}`);
+  }
+  getCredit(id:any):Observable<CreditLibre>{
+    return this.httpClient.get<CreditLibre>(`${this.baseURL}CreditLibreID/${id}`);
+  }
+  acceptCredit( id:any,status: any, credit:CreditLibre): Observable<Object>{
+    return this.httpClient.put(`${this.baseURL}AccepteCreditLibre/${id}/${status}`, credit);
+  }
 
-  Simulate(montant:number,duree:number,interet:number): Observable<Amortissement>{
-    return this.httpClient.get<Amortissement>(`${this.baseURL}simulateur/${montant}/${duree}/${interet}`);
+  Simulate(garantie:Garantie,montant:number,duree:number,salaire:number): Observable<Amortissement>{
+    return this.httpClient.post<Amortissement>(`${this.baseURL}simulateur/${montant}/${duree}/${salaire}`,garantie);
   }
-  tab(credit:CreditLibre): Observable<Amortissement[]>{
-    return this.httpClient.post<Amortissement[]>(`${this.baseURL}tabAmortissement`, credit);
+  tab(credit:CreditLibre,valeur:number,type:string,salaire:number): Observable<Amortissement[]>{
+    return this.httpClient.post<Amortissement[]>(`${this.baseURL}tabAmortissement/${valeur}/${type}/${salaire}`, credit);
   }
-  createCredit(Credit: CreditLibre,idUser:number,idgarantie:number): Observable<Object>{
-    return this.httpClient.post(`${this.baseURL}AddCreditLibre/${idUser}/${idgarantie}`, Credit);
+  createCredit(Credit: CreditLibre,valeur:number,type:string,idUser:number): Observable<Object>{
+    
+    return this.httpClient.post(`${this.baseURL}AddCreditLibre/${valeur}/${type}/${idUser}`, Credit );
   }
 
  

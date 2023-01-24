@@ -6,6 +6,7 @@ import { UserService } from 'src/app/services/user.service';
 import { Utilisateur } from 'src/app/models/utilisateur';
 import { CreditImmobilierService } from 'src/app/services/CreditImmobilier/creditImmob.service';
 import { Router } from '@angular/router';
+import { Credit } from 'src/app/models/credit';
 @Component({
   selector: 'app-create-credit',
   templateUrl: './create-credit.component.html',
@@ -14,7 +15,11 @@ import { Router } from '@angular/router';
 export class CreateCreditComponent implements OnInit {
 
   creditImmob= new CreditImmobilier();
+  creditImmobb= new CreditImmobilier();
+  creditImmobbb= new CreditImmobilier();
+  credit=new Credit();
   idUser:any;
+  id:any;
   isSuccessful = false;
   isSignUpFailed = false;
   errorMessage = '';
@@ -37,6 +42,7 @@ export class CreateCreditComponent implements OnInit {
   constructor(private ngWizardService: NgWizardService, private userS:UserService,private creditImmobS:CreditImmobilierService,private router: Router) { }
 
   ngOnInit(): void {
+    //this.idcredit = this.route.snapshot.params['idCredit'];
   }
 
   showPreviousStep(_event?: Event) {
@@ -54,8 +60,10 @@ export class CreateCreditComponent implements OnInit {
       
       next:res=>{
       console.log(this.creditImmob);
+      console.log(this.creditImmob.idCredit);
       console.log(this.idUser);
       this.isSuccessful = true;
+      this.creditImmobb=res;
         this.isSignUpFailed = false;
     },
     error:err => {
@@ -64,7 +72,11 @@ export class CreateCreditComponent implements OnInit {
     },
     complete: () => {
       Swal.fire('Merci pour votre confiance ', 'your complaint has been sent successfully !', 'success')  
-      this.goToEmployeeList()
+      //this.goToEmployeeList()
+      this.id=this.creditImmob.idCredit;
+     
+      console.log(this.creditImmob.montantmensuelpretpayer)
+      //this.router.navigate(['/credit-detail/{{creditImmob.idCredit}}']);
     }
     
     
@@ -75,7 +87,28 @@ export class CreateCreditComponent implements OnInit {
   });
  }
  goToEmployeeList(){
-  this.router.navigate(['/listeCreditByClient']);
+  this.router.navigate(['/credit-detail/{{creditImmob.idCredit}}']);
 }
+confirmer(){
+  //    this.creditLibre.tauxInteret=this.counter;
+        this.creditImmobS.createCreditconfirmer(this.creditImmobb).subscribe(res=>{ 
+          console.log(this.creditImmobb)
+           //console.log(this.creditLibre);
+         this.creditImmobbb=res;
+         console.log(this.creditImmobbb);
+         Swal.fire('Merci pour votre confiance ', 'Votre crédit a éte ajouté avec succès!', 'success')  
+         this.router.navigate(['/listeCreditByClient']);
+
+
+})
+
+
+
+
+};
+
+
+
+
 
 }

@@ -1,0 +1,96 @@
+<app-header></app-header>
+<breadcrumb #parent>
+    <div class="sub-header p-relative">
+      <div class="overlay overlay-bg-black"></div>
+      <div class="pattern"></div>
+      <div class="section-padding">
+        <div class="container">
+          <div class="row">
+            <div class="col-12">
+  
+                <div class="sub-header-content p-relative">
+                  <h1 class="text-custom-white lh-default fw-600"> Liste des credits etudiant </h1>
+                  
+                </div>
+  
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </breadcrumb>
+  <div class="section-padding lw-tab-section p-relative">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="lw-mega-tab">
+            <ul ngbNav #navplans="ngbNav" class="nav lw-nav-tabs">
+              <li [ngbNavItem]="1">
+                <div class="form-group">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Search..."
+                    [(ngModel)]="filterTerm"
+                  />
+                </div>
+                <div class="table-responsive">
+                  <table class="lw-tab-table">
+                    <tr class="lw-table-row-1">
+                      <th  data-order="desc" data-name="montantCredit" scope="col">montantCredit</th>
+              <th  data-order="desc" data-name="duree" scope="col">duree </th>
+              <th  data-order="desc" data-name="dateDemande" scope="col">dateDemande </th>
+              <th  data-order="desc" data-name="mensualite" scope="col">mensualite</th>
+              <th data-order="desc" data-name="STATUS" scope="col">STATUS</th>
+              <th  data-order="desc" data-name="taux d'interet" scope="col">taux d'interet</th>
+              <th  data-order="desc" data-name="Motif" scope="col">Motif</th>
+              
+              <th>Actions</th>
+                    </tr>
+                    <tr *ngFor = "let credit of listcredits 
+                   
+              ">
+                      <td class="lw-table-data-2">
+                        {{ credit.montantCredit }}
+                      </td>
+                      <td class="lw-table-data-3">
+                        {{ credit.duree }}
+                      </td>
+                      <td class="lw-table-data-4">
+                        {{ credit.dateDemande }}
+                      </td>
+                      <td class="lw-table-data-4">
+                        {{ credit.mensualite  }}
+                      </td>
+                      <td class="lw-table-data-4">
+                        {{ credit.status  }}
+                      </td>
+                      <td class="lw-table-data-4">
+                        {{ credit.tauxInteret  }}
+                      </td>
+                      <td class="lw-table-data-4">
+                        {{ credit.motif  }} 
+                      </td>
+                      
+                      <button  *ngIf="credit.status=='ENCOURSDETRAITEMENT'" (click)  = "Accepter(credit.idCredit)" class = "btn btn-outline-primary"> Accepter Credit</button>
+                      <button  *ngIf="credit.status=='ENCOURSDETRAITEMENT'" (click)  = "refuser(credit.idCredit)" class = "btn btn-outline-primary"> refuser Credit</button>
+                    </tr>
+  
+                  </table>
+                  <div class="d-flex justify-content-center">
+                    <pagination-controls
+                      previousLabel="Prev"
+                      nextLabel="Next"
+                      (pageChange)="onTableDataChange($event)"
+                    >
+                    </pagination-controls>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+             <app-footer></app-footer>
