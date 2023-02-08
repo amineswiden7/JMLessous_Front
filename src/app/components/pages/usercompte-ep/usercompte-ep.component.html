@@ -25,18 +25,18 @@
                                         <td>RIB</td>
                                         <td>-</td>
                                         <td class="text-right"
-                                        style="color: #27346a; font-weight: bold">{{CompteCourant.rib}}</td>
+                                        style="color: #27346a; font-weight: bold">{{CompteEpargne.rib}}</td>
                                     </tr>
                                     <tr>
                                         <td>IBAN</td>
                                         <td>-</td>
-                                        <td class="text-right">{{CompteCourant.iban}}</td>
+                                        <td class="text-right">{{CompteEpargne.iban}}</td>
                                     </tr>
                                     <tr class="last-tr">
                                         <td>Solde</td>
                                         <td>-</td>
                                         <td class="text-right"
-                                        style="color: #f01818; font-weight: bold">{{CompteCourant.solde}}</td>
+                                        style="color: #f01818; font-weight: bold">{{CompteEpargne.solde}}</td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -45,7 +45,7 @@
                         <section >
                             <div class="sidebar_widgets mb-xl-30">
                                 <div class="widget_title bg-light-blue">
-                                    <h4 class="no-margin text-custom-white fw-600">Transférer Argent</h4>
+                                    <h4 class="no-margin text-custom-white fw-600">Virement Bancaire</h4>
                                 </div>
                                             <form class="form-layout-1"
                                             #trans = "ngForm">
@@ -59,7 +59,7 @@
                                                             #ribRecipient="ngModel"  [(ngModel)] = "transaction.emetteur"
                                                             required
                                                             #emetteur="ngModel"
-                                                            >
+                                                           >
                                                         </div>
                                                         <div class="form-group">
                                                             <label class="text-left">Transférer A</label>
@@ -79,9 +79,9 @@
                                                         </div>
                                                         <div class="form-group">
                                                             <label class="text-left">Description</label>
-                                                            <input rows="5" name="#" class="form-control"
+                                                            <textarea rows="5" name="#" class="form-control"
                                                                 placeholder="...."
-                                                                #amount="ngModel"  [(ngModel)] = "transaction.motif">   
+                                                                #amount="ngModel"  [(ngModel)] = "transaction.motif"></textarea>    
                                                         </div>
                                                     </div>
                                                     <div class="col-12">
@@ -120,26 +120,7 @@
                                             </form>
                                    </div>
                         </section>                        
-                        <div class="sidebar_widgets mb-xl-30">
-                            <div class="widget_title bg-light-blue">
-                                <h5 class="no-margin text-custom-white fw-600">Actions Compte</h5>
-                            </div>
-                            <ul class="custom sidebar-services">
-                                <li > 
-                                  
-                                    <button  class="text-custom-black fs-14" 
-                                        (click) = "PDF()">   Télécharger mon relevé bancaire
-                                        <span><i class="fas fa-chevron-right"></i></span>
-                                    </button>
-                                   
-                                    <a routerLink="/trans" class="text-custom-black fs-14">
-                                        Transaction internationale
-                                    <span><i class="fas fa-chevron-right"></i></span></a>
-                                  
-                                  
-                                </li>
-                            </ul>
-                        </div>
+                     
                          <!-- Start Contact -->
 
 <!-- End Contact -->
@@ -150,15 +131,14 @@
                 <div class="col-12">
                     <div class="service-detail-sec bg-custom-white bx-wrapper">
                         <div class="service-image mb-xl-30">
-                            <img src="assets/images/online.jpg" class="image-fit" alt="img">
+                            <img src="assets/images/epargne.jpg" class="image-fit" alt="img">
                             <div class="overlay overlay-bg-black"></div>
                             <div class="service-text-wrapper transform-center">
-                                <h3 class="text-custom-white">Compte Courant Jmlessous</h3>                                
+                                <h3 class="text-custom-white">Compte Epargne Jmlessous</h3>                                
                             </div>
                         </div>
                     </div>
            <!-- hhhhhh -->     
-           <!--
                     <div class="row">
                         <div class="col-md-4 col-sm-6" *ngFor = "let transactions of listTransaction">
                             <div class="main-services-box p-relative mb-xl-30">
@@ -177,9 +157,8 @@
                         </div>
                     </div>
 
-                  
-
-                -->
+        
+                    
 
                     <div  class="row">
                         <div class="col-12">
@@ -216,7 +195,44 @@
                         </div>
                       </div>
                     </div>
+<!-- start lw-tab 
+<div class="lw-tab-section p-relative">
+    <div class="container">
+        <div class="row">
+            <div class="table-responsive">
+                <table class="lw-tab-table" >
+                  <tr class="lw-table-row-1">
+                    <th >Date</th>                
+                    <th >Destinataire</th>
+                    <th >Description</th>
+                    <th >Montant</th>
+                  </tr>
+                  <tr *ngFor = "let transactions of listTransaction" >
+                    <td class="lw-table-data-2">
+                        {{ transactions.dateTransaction  | date: 'dd/MM/yyyy'}}
+                    </td>
+                  
+                    <td class="lw-table-data-3"
+                    style="color: #27346a; font-weight: bold">
+                        {{ transactions.destinataire }}
 
+                    </td>
+                    <td class="lw-table-data-4"
+                    style="text-align:center">
+                        {{ transactions.motif }}
+                    </td>
+                    <td class="lw-table-data-4"
+                    style="text-align:center;color: #f01818; font-weight: bold">
+                        {{ transactions.montant }}
+                    </td>
+                  </tr>
+      
+                </table>
+                </div>
+        </div>
+    </div>
+</div>
+ -->
                 </div>
             </div>
         </div>

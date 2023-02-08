@@ -49,7 +49,7 @@ export class CompteepargneComponent implements OnInit {
   }
  
   ngOnInit() {
-    this.idUser=1;
+    this.idUser=10;
    
       this.UserService.getUser(this.idUser).subscribe(res=>{  
         this.Utilisateur=res;
@@ -72,9 +72,14 @@ export class CompteepargneComponent implements OnInit {
     console.log(this.compteepargne);
     this.compteapragneService.addCompteE(this.compteepargne,this.idUser).subscribe(data=> {
       console.log(data);
+      this.goToUserCompte();
+
     },
     error => console.log(error));
  }
+ goToUserCompte(){
+  this.router.navigate(['choix']);
+  }
  goToSim(){
   this.router.navigate(['compte']);
  }

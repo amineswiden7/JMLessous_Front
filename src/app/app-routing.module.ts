@@ -6,18 +6,14 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { RegisterComponent } from './components/pages/register/register.component';
 import { LoginComponent } from './components/pages/login/login.component';
-import { CompteComponent } from './components/pages/compte/compte.component';
 
 import { OffreassurancedetailComponent } from './components/pages/assurance/offreassurancedetail/offreassurancedetail.component';
 import { OffreassurancelistComponent } from './components/pages/assurance/offreassurancelist/offreassurancelist.component';
-
-import {MarcheactionsComponent} from './components/pages/marcheactions/marcheactions.component';
-
-
-import { ComptecourantComponent } from './components/pages/comptecourant/comptecourant.component';
-
-import { CreditLibreComponent } from './components/pages/credit-libre/credit-libre.component';
 import { SimulateurCreditLibreComponent } from './components/pages/simulateur-credit-libre/simulateur-credit-libre.component';
+import {MarcheactionsComponent} from './components/pages/marcheactions/marcheactions.component';
+import { ComptecourantComponent } from './components/pages/comptecourant/comptecourant.component';
+import { CreditLibreComponent } from './components/pages/credit-libre/credit-libre.component';
+import { CompteComponent } from './components/pages/compte/compte.component';
 import {ConfigOffreAssuranceComponent} from './components/pages/assurance/config-offre-assurance/config-offre-assurance.component';
 import {OffresAssureursComponent} from './components/pages/assurance/offres-assureurs/offres-assureurs.component';
 import {BankOffreAssurListComponent} from './components/pages/assurance/bank-offre-assur-list/bank-offre-assur-list.component';
@@ -36,6 +32,11 @@ import { CurrencyconvComponent } from './components/pages/currencyconv/currencyc
 import { CreateCreditComponent } from './components/pages/CreditImmob/create-credit/create-credit.component';
 import { AjoutCreditLibreComponent } from './components/pages/credit-libre/ajout-credit-libre/ajout-credit-libre.component';
 import { ListesCreditsComponent } from './components/pages/CreditImmob/listes-credits/listes-credits.component';
+import { ComptechoixComponent } from './components/comptechoix/comptechoix.component';
+import { UsercompteEpComponent } from './components/pages/usercompte-ep/usercompte-ep.component';
+import { AjouterFormationComponent } from './components/pages/formation/ajouter-formation/ajouter-formation.component';
+import { FormationsComponent } from './components/pages/formation/formations/formations.component';
+import { OneFormationComponent } from './components/pages/formation/one-formation/one-formation.component';
 import { CreditDetailComponent } from './components/pages/CreditImmob/credit-detail/credit-detail.component';
 import { SimulateurCreditImmobComponent } from './components/pages/simulateur-credit-immob/simulateur-credit-immob.component';
 import { ListeCreditBackComponent } from './components/pages/CreditImmob/liste-credit-back/liste-credit-back.component';
@@ -51,15 +52,24 @@ import { AffecterSalaireComponent } from './components/pages/affecter-salaire/af
 
 
 const routes: Routes = [
+  {path: 'choix',component :ComptechoixComponent},
   {path: 'affecterSalaire',component :AffecterSalaireComponent},
   {path: 'compte',component :CompteComponent},
   {path: 'courant',component :ComptecourantComponent},
-  {path: 'adminCreditLibre', component:AdminCreditLibreComponent},
-  {path: 'utilisateurProfile', component:UtilisateurProfileComponent},
+
   {path: 'epargne',component :CompteepargneComponent},
-  {path: 'usercompte',component :UsercompteComponent},
+  {path: 'usercompte/:numCompte',component :UsercompteComponent},
+  {path: 'usercompteE/:numCompte',component :UsercompteEpComponent},
   {path: 'trans',component :TransactionValidComponent},
   {path: 'currency',component :CurrencyconvComponent},
+
+  //{ path: 'courantt', loadChildren: () => import('./components/pages/courant/courant.module').then(m => m.CourantModule), data: { breadcrumb: 'Courant' }  },
+
+
+  {path: 'addformation',component :AjouterFormationComponent},
+  {path: 'formations',component :FormationsComponent},
+  {path: 'formation/:idFormation',component :OneFormationComponent},
+
   
 
   {path: 'compte', component: CompteComponent},

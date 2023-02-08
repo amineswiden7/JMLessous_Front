@@ -1,0 +1,60 @@
+<app-header></app-header>
+<app-breadcrumb></app-breadcrumb>
+<!-- Start Blog -->
+<section class="section-padding bg-gray">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="blog-detail padding-20">
+                    <!-- article -->
+                    <article class="post">
+                        <div class="post-wrapper">
+                            <div class="blog-img animate-img mb-xl-20">
+                                <a  [ngSwitch]="formation.categorie">
+                                    <img *ngSwitchCase="'IT'" src="assets/images/formation/IT.jpg" class="image-fit"
+                                      alt="{{formation.categorie}}">
+                                    <img *ngSwitchCase="'Finance'" src="assets/images/formation/Finance.jpg" class="image-fit"
+                                      alt="{{formation.categorie}}">
+                                    <img *ngSwitchCase="'Consulting'" src="assets/images/formation/Consulting.jpg" class="image-fit"
+                                      alt="{{formation.categorie}}">
+                                    <img *ngSwitchCase="'Marketing'" src="assets/images/formation/Marketing.jpg" class="image-fit"
+                                      alt="{{formation.categorie}}">
+                                    <img *ngSwitchCase="'SoftSkils'" src="assets/images/formation/SoftSkils.jpg" class="image-fit"
+                                      alt="{{formation.categorie}}">
+                                  </a>
+                            </div>
+                            <div class="blog-meta">
+                                <h2><a href="#" class="text-custom-black fw-600">{{formation.intitule}}</a></h2>
+                                <div class="post-meta-box">
+                                    <div class="post-metas mb-xl-20"> <span class="mr-2 fs-14"><a href="#"
+                                                class="text-custom-black"><i class="fas fa-eye text-light-blue"></i>
+                                                {{formation.duree}}</a></span>
+                                        <span class="fs-14"><a href="#" class="text-custom-black"><i
+                                                    class="far fa-comment text-light-blue"></i>
+                                                {{formation.categorie}}</a></span>
+                                    </div>
+                                </div>
+                                <div style="font-weight: bold"
+                                [innerHtml]="formation.description"></div>
+                                <div style="color: #27346a; font-weight: bold">
+                                 
+                                    <p> Date début de la formation : {{formation.datedebut | date: 'dd/MM/yyyy'}}</p></div>
+                                
+                                <div style="color: #27346a; font-weight: bold">   
+                               
+                                <p> Localisation : {{formation.localisation}}</p></div>
+                                <div class="col-xl-7 col-lg-8">
+                                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6790064.787747445!2d5.067970869697644!3d33.80040624824386!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x125595448316a4e1%3A0x3a84333aaa019bef!2sTunisie!5e0!3m2!1sfr!2stn!4v1651361304747!5m2!1sfr!2stn" title="map" class="full-width full-height"></iframe>
+                                </div>
+                              
+                            </div>
+                        </div>
+                    </article>
+                    <!-- article -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Blog -->
+<app-footer></app-footer>

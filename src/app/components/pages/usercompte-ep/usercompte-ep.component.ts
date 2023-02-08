@@ -6,26 +6,26 @@ import { Utilisateur } from 'src/app/models/utilisateur';
 import { Transaction } from 'src/app/models/transaction';
 import { UserService } from 'src/app/services/user.service';
 import { TransactionService } from 'src/app/services/transaction/transaction.service';
-import { ComptecourantService } from 'src/app/services/compte/comptecourant.service';
+import { CompteepargneService } from 'src/app/services/compte/compteepargne.service';
 
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { MatDialog } from '@angular/material';
 import { TransactionValidComponent } from '../transaction-valid/transaction-validation.component';
-import { CompteCourant } from 'src/app/models/compte-courant';
+import { CompteEpargne } from 'src/app/models/compte-epargne';
 import { HttpClient } from '@angular/common/http';
 import {saveAs} from 'file-saver/dist/FileSaver';
 @Component({
-  selector: 'app-usercompte',
-  templateUrl: './usercompte.component.html',
-  styleUrls: ['./usercompte.component.css']
+  selector: 'app-usercompte-ep',
+  templateUrl: './usercompte-ep.component.html',
+  styleUrls: ['./usercompte-ep.component.css']
 })
-
-export class UsercompteComponent implements OnInit {
+export class UsercompteEpComponent implements OnInit {
+ 
   numCompte !:any;
-
   idUser:any;
   Utilisateur:Utilisateur;
-  CompteCourant:CompteCourant;
+  CompteEpargne:CompteEpargne;
+ 
   @ViewChild('myModalClose') modalClose;
   rib : string ='' ;
   rib1:string;
@@ -39,7 +39,7 @@ export class UsercompteComponent implements OnInit {
  page: number = 1;
  constructor(private TransactionService:TransactionService
   ,private UserService:UserService
-  ,private ComptecourantService:ComptecourantService
+  ,private CompteepargneService:CompteepargneService
   ,private modalService: NgbModal
   ,public dialog : MatDialog
   ,private router: Router,
@@ -47,7 +47,7 @@ export class UsercompteComponent implements OnInit {
   private route:ActivatedRoute) { }
  ngOnInit(): void {
   this.numCompte = this.route.snapshot.params['numCompte'];
-  this.loadcompte(this.numCompte);
+  this.loadcompteE(this.numCompte);
   //Afficage transactionS
   this.idUser=10;
  // this.rib1="0192000410NAPNVKFJWT990";
@@ -56,38 +56,28 @@ export class UsercompteComponent implements OnInit {
   this.listTransaction = data;
   },
   error => console.log(error));
-  
-  //el user
   this.UserService.getUser(this.idUser).subscribe(res=>{  
     this.Utilisateur=res;
     console.log(this.Utilisateur);
   },
   error => console.log(error));
 
-  //nekhou fil compte mtaa el user 
- /* this.UserService.getCpt(this.idUser).subscribe(res=>{  
-    this.CompteCourant=res;
-    console.log(this.CompteCourant);
-  },
-  error => console.log(error));
- 
-*/
 }
 
-
-  loadcompte(numCompte:any) {
-    return this.ComptecourantService.getCompteC(numCompte).subscribe(
-      data => {console.log(data);
-      this.CompteCourant=data;}
+  loadcompteE(numCompte:any) {
+    return this.CompteepargneService.getCompteE(numCompte).subscribe(
+      data => {
+      console.log(data);
+      this.CompteEpargne=data;
+    }
     )
   }
+
 
  savetransactions(){
   console.log(this.transaction);
   this.TransactionService.createtransactions(this.transaction).subscribe( data => {
     console.log(data);
-    //this.trs={};
-   // this.goTotransactionsList();
   }) ;
   console.log(this.transaction);
 
@@ -97,33 +87,25 @@ apptransactions(){
   this.TransactionService.apptransaction(this.code,this.transaction).subscribe( data => {
     console.log(data);
     window.location.reload();
-    //this.trs={};
-   // this.goTotransactionsList();
   }) ;
   console.log(this.transaction);
- // this.modalClose.nativeElement.click();
 }
 addtransactions(content){
   this.TransactionService.addtransaction(this.transaction).subscribe( data => {
     console.log(data);
-    
-    //this.trs={};
-   // this.goTotransactionsList();
   }) ;
   this.openVerticallyCentered(content)
   console.log(this.transaction);
 }
-// tslint:disable-next-line:typedef
+
 goTotransactionsList(){
   this.router.navigate(['transactionss']);
 }
 
-// tslint:disable-next-line:typedef
+
 onSubmit(){
   console.log(this.transaction);
   this.savetransactions();
-  //il faut recuperer tout l'objet passer par le form et l'envoyer vers l'autre page
- // this.router.navigate(['apptr']);
 }
 
 verify(i:number)
@@ -134,21 +116,9 @@ verify(i:number)
 
 search(id:string)
 {
-
   this.router.navigate(['transactionsbyrib',id]);
 }
 openVerticallyCentered(content: any) {
   this.modalService.open(content,{ centered: true });
 }
-PDF(){
-  //  alert('downalded');
-    this.http.get('http://localhost:8083/JMLessous/Transaction/export/0192000410NAPNVKFJWT990',{responseType:'arraybuffer'}).subscribe(pdf=>{
-    //pour que le doc soit .pdf  
-    const blob = new Blob([pdf],{type:'application/pdf'});
-      const filename = 'Relevé-Bancaire.pdf';
-      saveAs(blob,filename);
-    },err=>{
-      console.log(err);
-    });
-  }
 }

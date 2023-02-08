@@ -1,0 +1,124 @@
+<app-header></app-header>
+<div class="overlapsec"></div>
+<app-breadcrumb></app-breadcrumb>
+<section class="section-padding bg-gray contact-us">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-5 col-lg-4 mb-md-80">
+                <div class="contact-form full-height align-self-center bx-wrapper bg-custom-white">
+                    <h4 class="text-custom-black fw-600">Ajouter une formation</h4>
+                    <form class="form-layout-1">
+                        <div class="row">
+                            <div class="col-12 mb-xl-20">
+                                <div class="form-group">
+                                    <label class="text-left">Titre</label>
+                                    <input type="text" name="#" class="form-control" placeholder="Titre"
+                                    [(ngModel)] = "formationn.intitule">
+                                </div>
+                            </div>
+                            <div class="col-12 mb-xl-20">
+                                <div class="form-group">
+                                    <label class="text-left">Description</label>
+                                    <textarea rows="5" name="#" class="form-control"
+                                        placeholder="Description"
+                                        [(ngModel)] = "formationn.description">
+                                        </textarea>
+                                </div>    
+                            </div>
+                            <div class="col-12 mb-xl-20">
+                                <div class="form-group">
+                                    <label class="text-left">Localisation</label>
+                                    <input type="text" name="#" class="form-control" placeholder="localisation"
+                                    [(ngModel)] = "formationn.localisation">
+                                </div>
+                            </div>
+                            <div class="col-12 mb-xl-20">
+                                <div class="form-group">
+                                    <label class="text-left">Date Début</label>
+                                    <input type="date" name="#" class="form-control" placeholder="Date début"
+                                    [(ngModel)] = "formationn.datedebut">
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <select class="btn btn-outline-secondary dropdown-toggle"  name="duree" 
+                                    id="duree"
+                                    [(ngModel)] = "formationn.duree">
+                                        <option selected>Durée</option>
+                                        <option value="1Mois">1 Mois</option>
+                                        <option value="3Mois">3 Mois</option>
+                                        <option value="6Mois">6 Mois</option>
+                                    </select>
+                                </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <select class="btn btn-outline-secondary dropdown-toggle"  name="categorie"
+                                 id="categorie"
+                                 [(ngModel)] = "formationn.categorie">
+                                    <option selected>categorie</option>
+                                    <option value="IT">IT</option>
+                                    <option value="Finance">Finance</option>
+                                    <option value="Consulting">Consulting</option>
+                                    <option value="Marketing">Marketing</option>
+                                    <option value="SoftSkils">SoftSkils</option>
+                                </select>
+                            </div>
+                    </div>
+                 
+                    <!---
+                            <div class="col-12 mb-xl-20">
+                                <div class="form-group">
+                                    <label class="text-left">Image</label>
+                                    <input type="file" id="image" name="image" accept="image/png, image/jpeg"
+                                    [(ngModel)] = "formationn.image">
+                                </div>
+                            </div>
+                        -->
+                            <div class="col-12">
+                                <button type="submit"  (click)="addFormation()"
+                                    class="btn-first btn-submit text-light-blue full-width">Ajouter Formation</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="col-xl-7 col-lg-8">
+                <div  class="row">
+                    <div class="col-12">
+                      <div class="card mb-4">
+                        <div class="card-header pb-0">
+                          <h6>Liste des formations</h6>
+                        </div>
+                        <div>
+                          <div class="table-responsive p-0">
+                            <table class="table align-items-center mb-0">
+                              <thead>
+                                <tr>
+                                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-10" >Titre</th>
+                                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-10">Catégorie</th>
+                                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-10">Description</th>
+                                  <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-10">Durée</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                  <tr *ngFor="let form of formation">
+                                   
+                                      <td class="align-middle text-center text-sm" ><span class="text-primary text-xs font-weight-bold">{{form.intitule}}</span></td>
+                                      <td class="align-middle text-center text-sm"><span>{{form.categorie}}</span></td>
+                                      <td class="align-middle text-center text-sm"><span class="text-primary text-xs font-weight-bold">{{form.description}}</span></td>
+                                      <td class="align-middle text-center text-sm"><span>{{form.duree}}</span></td>
+                                  </tr>
+                              </tbody>
+                          </table>
+                        </div>
+                      </div>
+                  
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<app-footer></app-footer>
