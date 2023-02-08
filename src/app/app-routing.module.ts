@@ -45,7 +45,8 @@ import { ListCreditsComponent } from './components/pages/CreditEtudiant/list-cre
 import { ListCreditsBackComponent } from './components/pages/CreditEtudiant/list-credits-back/list-credits-back.component';
 import { CreateAbsenceComponent } from './components/pages/Absence/create-absence/create-absence.component';
 import { ListeAbsenceComponent } from './components/pages/Absence/liste-absence/liste-absence.component';
-import {DashboardComponent} from './components/pages/dashboard/dashboard.component';
+
+import { DashboardComponent } from './components/pages/dashboard/dashboard.component';
 
 import { AffecterSalaireComponent } from './components/pages/affecter-salaire/affecter-salaire.component';
 
