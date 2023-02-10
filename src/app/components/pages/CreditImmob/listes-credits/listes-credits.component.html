@@ -10,12 +10,12 @@
             <div class="col-12">
   
                 <div class="sub-header-content p-relative">
-                  <h1 class="text-custom-white lh-default fw-600">Credit Libre</h1>
+                  <h1 class="text-custom-white lh-default fw-600">Credit Immobilier</h1>
                   <ul class="custom">
                     <li><a class="text-custom-white">Home</a></li>
                     <li >
   
-                        <a>Credit Immobiliers</a>
+                        <a>Credits Immobiliers</a>
                     </li>
   
                   </ul>
@@ -41,33 +41,23 @@
                     <table  class="lw-tab-table" >
                         <thead>
                             <tr class="lw-table-row-1">
-                                
-                                <th> montantCredit </th>
-                               
+                                <th> montantCredit</th>
                                 <th> duree</th>
-                               
                                 <th> dateDemande</th>
                                 <th> dateFin</th>
                                 <th> mensualite</th>
                                 <th>STATUS</th>
-                                <th> taux d'interet</th>
-                                <th> Motif</th>
-                                
-    
                             </tr>
                         </thead>
                         <tbody>
                             <tr *ngFor = "let credit of listC" >
                                 <td class="lw-table-data-2"> {{ credit.montantCredit }} </td>
                                 <td class="lw-table-data-2"> {{ credit.duree }} </td>
-                                
                                 <td class="lw-table-data-2"> {{ credit.dateDemande }} </td>
                                 <td class="lw-table-data-2"> {{ credit.dateFin }} </td>
                                 <td class="lw-table-data-2"> {{ credit.mensualite }} </td>
                                 <td class="lw-table-data-2"> {{ credit.status }} </td>
-                                <td class="lw-table-data-2"> {{ credit.tauxInteret}} </td>
-                                <td class="lw-table-data-2"> {{ credit.motif }} </td>
-
+                                
                                <!--
                                 <td>
                                     <button (click) = "updateEmployee(employee.id)" class = "btn btn-info"> Update</button>
