@@ -5,7 +5,7 @@ import Swal from 'sweetalert2';
 import { UserService } from 'src/app/services/user.service';
 import { Utilisateur } from 'src/app/models/utilisateur';
 import { CreditImmobilierService } from 'src/app/services/CreditImmobilier/creditImmob.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Credit } from 'src/app/models/credit';
 @Component({
   selector: 'app-create-credit',
@@ -19,6 +19,7 @@ export class CreateCreditComponent implements OnInit {
   creditImmobbb= new CreditImmobilier();
   credit=new Credit();
   idUser:any;
+  numCompte:any;
   id:any;
   isSuccessful = false;
   isSignUpFailed = false;
@@ -39,10 +40,10 @@ export class CreateCreditComponent implements OnInit {
     theme: THEME.arrows,
   };
 
-  constructor(private ngWizardService: NgWizardService, private userS:UserService,private creditImmobS:CreditImmobilierService,private router: Router) { }
+  constructor(private ngWizardService: NgWizardService, private userS:UserService,private creditImmobS:CreditImmobilierService,private router: Router, private route:ActivatedRoute) { }
 
   ngOnInit(): void {
-    //this.idcredit = this.route.snapshot.params['idCredit'];
+    this.numCompte = this.route.snapshot.params['numCompte'];
   }
 
   showPreviousStep(_event?: Event) {
@@ -56,7 +57,7 @@ export class CreateCreditComponent implements OnInit {
 
 
   addCredit(){
-    this.creditImmobS.createCredit(this.creditImmob,1).subscribe({
+    this.creditImmobS.createCredit(this.creditImmob,this.userS.activeUser.idUser,this.numCompte).subscribe({
       
       next:res=>{
       console.log(this.creditImmob);

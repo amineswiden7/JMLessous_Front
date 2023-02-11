@@ -111,7 +111,7 @@ const routes: Routes = [
   // tslint:disable-next-line:max-line-length
   { path: 'loan-dashboard', loadChildren: () => import('./components/pages/userdashboard/userdashboard.module').then(m => m.UserdashboardModule), data: { breadcrumb: 'User Dashboard' } },
   { path: 'offre-assurance', component : OffreassurancelistComponent},
-  { path: 'createcredit', component : CreateCreditComponent},
+  { path: 'createcredit/:numCompte', component : CreateCreditComponent},
   { path: 'listeCreditByClient', component : ListesCreditsComponent},
   { path: 'offre-assurance/:id', component : OffreassurancedetailComponent },
   { path: 'add-offre', component : AddOffreAssuranceComponent },
