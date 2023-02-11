@@ -84,6 +84,7 @@ const routes: Routes = [
   { path: 'LoginPage', component: LoginComponent},
   { path: 'RegisterPage', component: RegisterComponent},
   { path: 'CreditLibrePage', component: CreditLibreComponent},
+  { path: 'AddCreditLibre/:numCompte', component: AjoutCreditLibreComponent},
   { path: 'SimulateurPage', component: SimulateurCreditLibreComponent},
   { path: '', loadChildren: () => import('./components/pages/home/home.module').then(m => m.HomeModule), data: { breadcrumb: 'Homepage' } },
   { path: 'home-v2', loadChildren: () => import('./components/pages/hometwo/hometwo.module').then(m => m.HometwoModule), data: { breadcrumb: 'Homepage' } },

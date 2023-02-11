@@ -48,7 +48,14 @@
                         <p class="text-light-white no-margin">{{item.email}}</p>
                         <p class="text-light-white no-margin">{{item.nom}} {{item.prenom}}</p>
                         <p class="text-light-white no-margin">{{item.role}}</p>
-                        <button (click)="affecter(item.idUser)" class="text-custom-black">affecter salaire</button>
+                        <div class="col-lg-6">
+                            <div class="form-group" >
+                                <label class="text-custom-black fs-14 fw-600">chois du compte</label>
+                                <input  [(ngModel)]="idCpt">
+                              
+                            </div>
+                        </div>
+                        <button (click)="affecter(item.idUser,idCpt)" class="text-custom-black">affecter salaire</button>
                     </div>
                 </div>
             </div>

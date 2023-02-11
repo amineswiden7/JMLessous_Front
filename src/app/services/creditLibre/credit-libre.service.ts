@@ -41,9 +41,9 @@ export class CreditLibreService {
   tab(credit:CreditLibre,valeur:number,type:string,salaire:number): Observable<Amortissement[]>{
     return this.httpClient.post<Amortissement[]>(`${this.baseURL}tabAmortissement/${valeur}/${type}/${salaire}`, credit);
   }
-  createCredit(Credit: CreditLibre,valeur:number,type:string,idUser:number): Observable<Object>{
+  createCredit(Credit: CreditLibre,valeur:number,type:string,idUser:number,idCpt:number): Observable<Object>{
     
-    return this.httpClient.post(`${this.baseURL}AddCreditLibre/${valeur}/${type}/${idUser}`, Credit );
+    return this.httpClient.post(`${this.baseURL}AddCreditLibre/${valeur}/${type}/${idUser}/${idCpt}`, Credit );
   }
 
  
