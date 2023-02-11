@@ -144,7 +144,7 @@ export class ComptechoixComponent implements OnInit {
 ]
 
   ngOnInit(): void {
-    this.idUser=10;
+    this.idUser=1;
     this.getC();
     this.getCE();
     //this.getAll();

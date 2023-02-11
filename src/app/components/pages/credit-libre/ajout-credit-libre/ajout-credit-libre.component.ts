@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { NgWizardConfig, NgWizardService, StepChangedArgs, STEP_STATE, THEME } from 'ng-wizard';
 import { CreditLibre } from 'src/app/models/credit-libre';
@@ -42,9 +43,11 @@ export class AjoutCreditLibreComponent implements OnInit {
   listG:Garantie[];
   listU:Utilisateur[];
  garantie=new Garantie();
-  constructor(private ngWizardService: NgWizardService, private userConnecte: UserService , private creditLibreService:CreditLibreService, private garantieS:GarantieService, private userS:UserService) {
+ idCpt:number;
+  constructor(private ngWizardService: NgWizardService, private userConnecte: UserService , private creditLibreService:CreditLibreService, private garantieS:GarantieService, private userS:UserService,private router: Router,private route:ActivatedRoute) {
   }
   ngOnInit() {
+    this.idCpt=this.route.snapshot.params['numCompte'];
     //this.garantieS.listGarantie().subscribe(res=>{console.log(res); this.listG=res});
     //this.userS.getAllUser().subscribe(res=>{console.log(res); this.listU=res});
     //this.userConnecte.findUserWithToken();
@@ -64,7 +67,7 @@ export class AjoutCreditLibreComponent implements OnInit {
    // this.creditLibre.garantie=this.garantie;
     //console.log(this.creditLibre.garantie);
     
-    this.creditLibreService.createCredit(this.creditLibre,this.garantie.valeur,this.garantie.type,this.userConnecte.activeUser.idUser).subscribe(res=>{
+    this.creditLibreService.createCredit(this.creditLibre,this.garantie.valeur,this.garantie.type,this.userConnecte.activeUser.idUser,this.idCpt).subscribe(res=>{
       console.log(this.creditLibre);
       console.log(res); 
       this.isSuccessful = true;

@@ -39,9 +39,9 @@ export class ComptecourantComponent implements OnInit {
     private route:ActivatedRoute) {
   }
   ngOnInit() {
-    this.idUser=10;
+    
    
-      this.UserService.getUser(this.idUser).subscribe(res=>{  
+      this.UserService.getUser(this.UserService.activeUser.idUser).subscribe(res=>{  
         this.Utilisateur=res;
         console.log(this.Utilisateur);
       },
@@ -57,7 +57,7 @@ export class ComptecourantComponent implements OnInit {
   stepChanged(_args: StepChangedArgs) { }
   addCompte(){
     console.log(this.comptecourant);
-    this.comptecourantService.addCompteC(this.comptecourant,this.idUser).subscribe(data=> {
+    this.comptecourantService.addCompteC(this.comptecourant,this.UserService.activeUser.idUser).subscribe(data=> {
       console.log(data);
       this.goToUserCompte();
     },
