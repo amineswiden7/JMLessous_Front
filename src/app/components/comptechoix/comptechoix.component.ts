@@ -152,7 +152,7 @@ export class ComptechoixComponent implements OnInit {
   }
 
   private getC(){
-    this.comptecourantService.getC(this.idUser).subscribe(data => {
+    this.comptecourantService.getC(this.usercon.activeUser.idUser).subscribe(data => {
       this.acc = data;
     });
   }
