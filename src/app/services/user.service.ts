@@ -57,7 +57,7 @@ export class UserService {
   getAdminBoard(): Observable<any> {
     return this.http.get(API_URL + 'admin', { responseType: 'text' });
   }
-  affecterSalaire(idUser:number,idCPT:number) {
-    return this.http.get(`${API_URL}affecterSalaire/${idUser}/${idCPT}`);
+  affecterSalaire(idUser:number,rib:string) {
+    return this.http.get(`${API_URL}affecterSalaire/${idUser}/${rib}`);
   }
 }

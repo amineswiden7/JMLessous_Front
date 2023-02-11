@@ -13,8 +13,10 @@ import { DialogueSComponent } from './dialogue-s/dialogue-s.component';
 export class AffecterSalaireComponent implements OnInit {
   id:number;
   list:Utilisateur[];
-  listC:CompteCourant[];
+  C=new CompteCourant();
   idCpt:number;
+  acc :CompteCourant[];
+  rib:string;
   constructor(private userService:UserService,private comptecourantService:ComptecourantService,private dialog: MatDialog) { 
     this.list=[];
   }
@@ -24,15 +26,21 @@ export class AffecterSalaireComponent implements OnInit {
     this.userService.getAllUser().subscribe(res=>{
       this.list=res;
     });
-    this.comptecourantService.getC(this.id).subscribe(res=>{
-        this.listC=res;
-        console.log(this.listC);
-    })
+
     
   }
 
-  affecter(id,idCpt){
-    this.userService.affecterSalaire(id,idCpt).subscribe(res=>{
+    getC(id){
+    this.comptecourantService.getC(id).subscribe(data => {
+      this.acc = data;
+      console.log(data)
+  
+    });
+  }
+  affecter(id){
+    //idCpt=this.C.numCompte;
+    console.log(this.C)
+    this.userService.affecterSalaire(id,this.rib).subscribe(res=>{
       console.log(res);
       this.userService.getUser(id).subscribe(result=>{
         let dialogRef=this.dialog.open(DialogueSComponent,{
