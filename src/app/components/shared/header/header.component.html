@@ -127,28 +127,34 @@
                                             </li>
                                         </ul>
                                     </li>
-                                  <li class="menu-item   menu-item-has-children"> <a href="#" class="text-custom-white">Assurance</a>
+                                  <li class="menu-item   menu-item-has-children"> <a href="#" class="text-custom-white"  *ngIf="permission">Assurance</a>
                                     <ul class="custom sub-menu">
                                       <li class="menu-item"> <a routerLink="/offres-list-bank" class="text-light-grey">Espace JMlessous</a>
                                       </li>
-                                      <li class="menu-item"> <a routerLink="/offres-assureurs" class="text-light-grey">Espace Partenaire</a>
+                                      <li class="menu-item"> <a routerLink="/offres-assureurs" class="text-light-grey"  *ngIf="partenaire" >Espace Partenaire</a>
                                       </li>
-                                      <li class="menu-item"  > <a routerLink="/offre-assurance" class="text-custom-grey">Espace client</a>
+                                      
+                                    </ul>
+                                  </li>
+                                  <li class="menu-item   menu-item-has-children"> <a href="#" class="text-custom-white" *ngIf="client">Assurance</a>
+                                    <ul class="custom sub-menu">
+                                    
+                                      <li class="menu-item"  > <a routerLink="/offre-assurance" class="text-custom-grey" >Espace client</a>
                                       </li>
                                     </ul>
                                   </li>
                                     <li class="menu-item   menu-item-has-children"> <a href="#" class="text-custom-white">Credit</a>
                                         <ul class="custom sub-menu">
-                                            <li class="menu-item"> <a routerLink="/CreditLibrePage" class="text-light-grey">credit Libre</a></li>
+                                            <li class="menu-item"> <a routerLink="/simulateurImm" class="text-light-grey">simuler votre credit immobilier </a></li>
                                             <li class="menu-item"> <a routerLink="/SimulateurPage" class="text-light-grey">simuler votre credit libre</a></li>
+                                            <li class="menu-item" *ngIf="permission"> <a routerLink="/creditBackImm" class="text-light-grey">gestion Credit immobilier</a></li>
                                             <li class="menu-item" *ngIf="permission"> <a routerLink="/adminCreditLibre" class="text-light-grey">gestion Credit Libre</a></li>
 
                                         </ul>
                                     </li>
                                     <li class="menu-item   menu-item-has-children"> <a href="#" class="text-custom-white">Formation</a>
                                         <ul class="custom sub-menu">
-                                            <li class="menu-item"> <a routerLink="/addformation" class="text-light-grey">Ajouter formation</a>
-                                            </li>
+                                           
                                             <li class="menu-item"> <a routerLink="/formations" class="text-light-grey">Les formations</a>
                                             </li>
                                         </ul>
@@ -172,7 +178,7 @@
                                     </a>
                                 </div>
                             </div>
-                            <div class="right-side">
+                            <div class="right-side" *ngIf="client" >
                                 <div class="cta-btn">
                                     <a routerLink="/choix" class="btn-first btn-submit">
                                        Mes Comptes</a>
@@ -181,7 +187,7 @@
                                     </a>
                                 </div>
                             </div>
-                            <div class="right-side">
+                            <div class="right-side" *ngIf="permission">
                                 <div class="cta-btn">
                                  
                                     <a routerLink="/affecterSalaire" class="btn-first btn-submit">
