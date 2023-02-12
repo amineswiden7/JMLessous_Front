@@ -1,141 +1,68 @@
 [
     {
         "id": 1,
-        "photo": "assets/images/doctors/doctor3.jpg",
-        "name": "Eachann Jhon",
-        "designation": "Loan Advisor",
+        "photo": "assets/images/team/mh.jpeg",
+        "name": "Mehdi Hantous",
+        "designation": "Consultant Marché Financier",
         "socialmedia": [
-            {
-                "icon": "youtube",
-                "iconclass": "youtube",
-                "url": "#"
-            },
             {
                 "icon": "linkedin",
                 "iconclass": "linkedin",
-                "url": "#"
-            },
-            {
-                "icon": "facebook-f",
-                "iconclass": "facebook",
-                "url": "#"
-            },
-            {
-                "icon": "twitter",
-                "iconclass": "twitter",
-                "url": "#"
+                "url": "https://www.linkedin.com/in/mehdi-hantous"
             }
+
         ]
     },
     {
         "id": 2,
-        "photo": "assets/images/doctors/doctor2.jpg",
-        "name": "Addison Smith",
-        "designation": "Business Loan Advisor",
+        "photo": "assets/images/team/mas.jpg",
+        "name": "Mohamed Amine Souiden",
+        "designation": "Consultant Crédit",
         "socialmedia": [
-            {
-                "icon": "youtube",
-                "iconclass": "youtube",
-                "url": "#"
-            },
+
             {
                 "icon": "linkedin",
                 "iconclass": "linkedin",
-                "url": "#"
-            },
-            {
-                "icon": "facebook-f",
-                "iconclass": "facebook",
-                "url": "#"
-            },
-            {
-                "icon": "twitter",
-                "iconclass": "twitter",
-                "url": "#"
+                "url": "https://www.linkedin.com/in/amine-swiden"
             }
         ]
     },
     {
         "id": 3,
-        "photo": "assets/images/doctors/doctor4.jpg",
-        "name": "Sarah Taylor",
-        "designation": "Loan Advisor",
+        "photo": "assets/images/team/ka.png",
+        "name": "Khadija Azzouz",
+        "designation": "Consultante Bancaire",
         "socialmedia": [
-            {
-                "icon": "youtube",
-                "iconclass": "youtube",
-                "url": "#"
-            },
             {
                 "icon": "linkedin",
                 "iconclass": "linkedin",
-                "url": "#"
-            },
-            {
-                "icon": "facebook-f",
-                "iconclass": "facebook",
-                "url": "#"
-            },
-            {
-                "icon": "twitter",
-                "iconclass": "twitter",
-                "url": "#"
+                "url": "https://www.linkedin.com/in/khadija-azzouz"
             }
         ]
     },
     {
         "id": 4,
-        "photo": "assets/images/doctors/doctor5.jpg",
-        "name": "Aiken Ward",
-        "designation": "Corporate Loan Advisor",
+        "photo": "assets/images/team/bj.jpg",
+        "name": "Bechir Jlidi",
+        "designation": "Consultant Crédit",
         "socialmedia": [
-            {
-                "icon": "youtube",
-                "iconclass": "youtube",
-                "url": "#"
-            },
             {
                 "icon": "linkedin",
                 "iconclass": "linkedin",
-                "url": "#"
-            },
-            {
-                "icon": "facebook-f",
-                "iconclass": "facebook",
-                "url": "#"
-            },
-            {
-                "icon": "twitter",
-                "iconclass": "twitter",
-                "url": "#"
+                "url": "https://www.linkedin.com/in/bechir-jlidi"
             }
         ]
     },
     {
         "id": 5,
-        "photo": "assets/images/doctors/doctor3.jpg",
-        "name": "Babatunde jhon",
-        "designation": "Home Loan Advisor",
+        "photo": "assets/images/team/aba.png",
+        "name": "Ahmed Ben Amor",
+        "designation": "Consultant Assurance",
         "socialmedia": [
-            {
-                "icon": "youtube",
-                "iconclass": "youtube",
-                "url": "#"
-            },
             {
                 "icon": "linkedin",
                 "iconclass": "linkedin",
-                "url": "#"
-            },
-            {
-                "icon": "facebook-f",
-                "iconclass": "facebook",
-                "url": "#"
-            },
-            {
-                "icon": "twitter",
-                "iconclass": "twitter",
-                "url": "#"
+                "url": "https://www.linkedin.com/in/ahmed-benamor"
             }
         ]
     }
