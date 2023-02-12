@@ -143,8 +143,9 @@
                                   </li>
                                     <li class="menu-item   menu-item-has-children"> <a href="#" class="text-custom-white">Credit</a>
                                         <ul class="custom sub-menu">
-                                            <li class="menu-item"> <a routerLink="/CreditLibrePage" class="text-light-grey">credit Libre</a></li>
+                                            <li class="menu-item"> <a routerLink="/simulateurImm" class="text-light-grey">simuler votre credit immobilier </a></li>
                                             <li class="menu-item"> <a routerLink="/SimulateurPage" class="text-light-grey">simuler votre credit libre</a></li>
+                                            <li class="menu-item" *ngIf="permission"> <a routerLink="/creditBackImm" class="text-light-grey">gestion Credit immobilier</a></li>
                                             <li class="menu-item" *ngIf="permission"> <a routerLink="/adminCreditLibre" class="text-light-grey">gestion Credit Libre</a></li>
 
                                         </ul>

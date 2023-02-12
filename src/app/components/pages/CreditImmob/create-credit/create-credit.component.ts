@@ -60,10 +60,12 @@ export class CreateCreditComponent implements OnInit {
     this.creditImmobS.createCredit(this.creditImmob,this.userS.activeUser.idUser,this.numCompte).subscribe({
       
       next:res=>{
+        console.log(res);
       console.log(this.creditImmob);
       console.log(this.creditImmob.idCredit);
       console.log(this.idUser);
       this.isSuccessful = true;
+      
       this.creditImmobb=res;
         this.isSignUpFailed = false;
     },
@@ -72,7 +74,7 @@ export class CreateCreditComponent implements OnInit {
       this.isSignUpFailed = true;
     },
     complete: () => {
-      Swal.fire('Merci pour votre confiance ', 'your complaint has been sent successfully !', 'success')  
+      Swal.fire('Merci pour votre confiance ', 'success')  
       //this.goToEmployeeList()
       this.id=this.creditImmob.idCredit;
      
