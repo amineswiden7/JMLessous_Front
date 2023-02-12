@@ -12,6 +12,7 @@ export class HeaderComponent implements OnInit {
 connecte:Boolean;
 client:Boolean;
 rh:Boolean;
+partenaire:Boolean;
   constructor(@Inject(DOCUMENT) private document: Document, private userConnecte: UserService ) { 
     this.connecte=false;
     if(this.userConnecte.activeUser.idUser!=null)
@@ -26,6 +27,10 @@ rh:Boolean;
      else if(this.role=="CLIENT")
      {
        this.client=true;
+     }
+     else if(this.role==" EMPLOYE_ASSURANCE")
+     {
+       this.partenaire=true;
      }
     console.log(this.permission)
     }
