@@ -1,3 +1,4 @@
+import { UserService } from 'src/app/services/user.service';
 import { Portfeuille } from './../../../models/portfeuille/portfeuille';
 import { Ordre } from './../../../models/ordre/ordre';
 import { PortfeuilleService } from 'src/app/services/portfeuille/portfeuille.service';
@@ -14,7 +15,7 @@ export class OrdreComponent implements OnInit {
 
   public ordres : Ordre []
   public portfeuille = new Portfeuille()
-  constructor(private service:OrdreService,private servicePortfeuille:PortfeuilleService, public router: Router) { }
+  constructor(private service:OrdreService,private servicePortfeuille:PortfeuilleService, public router: Router,private userConnecte:UserService) { }
 
   ngOnInit(): void {
     this.loadPortfeuille()
@@ -22,7 +23,7 @@ export class OrdreComponent implements OnInit {
   }
 
   loadPortfeuille():void {
-    this.servicePortfeuille.getPortfeuilleByUser(1).subscribe(
+    this.servicePortfeuille.getPortfeuilleByUser(this.userConnecte.activeUser.idUser).subscribe(
       data => {
        // console.log(data);
         this.portfeuille=data;

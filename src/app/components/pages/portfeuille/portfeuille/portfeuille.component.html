@@ -146,6 +146,7 @@
     </div>
   </div>
 
+  <div *ngIf="portfeuille !=null && produits.length > 0" class="row">
   <div class="col-12">
     <div class="card mb-4">
       <div class="card-header pb-0">
@@ -154,30 +155,30 @@
 <br>
       <div >
         <div class="col-5" style="display:inline-block">
-          <form #var="ngForm" (ngSubmit)="getVar()"novalidate>
+          <form #var="ngForm" (ngSubmit)="getVar()" novalidate>
                 <div class="row">
                     <div class="form-group">
                         <label class="text-custom-black fs-14 fw-600" >Confiance</label>
-                        <input type="number" formControlName="con" class="form-control form-control-custom"  [(ngModel)]="confiance" [ngClass]="{ 'is-invalid': submitted && con.errors }"
+                        <input type="number"  class="form-control form-control-custom"  [(ngModel)]="confiance"  [ngModelOptions]="{standalone: true}"
                             placeholder="Intervalle de Confiance"  >
-                            <div *ngIf="submitted && con.errors" class="invalid-feedback">
+                           <!-- <div *ngIf="submitted && con.errors" class="invalid-feedback"> formControlName="con"
                               <div *ngIf="con.errors.min">taux minimal est 1%</div>
-                              <div *ngIf="con.errors.max">taux maximal est 99%</div>
+                              <div *ngIf="con.errors.max">taux maximal est 99%</div>  [ngClass]="{ 'is-invalid': submitted && con.errors }"
                               <div *ngIf="con.errors.required">Le taux de confiance est obligatoire</div>
 
-                            </div>
+                            </div>-->
                     </div>
                 </div>  
                 
                 <div class="row">
                   <div class="form-group">
                     <label class="text-custom-black fs-14 fw-600" >Horizon</label>
-                    <input type="number" formControlName="hor" class="form-control form-control-custom" [(ngModel)]="horizon" [ngClass]="{ 'is-invalid': submitted && hor.errors }"
+                    <input type="number"  class="form-control form-control-custom" [(ngModel)]="horizon"  [ngModelOptions]="{standalone: true}"
                         placeholder="Horizon en jours"  >
-                        <div *ngIf="submitted && hor.errors" class="invalid-feedback">
-                          <div *ngIf="hor.errors.required">L'horizon est obligatoire</div>
+                       <!-- <div *ngIf="submitted && hor.errors" class="invalid-feedback"> formControlName="hor"
+                          <div *ngIf="hor.errors.required">L'horizon est obligatoire</div> [ngClass]="{ 'is-invalid': submitted && hor.errors }"
                           <div *ngIf="hor.errors.min">Nombre de jour minimal est 1</div>
-                        </div>
+                        </div>-->
                   </div>
                 </div>
 
@@ -212,7 +213,7 @@
 
     </div>
   </div>
-
+</div>
 
   <!--Creation de portfeuille-->
   <ng-template #portfeuilleD let-c="close" let-d="dismiss">

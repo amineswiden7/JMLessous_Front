@@ -1,3 +1,4 @@
+import { CoursactionsService } from './../../../services/marcheactions/coursactions.service';
 import { Component, OnInit, HostListener, Input } from '@angular/core';
 import twitterfeed from '../../../data/twitterfeed.json';
 import blogbox from '../../../data/blog.json';
@@ -8,8 +9,8 @@ import blogbox from '../../../data/blog.json';
   styleUrls: ['./footer.component.css']
 })
 export class FooterComponent implements OnInit {
-
-  constructor() { }
+  actualites = [];
+  constructor(private coursService: CoursactionsService) { }
   public blogbox: { title: string, id: number }[] = blogbox;
   public twitterfeed: { tweet: string, id: number }[] = twitterfeed;
   twitterConfig = {
@@ -27,6 +28,12 @@ export class FooterComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.coursService.getAllActu().subscribe(
+      data => {
+        console.log(data);
+        this.actualites=data;
+      }
+    );
   }
   ScrolltoTop() {
     const navbar = document.getElementById('back-top');
