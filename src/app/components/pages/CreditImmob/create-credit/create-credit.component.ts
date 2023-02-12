@@ -60,10 +60,12 @@ export class CreateCreditComponent implements OnInit {
     this.creditImmobS.createCredit(this.creditImmob,this.userS.activeUser.idUser,this.numCompte).subscribe({
       
       next:res=>{
+        console.log(res);
       console.log(this.creditImmob);
       console.log(this.creditImmob.idCredit);
       console.log(this.idUser);
       this.isSuccessful = true;
+      
       this.creditImmobb=res;
         this.isSignUpFailed = false;
     },

@@ -49,13 +49,15 @@ export class CreditEtuComponent implements OnInit {
     this.creditImmobS.createCredit(this.creditImmob,this.userS.activeUser.idUser,this.numCompte).subscribe({
       
       next:res=>{
+      console.log("mehdi hantous")
+      console.log(res);
       console.log(this.creditImmob);
       console.log(this.creditImmob.Score);
       console.log(this.idUser);
       this.isSuccessful = true;
-        this.isSignUpFailed = false;
-        this.creditImmobb=res;
-        console.log(this.creditImmobb)
+      this.isSignUpFailed = false;
+      this.creditImmobb=res;
+      console.log(this.creditImmobb)
     },
     error:err => {
       this.errorMessage = err.error.message;
