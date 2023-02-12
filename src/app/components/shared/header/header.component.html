@@ -131,13 +131,19 @@
                                             </li>
                                         </ul>
                                     </li>
-                                  <li class="menu-item   menu-item-has-children"> <a href="#" class="text-custom-white">Assurance</a>
+                                  <li class="menu-item   menu-item-has-children"> <a href="#" class="text-custom-white"  *ngIf="permission">Assurance</a>
                                     <ul class="custom sub-menu">
                                       <li class="menu-item"> <a routerLink="/offres-list-bank" class="text-light-grey">Espace JMlessous</a>
                                       </li>
-                                      <li class="menu-item"> <a routerLink="/offres-assureurs" class="text-light-grey">Espace Partenaire</a>
+                                      <li class="menu-item"> <a routerLink="/offres-assureurs" class="text-light-grey" >Espace Partenaire</a>
                                       </li>
-                                      <li class="menu-item"  > <a routerLink="/offre-assurance" class="text-custom-grey">Espace client</a>
+                                      
+                                    </ul>
+                                  </li>
+                                  <li class="menu-item   menu-item-has-children"> <a href="#" class="text-custom-white" *ngIf="client">Assurance</a>
+                                    <ul class="custom sub-menu">
+                                    
+                                      <li class="menu-item"  > <a routerLink="/offre-assurance" class="text-custom-grey" >Espace client</a>
                                       </li>
                                     </ul>
                                   </li>
