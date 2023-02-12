@@ -31,7 +31,7 @@ export class CreditImmobilierService {
       return this.httpClient.post<Amortissement[]>(`${this.API_URL}/tabAmor`, credit);
     }
     createCredit(Credit: CreditImmobilier,idUser:number,numCompte:number): Observable<CreditImmobilier>{
-      return this.httpClient.post<CreditImmobilier>(`${this.API_URL}/add-creditImob/1/${numCompte}`, Credit);
+      return this.httpClient.post<CreditImmobilier>(`${this.API_URL}/add-creditImob/${idUser}/${numCompte}`, Credit);
     }
 
     getAllCreditbyuser(idUser:number):Observable<CreditImmobilier[]>{

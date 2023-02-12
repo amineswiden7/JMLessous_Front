@@ -72,7 +72,7 @@ export class CreateCreditComponent implements OnInit {
       this.isSignUpFailed = true;
     },
     complete: () => {
-      Swal.fire('Merci pour votre confiance ', 'your complaint has been sent successfully !', 'success')  
+      Swal.fire('Merci pour votre confiance ', 'success')  
       //this.goToEmployeeList()
       this.id=this.creditImmob.idCredit;
      

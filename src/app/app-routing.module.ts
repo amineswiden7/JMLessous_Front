@@ -118,7 +118,7 @@ const routes: Routes = [
   { path: 'credit-detail/:idCredit', component : CreditDetailComponent },
   { path: 'simulateurImm', component : SimulateurCreditImmobComponent},
   { path: 'creditBackImm', component : ListeCreditBackComponent},
-  { path: 'AjoutCreditEtu', component : CreditEtuComponent},
+  { path: 'AjoutCreditEtu/:numCompte', component : CreditEtuComponent},
   { path: 'CreditBackEtu', component : ListCreditsBackComponent},
   { path: 'ListeCreditEtu', component : ListCreditsComponent},
   { path: 'Mon-Portfeuille', component : PortfeuilleComponent },
