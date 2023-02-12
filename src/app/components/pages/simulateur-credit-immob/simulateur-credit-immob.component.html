@@ -54,10 +54,10 @@
                                           <div class="form-group">
                                               <div class="input-group"> <span class="input-group-preappend"><i class="fas fa-home"></i></span>
                                                 <br>
-                                                <select  class="form-control"  [(ngModel)]="creditImmob.destination"  placeholder="apportPersonnel" [ngModelOptions]="{standalone: true}">
-                                                  <option  class="form-control" selected value="residence principale">residence principal</option>
-                                                  <option class="form-control" value="residence secondaire">residence secondaire</option>
-                                                  <option class="form-control" value="location">location</option>
+                                                <select   class="form-control"  [(ngModel)]="creditImmob.destination"  placeholder="destination" [ngModelOptions]="{standalone: true}">
+                                                  <option  class="text-custom-black" selected value="residence principale">residence principal</option>
+                                                  <option class="text-custom-black" value="residence secondaire">residence secondaire</option>
+                                                  <option class="text-custom-black" value="location">location</option>
                                                 </select>
                                               </div>
                                           </div>
@@ -74,9 +74,9 @@
                                       <div class="form-group">
                                         <div class="input-group"> <span class="input-group-preappend"><i class="fas fa-school"></i></span>
                                           <select  class="form-control"  [(ngModel)]="creditImmob.produit" name="produit"  [ngModelOptions]="{standalone: true}" >
-                                            <option selected value="terrain">terrain</option>
-                                            <option value="Maison">maison</option>
-                                            <option value="Appartement">appartement</option>
+                                            <option class="text-custom-black" selected value="terrain">terrain</option>
+                                            <option class="text-custom-black" value="Maison">maison</option>
+                                            <option class="text-custom-black" value="Appartement">appartement</option>
                                   
                                           </select>
                                         </div>
@@ -84,10 +84,10 @@
                                     <div class="form-group">
                                       <div class="input-group"> <span class="input-group-preappend"><i class="fas fa-map-marker-alt"></i></span>
                                         <select  class="form-control" [(ngModel)]="creditImmob.localisation"  placeholder="localisation"   [ngModelOptions]="{standalone: true}">
-                                          <option  class="form-control" value="Tunis">Tunis</option>
-                                          <option class="form-control"  value="BanlieueNord">BanlieueNord</option>
-                                          <option class="form-control"  value="BanlieueSud">BanlieueSud</option>
-                                          <option  class="form-control" value="LesCôtes">LesCôtes</option>
+                                          <option  class="text-custom-black"  value="Tunis">Tunis</option>
+                                          <option  class="text-custom-black"  value="BanlieueNord">BanlieueNord</option>
+                                          <option  class="text-custom-black" value="BanlieueSud">BanlieueSud</option>
+                                          <option   class="text-custom-black" value="LesCôtes">LesCôtes</option>
                                 
                                         </select>
                                       </div>
