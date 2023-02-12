@@ -1,3 +1,4 @@
+import { CoursactionsService } from './../../../../services/marcheactions/coursactions.service';
 import { Component, OnInit } from '@angular/core';
 import banner from "../../../../data/banner.json";
 import blogbox from '../../../../data/blog.json';
@@ -15,7 +16,8 @@ import clients from '../../../../data/client.json';
 })
 export class ContentComponent implements OnInit {
 
-  constructor() { }
+  actualites = [];
+  constructor(private coursService: CoursactionsService) { }
   public banner: { id: number }[] = banner;
   public intropost: { id: number }[] = intropost;
   public serviceblock: { id: number }[] = serviceblock;
@@ -234,6 +236,12 @@ export class ContentComponent implements OnInit {
   ]
 
   ngOnInit(): void {
+    this.coursService.getAllActu().subscribe(
+      data => {
+        console.log(data);
+        this.actualites=data;
+      }
+    );
   }
 
 }

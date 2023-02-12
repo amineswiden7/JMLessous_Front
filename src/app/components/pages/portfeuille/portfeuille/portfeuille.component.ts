@@ -1,3 +1,4 @@
+import { UserService } from 'src/app/services/user.service';
 import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { ProduitFinancierService } from './../../../../services/produitFinancier/produit-financier.service';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
@@ -15,6 +16,7 @@ import { promise } from 'protractor';
   styleUrls: ['./portfeuille.component.css']
 })
 export class PortfeuilleComponent implements OnInit {
+  user=localStorage.getItem('id');
   public produits : ProduitFinancier [];
   public portfeuille = new Portfeuille();
   p : any ={solde : 0};
@@ -27,7 +29,7 @@ export class PortfeuilleComponent implements OnInit {
   prix:any;
   nombre : any;
   titre:any;
-  solde : any = 20000;
+  solde : any ;
   produit : any = {
     isin:""
   }
@@ -39,7 +41,7 @@ export class PortfeuilleComponent implements OnInit {
   submitted = false;
  
 
-  constructor(private service:PortfeuilleService,public router: Router, private coursService: CoursactionsService,private modalQuantite: NgbModal,private modalPortfeuille: NgbModal,private serviceProduit:ProduitFinancierService,private formBuilder: FormBuilder) { }
+  constructor(private service:PortfeuilleService,public router: Router, private coursService: CoursactionsService,private modalQuantite: NgbModal,private modalPortfeuille: NgbModal,private serviceProduit:ProduitFinancierService,private formBuilder: FormBuilder,private userConnecte:UserService) { }
 
   ngOnInit(): void {
     this.loadPortfeuille();
@@ -61,7 +63,7 @@ export class PortfeuilleComponent implements OnInit {
 
   loadPortfeuille():void {
     
-    this.service.getPortfeuilleByUser(1).subscribe(
+    this.service.getPortfeuilleByUser(this.userConnecte.activeUser.idUser).subscribe(
       data => {
        // console.log(data);
         
@@ -157,7 +159,7 @@ export class PortfeuilleComponent implements OnInit {
   addPortfeuille():void{
     
     console.log(this.solde);
-    this.service.addPortfeuille(this.solde,1).subscribe((data: {}) => {
+    this.service.addPortfeuille(this.solde,this.userConnecte.activeUser.idUser).subscribe((data: {}) => {
       this.modalPortfeuille.dismissAll();
       this.loadPortfeuille()
       this.router.navigate(['/Mon-Portfeuille']);
@@ -170,17 +172,19 @@ export class PortfeuilleComponent implements OnInit {
     console.log(this.con)
     // stop here if form is invalid
     console.log(this.var.invalid)
-    if (this.var.invalid) {
+    /*if (this.var.invalid) {
         return;
     }
-    else{
+    
+    else{*/
     // console.log(p);
+    console.log(this.confiance+" : "+this.horizon);
      this.service.getPortfeuilleVar(this.idPortfeuille,this.confiance,this.horizon).subscribe(
        data => {
         console.log(data);
         this.Pvar=data;
        });}
-       this.var.reset();
-  }
+      // this.var.reset();
+  //}
 
 }

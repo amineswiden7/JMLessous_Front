@@ -1,3 +1,4 @@
+import { UserService } from 'src/app/services/user.service';
 import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { Portfeuille } from './../../models/portfeuille/portfeuille';
 import { PortfeuilleService } from 'src/app/services/portfeuille/portfeuille.service';
@@ -48,7 +49,7 @@ export class MarcheactionsComponent implements OnInit {
   ouvert:string = 'ouvert';
   actualites = [];
   
-  constructor(config: NgbModalConfig, private modalService: NgbModal, private coursService: CoursactionsService, private router: Router,private modalQuantite: NgbModal,private service: ProduitFinancierService,private servicePortfeuille:PortfeuilleService,private formBuilder: FormBuilder) {}
+  constructor(config: NgbModalConfig, private modalService: NgbModal, private coursService: CoursactionsService, private router: Router,private modalQuantite: NgbModal,private service: ProduitFinancierService,private servicePortfeuille:PortfeuilleService,private formBuilder: FormBuilder,private userConnecte:UserService) {}
 
   async open(content, isin: string,ticker: string): Promise<void> {
     this.getDetails(isin,ticker).finally(() => {
@@ -158,7 +159,7 @@ export class MarcheactionsComponent implements OnInit {
 
   loadPortfeuille():void {
     
-    this.servicePortfeuille.getPortfeuilleByUser(1).subscribe(
+    this.servicePortfeuille.getPortfeuilleByUser(this.userConnecte.activeUser.idUser).subscribe(
       data => {
        // console.log(data);
         
