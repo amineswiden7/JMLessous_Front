@@ -45,7 +45,8 @@ import { ListCreditsComponent } from './components/pages/CreditEtudiant/list-cre
 import { ListCreditsBackComponent } from './components/pages/CreditEtudiant/list-credits-back/list-credits-back.component';
 import { CreateAbsenceComponent } from './components/pages/Absence/create-absence/create-absence.component';
 import { ListeAbsenceComponent } from './components/pages/Absence/liste-absence/liste-absence.component';
-import {DashboardComponent} from './components/pages/dashboard/dashboard.component';
+
+import { DashboardComponent } from './components/pages/dashboard/dashboard.component';
 
 import { AffecterSalaireComponent } from './components/pages/affecter-salaire/affecter-salaire.component';
 
@@ -83,6 +84,7 @@ const routes: Routes = [
   { path: 'LoginPage', component: LoginComponent},
   { path: 'RegisterPage', component: RegisterComponent},
   { path: 'CreditLibrePage', component: CreditLibreComponent},
+  { path: 'AddCreditLibre/:numCompte', component: AjoutCreditLibreComponent},
   { path: 'SimulateurPage', component: SimulateurCreditLibreComponent},
   { path: '', loadChildren: () => import('./components/pages/home/home.module').then(m => m.HomeModule), data: { breadcrumb: 'Homepage' } },
   { path: 'home-v2', loadChildren: () => import('./components/pages/hometwo/hometwo.module').then(m => m.HometwoModule), data: { breadcrumb: 'Homepage' } },
@@ -109,14 +111,14 @@ const routes: Routes = [
   // tslint:disable-next-line:max-line-length
   { path: 'loan-dashboard', loadChildren: () => import('./components/pages/userdashboard/userdashboard.module').then(m => m.UserdashboardModule), data: { breadcrumb: 'User Dashboard' } },
   { path: 'offre-assurance', component : OffreassurancelistComponent},
-  { path: 'createcredit', component : CreateCreditComponent},
+  { path: 'createcredit/:numCompte', component : CreateCreditComponent},
   { path: 'listeCreditByClient', component : ListesCreditsComponent},
   { path: 'offre-assurance/:id', component : OffreassurancedetailComponent },
   { path: 'add-offre', component : AddOffreAssuranceComponent },
   { path: 'credit-detail/:idCredit', component : CreditDetailComponent },
   { path: 'simulateurImm', component : SimulateurCreditImmobComponent},
   { path: 'creditBackImm', component : ListeCreditBackComponent},
-  { path: 'AjoutCreditEtu', component : CreditEtuComponent},
+  { path: 'AjoutCreditEtu/:numCompte', component : CreditEtuComponent},
   { path: 'CreditBackEtu', component : ListCreditsBackComponent},
   { path: 'ListeCreditEtu', component : ListCreditsComponent},
   { path: 'Mon-Portfeuille', component : PortfeuilleComponent },

@@ -30,8 +30,8 @@ export class CreditEtudiantService {
     tabAmortissement(credit:CreditEtudiant): Observable<Amortissement[]>{
       return this.httpClient.post<Amortissement[]>(`${this.API_URL}/tabAmor`, credit);
     }
-    createCredit(Credit: CreditEtudiant,idUser:number): Observable<CreditEtudiant>{
-      return this.httpClient.post<CreditEtudiant>(`${this.API_URL}/add-credit/${idUser}`, Credit);
+    createCredit(Credit: CreditEtudiant,idUser:number,numCompte:number): Observable<CreditEtudiant>{
+      return this.httpClient.post<CreditEtudiant>(`${this.API_URL}/add-credit/${idUser}/${numCompte}`, Credit);
     }
     getCreditByUser(idUser:number):Observable<CreditEtudiant[]>{
         return this.httpClient.get<CreditEtudiant[]>(`${this.API_URL}/retrieve-all-creditImob/${idUser}`);

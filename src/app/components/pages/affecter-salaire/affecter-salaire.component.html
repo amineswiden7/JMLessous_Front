@@ -10,12 +10,12 @@
             <div class="col-12">
   
                 <div class="sub-header-content p-relative">
-                  <h1 class="text-custom-white lh-default fw-600"> credit Libre simulateur</h1>
+                  <h1 class="text-custom-white lh-default fw-600"> Administrateur</h1>
                   <ul class="custom">
-                    <li><a class="text-custom-white">Home</a></li>
+                    <li><a class="text-custom-white">affectation des salaire</a></li>
                     <li >
   
-                        <a>credit Libre simulateur</a>
+                        <a>liste des salariés</a>
                     </li>
   
                   </ul>
@@ -30,7 +30,7 @@
     <div class="container">
         <div class="section-header">
             <div class="section-heading">
-                <h3 class="text-custom-black fw-700">ressource Humaine</h3>
+                <h3 class="text-custom-black fw-700">Ressource Humaine</h3>
                 <div class="section-description">
                     <p class="text-light-white">affecter les salaires de chaque employé </p>
                 </div>
@@ -48,6 +48,17 @@
                         <p class="text-light-white no-margin">{{item.email}}</p>
                         <p class="text-light-white no-margin">{{item.nom}} {{item.prenom}}</p>
                         <p class="text-light-white no-margin">{{item.role}}</p>
+                        <div class="col-lg-6" >
+                            <div class="form-group"   >
+                                <div class="input-group">
+                                <button (click)="getC(item.idUser)">afficher compte</button>
+                                <select class="form-control fs-14 fw-600 "  [(ngModel)]="rib" [ngModelOptions]="{standalone: true}"  >
+                                    <option *ngIf="acc">compte correspondant</option>
+                                <option *ngFor="let c of acc" >{{c.rib}}</option>
+                            </select>
+                        </div>
+                            </div>
+                        </div>
                         <button (click)="affecter(item.idUser)" class="text-custom-black">affecter salaire</button>
                     </div>
                 </div>

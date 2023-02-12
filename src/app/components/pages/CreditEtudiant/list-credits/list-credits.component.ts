@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CreditEtudiant } from 'src/app/models/creditEtudiant';
 import { CreditEtudiantService } from 'src/app/services/CreditEtudiant/CreditEtudiant.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-list-credits',
@@ -10,12 +11,12 @@ import { CreditEtudiantService } from 'src/app/services/CreditEtudiant/CreditEtu
 export class ListCreditsComponent implements OnInit {
   listC:CreditEtudiant[];
 
-  constructor(private credit:CreditEtudiantService) {
+  constructor(private credit:CreditEtudiantService, private users:UserService) {
     this.listC=[]
    }
 
   ngOnInit(): void {
-    this.credit.getCreditByUser(1).subscribe(res=>{console.log(res);this.listC=res});
+    this.credit.getCreditByUser(this.users.activeUser.idUser).subscribe(res=>{console.log(res);this.listC=res});
   }
 
 }

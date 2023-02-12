@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router,ActivatedRoute } from '@angular/router';
 import { NgWizardConfig, NgWizardService, STEP_STATE, THEME } from 'ng-wizard';
 import { Credit } from 'src/app/models/credit';
 import { CreditEtudiant } from 'src/app/models/creditEtudiant';
@@ -16,6 +16,7 @@ export class CreditEtuComponent implements OnInit {
   creditImmob= new CreditEtudiant();
   creditImmobb= new CreditEtudiant();
   creditImmobbb= new CreditEtudiant();
+  numCompte:any;
 
   credit=new Credit();
   idUser:any;
@@ -39,21 +40,24 @@ export class CreditEtuComponent implements OnInit {
     theme: THEME.arrows,
   };
 
-  constructor(private ngWizardService: NgWizardService, private userS:UserService,private creditImmobS:CreditEtudiantService,private router: Router) { }
+  constructor(private ngWizardService: NgWizardService, private userS:UserService,private creditImmobS:CreditEtudiantService,private router: Router , private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.numCompte = this.route.snapshot.params['numCompte'];
   }
   addCredit(){
-    this.creditImmobS.createCredit(this.creditImmob,1).subscribe({
+    this.creditImmobS.createCredit(this.creditImmob,this.userS.activeUser.idUser,this.numCompte).subscribe({
       
       next:res=>{
+      console.log("mehdi hantous")
+      console.log(res);
       console.log(this.creditImmob);
       console.log(this.creditImmob.Score);
       console.log(this.idUser);
       this.isSuccessful = true;
-        this.isSignUpFailed = false;
-        this.creditImmobb=res;
-        console.log(this.creditImmobb)
+      this.isSignUpFailed = false;
+      this.creditImmobb=res;
+      console.log(this.creditImmobb)
     },
     error:err => {
       this.errorMessage = err.error.message;

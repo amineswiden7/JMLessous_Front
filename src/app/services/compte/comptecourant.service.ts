@@ -17,7 +17,7 @@ export class ComptecourantService {
   getAllCompteC(): Observable<CompteCourant[]>{
     return this.httpClient.get<CompteCourant[]>(`${this.API_URL}/Listaccounts`)
   }
-  getC(iduser :any) {
+  getC(iduser :any): Observable<CompteCourant[]> {
     return this.httpClient.get<CompteCourant[]>(`${this.API_URL}/Lista/${iduser}`);
   }
   getCompteC(id:any):Observable<CompteCourant>{

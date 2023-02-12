@@ -144,7 +144,7 @@ export class ComptechoixComponent implements OnInit {
 ]
 
   ngOnInit(): void {
-    this.idUser=10;
+    this.idUser=1;
     this.getC();
     this.getCE();
     //this.getAll();
@@ -152,7 +152,7 @@ export class ComptechoixComponent implements OnInit {
   }
 
   private getC(){
-    this.comptecourantService.getC(this.idUser).subscribe(data => {
+    this.comptecourantService.getC(this.usercon.activeUser.idUser).subscribe(data => {
       this.acc = data;
     });
   }

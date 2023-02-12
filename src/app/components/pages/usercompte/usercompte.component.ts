@@ -56,14 +56,14 @@ export class UsercompteComponent implements OnInit {
   this.listTransaction = data;
   },
   error => console.log(error));
-  
+  this.Utilisateur=this.UserService.activeUser;
   //el user
-  this.UserService.getUser(this.idUser).subscribe(res=>{  
+  /*this.UserService.getUser(this.idUser).subscribe(res=>{  
     this.Utilisateur=res;
     console.log(this.Utilisateur);
   },
   error => console.log(error));
-
+*/
   //nekhou fil compte mtaa el user 
  /* this.UserService.getCpt(this.idUser).subscribe(res=>{  
     this.CompteCourant=res;
