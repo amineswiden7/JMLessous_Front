@@ -10,6 +10,8 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class HeaderComponent implements OnInit {
 connecte:Boolean;
+client:Boolean;
+rh:Boolean;
   constructor(@Inject(DOCUMENT) private document: Document, private userConnecte: UserService ) { 
     this.connecte=false;
     if(this.userConnecte.activeUser.idUser!=null)
@@ -20,6 +22,10 @@ connecte:Boolean;
      if(this.role=="ADMIN")
      {
        this.permission=true;
+     }
+     else if(this.role=="CLIENT")
+     {
+       this.client=true;
      }
     console.log(this.permission)
     }
